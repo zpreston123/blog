@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Blog\Http\Requests;
 use Blog\Http\Controllers\Controller;
+use Blog\Category;
 use Blog\Post;
 
 class PostsController extends Controller
@@ -17,7 +18,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        $posts = Post::latest()->paginate(10);
+
+        return view('home', compact('posts'));
     }
 
     /**
@@ -27,7 +30,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::orderBy('name')->lists('name', 'id');
+
+        return view('posts.create', compact('categories'));
     }
 
     /**

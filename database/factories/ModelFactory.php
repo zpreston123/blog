@@ -19,22 +19,3 @@ $factory->define(Blog\User::class, function ($faker) {
         'remember_token' => str_random(10),
     ];
 });
-
-$factory->define(Blog\Category::class, function ($faker) {
-    return [
-        'name' => $faker->word
-    ];
-});
-
-$factory->define(Blog\Post::class, function ($faker) {
-    return [
-        'title' => $faker->title,
-        'body' => $faker->paragraph
-    ];
-});
-
-$factory->define(Blog\Comment::class, function ($faker) {
-    return [
-        'body' => $faker->sentence
-    ];
-});

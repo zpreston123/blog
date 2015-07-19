@@ -21,9 +21,7 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('home', function () {
-        return view('home');
-    });
+    Route::get('home', ['as' => 'home', 'uses' => 'PostsController@index']);
 
     Route::get('user/profile/{id}', 'UserController@showProfile');
     Route::post('user/profile/{id}', 'UserController@postProfile');
