@@ -23,8 +23,8 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('home', ['as' => 'home', 'uses' => 'PostsController@index']);
 
-    Route::get('user/profile/{id}', 'UserController@showProfile');
-    Route::post('user/profile/{id}', 'UserController@postProfile');
+    Route::get('profile/{user}', 'ProfileController@edit');
+    Route::post('profile/{user}', 'ProfileController@update');
 
     Route::resource('posts', 'PostsController');
     Route::resource('categories', 'CategoriesController');

@@ -3,8 +3,9 @@
 namespace Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Blog\Http\Requests;
+use Blog\Http\Requests\StorePostRequest;
 use Blog\Http\Controllers\Controller;
 use Blog\Category;
 use Blog\Post;
@@ -18,7 +19,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->paginate(10);
+        $posts = Post::with('category', 'user', 'comments')
+                    ->latest()->paginate(10);
 
         return view('home', compact('posts'));
     }
@@ -30,7 +32,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name')->lists('name', 'id');
+        $categories = Category::orderBy('name')->lists('name', 'id')->all();
 
         return view('posts.create', compact('categories'));
     }
@@ -38,11 +40,21 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param StorePostRequest $request
      * @return Response
      */
-    public function store()
+    public function store(StorePostRequest $request)
     {
-        //
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+
+        $post->category()->associate(Category::find($request->input('category')));
+        $post->user()->associate(Auth::user());
+
+        $post->save();
+
+        return redirect('posts');
     }
 
     /**

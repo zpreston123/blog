@@ -3,5 +3,5 @@
 @section('title', 'Home page')
 
 @section('content')
-    <h2>Hello!</h2>
+   @include('posts.index')
 @endsection
