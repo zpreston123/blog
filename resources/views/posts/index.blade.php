@@ -17,11 +17,10 @@
                                 <div class="col-xs-9">
                                     <p>{{ substr($post->body, 0, 100) . "..." }}</p>
                                     <p class="lead"><button class="btn btn-default">Read More</button></p>
-                                    <p class="pull-right"><span class="label label-default">keyword</span> <span class="label label-default">tag</span> <span class="label label-default">post</span></p>
                                     <ul class="list-inline">
                                         <li><a href="#">{{ $post->created_at->diffForHumans() }}</a></li>
-                                        <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 4 Comments</a></li>
-                                        <li><a href="#"><i class="glyphicon glyphicon-share"></i> 34 Shares</a></li>
+                                        <li><a href="#"><i class="glyphicon glyphicon-comment"></i> {{ $post->comments()->count() }} Comments</a></li>
+                                        <li><a href="#"><i class="glyphicon glyphicon-share"></i> Share</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-xs-3"></div>

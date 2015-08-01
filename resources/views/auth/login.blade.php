@@ -4,12 +4,14 @@
         {!! Form::open(['url' => 'auth/login']) !!}
             <div class="form-group">
                 {!! Form::text('email', old('email'), ['class' => 'form-control', 'placeholder' => 'Email']) !!}
-                <small class="text-danger">{{ $errors->first('email') }}</small>
+                {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
             </div>
+
             <div class="form-group">
                 {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
-                <small class="text-danger">{{ $errors->first('password') }}</small>
+                {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
             </div>
+
             <div class="form-group">
                 <div class="checkbox">
                     <label for="remember">
@@ -17,6 +19,7 @@
                     </label>
                 </div>
             </div>
+
             {!! Form::submit('Log in', ['class' => 'btn btn-block btn-primary']) !!}
         {!! Form::close() !!}
     </div>

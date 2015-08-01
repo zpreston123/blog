@@ -4,24 +4,26 @@
 
 @section('content')
     <h2>{{ $user->name }}</h2>
+
     <hr>
-    {!! Form::open(['url' => 'profile/'.$user->id]) !!}
+
+    {!! Form::model($user, ['url' => 'profile/'.$user->id, 'method' => 'PUT']) !!}
         <div class="form-group">
             {!! Form::label('email', 'Email') !!}
             {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
-            <small class="text-danger">{{ $errors->first('email') }}</small>
+            {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
         </div>
 
         <div class="form-group">
             {!! Form::label('password', 'Password') !!}
             {!! Form::password('password', ['class' => 'form-control']) !!}
-            <small class="text-danger">{{ $errors->first('password') }}</small>
+            {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
         </div>
 
         <div class="form-group">
             {!! Form::label('password_confirm', 'Confirm New Password') !!}
             {!! Form::password('password_confirm', ['class' => 'form-control']) !!}
-            <small class="text-danger">{{ $errors->first('password_confirm') }}</small>
+            {!! $errors->first('password_confirm', '<small class="text-danger">:message</small>') !!}
         </div>
 
         {!! Form::reset("Reset", ['class' => 'btn btn-warning']) !!}
