@@ -14,7 +14,6 @@
     </div>
 
     <script src="//code.jquery.com/jquery.js"></script>
-    <script src="//cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.0.1/sweetalert.min.js"></script>
 
     @include('sweet::alert')
