@@ -49,8 +49,8 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
 
-        $post->category()->associate(Category::find($request->input('category')));
-        $post->user()->associate(Auth::user());
+        $post->addCategory(Category::find($request->input('category')))
+             ->addUser($request->user());
 
         $post->save();
 

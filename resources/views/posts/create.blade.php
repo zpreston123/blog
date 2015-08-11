@@ -3,11 +3,11 @@
 @section('title', 'Create Post')
 
 @section('content')
-    <div class="page-header">
+    <div class="page-header text-center">
       <h1>Create Post</h1>
     </div>
 
-    {!! Form::open(['route' => 'posts.store']) !!}
+    {!! Form::open(['route' => 'posts.store', 'class' => 'col-md-8 col-md-offset-2']) !!}
         <div class="form-group">
             {!! Form::label('title', 'Title') !!}
             {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => 'Enter title here']) !!}
