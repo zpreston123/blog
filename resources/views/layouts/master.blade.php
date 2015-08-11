@@ -17,5 +17,7 @@
     {!! HTML::script('js/all.js') !!}
 
     @include('sweet::alert')
+
+    @yield('scripts')
 </body>
 </html>
