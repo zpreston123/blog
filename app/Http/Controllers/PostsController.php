@@ -2,13 +2,13 @@
 
 namespace Blog\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Blog\Category;
+use Blog\Http\Controllers\Controller;
 use Blog\Http\Requests;
 use Blog\Http\Requests\StorePostRequest;
-use Blog\Http\Controllers\Controller;
-use Blog\Category;
 use Blog\Post;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -47,10 +47,13 @@ class PostsController extends Controller
     {
         $post = new Post;
         $post->title = $request->input('title');
-        $post->body = $request->input('body');
+        $post->body = $request->input('content');
 
-        $post->addCategory(Category::find($request->input('category')))
-             ->addUser($request->user());
+        $category = Category::find($request->input('category')
+        $this->category()->associate($category);
+
+        $user = User::find($request->user()->id);
+        $this->user()->associate($user);
 
         $post->save();
 

@@ -34,6 +34,8 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+
+        parent::__construct();
     }
 
     /**
@@ -90,7 +92,7 @@ class AuthController extends Controller
         $credentials = $this->getCredentials($request);
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
-            alert('You are now logged in!');
+            alert()->success('You are now logged in!');
 
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
@@ -118,7 +120,7 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        alert('You are now logged out!');
+        alert()->success('You are now logged out!');
 
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
