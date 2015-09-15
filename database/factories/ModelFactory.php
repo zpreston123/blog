@@ -11,11 +11,34 @@
 |
 */
 
-$factory->define(Blog\User::class, function ($faker) {
+$factory->define(Blog\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => str_random(10),
+        'name'           => $faker->name,
+        'email'          => $faker->email,
+        'password'       => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(Blog\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word
+    ];
+});
+
+$factory->define(Blog\Post::class, function (Faker\Generator $faker) {
+    return [
+        'user_id'     => factory(Blog\User::class)->create()->id,
+        'category_id' => factory(Blog\Category::class)->create()->id,
+        'title'       => $faker->title,
+        'body'        => $faker->paragraph
+    ];
+});
+
+$factory->define(Blog\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'user_id' => factory(Blog\User::class)->create()->id,
+        'post_id' => factory(Blog\Post::class)->create()->id,
+        'body'    => $faker->paragraph
     ];
 });

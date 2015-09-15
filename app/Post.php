@@ -43,24 +43,4 @@ class Post extends Model
     {
         return $this->hasMany('Blog\Comment');
     }
-
-    /**
-     * Add the category to a new Post.
-     *
-     * @param $category
-     */
-    public function addCategory($category)
-    {
-        return $this->category()->associate($category);
-    }
-
-    /**
-     * Add the user to a new Post.
-     *
-     * @param $user
-     */
-    public function addUser($user)
-    {
-        return $this->user()->associate($user);
-    }
 }

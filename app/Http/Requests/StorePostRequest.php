@@ -26,7 +26,7 @@ class StorePostRequest extends Request
         return [
             'title'    => 'required',
             'category' => 'required',
-            'body'     => 'required'
+            'content'  => 'required'
         ];
     }
 }
