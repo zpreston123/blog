@@ -65,7 +65,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -76,7 +78,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::orderBy('name')->lists('name', 'id')->all();
+
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -87,7 +92,7 @@ class PostsController extends Controller
      */
     public function update($id)
     {
-        //
+        return 'updated!!';
     }
 
     /**

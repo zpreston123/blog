@@ -142,6 +142,7 @@ return [
          * Application Service Providers...
          */
         Blog\Providers\AppServiceProvider::class,
+        Blog\Providers\AuthServiceProvider::class,
         Blog\Providers\EventServiceProvider::class,
         Blog\Providers\RouteServiceProvider::class,
 
@@ -195,7 +196,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
-        'Alert'     => Uxweb\SweetAlert\SweetAlert::class
+        'Alert'     => Uxweb\SweetAlert\SweetAlert::class,
+        'Gate'      => Illuminate\Support\Facades\Gate::class
     ],
 
 ];

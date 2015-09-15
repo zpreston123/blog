@@ -36,4 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('categories', 'CategoriesController');
     Route::resource('comments', 'CommentsController');
     Route::resource('users', 'UsersController');
+
+    Route::post('follows', ['as' => 'follow', 'uses' => 'FollowsController@store']);
+    Route::delete('follows/{id}', ['as' => 'unfollow', 'uses' => 'FollowsController@destroy']);
+
+    Route::get('profile/{user}/edit', 'UsersController@edit');
 });

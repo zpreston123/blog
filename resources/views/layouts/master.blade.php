@@ -16,6 +16,7 @@
 
     {!! HTML::script('js/all.js') !!}
 
+    @include('layouts.partials.footer')
     @include('sweet::alert')
 
     @yield('scripts')

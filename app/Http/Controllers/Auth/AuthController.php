@@ -7,7 +7,6 @@ use Validator;
 use Blog\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -89,8 +88,8 @@ class AuthController extends Controller
 
         $credentials = $this->getCredentials($request);
 
-        if (Auth::attempt($credentials, $request->has('remember'))) {
-            alert('You are now logged in!');
+        if (auth()->attempt($credentials, $request->has('remember'))) {
+            alert()->success('You are now logged in!');
 
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
@@ -116,9 +115,9 @@ class AuthController extends Controller
      */
     public function getLogout()
     {
-        Auth::logout();
+        auth()->logout();
 
-        alert('You are now logged out!');
+        alert()->success('You are now logged out!');
 
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
