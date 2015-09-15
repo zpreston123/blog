@@ -1,5 +1,3 @@
-<h1>Latest Posts</h1>
-
 <div class="row">
     <div class="col-md-12">
         @foreach ($posts as $post)
@@ -21,8 +19,9 @@
                             </p>
                             <ul class="list-inline">
                                 <li><i class="fa fa-clock-o"></i> Published {{ $post->created_at->diffForHumans() }}</li>
-                                <li><a href="#"><i class="fa fa-comment"></i> {{ $post->comments()->count() }} Comments</a></li>
+                                <li><a id="commentsLink" href="#"><i class="fa fa-comment"></i> {{ $post->comments()->count() }} Comments</a></li>
                             </ul>
+                            @include('comments.index')
                         </div>
                         <div class="col-xs-3"></div>
                     </div><br><br>

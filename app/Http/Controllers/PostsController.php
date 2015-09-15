@@ -50,11 +50,11 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('content');
 
-        $category = Category::find($request->input('category')
-        $this->category()->associate($category);
+        $category = Category::find($request->input('category'));
+        $post->category()->associate($category);
 
         $user = User::find($request->user()->id);
-        $this->user()->associate($user);
+        $post->user()->associate($user);
 
         $post->save();
 

@@ -4,11 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "821792243a412d30af847bf590280d4c",
-=======
-    "hash": "933e5f6ffa1bd7a9655a7361c1433191",
->>>>>>> 386f6347a65544a621718d948e16c5b48da20d1f
+    "hash": "a0f939361655beb06f03f56c4ca23504",
+    "content-hash": "6155414cb36a47be9cc1bb316eb85cd4",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2576,16 +2573,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.6",
+            "version": "1.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3ab72c62e550370a6cd5dc873e1a04ab57562f5b"
+                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3ab72c62e550370a6cd5dc873e1a04ab57562f5b",
-                "reference": "3ab72c62e550370a6cd5dc873e1a04ab57562f5b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
+                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
                 "shasum": ""
             },
             "require": {
@@ -2621,22 +2618,10 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-08-16 08:51:00"
+            "time": "2015-09-15 10:49:45"
         },
         {
             "name": "phpunit/phpunit",
-<<<<<<< HEAD
-            "version": "4.8.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2246830f4a1a551c67933e4171bf2126dc29d357"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2246830f4a1a551c67933e4171bf2126dc29d357",
-                "reference": "2246830f4a1a551c67933e4171bf2126dc29d357",
-=======
             "version": "4.8.7",
             "source": {
                 "type": "git",
@@ -2647,7 +2632,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dab2ada9e9a503d2ec3c32fe0fb59dea9bdd9dfa",
                 "reference": "dab2ada9e9a503d2ec3c32fe0fb59dea9bdd9dfa",
->>>>>>> 386f6347a65544a621718d948e16c5b48da20d1f
                 "shasum": ""
             },
             "require": {
@@ -2706,11 +2690,7 @@
                 "testing",
                 "xunit"
             ],
-<<<<<<< HEAD
-            "time": "2015-08-24 04:09:38"
-=======
             "time": "2015-09-14 06:57:22"
->>>>>>> 386f6347a65544a621718d948e16c5b48da20d1f
         },
         {
             "name": "phpunit/phpunit-mock-objects",

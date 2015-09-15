@@ -147,7 +147,7 @@ return [
         Blog\Providers\RouteServiceProvider::class,
 
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class
     ],
 
     /*

@@ -3,12 +3,12 @@
     <div class="panel-body">
         {!! Form::open(['url' => 'auth/login']) !!}
             <div class="form-group">
-                {!! Form::text('email', old('email'), ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+                {!! Form::text('email', old('email'), ['class' => 'form-control input-sm', 'placeholder' => 'Email']) !!}
                 {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
             </div>
 
             <div class="form-group">
-                {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+                {!! Form::password('password', ['class' => 'form-control input-sm', 'placeholder' => 'Password']) !!}
                 {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
             </div>
 

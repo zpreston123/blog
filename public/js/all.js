@@ -14444,4 +14444,11 @@ if (typeof jQuery === 'undefined') {
 
 }).call(this);
 
+$(document).ready(function () {
+    $(".commentsLink").click(function (event) {
+        event.preventDefault();
+        $("#comments").slideToggle();
+    });
+});
+
 //# sourceMappingURL=all.js.map

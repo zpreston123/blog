@@ -22,7 +22,7 @@ $factory->define(Blog\User::class, function (Faker\Generator $faker) {
 
 $factory->define(Blog\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->word
+        'name' => $faker->unique()->word
     ];
 });
 
@@ -30,7 +30,7 @@ $factory->define(Blog\Post::class, function (Faker\Generator $faker) {
     return [
         'user_id'     => factory(Blog\User::class)->create()->id,
         'category_id' => factory(Blog\Category::class)->create()->id,
-        'title'       => $faker->title,
+        'title'       => $faker->unique()->title,
         'body'        => $faker->paragraph
     ];
 });
