@@ -5,11 +5,11 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/socket.io.js') }}"></script>
+    <script src="js/socket.io.js"></script>
     <script>
-        var socket = io('http://192.168.10.10:3000');
+        var socket = io('http://localhost:3000');
         socket.on('test-channel:Blog\\Events\\EventName', function(message) {
-            // increase the power everytime we load test route
+            console.log(message);
             $("#power").text(parseInt($("#power").text()) + parseInt(message.data.power));
         });
     </script>

@@ -6,6 +6,7 @@ use Blog\Category;
 use Blog\Http\Controllers\Controller;
 use Blog\Http\Requests;
 use Blog\Http\Requests\StorePostRequest;
+use Blog\Http\Requests\UpdatePostRequest;
 use Blog\Post;
 use Blog\User;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class PostsController extends Controller
     {
         $post = new Post;
         $post->title = $request->input('title');
-        $post->body = $request->input('content');
+        $post->body = $request->input('body');
 
         $category = Category::find($request->input('category'));
         $post->category()->associate($category);
@@ -57,6 +58,8 @@ class PostsController extends Controller
         $post->user()->associate($user);
 
         $post->save();
+
+        alert()->success('Post created successfully!');
 
         return redirect('posts');
     }
@@ -91,10 +94,11 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  UpdatePostRequest $request
+     * @param  Post $post
      * @return Response
      */
-    public function update($id)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         return 'updated!!';
     }

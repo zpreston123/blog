@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            {!! Form::button('<i class="fa fa-sign-in"></i> Log in', ['class' => 'btn btn-block btn-primary', 'type' => 'submit']) !!}
+            {!! Form::button('<i class="fa fa-sign-in"></i> Log in', ['class' => 'btn btn-sm btn-block btn-primary', 'type' => 'submit']) !!}
         {!! Form::close() !!}
     </div>
 </div>

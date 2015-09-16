@@ -95,4 +95,9 @@ class UsersController extends Controller
 
         return 'Done';
     }
+
+    public function getNotifications(User $user)
+    {
+
+    }
 }

@@ -28,7 +28,8 @@
 
                     <div class="form-group">
                         {!! Form::label('body', 'Content') !!}
-                        {!! Form::textarea('body', $post->body, ['id' => 'body', 'class' => 'form-control', 'placeholder' => 'Enter content here']) !!}
+                        {!! Form::textarea('body', $post->body, ['id' => 'body', 'class' => 'form-control']) !!}
+                          <p class="help-block">Edit content here or click on Source to edit the HTML markup.</p>
                         {!! $errors->first('body', '<small class="text-danger">:message</small>') !!}
                     </div>
 

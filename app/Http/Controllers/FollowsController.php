@@ -12,9 +12,10 @@ class FollowsController extends Controller
     /**
      * Follow a user.
      *
+     * @param Request $request
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
 
     }

@@ -35,4 +35,14 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	config.extraPlugins = 'codemirror';
+
+	config.codemirror = {
+		showCommentButton: false,
+		showFormatButton: false,
+		showAutoCompleteButton: false,
+		showUncommentButton: false,
+		theme: 'material'
+	};
 };
