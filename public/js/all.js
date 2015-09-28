@@ -14445,10 +14445,9 @@ if (typeof jQuery === 'undefined') {
 }).call(this);
 
 $(document).ready(function () {
-    $("#commentsLink").click(function (event) {
+    $(".commentsLink").click(function(event) {
         event.preventDefault();
-        console.log('clicked');
-        $("#comments").slideToggle();
+        $(this).parent().parent().next().slideToggle();
     });
 });
 

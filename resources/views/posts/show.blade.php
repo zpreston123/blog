@@ -9,5 +9,7 @@
 
     <p>{{ strip_tags($post->body) }}</p>
 
-    @include('comments.index')
+    <hr>
+
+    @include('comments.index', ['comments' => $post->comments->sortByDesc('created_at')])
 @stop

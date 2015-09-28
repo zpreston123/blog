@@ -41,5 +41,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('follows/{id}', ['as' => 'unfollow', 'uses' => 'FollowsController@destroy']);
 
     Route::get('profile/{user}/edit', 'UsersController@edit');
-    Route::get('notifications/{user}', 'UsersController@getNotifications');
 });

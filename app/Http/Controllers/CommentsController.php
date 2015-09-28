@@ -2,22 +2,14 @@
 
 namespace Blog\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Blog\Post;
+use Blog\Comment;
 use Blog\Http\Requests;
+use Illuminate\Http\Request;
 use Blog\Http\Controllers\Controller;
 
 class CommentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -26,7 +18,16 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::find(base64_decode($request->input('post_id')));
+        $comment = new Comment;
+        $comment->body = $request->input('body');
+        $comment->user()->associate($request->user()->id);
+        $comment->post()->associate($post->id);
+        $comment->save();
+
+        $post->comments()->save($comment);
+
+        return redirect()->back();
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Test Title')
+@section('title', 'Welcome')
 
 @section('content')
     <div class="jumbotron">

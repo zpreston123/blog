@@ -23,9 +23,13 @@
                                     </p>
                                     <ul class="list-inline">
                                         <li><i class="fa fa-clock-o"></i> Published {{ $post->created_at->diffForHumans() }}</li>
-                                        <li><a id="commentsLink" href="#"><i class="fa fa-comment"></i> {{ $post->comments()->count() }} Comments</a></li>
+                                        <li>
+                                            <a class="commentsLink" href="#comments" aria-expanded="false" aria-controls="comments"><i class="fa fa-comment"></i> {{ $post->comments()->count() }} Comments</a>
+                                        </li>
                                     </ul>
-                                    @include('comments.index', ['comments' => $post->comments])
+                                    <div class="comments" style="display:none;">
+                                        @include('comments.index', ['post' => $post, 'comments' => $post->comments->sortByDesc('created_at')])
+                                    </div>
                                 </div>
                                 <div class="col-xs-3"></div>
                             </div><br><br>

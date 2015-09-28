@@ -2,7 +2,7 @@
   <i class="fa fa-bell"></i> <span class="badge">4</span>
 </a>
 <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
-  <div class="notification-heading"><h4 class="menu-title">Notifications</h4><h4 class="menu-title pull-right"><a href="{{ url('notifications/'.auth()->id()) }}">View all <i class="fa fa-arrow-circle-right"></i></a></h4>
+  <div class="notification-heading"><h4 class="menu-title">Notifications</h4><h4 class="menu-title pull-right"><a href="#">View all <i class="fa fa-arrow-circle-right"></i></a></h4>
 </div>
 <li class="divider"></li>
 <div class="notifications-wrapper">

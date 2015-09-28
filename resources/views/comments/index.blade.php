@@ -1,8 +1,7 @@
-<div id="comments" style="display:none;">
-    @include('comments.create')
-    @unless (count($comments) == 0)
-        <ul class="list-group">
-            @foreach ($comments->chunk(3) as $comment)
+@include('comments.create', ['post', $post])
+@unless (count($comments) == 0)
+    <ul class="list-group">
+        @foreach ($comments->load('user') as $comment)
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-xs-2 col-md-1">
@@ -12,25 +11,24 @@
                                 <div class="mic-info">
                                     <a href="#">{{ $comment->user->name }}</a> on {{ $comment->updated_at->diffForHumans() }}
                                 </div>
+                                <div class="pull-right">
+                                    {!! Form::open(['url' => 'comment/delete/'.$comment->id, 'id' => 'commentsForm', 'method' => 'DELETE']) !!}
+                                        <button type="submit" title="Delete" onclick="return confirm('Are you sure you want to delete this comment?');" class="close" data-dismiss="alert" aria-label="Delete">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    {!! Form::close() !!}
+                                </div>
                             </div>
                             <div class="comment-text">
                                 {{ $comment->body }}
-                            </div>
-                            <div class="action">
                                 @if ($comment->user->id === $user->id)
-                                    <button type="button" class="btn btn-success btn-xs" title="Edit">
-                                    <i class="fa fa-pencil"></i>
-                                    </button>
+                                    <a href="#"><small>Edit</small></a>
                                 @endif
-                                <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                <i class="fa fa-trash-o"></i>
-                                </button>
                             </div>
                         </div>
                     </div>
                 </li>
-            @endforeach
-        </ul>
-        <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><i class="fa fa-refresh"></i> Show More</a>
-    @endunless
-</div>
+        @endforeach
+    </ul>
+    <a href="#" class="btn btn-primary btn-md btn-block" role="button"><i class="fa fa-refresh"></i> Show More</a>
+@endunless
