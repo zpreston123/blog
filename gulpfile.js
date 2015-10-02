@@ -1,4 +1,6 @@
 var elixir = require('laravel-elixir');
+var gulp = require('gulp');
+module.exports = gulp;
 
 /*
  |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ elixir(function(mix) {
             'libs/bootstrap.js',
             'libs/sweetalert.min.js',
             'libs/dropzone.js',
+            'libs/vue.js',
             'app.js'
         ])
         .copy(

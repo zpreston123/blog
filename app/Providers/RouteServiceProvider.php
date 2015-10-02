@@ -24,8 +24,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $router->model('user', 'Blog\User');
-        $router->model('post', 'Blog\Post');
+        $router->model('users', 'Blog\User');
+        $router->model('posts', 'Blog\Post');
+        $router->model('comments', 'Blog\Comment');
 
         parent::boot($router);
     }

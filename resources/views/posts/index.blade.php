@@ -18,7 +18,12 @@
                                     <p>{{ mb_strimwidth(strip_tags($post->body), 0, 100, "...") }}</p>
                                     <p class="lead">
                                         @if ($post->user->id === $user->id)
-                                        <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit Post</a>
+                                            <div class="btn-group-inline">
+                                                <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit Post</a>
+                                                {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'DELETE']) !!}
+                                                    {!! Form::button('Delete Post', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm']) !!}
+                                                {!! Form::close() !!}
+                                            </div>
                                         @endif
                                     </p>
                                     <ul class="list-inline">

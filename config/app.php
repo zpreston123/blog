@@ -198,7 +198,8 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Alert'     => Uxweb\SweetAlert\SweetAlert::class,
-        'Gate'      => Illuminate\Support\Facades\Gate::class
+        'Gate'      => Illuminate\Support\Facades\Gate::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

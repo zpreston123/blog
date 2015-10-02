@@ -1,5 +1,7 @@
 <?php
 
+\Debugbar::disable();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,15 +32,10 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('home', ['as' => 'home', 'uses' => 'PostsController@index']);
+    Route::get('home', ['as' => 'home', 'uses' => 'PostController@index']);
+    Route::get('profile/{user}/edit', 'UserController@edit');
 
-    Route::resource('posts', 'PostsController');
-    Route::resource('categories', 'CategoriesController');
-    Route::resource('comments', 'CommentsController');
-    Route::resource('users', 'UsersController');
-
-    Route::post('follows', ['as' => 'follow', 'uses' => 'FollowsController@store']);
-    Route::delete('follows/{id}', ['as' => 'unfollow', 'uses' => 'FollowsController@destroy']);
-
-    Route::get('profile/{user}/edit', 'UsersController@edit');
+    Route::resource('posts', 'PostController');
+    Route::resource('comments', 'CommentController');
+    Route::resource('users', 'UserController');
 });

@@ -5,11 +5,8 @@
 @section('content')
     <div class="page-header">
       <h1>{{ $post->title }} <small>by {{ $post->user->name }}</small></h1>
+      <h3><small><i class="fa fa-clock-o"></i> Published {{ $post->created_at->diffForHumans() }}</small></h3>
     </div>
 
     <p>{{ strip_tags($post->body) }}</p>
-
-    <hr>
-
-    @include('comments.index', ['comments' => $post->comments->sortByDesc('created_at')])
 @stop

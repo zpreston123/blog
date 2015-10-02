@@ -13,7 +13,6 @@
         @yield('content')
     </div>
 
-
     {!! HTML::script('js/all.js') !!}
 
     @include('sweet::alert')
