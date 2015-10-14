@@ -1,5 +1,5 @@
-<div class="panel panel-default" style="box-shadow: 0 0 15px gray;">
-    <div class="panel-heading">Login</div>
+<div class="panel panel-info" style="box-shadow: 0 0 15px gray;">
+    <div class="panel-heading" style="color:white;">Login</div>
     <div class="panel-body">
         {!! Form::open(['url' => 'auth/login']) !!}
             <div class="form-group">
@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            {!! Form::button('<i class="fa fa-sign-in"></i> Log in', ['class' => 'btn btn-sm btn-block btn-primary', 'type' => 'submit']) !!}
+            {!! Form::button('<i class="fa fa-sign-in"></i> Log in', ['class' => 'btn btn-sm btn-block btn-info', 'type' => 'submit']) !!}
         {!! Form::close() !!}
     </div>
 </div>

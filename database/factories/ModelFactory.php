@@ -28,17 +28,13 @@ $factory->define(Blog\Category::class, function (Faker\Generator $faker) {
 
 $factory->define(Blog\Post::class, function (Faker\Generator $faker) {
     return [
-        'user_id'     => factory(Blog\User::class)->create()->id,
-        'category_id' => factory(Blog\Category::class)->create()->id,
-        'title'       => $faker->unique()->title,
-        'body'        => $faker->paragraph
+        'title' => $faker->unique()->title,
+        'body'  => $faker->paragraph
     ];
 });
 
 $factory->define(Blog\Comment::class, function (Faker\Generator $faker) {
     return [
-        'user_id' => factory(Blog\User::class)->create()->id,
-        'post_id' => factory(Blog\Post::class)->create()->id,
-        'body'    => $faker->paragraph
+        'body' => $faker->paragraph
     ];
 });

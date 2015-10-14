@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
 
         factory(Category::class, 5)->create();
         factory(User::class, 10)->create()->each(function ($user) {
-            $user->posts()->save(factory(Post::class, 50)->make());
-            $user-comments()->save(factory(Comment::class, 20)->make());
+            $user->posts()->save(factory(Post::class)->make());
+            $user->comments()->save(factory(Comment::class)->make());
         });
 
         Model::reguard();

@@ -2,8 +2,6 @@
 
 namespace Blog\Http\Requests;
 
-use Blog\Http\Requests\Request;
-
 class UpdatePostRequest extends Request
 {
     /**

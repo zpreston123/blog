@@ -24648,11 +24648,12 @@ $(function () {
         $(this).parent().parent().next().slideToggle();
     }); //end click handler
 
-    //adding a comment => works!!!!
+    //adding a comment
     $("#commentsForm").submit(function (event) {
         event.preventDefault();
         $.post($(this).prop("action"), $(this).serialize(), function (response) {
-            $(".comments").html(response);
+            comments = $(this).find(".comments");
+            comments.prepend(response.html);
         });
     }); //end submit handler
 

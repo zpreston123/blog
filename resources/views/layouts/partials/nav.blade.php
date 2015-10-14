@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -14,6 +14,7 @@
         <ul class="nav navbar-nav">
           <li><a href="{{ url('posts/create') }}">New Post</a></li>
           <li class="dropdown">@include('layouts.partials.notifications')</li>
+          <li><a href="{{ url('followers/'.auth()->id()) }}">Followers</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -24,6 +25,9 @@
             </ul>
           </li>
         </ul>
+        <form class="navbar-form navbar-right">
+          <input type="text" name="search" class="form-control" placeholder="Search...">
+        </form>
       @endif
     </div><!--/.navbar-collapse -->
   </div>

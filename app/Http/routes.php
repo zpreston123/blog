@@ -1,7 +1,5 @@
 <?php
 
-\Debugbar::disable();
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,5 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('posts', 'PostController');
     Route::resource('comments', 'CommentController');
+    Route::resource('follows', 'FollowsController');
     Route::resource('users', 'UserController');
 });

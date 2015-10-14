@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 @foreach ($posts as $post)
-                    <div class="row"><br>
+                    <div class="row">
                         <div class="col-md-2 col-sm-3 text-center">
                             <a href="#"><img src="//placehold.it/100" style="width:100px;height:100px" class="img-circle"></a>
                         </div>
@@ -16,18 +16,14 @@
                             <div class="row">
                                 <div class="col-xs-9">
                                     <p>{{ mb_strimwidth(strip_tags($post->body), 0, 100, "...") }}</p>
-                                    <p class="lead">
+                                    <p>
                                         @if ($post->user->id === $user->id)
-                                            <div class="btn-group-inline">
-                                                <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit Post</a>
-                                                {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'DELETE']) !!}
-                                                    {!! Form::button('Delete Post', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm']) !!}
-                                                {!! Form::close() !!}
-                                            </div>
+                                           <a href="{{ url('posts/'.$post->id) }}" class="btn btn-info btn-sm">Read More</a>
                                         @endif
                                     </p>
+                                    <p class="pull-right"><span class="label label-default">keyword</span> <span class="label label-default">tag</span> <span class="label label-default">post</span></p>
                                     <ul class="list-inline">
-                                        <li><i class="fa fa-clock-o"></i> Published {{ $post->created_at->diffForHumans() }}</li>
+                                        <li><i class="fa fa-calendar"></i> Published {{ $post->created_at->diffForHumans() }}</li>
                                         <li>
                                             <a class="commentsLink" href="#comments" aria-expanded="false" aria-controls="comments"><i class="fa fa-comment"></i> {{ $post->comments()->count() }} Comments</a>
                                         </li>

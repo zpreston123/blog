@@ -28,9 +28,28 @@ class CommentController extends Controller
 
             $post->comments()->save($comment);
 
-            $comments = $post->comments->sortByDesc('created_at');
-
-            return response()->view('comments.index', compact('post', 'comments'));
+$html = '
+<li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-2 col-md-1">
+                        <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                        <div class="col-xs-10 col-md-11">
+                            <div>
+                                <div class="mic-info">
+                                    <a href="#">'.$comment->user->name.'</a> on '.$comment->updated_at->diffForHumans().'
+                                </div>
+                                <div class="pull-right">
+                                    <form action="comments/destroy/'.$comment->id.'" id="commentDeleteForm" method="delete">
+                                        <button type="submit" class="close" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="comment-text">'.$comment->body.'</div>
+                        </div>
+                    </div>
+                </li>
+';
+            return response()->json(compact('html'));
         }//end if
     }
 

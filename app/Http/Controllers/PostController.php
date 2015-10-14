@@ -3,14 +3,11 @@
 namespace Blog\Http\Controllers;
 
 use Blog\Category;
-use Blog\Http\Controllers\Controller;
 use Blog\Http\Requests;
 use Blog\Http\Requests\StorePostRequest;
 use Blog\Http\Requests\UpdatePostRequest;
 use Blog\Post;
 use Blog\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -66,7 +63,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return Response
      */
     public function show(Post $post)
@@ -79,7 +76,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return Response
      */
     public function edit(Post $post)
@@ -104,7 +101,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return Response
      */
     public function destroy(Post $post)

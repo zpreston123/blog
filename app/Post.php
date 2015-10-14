@@ -12,7 +12,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'body'];
+    protected $fillable = ['title', 'body', 'user_id', 'category_id'];
 
     /**
      * Get the category associated with the post.

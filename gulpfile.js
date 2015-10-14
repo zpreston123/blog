@@ -19,7 +19,8 @@ elixir(function(mix) {
             'libs/bootstrap.min.css',
             'app.css',
             'libs/font-awesome.css',
-            'libs/sweetalert.css'
+            'libs/sweetalert.css',
+            'libs/horsey.css'
         ])
         .scripts([
             'libs/jquery-1.11.3.js',
@@ -27,6 +28,8 @@ elixir(function(mix) {
             'libs/sweetalert.min.js',
             'libs/dropzone.js',
             'libs/vue.js',
+            'libs/horsey.js',
+            'libs/jquery.pjax.js',
             'app.js'
         ])
         .copy(

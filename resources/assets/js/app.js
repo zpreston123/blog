@@ -2,15 +2,16 @@ $(function () {
     $(".commentsLink").click(function (event) {
         event.preventDefault();
         $(this).parent().parent().next().slideToggle();
-    }); //end click handler
+    });//end click handler
 
-    //adding a comment => works!!!!
+    //adding a comment
     $("#commentsForm").submit(function (event) {
         event.preventDefault();
         $.post($(this).prop("action"), $(this).serialize(), function (response) {
-            $(".comments").html(response);
+            var comments = $(this).find(".comments");
+            comments.prepend(response.html);
         });
-    }); //end submit handler
+    });//end submit handler
 
     $("#commentDeleteForm").submit(function (event) {
         event.preventDefault();
@@ -30,5 +31,5 @@ $(function () {
                 $(this).closest(".comments").html(response);
             });
         });
-    }); //end submit handler
-}); //end ready function
+    });//end submit handler
+});//end ready function
