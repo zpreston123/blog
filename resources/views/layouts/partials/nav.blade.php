@@ -13,8 +13,8 @@
       @if (auth()->check())
         <ul class="nav navbar-nav">
           <li><a href="{{ url('posts/create') }}">New Post</a></li>
-          <li class="dropdown">@include('layouts.partials.notifications')</li>
           <li><a href="{{ url('followers/'.auth()->id()) }}">Followers</a></li>
+          <li class="dropdown">@include('layouts.partials.notifications')</li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -26,7 +26,7 @@
           </li>
         </ul>
         <form class="navbar-form navbar-right">
-          <input type="text" name="search" class="form-control" placeholder="Search...">
+          <input type="text" id="search" name="search" class="form-control" placeholder="Search...">
         </form>
       @endif
     </div><!--/.navbar-collapse -->

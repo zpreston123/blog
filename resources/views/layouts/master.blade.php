@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
 
-    {!! HTML::style('css/all.css') !!}
+    <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
 </head>
 <body>
     @include('layouts.partials.nav')
@@ -13,7 +13,7 @@
         @yield('content')
     </div>
 
-    {!! HTML::script('js/all.js') !!}
+    <script src="{{ elixir('js/all.js') }}"></script>
 
     @include('sweet::alert')
 

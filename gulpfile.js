@@ -32,8 +32,7 @@ elixir(function(mix) {
             'libs/jquery.pjax.js',
             'app.js'
         ])
-        .copy(
-            'node_modules/font-awesome/fonts/**',
-            'public/fonts'
-        );
+        .version(['css/all.css', 'js/all.js'])
+        .copy('node_modules/font-awesome/fonts/**', 'public/fonts')
+        .copy('public/fonts/**', 'public/build/fonts');
 });

@@ -4,7 +4,7 @@ namespace Blog;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Tag extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -14,12 +14,12 @@ class Category extends Model
     protected $fillable = ['name'];
 
     /**
-     * A category can have many posts.
+     * A tag can belong to many posts.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function posts()
     {
-        return $this->hasMany('Blog\Post');
+        return $this->belongsToMany('Blog\Post');
     }
 }

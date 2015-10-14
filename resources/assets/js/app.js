@@ -32,4 +32,8 @@ $(function () {
             });
         });
     });//end submit handler
+
+    horsey(document.querySelector('#search'), {
+        suggestions: "{{ $searchUsers }}"
+    });
 });//end ready function

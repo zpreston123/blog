@@ -25,6 +25,16 @@ class Post extends Model
     }
 
     /**
+     * A post can have many tags.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tags()
+    {
+        return $this->hasMany('Blog\Tag');
+    }
+
+    /**
      * Get the user associated with a post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

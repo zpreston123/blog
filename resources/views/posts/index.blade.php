@@ -8,13 +8,10 @@
             <div class="col-md-12">
                 @foreach ($posts as $post)
                     <div class="row">
-                        <div class="col-md-2 col-sm-3 text-center">
-                            <a href="#"><img src="//placehold.it/100" style="width:100px;height:100px" class="img-circle"></a>
-                        </div>
-                        <div class="col-md-10 col-sm-9">
+                        <div class="col-md-12 col-sm-9">
                             <h3><a href="{{ url('posts/'.$post->id) }}">{{ $post->title }}</a></h3>
                             <div class="row">
-                                <div class="col-xs-9">
+                                <div class="col-xs-12">
                                     <p>{{ mb_strimwidth(strip_tags($post->body), 0, 100, "...") }}</p>
                                     <p>
                                         @if ($post->user->id === $user->id)
