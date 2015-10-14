@@ -6,12 +6,14 @@
 
     <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
 </head>
-<body>
+<body id="pjax-container">
     @include('layouts.partials.nav')
 
     <div class="container">
         @yield('content')
     </div>
+
+    @include('layouts.partials.footer')
 
     <script src="{{ elixir('js/all.js') }}"></script>
 

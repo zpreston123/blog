@@ -27155,6 +27155,8 @@ $(function () {
         });
     });//end submit handler
 
+    $(document).pjax('a', '#pjax-container', { timeout: 8000 });
+
     horsey(document.querySelector('#search'), {
         suggestions: "{{ $searchUsers }}"
     });
