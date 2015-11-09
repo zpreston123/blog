@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="col-md-6 col-md-offset-3">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel panel-info">
+        <div class="panel-heading" style="color:white;">
             Sign Up
         </div>
         <div class="panel-body">
@@ -34,7 +34,7 @@
                     {!! $errors->first('password_confirmation', '<small class="text-danger">:message</small>') !!}
                 </div>
 
-                {!! Form::submit('Register', ['class' => 'btn btn-block btn-primary']) !!}
+                {!! Form::submit('Register', ['class' => 'btn btn-block btn-info']) !!}
             {!! Form::close() !!}
         </div>
     </div>

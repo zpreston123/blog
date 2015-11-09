@@ -4,15 +4,6 @@ $(function () {
         $(this).parent().parent().next().slideToggle();
     });//end click handler
 
-    //adding a comment
-    $("#commentsForm").submit(function (event) {
-        event.preventDefault();
-        $.post($(this).prop("action"), $(this).serialize(), function (response) {
-            var comments = $(this).find(".comments");
-            comments.prepend(response.html);
-        });
-    });//end submit handler
-
     $("#commentDeleteForm").submit(function (event) {
         event.preventDefault();
         swal({
@@ -34,8 +25,4 @@ $(function () {
     });//end submit handler
 
     $(document).pjax('a', '#pjax-container', { timeout: 8000 });
-
-    horsey(document.querySelector('#search'), {
-        suggestions: "{{ $searchUsers }}"
-    });
 });//end ready function

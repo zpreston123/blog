@@ -24,6 +24,12 @@
                         {!! $errors->first('category', '<small class="text-danger">:message</small>') !!}
                     </div>
 
+                    <div class="form-group {{ ($errors->has('tags')) ? 'has-error' : ''}}">
+                        {!! Form::label('tags', 'Tags') !!}
+                        {!! Form::select('tags', ['sdfds', 'sdfsdf', 'sdfsdf'], old('tags'), ['class' => 'form-control', 'style' => 'width:100%;', 'multiple']) !!}
+                        {!! $errors->first('tags', '<small class="text-danger">:message</small>') !!}
+                    </div>
+
                     <div class="form-group">
                         {!! Form::label('body', 'Content') !!}
                         {!! Form::textarea('body', old('body'), ['id' => 'body', 'class' => 'form-control']) !!}
@@ -31,8 +37,7 @@
                         {!! $errors->first('body', '<small class="text-danger">:message</small>') !!}
                     </div>
 
-                    {!! Form::submit("Publish", ['class' => 'btn btn-success']) !!}
-                    {!! Form::reset("Reset", ['class' => 'btn btn-warning']) !!}
+                    {!! Form::submit("Publish", ['class' => 'btn btn-info']) !!}
                 {!! Form::close() !!}
             </div>
         </div>
@@ -42,6 +47,12 @@
 @section('scripts')
     {!! HTML::script('ckeditor/ckeditor.js') !!}
     <script>
-        CKEDITOR.replace('body');
+        $(function() {
+            CKEDITOR.replace('body');
+            $("select[name='tags']").select2({
+                tags: "true",
+                placeholder: "Select a tag"
+            });
+        });
     </script>
 @endsection

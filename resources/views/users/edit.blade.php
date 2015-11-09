@@ -14,25 +14,25 @@
                 {!! Form::model($user, ['url' => 'profile/'.$user->id, 'method' => 'PUT']) !!}
                     <div class="form-group">
                         {!! Form::label('name', 'Name') !!}
-                        {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
+                        {!! Form::text('name', $user->name, ['class' => 'input-sm form-control']) !!}
                         {!! $errors->first('name', '<small class="text-danger">:message</small>') !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('email', 'Email') !!}
-                        {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
+                        {!! Form::text('email', $user->email, ['class' => 'input-sm form-control']) !!}
                         {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('password', 'Password') !!}
-                        {!! Form::password('password', ['class' => 'form-control']) !!}
+                        {!! Form::password('password', ['class' => 'input-sm form-control']) !!}
                         {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('password_confirm', 'Confirm New Password') !!}
-                        {!! Form::password('password_confirm', ['class' => 'form-control']) !!}
+                        {!! Form::password('password_confirm', ['class' => 'input-sm form-control']) !!}
                         {!! $errors->first('password_confirm', '<small class="text-danger">:message</small>') !!}
                     </div>
 

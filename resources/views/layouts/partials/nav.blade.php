@@ -25,8 +25,13 @@
             </ul>
           </li>
         </ul>
-        <form class="navbar-form navbar-right">
-          <input type="text" id="search" name="search" class="form-control" placeholder="Search...">
+        <form action="/post/search" class="navbar-form navbar-right" style="margin-top: 19.5px;margin-bottom: 19.5px;" method="get">
+          <div class="input-group">
+              <input type="text" id="search" name="search" class="input-sm form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                  <button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+              </span>
+          </div>
         </form>
       @endif
     </div><!--/.navbar-collapse -->

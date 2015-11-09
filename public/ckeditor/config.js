@@ -43,6 +43,6 @@ CKEDITOR.editorConfig = function( config ) {
 		showFormatButton: false,
 		showAutoCompleteButton: false,
 		showUncommentButton: false,
-		theme: 'material'
+		theme: 'ttcn'
 	};
 };
