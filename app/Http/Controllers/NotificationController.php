@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Blog\Http\Requests;
 use Blog\Http\Controllers\Controller;
 
-class FollowController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class FollowController extends Controller
      */
     public function index()
     {
-        $followers = User::whereNotIn('id', [auth()->id()])->get();
-
-        return view();
+        //
     }
 
     /**

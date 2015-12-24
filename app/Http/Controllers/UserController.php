@@ -17,7 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::whereNotIn('id', [auth()->id()])->get();
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -96,8 +98,12 @@ class UserController extends Controller
         return 'Done';
     }
 
-    public function getNotifications(User $user)
+    public function search(Request $request)
     {
+        $users = User::whereNotIn('id', [auth()->id()])
+                     ->where('name', 'LIKE', '%'.$request->get('query').'%')
+                     ->get();
 
+        return view('users.index', compact('users'));
     }
 }

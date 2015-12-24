@@ -1,3 +1,5 @@
+require('materialize-css');
+
 $(function () {
     $(".commentsLink").click(function (event) {
         event.preventDefault();

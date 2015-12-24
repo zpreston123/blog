@@ -13,23 +13,23 @@
       @if (auth()->check())
         <ul class="nav navbar-nav">
           <li><a href="{{ url('posts/create') }}">New Post</a></li>
-          <li><a href="{{ url('followers/'.auth()->id()) }}">Followers</a></li>
           <li class="dropdown">@include('layouts.partials.notifications')</li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="{{ url('profile/'.auth()->id().'/edit') }}"><i class="fa fa-user"></i> Edit Profile</a></li>
+              <li><a href="{{ url('profile/'.auth()->id()) }}"><i class="fa fa-user"></i> View Profile</a></li>
+              <li><a href="{{ url('profile/'.auth()->id().'/edit') }}"><i class="fa fa-edit"></i> Edit Profile</a></li>
               <li><a href="{{ url('auth/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
             </ul>
           </li>
         </ul>
-        <form action="/post/search" class="navbar-form navbar-right" style="margin-top: 19.5px;margin-bottom: 19.5px;" method="get">
+        <form action="/users/search" class="navbar-form navbar-right" method="get">
           <div class="input-group">
-              <input type="text" id="search" name="search" class="input-sm form-control" placeholder="Search...">
+              <input type="text" name="query" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
-                  <button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                  <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
               </span>
           </div>
         </form>

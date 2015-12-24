@@ -3,7 +3,6 @@
 namespace Blog;
 
 use Illuminate\Database\Eloquent\Model;
-use Blog\Category;
 
 class Post extends Model
 {

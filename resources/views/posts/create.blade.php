@@ -26,14 +26,13 @@
 
                     <div class="form-group {{ ($errors->has('tags')) ? 'has-error' : ''}}">
                         {!! Form::label('tags', 'Tags') !!}
-                        {!! Form::select('tags', ['sdfds', 'sdfsdf', 'sdfsdf'], old('tags'), ['class' => 'form-control', 'style' => 'width:100%;', 'multiple']) !!}
+                        {!! Form::select('tags', [], old('tags'), ['class' => 'form-control', 'style' => 'width:100%;', 'multiple']) !!}
                         {!! $errors->first('tags', '<small class="text-danger">:message</small>') !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('body', 'Content') !!}
                         {!! Form::textarea('body', old('body'), ['id' => 'body', 'class' => 'form-control']) !!}
-                        <p class="help-block">Enter content here or click on Source to enter HTML markup.</p>
                         {!! $errors->first('body', '<small class="text-danger">:message</small>') !!}
                     </div>
 
@@ -45,10 +44,8 @@
 @endsection
 
 @section('scripts')
-    {!! HTML::script('ckeditor/ckeditor.js') !!}
     <script>
         $(function() {
-            CKEDITOR.replace('body');
             $("select[name='tags']").select2({
                 tags: "true",
                 placeholder: "Select a tag"

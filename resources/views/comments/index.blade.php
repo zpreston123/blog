@@ -1,5 +1,5 @@
 <div class="well col-md-12">
-    @include('comments.create', ['post', $post])
+    @include('comments.create', ['post', $post])<br>
     @unless (count($comments) == 0)
         <ul class="list-group comments">
             @foreach ($comments->load('user') as $comment)

@@ -75,6 +75,17 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
+        return $this->login($request);
+    }
+
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function login(Request $request)
+    {
         $this->validate($request, [
             $this->loginUsername() => 'required', 'password' => 'required',
         ]);
@@ -103,7 +114,7 @@ class AuthController extends Controller
             $this->incrementLoginAttempts($request);
         }
 
-        return redirect($this->loginPath())
+        return redirect()->back()
             ->withInput($request->only($this->loginUsername(), 'remember'))
             ->withErrors([
                 $this->loginUsername() => $this->getFailedLoginMessage(),
