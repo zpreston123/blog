@@ -20,6 +20,6 @@ class Tag extends Model
      */
     public function posts()
     {
-        return $this->belongsToMany('Blog\Post');
+        return $this->belongsToMany(Post::class);
     }
 }

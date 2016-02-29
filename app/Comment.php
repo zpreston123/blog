@@ -20,7 +20,7 @@ class Comment extends Model
      */
     public function post()
     {
-        return $this->belongsTo('Blog\Post');
+        return $this->belongsTo(Post::class);
     }
 
     /**
@@ -30,6 +30,6 @@ class Comment extends Model
      */
     public function user()
     {
-        return $this->belongsTo('Blog\User');
+        return $this->belongsTo(User::class);
     }
 }

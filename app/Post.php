@@ -20,7 +20,7 @@ class Post extends Model
      */
     public function category()
     {
-        return $this->belongsTo('Blog\Category');
+        return $this->belongsTo(Category::class);
     }
 
     /**
@@ -30,7 +30,7 @@ class Post extends Model
      */
     public function tags()
     {
-        return $this->hasMany('Blog\Tag');
+        return $this->hasMany(Tag::class);
     }
 
     /**
@@ -40,7 +40,7 @@ class Post extends Model
      */
     public function user()
     {
-        return $this->belongsTo('Blog\User');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -50,6 +50,6 @@ class Post extends Model
      */
     public function comments()
     {
-        return $this->hasMany('Blog\Comment');
+        return $this->hasMany(Comment::class);
     }
 }

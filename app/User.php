@@ -44,7 +44,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public function posts()
     {
-        return $this->hasMany('Blog\Post');
+        return $this->hasMany(Post::class);
     }
 
     /**
@@ -54,6 +54,6 @@ class User extends Model implements AuthenticatableContract,
      */
     public function comments()
     {
-        return $this->hasMany('Blog\Comments');
+        return $this->hasMany(Comment::class);
     }
 }
