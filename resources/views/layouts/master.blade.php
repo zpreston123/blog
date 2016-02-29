@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
 </head>
-<body id="pjax-container">
+<body>
     @include('layouts.partials.nav')
 
     <div class="container">

@@ -1,6 +1,4 @@
 var elixir = require('laravel-elixir');
-var gulp = require('gulp');
-module.exports = gulp;
 
 /*
  |--------------------------------------------------------------------------
@@ -16,21 +14,19 @@ module.exports = gulp;
 elixir(function(mix) {
     mix.sass('app.scss', 'resources/assets/css')
         .styles([
-            // 'libs/bootstrap.min.css',
+            'libs/bootstrap.min.css',
             'app.css',
-            // 'libs/font-awesome.css',
+            'libs/font-awesome.css',
             'libs/sweetalert.css',
             'libs/horsey.css',
             'libs/select2.css',
         ])
         .scripts([
             'libs/jquery-1.11.3.js',
-            // 'libs/bootstrap.js',
+            'libs/bootstrap.js',
             'libs/sweetalert.min.js',
             'libs/dropzone.js',
-            'libs/vue.js',
             'libs/horsey.js',
-            'libs/jquery.pjax.js',
             'libs/select2.js',
             'app.js'
         ])

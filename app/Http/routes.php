@@ -4,15 +4,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('fire', function () {
-    event(new Blog\Events\EventName());
-    return 'event fired';
-});
-
-Route::get('test', function () {
-    return view('test');
-});
-
 //Authentication routes
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
