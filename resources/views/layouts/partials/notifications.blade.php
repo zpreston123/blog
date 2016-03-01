@@ -1,4 +1,4 @@
-<a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+<a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" title="Notifications">
   <i class="fa fa-bell"></i> <span class="badge">4</span>
 </a>
 <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
