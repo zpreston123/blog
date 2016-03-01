@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                         {!! Form::label('body', 'Content') !!}
-                        {!! Form::textarea('body', old('body'), ['id' => 'body', 'class' => 'form-control']) !!}
+                        {!! Form::textarea('body', old('body'), ['id' => 'body', 'class' => 'form-control', 'placeholder' => 'Enter content here']) !!}
                         {!! $errors->first('body', '<small class="text-danger">:message</small>') !!}
                     </div>
 
@@ -46,9 +46,10 @@
 @section('scripts')
     <script>
         $(function() {
-            $("select[name='tags']").select2({
+            $("#tags").select2({
                 tags: "true",
-                placeholder: "Select a tag"
+                placeholder: "Select a tag",
+                theme: "bootstrap"
             });
         });
     </script>
