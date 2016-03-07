@@ -1,11 +1,18 @@
 $(function() {
     $(".commentsLink").click(function(event) {
         event.preventDefault();
-        $(this).parent().parent().next().slideToggle();
+
+        if ($(this).parent().parent().next().hasClass("hidden")) {
+            $(this).parent().parent().next().removeClass("hidden").addClass("show");
+        } else {
+            $(this).parent().parent().next().removeClass("show").addClass("hidden");
+        }
     }); //end click handler
 
-    $("#commentDeleteForm").submit(function(event) {
+    $(".deleteComment").click(function(event) {
         event.preventDefault();
+        var form = $(this).closest("form");
+
         swal({
             title: "Are you sure you want to delete this comment?",
             type: "warning",
@@ -13,14 +20,10 @@ $(function() {
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Yes",
             closeOnConfirm: false
-        }, function() {
-            $.post($(this).prop("action"), {
-                _token: $(this).find("input[name='_token']").val(),
-                _method: 'delete'
-            }, function(response) {
-                swal("Deleted!", "Comment has been deleted!", "success");
-                $(this).closest(".comments").html(response);
-            });
+        }, function(isConfirm) {
+            if (isConfirm) {
+                form.submit();
+            }
         });
     }); //end submit handler
 }); //end ready function
