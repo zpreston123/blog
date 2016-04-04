@@ -14,17 +14,14 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass('app.sass', 'resources/assets/css')
         .styles([
-            'libs/bootstrap.min.css',
             'app.css',
             'libs/font-awesome.css',
             'libs/sweetalert.css',
             'libs/horsey.css',
             'libs/select2.css',
-            'libs/select2-bootstrap.css'
         ])
         .scripts([
             'libs/jquery-1.11.3.js',
-            'libs/bootstrap.js',
             'libs/sweetalert.min.js',
             'libs/dropzone.js',
             'libs/horsey.js',
