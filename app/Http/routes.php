@@ -25,8 +25,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile/{user}/edit', 'UserController@edit');
 
     Route::resource('posts', 'PostController');
-    Route::resource('comments', 'CommentController');
-    Route::resource('follows', 'FollowsController');
-    Route::get('users/search', 'UserController@search');
     Route::resource('users', 'UserController');
 });
