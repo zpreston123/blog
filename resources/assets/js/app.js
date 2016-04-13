@@ -1,4 +1,8 @@
 $(function() {
+    $(".dropdown-button").dropdown();
+    $(".button-collapse").sideNav();
+    $('select').material_select();
+
     $(".commentsLink").click(function(event) {
         event.preventDefault();
 

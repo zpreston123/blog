@@ -23,8 +23,6 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers;
 
-    protected $loginPath = '/';
-
     /**
      * Create a new authentication controller instance.
      *
@@ -132,6 +130,6 @@ class AuthController extends Controller
 
         alert()->success('You are now logged out!');
 
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+        return redirect('auth/login');
     }
 }

@@ -1,38 +1,35 @@
-<nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" @if(auth()->check()) href="/posts" @else href="/" @endif>EXPress Blog</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="{{ url('profile/'.auth()->id().'/edit') }}">Edit Profile</a></li>
+  <li><a href="{{ url('auth/logout') }}">Logout</a></li>
+</ul>
+
+<nav>
+  <div class="nav-wrapper">
+    <a class="brand-logo" href="{{ (auth()->check()) ? "/posts" : "/" }}">EXPress Blog</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       @if (auth()->check())
-        <ul class="nav navbar-nav">
+        <ul class="right hide-on-med-and-down">
           <li><a href="{{ url('posts/create') }}">New Post</a></li>
-          <li class="dropdown">@include('layouts.partials.notifications')</li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="{{ url('profile/'.auth()->id().'/edit') }}"><i class="fa fa-user"></i> Edit Profile</a></li>
-              <li><a href="{{ url('auth/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
-            </ul>
+          <!-- <li class="dropdown">{{-- @include('layouts.partials.notifications') --}}</li> -->
+          <li>
+            <form action="/users/search" method="GET">
+              <div class="input-field">
+                <input id="query" name="query" type="search">
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
           </li>
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{ auth()->user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
-        <form action="/users/search" class="navbar-form navbar-right" method="get">
-          <div class="input-group">
-              <input type="text" name="query" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-              </span>
-          </div>
-        </form>
+       <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
       @endif
-    </div><!--/.navbar-collapse -->
   </div>
 </nav>

@@ -3,46 +3,44 @@
 @section('title', 'All Posts')
 
 @section('content')
-    @if (count($posts) > 0)
+    @if ($posts->count() > 0)
         <div class="row">
-            <div class="col-md-12">
+            <div class="col l12">
                 @foreach ($posts as $post)
                     <div class="row">
-                        <div class="col-md-12 col-sm-9">
+                        <div class="col l12 col m9">
                             <h3><a href="{{ url('posts/'.$post->id) }}">{{ $post->title }}</a></h3>
                             <div class="row">
-                                <div class="col-md-8 col-xs-12">
+                                <div class="col l8 col s12">
                                     <p>{{ mb_strimwidth(strip_tags($post->body), 0, 100, "...") }}</p>
                                     <p>
-                                        @if ($post->user->id === $user->id)
-                                           <a href="{{ url('posts/'.$post->id) }}" class="btn btn-info btn-sm">Read More</a>
-                                        @endif
+                                       <a href="{{ url('posts/'.$post->id) }}" class="waves-effect waves-light btn">Read More</a>
                                     </p>
-                                    {{-- @if(count($post->tags) > 0) --}}
+                                    {{-- @if($post->tags->count() > 0) --}}
                                         <!-- <p class="pull-right"> -->
-                                            {{-- @foreach ($post->tags as $tag)
-                                                <span class="label label-default">{{ $tag->name }}</span>
-                                            @endforeach --}}
+                                            {{-- @foreach ($post->tags as $tag) --}}
+                                                <!-- <span class="label label-default">{{-- $tag->name --}}</span> -->
+                                            {{-- @endforeach --}}
                                         <!-- </p> -->
                                     {{-- @endif --}}
-                                    <ul class="list-inline">
+                                    <ul>
                                         <li><i class="fa fa-user"></i> {{ $post->user->name }}</li>
                                         <li><i class="fa fa-calendar"></i> Published {{ $post->created_at->diffForHumans() }}</li>
                                         <li>
-                                            <a class="commentsLink" href="#comments" aria-expanded="false" aria-controls="comments"><i class="fa fa-comment"></i> {{ $post->comments()->count() }} Comments</a>
+                                            <a class="commentsLink" href="#comments"><i class="fa fa-comment"></i> {{ $post->comments()->count() }} Comments</a>
                                         </li>
                                     </ul>
-                                    @include('comments.index', ['post' => $post])
+                                    {{-- @include('comments.index', ['post' => $post]) --}}
                                 </div>
-                                <div class="col-xs-3"></div>
+                                <div class="col s3"></div>
                             </div><br><br>
                         </div>
-                    </div><!--/row-->
+                    </div>
                     <hr>
                 @endforeach
                 {{ $posts->render() }}
-            </div><!--/col-12-->
-        </div><!--/row-->
+            </div>
+        </div>
     @else
         <p>No posts have been made!  Please check back later.</p>
     @endif

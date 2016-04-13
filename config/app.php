@@ -198,9 +198,9 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Alert'     => Uxweb\SweetAlert\SweetAlert::class,
         'Gate'      => Illuminate\Support\Facades\Gate::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Form'     => Collective\Html\FormFacade::class,
-        'Html'     => Collective\Html\HtmlFacade::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
     ],
 
 ];

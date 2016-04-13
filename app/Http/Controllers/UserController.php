@@ -11,6 +11,16 @@ use Blog\User;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -80,7 +90,7 @@ class UserController extends Controller
             'password' => bcrypt($request->input('password'))
         ]);
 
-        flash()->success('Your profile was successfully updated!');
+        alert()->success('Your profile was successfully updated!');
 
         return redirect()->home();
     }

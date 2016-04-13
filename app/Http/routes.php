@@ -1,10 +1,7 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //Authentication routes
+Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
@@ -20,10 +17,8 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('home', ['as' => 'home', 'uses' => 'PostController@index']);
-    Route::get('profile/{user}/edit', 'UserController@edit');
+Route::get('home', ['as' => 'home', 'uses' => 'PostController@index']);
+Route::get('profile/{user}/edit', 'UserController@edit');
 
-    Route::resource('posts', 'PostController');
-    Route::resource('users', 'UserController');
-});
+Route::resource('posts', 'PostController');
+Route::resource('users', 'UserController');

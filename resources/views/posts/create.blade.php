@@ -12,27 +12,27 @@
             <div class="panel-heading">Create Post</div>
             <div class="panel-body">
                 {!! Form::open(['route' => 'posts.store']) !!}
-                    <div class="form-group {{ ($errors->has('title')) ? 'has-error' : ''}}">
+                    <div class="input-field {{ ($errors->has('title')) ? 'has-error' : ''}}">
                         {!! Form::label('title', 'Title') !!}
                         {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => 'Enter title here']) !!}
                         {!! $errors->first('title', '<small class="text-danger">:message</small>') !!}
                     </div>
 
-                    <div class="form-group {{ ($errors->has('category')) ? 'has-error' : ''}}">
+                    <div class="input-field {{ ($errors->has('category')) ? 'has-error' : ''}}">
                         {!! Form::label('category', 'Category') !!}
                         {!! Form::select('category', ['' => 'Select an option'] + $categories, old('category'), ['class' => 'form-control']) !!}
                         {!! $errors->first('category', '<small class="text-danger">:message</small>') !!}
                     </div>
 
-                    <div class="form-group {{ ($errors->has('tags')) ? 'has-error' : ''}}">
+                    <div class="input-field {{ ($errors->has('tags')) ? 'has-error' : ''}}">
                         {!! Form::label('tags', 'Tags') !!}
                         {!! Form::select('tags', [], old('tags'), ['class' => 'form-control', 'style' => 'width:100%;', 'multiple']) !!}
                         {!! $errors->first('tags', '<small class="text-danger">:message</small>') !!}
                     </div>
 
-                    <div class="form-group">
+                    <div class="input-field">
                         {!! Form::label('body', 'Content') !!}
-                        {!! Form::textarea('body', old('body'), ['id' => 'body', 'class' => 'form-control', 'placeholder' => 'Enter content here']) !!}
+                        {!! Form::textarea('body', old('body'), ['id' => 'body', 'class' => 'materialize-textarea', 'placeholder' => 'Enter content here']) !!}
                         {!! $errors->first('body', '<small class="text-danger">:message</small>') !!}
                     </div>
 
