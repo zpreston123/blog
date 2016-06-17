@@ -3,46 +3,41 @@
 @section('title', 'Edit Post')
 
 @section('content')
-    <div class="col-md-8 col-md-offset-2">
-        <div class="page-header text-center">
-          <h1>Edit Post</h1>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Edit Post</h3>
-            </div>
-            <div class="panel-body">
+    <div class="row">
+        <div class="col m10 offset-m1 s12">
+            <h2 class="center-align">Edit Post</h2>
+            <div class="row">
                 {!! Form::model($post, ['url' => 'posts/'.$post->id, 'method' => 'PUT']) !!}
-                    <div class="form-group {{ ($errors->has('title')) ? 'has-error' : ''}}">
-                        {!! Form::label('title', 'Title') !!}
-                        {!! Form::text('title', $post->title, ['class' => 'form-control', 'placeholder' => 'Enter title here']) !!}
-                        {!! $errors->first('title', '<small class="text-danger">:message</small>') !!}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {!! Form::text('title', $post->title) !!}
+                            {!! Form::label('title', 'Title') !!}
+                            {!! $errors->first('title', '<small class="red-text">:message</small>') !!}
+                        </div>
                     </div>
-
-                    <div class="form-group {{ ($errors->has('category')) ? 'has-error' : ''}}">
-                        {!! Form::label('category', 'Category') !!}
-                        {!! Form::select('category', ['' => 'Select an option'] + $categories, $post->category->id) !!}
-                        {!! $errors->first('category', '<small class="text-danger">:message</small>') !!}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {!! Form::label('category', 'Category') !!}<br/>
+                        </div>
+                        <div class="input-field col s12">
+                            {!! Form::select('category', ['' => 'Select an option'] + $categories, $post->category->id, ['class' => 'browser-default']) !!}
+                            {!! $errors->first('category', '<small class="red-text">:message</small>') !!}
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('body', 'Content') !!}
-                        {!! Form::textarea('body', $post->body, ['id' => 'body', 'class' => 'form-control']) !!}
-                          <p class="help-block">Edit content here or click on Source to edit the HTML markup.</p>
-                        {!! $errors->first('body', '<small class="text-danger">:message</small>') !!}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {!! Form::textarea('body', $post->body, ['class' => 'materialize-textarea']) !!}
+                            {!! Form::label('body', 'Content') !!}
+                            {!! $errors->first('body', '<small class="red-text">:message</small>') !!}
+                        </div>
                     </div>
-
-                    {!! Form::submit("Update", ['class' => 'btn btn-success']) !!}
+                    <div class="row">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Update
+                        <i class="material-icons right">send</i>
+                        </button>
+                    </div>
                 {!! Form::close() !!}
             </div>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    {!! HTML::script('ckeditor/ckeditor.js') !!}
-    <script>
-        CKEDITOR.replace('body');
-    </script>
 @endsection

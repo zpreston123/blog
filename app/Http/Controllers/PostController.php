@@ -105,7 +105,13 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        $post->category()->associate($request->input('category'));
+        $post->save();
+
+        alert()->success('Post updated successfully!');
+
+        return redirect()->home();
     }
 
     /**
@@ -116,6 +122,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        alert()->success('Post deleted successfully!');
+
+        return back();
     }
 }

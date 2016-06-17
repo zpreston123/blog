@@ -17,6 +17,9 @@
                                         <a href="{{ url('posts/'.$post->id) }}" class="waves-effect waves-light btn">Read More</a>
                                         @if ($post->user->id === auth()->id())
                                             <a href="{{ url('posts/'.$post->id.'/edit') }}" class="waves-effect waves-light btn orange">Edit</a>
+                                            {{ Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) }}
+                                                <button type="submit" class="waves-effect waves-light btn red">Delete</button>
+                                            {{ Form::close() }}
                                         @endif
                                     <ul>
                                         <li><i class="fa fa-user"></i> {{ $post->user->name }}</li>
