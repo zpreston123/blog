@@ -22,7 +22,7 @@
 
                     <div class="form-group {{ ($errors->has('category')) ? 'has-error' : ''}}">
                         {!! Form::label('category', 'Category') !!}
-                        {!! Form::select('category', ['' => 'Select an option'] + $categories, $post->category->id, ['class' => 'form-control']) !!}
+                        {!! Form::select('category', ['' => 'Select an option'] + $categories, $post->category->id) !!}
                         {!! $errors->first('category', '<small class="text-danger">:message</small>') !!}
                     </div>
 

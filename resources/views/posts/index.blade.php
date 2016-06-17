@@ -14,15 +14,10 @@
                                 <div class="col l8 col s12">
                                     <p>{{ mb_strimwidth(strip_tags($post->body), 0, 100, "...") }}</p>
                                     <p>
-                                       <a href="{{ url('posts/'.$post->id) }}" class="waves-effect waves-light btn">Read More</a>
-                                    </p>
-                                    {{-- @if($post->tags->count() > 0) --}}
-                                        <!-- <p class="pull-right"> -->
-                                            {{-- @foreach ($post->tags as $tag) --}}
-                                                <!-- <span class="label label-default">{{-- $tag->name --}}</span> -->
-                                            {{-- @endforeach --}}
-                                        <!-- </p> -->
-                                    {{-- @endif --}}
+                                        <a href="{{ url('posts/'.$post->id) }}" class="waves-effect waves-light btn">Read More</a>
+                                        @if ($post->user->id === auth()->id())
+                                            <a href="{{ url('posts/'.$post->id.'/edit') }}" class="waves-effect waves-light btn orange">Edit</a>
+                                        @endif
                                     <ul>
                                         <li><i class="fa fa-user"></i> {{ $post->user->name }}</li>
                                         <li><i class="fa fa-calendar"></i> Published {{ $post->created_at->diffForHumans() }}</li>
