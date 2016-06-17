@@ -25992,6 +25992,24 @@ $(function() {
                 form.submit();
             }
         });
+    });
+
+    $(".deletePost").click(function(event) {
+        event.preventDefault();
+        var form = $(this).closest("form");
+
+        swal({
+            title: "Are you sure you want to delete this post?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes",
+            closeOnConfirm: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+                form.submit();
+            }
+        });
     }); //end submit handler
 }); //end ready function
 
