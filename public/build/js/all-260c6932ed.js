@@ -25962,6 +25962,8 @@ S2.define('jquery.mousewheel',[
 }));
 
 $(function() {
+    "use strict";
+
     $(".dropdown-button").dropdown();
     $(".button-collapse").sideNav();
     $('select').material_select();
