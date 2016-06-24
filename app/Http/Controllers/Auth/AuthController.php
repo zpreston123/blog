@@ -130,6 +130,6 @@ class AuthController extends Controller
 
         alert()->success('You are now logged out!');
 
-        return redirect('auth/login');
+        return redirect('/');
     }
 }
