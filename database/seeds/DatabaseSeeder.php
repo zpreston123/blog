@@ -1,6 +1,6 @@
 <?php
 
-use Blog\Tag;
+use Blog\Post;
 use Blog\User;
 use Blog\Category;
 use Illuminate\Database\Seeder;
@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
         factory(Category::class, 5)->create();
         factory(User::class, 10)->create();
-        factory(Tag::class, 3)->create();
+        factory(Post::class, 20)->create();
 
         Model::reguard();
     }

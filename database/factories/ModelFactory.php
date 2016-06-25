@@ -15,7 +15,7 @@ $factory->define(Blog\User::class, function (Faker\Generator $faker) {
     return [
         'name'           => $faker->name,
         'email'          => $faker->email,
-        'password'       => bcrypt('password'),
+        'password'       => bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
 });
@@ -28,19 +28,9 @@ $factory->define(Blog\Category::class, function (Faker\Generator $faker) {
 
 $factory->define(Blog\Post::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->unique()->title,
-        'body'  => $faker->paragraph
-    ];
-});
-
-$factory->define(Blog\Tag::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->word
-    ];
-});
-
-$factory->define(Blog\Comment::class, function (Faker\Generator $faker) {
-    return [
-        'body' => $faker->paragraph
+        'title' => $faker->sentence,
+        'body'  => $faker->paragraph,
+        'user_id' => Blog\User::all()->random()->id,
+        'category_id' => Blog\Category::all()->random()->id
     ];
 });
