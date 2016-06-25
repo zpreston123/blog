@@ -2,12 +2,9 @@
 
 namespace Blog\Http\Controllers;
 
-use Blog\Category;
-use Blog\Http\Requests;
-use Blog\Http\Requests\StorePostRequest;
-use Blog\Http\Requests\UpdatePostRequest;
 use Blog\Post;
-use Blog\User;
+use Blog\Category;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -48,21 +45,20 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StorePostRequest $request
+     * @param  Request $request
      * @return Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
-        $post = new Post;
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
+        $this->validate($request, [
+            'title'    => 'required',
+            'category' => 'required',
+            'body'     => 'required'
+        ]);
 
-        $category = Category::find($request->input('category'));
-        $post->category()->associate($category);
-
-        $user = User::find($request->user()->id);
-        $post->user()->associate($user);
-
+        $post = new Post($request->all());
+        $post->category()->associate($request->input('category'));
+        $post->user()->associate(auth()->id());
         $post->save();
 
         alert()->success('Post created successfully!');
@@ -99,13 +95,19 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdatePostRequest $request
+     * @param  Request $request
      * @param  Post $post
      * @return Response
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(Request $request, Post $post)
     {
-        $post->update($request->all());
+        $this->validate($request, [
+            'title'    => 'required',
+            'category' => 'required',
+            'body'     => 'required'
+        ]);
+
+        $post->fill($request->all());
         $post->category()->associate($request->input('category'));
         $post->save();
 
