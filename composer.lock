@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "96f93e225472776a320518e82fe40670",
-    "content-hash": "9cec4264171a4aade015ff9fdb899400",
+    "hash": "532105f1c673ab908a74130d0ab470ba",
+    "content-hash": "b096e5223f1bdf3fd1d0e64ec9e16c66",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1889,6 +1889,46 @@
                 "dump"
             ],
             "time": "2016-05-24 10:03:10"
+        },
+        {
+            "name": "tightenco/mailthief",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tightenco/mailthief.git",
+                "reference": "8c769b1956b3efbb196c4d55a2836eca0c0f1904"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tightenco/mailthief/zipball/8c769b1956b3efbb196c4d55a2836eca0c0f1904",
+                "reference": "8c769b1956b3efbb196c4d55a2836eca0c0f1904",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.2.*|5.3.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "^5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MailThief\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Wathan",
+                    "email": "adam.wathan@gmail.com"
+                }
+            ],
+            "description": "A fake Mailer for Laravel applications that takes the pain out of testing mail.",
+            "time": "2016-06-20 20:46:57"
         },
         {
             "name": "uxweb/sweet-alert",
