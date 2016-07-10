@@ -18,7 +18,8 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::get('home', ['as' => 'home', 'uses' => 'PostController@index']);
-Route::get('profile/{user}/edit', 'UserController@edit');
+Route::get('profile', 'UserController@profile');
+Route::post('profile', 'UserController@updateAvatar');
 
 Route::resource('posts', 'PostController');
 Route::resource('users', 'UserController');
