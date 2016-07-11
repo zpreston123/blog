@@ -12,6 +12,7 @@
         "hootlex/laravel-friendships": "^1.0",
         "filp/whoops": "^2.0",
         "tightenco/mailthief": "^0.1.0"
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

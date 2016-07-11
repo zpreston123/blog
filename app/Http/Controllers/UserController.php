@@ -108,12 +108,30 @@ class UserController extends Controller
         return 'Done';
     }
 
-    public function search(Request $request)
+    public function profile()
     {
-        $users = User::whereNotIn('id', [auth()->id()])
-                     ->where('name', 'LIKE', '%'.$request->get('query').'%')
-                     ->get();
+        $user = auth()->user();
 
-        return view('users.index', compact('users'));
+        return view('users.profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        //
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+
+            $user = auth()->user();
+            $user->avatar = $filename;
+            $user->save();
+        }
+
+        return view('users.profile', compact('user'));
     }
 }
