@@ -1,11 +1,12 @@
 {
     "private": true,
-    "devDependencies": {
-        "gulp": "^3.9.1"
+    "scripts": {
+        "prod": "gulp --production",
+        "dev": "gulp watch"
     },
-    "dependencies": {
+    "devDependencies": {
+        "gulp": "^3.9.1",
         "laravel-elixir": "^5.0.0",
-        "materialize-sass": "^0.95.2",
-        "font-awesome": "*"
+        "materialize-sass": "^0.95.2"
     }
 }

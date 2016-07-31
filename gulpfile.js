@@ -29,6 +29,5 @@ elixir(function(mix) {
             'app.js'
         ])
         .copy('node_modules/materialize-sass/font', 'public/build/font')
-        .copy('node_modules/font-awesome/fonts','public/build/font')
         .version(['css/all.css', 'js/all.js']);
 });
