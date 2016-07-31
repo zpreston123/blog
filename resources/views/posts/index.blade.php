@@ -22,8 +22,8 @@
                                             {{ Form::close() }}
                                         @endif
                                     <ul>
-                                        <li><i class="fa fa-user"></i> {{ $post->user->name }}</li>
-                                        <li><i class="fa fa-calendar"></i> Published {{ $post->created_at->diffForHumans() }}</li>
+                                        <li><i class="fa fa-user" aria-hidden="true"></i> {{ $post->user->name }}</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> Published {{ $post->created_at->diffForHumans() }}</li>
                                         <li>
                                             <a class="commentsLink" href="#comments"><i class="fa fa-comment"></i> {{ $post->comments()->count() }} Comments</a>
                                         </li>
