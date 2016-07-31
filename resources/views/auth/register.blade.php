@@ -3,38 +3,42 @@
 @section('title', 'Sign Up')
 
 @section('content')
-    <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-info">
-            <div class="panel-heading" style="color:white;">
-                Sign Up
-            </div>
-            <div class="panel-body">
-                {!! Form::open(['url' => 'auth/register', 'method' => 'post']) !!}
-                    <div class="form-group">
-                        {!! Form::label('name', 'Name') !!}
-                        {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-                        {!! $errors->first('name', '<small class="text-danger">:message</small>') !!}
+    <div class="row">
+        <div class="col m10 offset-m1 s12">
+            <h2 class="center-align">Sign Up</h2>
+            <div class="row">
+                {!! Form::open(['url' => 'register']) !!}
+                    <div class="row">
+                        <div class="input-field">
+                            {!! Form::label('name', 'Name') !!}
+                            {!! Form::text('name', old('name')) !!}
+                            {!! $errors->first('name', '<span class="red-text">:message</span>') !!}
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('email', 'Email') !!}
-                        {!! Form::text('email', old('email'), ['class' => 'form-control']) !!}
-                        {!! $errors->first('email', '<small class="text-danger">:message</small>') !!}
+                    <div class="row">
+                        <div class="input-field">
+                            {!! Form::label('email', 'Email') !!}
+                            {!! Form::text('email', old('email')) !!}
+                            {!! $errors->first('email', '<span class="red-text">:message</span>') !!}
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('password', 'Password') !!}
-                        {!! Form::password('password', ['class' => 'form-control']) !!}
-                        {!! $errors->first('password', '<small class="text-danger">:message</small>') !!}
+                    <div class="row">
+                        <div class="input-field">
+                            {!! Form::label('password', 'Password') !!}
+                            {!! Form::password('password') !!}
+                            {!! $errors->first('password', '<span class="red-text">:message</span>') !!}
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('password_confirmation', 'Confirm Password') !!}
-                        {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-                        {!! $errors->first('password_confirmation', '<small class="text-danger">:message</small>') !!}
+                    <div class="row">
+                        <div class="input-field">
+                            {!! Form::label('password_confirmation', 'Confirm Password') !!}
+                            {!! Form::password('password_confirmation') !!}
+                            {!! $errors->first('password_confirmation', '<span class="red-text">:message</span>') !!}
+                        </div>
                     </div>
-
-                    {!! Form::submit('Register', ['class' => 'btn btn-block btn-info']) !!}
+                    <div class="row">
+                        {!! Form::button('Register', ['class' => 'btn btn waves-effect waves-light', 'type' => 'submit']) !!}
+                    </div>
                 {!! Form::close() !!}
             </div>
         </div>
