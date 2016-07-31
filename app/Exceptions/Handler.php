@@ -45,32 +45,28 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($this->isHttpException($e)) {
-            return $this->renderHttpException($e);
-        }
-
-        if (config('app.debug')) {
-            return $this->renderExceptionWithWhoops($e);
-        }
-
         return parent::render($request, $e);
     }
 
     /**
-     * Render an exception using Whoops.
+     * Create a Symfony response for the given exception.
      *
-     * @param  \Exception $e
-     * @return \Illuminate\Http\Response
+     * @param  \Exception  $e
+     * @return mixed
      */
-    protected function renderExceptionWithWhoops(Exception $e)
+    protected function convertExceptionToResponse(Exception $e)
     {
-        $whoops = new \Whoops\Run;
-        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        if (config('app.debug')) {
+            $whoops = new \Whoops\Run;
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
-        return new \Illuminate\Http\Response(
-            $whoops->handleException($e),
-            $e->getStatusCode(),
-            $e->getHeaders()
-        );
+            return response()->make(
+                $whoops->handleException($e),
+                method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
+                method_exists($e, 'getHeaders') ? $e->getHeaders() : []
+            );
+        }
+
+        return parent::convertExceptionToResponse($e);
     }
 }
