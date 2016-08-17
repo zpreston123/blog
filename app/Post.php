@@ -14,6 +14,13 @@ class Post extends Model
     protected $fillable = ['title', 'body', 'user_id', 'category_id'];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['comments'];
+
+    /**
      * Get the category associated with the post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -50,6 +57,6 @@ class Post extends Model
      */
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->latest();
     }
 }
