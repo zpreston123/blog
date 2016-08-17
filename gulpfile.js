@@ -20,7 +20,7 @@ elixir(function(mix) {
             'libs/select2.css',
         ])
         .scripts([
-            'libs/jquery-1.11.3.js',
+            'libs/jquery-3.1.0.js',
             'libs/materialize.js',
             'libs/sweetalert.min.js',
             'libs/dropzone.js',
