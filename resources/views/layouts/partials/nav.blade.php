@@ -10,13 +10,13 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="{{ url('posts/create') }}">New Post</a></li>
         <li>
-          <form action="/users/search" method="GET">
+          {!! Form::open(['url' => '/users/search', 'method' => 'get']) !!}
             <div class="input-field">
-              <input id="query" name="query" type="search">
-              <label for="search"><i class="material-icons">search</i></label>
+              {!! Form::text('query', null, ['type' => 'search']) !!}
+              {!! Html::decode(Form::label('query', '<i class="material-icons">search</i>')) !!}
               <i class="material-icons">close</i>
             </div>
-          </form>
+          {!! Form::close() !!}
         </li>
         <li>
           <a class="dropdown-button" href="#!" data-activates="dropdown1" style="position:relative; padding-left:50px;">
