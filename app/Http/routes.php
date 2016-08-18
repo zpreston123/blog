@@ -14,6 +14,7 @@ Route::get('profile', 'UserController@profile');
 Route::post('profile', 'UserController@updateAvatar');
 
 //Post routes
+Route::post('posts/{post}/comment', 'PostController@postComment');
 Route::resource('posts', 'PostController');
 
 //User routes
