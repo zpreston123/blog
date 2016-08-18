@@ -3,6 +3,7 @@
 use Blog\Post;
 use Blog\User;
 use Blog\Category;
+use Blog\Comment;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         factory(Category::class, 5)->create();
         factory(User::class, 10)->create();
         factory(Post::class, 20)->create();
+        factory(Comment::class, 40)->create();
 
         Model::reguard();
     }
