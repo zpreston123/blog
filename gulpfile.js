@@ -11,23 +11,26 @@ var elixir = require('laravel-elixir');
  |
  */
 
+var materializePath = '../../../node_modules/materialize-css/dist/';
+
 elixir(function(mix) {
     mix.sass('app.sass', 'resources/assets/css')
         .styles([
-            'app.css',
+            materializePath + 'css/materialize.css',
             'libs/sweetalert.css',
             'libs/horsey.css',
             'libs/select2.css',
+            'app.css'
         ])
         .scripts([
             'libs/jquery-3.1.0.js',
-            'libs/materialize.js',
+            materializePath + 'js/materialize.js',
             'libs/sweetalert.min.js',
             'libs/dropzone.js',
             'libs/horsey.js',
             'libs/select2.js',
             'app.js'
         ])
-        .copy('node_modules/materialize-sass/font', 'public/build/font')
+        .copy(materializePath + 'fonts', 'public/build/fonts')
         .version(['css/all.css', 'js/all.js']);
 });
