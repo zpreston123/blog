@@ -10,15 +10,6 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="{{ url('posts/create') }}">New Post</a></li>
         <li>
-          {!! Form::open(['url' => '/users/search', 'method' => 'get']) !!}
-            <div class="input-field">
-              {!! Form::text('query', null, ['type' => 'search']) !!}
-              {!! Html::decode(Form::label('query', '<i class="material-icons">search</i>')) !!}
-              <i class="material-icons">close</i>
-            </div>
-          {!! Form::close() !!}
-        </li>
-        <li>
           <a class="dropdown-button" href="#!" data-activates="dropdown1" style="position:relative; padding-left:50px;">
             <img src="/uploads/avatars/{{ auth()->user()->avatar }}" style="width:32px; height:32px; position:absolute; top:15px; left:10px; border-radius:50%;">
             {{ auth()->user()->name }}<i class="material-icons right">arrow_drop_down</i>
