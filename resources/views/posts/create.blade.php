@@ -17,10 +17,8 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            {!! Form::label('category', 'Category') !!}<br/>
-                        </div>
-                        <div class="input-field col s12">
-                            {!! Form::select('category', ['' => 'Select an option'] + $categories, old('category'), ['class' => 'browser-default']) !!}
+                            {!! Form::select('category', ['' => 'Select an option'] + $categories, old('category')) !!}
+                            {!! Form::label('category', 'Category') !!}
                             {!! $errors->first('category', '<small class="red-text">:message</small>') !!}
                         </div>
                     </div>
