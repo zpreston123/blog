@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Blog\Http\Requests;
 use Blog\Http\Controllers\Controller;
 use Blog\User;
+use File;
 use Image;
 
 class UserController extends Controller
@@ -34,27 +35,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -65,7 +45,7 @@ class UserController extends Controller
         //
     }
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  User  $id
@@ -73,9 +53,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $user = auth()->user();
-
-        return view('profiles.edit', compact('user'));
+        return view('profiles.edit', ['user' => auth()->user()]);
     }
 
     /**
@@ -89,21 +67,20 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        $user->update([
-            'name'     => $request->input('name'),
-            'email'    => $request->input('email'),
-            'password' => bcrypt($request->input('password'))
-        ]);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = (!$request->has('password')) ? $user->password : bcrypt($request->input('password'));
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+            $filename = $user->name . time() . '.' . $avatar->getClientOriginalExtension();
 
-            $user = auth()->user();
+            Image::make($avatar)->fit(300, 300)->save(public_path('uploads/avatars/' . $filename));
+
             $user->avatar = $filename;
-            $user->save();
         }
+
+        $user->save();
 
         alert()->success('Your profile was successfully updated!');
 
