@@ -13,14 +13,13 @@
             <div class="row">
                 {!! Form::open(['url' => 'profile', 'enctype' => 'multipart/form-data', 'class' => 'col s12']) !!}
                     <div class="row">
-                        <label>Profile Image</label>
                         <div class="file-field input-field">
                             <div class="btn">
                                 <span>Browse</span>
                                 <input type="file" name="avatar">
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Update Profile Image">
+                                {!! Form::text(null, null, ['class' => 'file-path validate', 'placeholder' => 'Update Profile Image']) !!}
                             </div>
                             {!! $errors->first('avatar', '<span class="red-text">:message</span>') !!}
                         </div>

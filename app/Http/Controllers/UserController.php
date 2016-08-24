@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Blog\Http\Requests;
 use Blog\Http\Controllers\Controller;
 use Blog\User;
+use Image;
 
 class UserController extends Controller
 {
@@ -29,7 +30,7 @@ class UserController extends Controller
     {
         $users = User::whereNotIn('id', [auth()->id()])->get();
 
-        return view('users.index', compact('users'));
+        return view('profiles.index', compact('users'));
     }
 
     /**
@@ -72,7 +73,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $user = auth()->user();
+
+        return view('profiles.edit', compact('user'));
     }
 
     /**
@@ -82,13 +85,25 @@ class UserController extends Controller
      * @param  User  $id
      * @return Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
+        $user = auth()->user();
+
         $user->update([
             'name'     => $request->input('name'),
             'email'    => $request->input('email'),
             'password' => bcrypt($request->input('password'))
         ]);
+
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+
+            $user = auth()->user();
+            $user->avatar = $filename;
+            $user->save();
+        }
 
         alert()->success('Your profile was successfully updated!');
 
@@ -106,32 +121,5 @@ class UserController extends Controller
         $user->delete();
 
         return 'Done';
-    }
-
-    public function profile()
-    {
-        $user = auth()->user();
-
-        return view('users.profile', compact('user'));
-    }
-
-    public function updateProfile(Request $request)
-    {
-        //
-    }
-
-    public function updateAvatar(Request $request)
-    {
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
-
-            $user = auth()->user();
-            $user->avatar = $filename;
-            $user->save();
-        }
-
-        return view('users.profile', compact('user'));
     }
 }

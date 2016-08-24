@@ -10,12 +10,9 @@ Route::auth();
 Route::get('home', ['as' => 'home', 'uses' => 'PostController@index']);
 
 //Profile routes
-Route::get('profile', 'UserController@profile');
-Route::post('profile', 'UserController@updateAvatar');
+Route::get('profile', 'UserController@edit');
+Route::post('profile', 'UserController@update');
 
 //Post routes
 Route::post('posts/{post}/comment', 'PostController@postComment');
 Route::resource('posts', 'PostController');
-
-//User routes
-Route::resource('users', 'UserController');
