@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name')->lists('name', 'id')->all();
+        $categories = Category::orderBy('name')->pluck('name', 'id')->all();
 
         return view('posts.create', compact('categories'));
     }
@@ -86,7 +86,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = Category::orderBy('name')->lists('name', 'id')->all();
+        $categories = Category::orderBy('name')->pluck('name', 'id')->all();
 
         return view('posts.edit', compact('post', 'categories'));
     }

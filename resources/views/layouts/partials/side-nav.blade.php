@@ -1,6 +1,10 @@
 <ul id="dropdown2" class="dropdown-content">
-  <li><a href="{{ url('profile') }}">Profile</a></li>
-  <li><a href="{{ url('logout') }}">Logout</a></li>
+	<li><a href="{{ url('profile') }}">Profile</a></li>
+	<li>
+		{!! Form::open(['url' => 'logout']) !!}
+      		{!! Form::submit('Logout', ['class' => 'logout']) !!}
+		{!! Form::close() !!}
+  	</li>
 </ul>
 
 <ul class="side-nav" id="mobile-demo">

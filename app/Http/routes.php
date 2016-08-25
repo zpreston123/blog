@@ -4,7 +4,7 @@
 Route::get('/', 'WelcomeController@index');
 
 //Authentication routes
-Route::auth();
+Auth::routes();
 
 //Home route
 Route::get('home', ['as' => 'home', 'uses' => 'PostController@index']);
