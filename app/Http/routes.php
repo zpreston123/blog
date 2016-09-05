@@ -10,9 +10,14 @@ Auth::routes();
 Route::get('home', ['as' => 'home', 'uses' => 'PostController@index']);
 
 //Profile routes
-Route::get('profile', 'UserController@edit');
-Route::post('profile', 'UserController@update');
+Route::get('profile', 'ProfileController@edit');
+Route::post('profile', 'ProfileController@update');
+
+//User routes
+Route::get('users', 'UserController@index');
 
 //Post routes
-Route::post('posts/{post}/comment', 'PostController@postComment');
 Route::resource('posts', 'PostController');
+
+//Comment route
+Route::post('comments/{post}', 'CommentController@store');
