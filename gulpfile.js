@@ -11,7 +11,11 @@ var elixir = require('laravel-elixir');
  |
  */
 
-var materializePath = '../../../node_modules/materialize-css/dist/';
+var nodeModules = '../../../node_modules/';
+var materializePath = nodeModules + 'materialize-css/dist/';
+var jqueryPath = nodeModules + 'jquery/dist/';
+var vuePath = nodeModules + 'vue/dist/';
+var bulmaPath = nodeModules + 'bulma/';
 
 elixir(function(mix) {
     mix.sass('app.sass', 'resources/assets/css')
@@ -19,16 +23,16 @@ elixir(function(mix) {
             materializePath + 'css/materialize.css',
             'libs/sweetalert.css',
             'libs/horsey.css',
-            'libs/select2.css',
+            bulmaPath + 'css/bulma.css',
             'app.css'
         ])
         .scripts([
-            'libs/jquery-3.1.0.js',
+            jqueryPath + 'jquery.js',
             materializePath + 'js/materialize.js',
+            vuePath + 'vue.js',
             'libs/sweetalert.min.js',
             'libs/dropzone.js',
             'libs/horsey.js',
-            'libs/select2.js',
             'app.js'
         ])
         .copy(materializePath + 'fonts', 'public/build/fonts')

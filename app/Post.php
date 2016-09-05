@@ -11,7 +11,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'body', 'user_id', 'category_id'];
+    protected $fillable = ['title', 'body'];
 
     /**
      * The relations to eager load on every query.
@@ -28,16 +28,6 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    /**
-     * A post can have many tags.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function tags()
-    {
-        return $this->hasMany(Tag::class);
     }
 
     /**
