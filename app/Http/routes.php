@@ -17,6 +17,7 @@ Route::post('profile', 'ProfileController@update');
 Route::get('users', 'UserController@index');
 
 //Post routes
+Route::get('posts/search', 'PostController@search');
 Route::resource('posts', 'PostController');
 
 //Comment route

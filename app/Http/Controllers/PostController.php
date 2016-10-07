@@ -128,4 +128,22 @@ class PostController extends Controller
 
         return back();
     }
+
+    /**
+     * Search for posts by title or content.
+     *
+     * @param  Request $request
+     * @return Response
+     */
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+
+        $posts = Post::where('title', 'LIKE', '%'.$query.'%')
+                     ->orWhere('body', 'LIKE', '%'.$query.'%')
+                     ->latest()
+                     ->paginate(10);
+
+        return view('posts.index', compact('posts'));
+    }
 }

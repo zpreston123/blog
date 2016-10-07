@@ -11,6 +11,23 @@ main {
   -webkit-box-flex: 1;
   flex: 1 0 auto; }
 
+form .search {
+  border: 2px solid #E57373;
+  border-radius: 25px;
+  outline: none;
+  height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 0 0;
+  padding: 5px;
+  box-shadow: none;
+  box-sizing: content-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+  form .search:focus:not([readonly]) {
+    border: 2px solid #B75C5C;
+    box-shadow: none; }
+
 .comments {
   height: 300px;
   overflow-y: scroll; }
