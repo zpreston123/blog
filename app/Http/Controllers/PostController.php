@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user')->latest()->paginate(10);
+        $posts = Post::with('author')->latest()->paginate(10);
 
         return view('home', compact('posts'));
     }
@@ -57,8 +57,8 @@ class PostController extends Controller
         ]);
 
         $post = new Post($request->all());
-        $post->category()->associate($request->input('category'));
-        $post->user()->associate(auth()->id());
+        $post->addCategory($request->input('category'));
+        $post->addAuthor(auth()->user());
         $post->save();
 
         alert()->success('Post created successfully!');
@@ -69,7 +69,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Post  $post
+     * @param  Post $post
      * @return Response
      */
     public function show(Post $post)
@@ -80,7 +80,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Post  $post
+     * @param  Post $post
      * @return Response
      */
     public function edit(Post $post)
@@ -106,7 +106,7 @@ class PostController extends Controller
         ]);
 
         $post->fill($request->all());
-        $post->category()->associate($request->input('category'));
+        $post->addCategory($request->input('category'));
         $post->save();
 
         alert()->success('Post updated successfully!');

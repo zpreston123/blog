@@ -3,7 +3,6 @@
 namespace Blog\Http\Controllers;
 
 use Blog\Post;
-use Blog\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -18,19 +17,17 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Post $post
+     * @param  Request $request
+     * @return Response
+     */
     public function store(Post $post, Request $request)
     {
-        if ($request->ajax()) {
-            $comment = new Comment(['body' => request('body')]);
-            $comment->post()->associate($post);
-            $comment->user()->associate(auth()->user());
-            $comment->save();
+        $post->newComment(auth()->user(), $request->all());
 
-            $post->comments()->save($comment);
-
-            $html = view('comments.index', compact('post'))->render();
-
-            return response()->json(['status' => 'success', 'msg' => 'Comment saved!', 'html' => $html]);
-        }
+        return back();
     }
 }

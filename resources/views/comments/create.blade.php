@@ -1,4 +1,4 @@
-{!! Form::open(['url' => 'posts/{{ $post->id }}/comment', 'id' => 'commentForm']) !!}
+{!! Form::open(['url' => 'comments/'.$post->id]) !!}
 	<legend>Add a Comment:</legend>
 	<div class="input-field">
 		<div class="form-group">

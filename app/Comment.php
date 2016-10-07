@@ -11,7 +11,7 @@ class Comment extends Model
      *
      * @var array
      */
-    protected $fillable = ['body', 'user_id', 'post_id'];
+    protected $fillable = ['body'];
 
     /**
      * Get the post associated with a comment.
@@ -24,12 +24,23 @@ class Comment extends Model
     }
 
     /**
-     * Get the user associated with a comment.
+     * Get the author associated with a comment.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Associate an author with the comment.
+     *
+     * @param  User $author
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function byAuthor($author)
+    {
+        return $this->author()->associate($author);
     }
 }

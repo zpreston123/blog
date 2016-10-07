@@ -31,13 +31,13 @@ class Post extends Model
     }
 
     /**
-     * Get the user associated with a post.
+     * Get the author associated with a post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -48,5 +48,41 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class)->latest();
+    }
+
+    /**
+     * Add an author to the post.
+     *
+     * @param [type] $author [description]
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function addAuthor($author)
+    {
+        return $this->author()->associate($author);
+    }
+
+    /**
+     * Add a category to the post.
+     *
+     * @param [type] $category [description]
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function addCategory($category)
+    {
+        return $this->category()->associate($category);
+    }
+
+    /**
+     * Add a new comment relative to a post.
+     *
+     * @param  User $author
+     * @param  array $attributes
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function newComment($author, $attributes)
+    {
+        return $this->comments()->save(
+            (new Comment($attributes))->byAuthor($author)
+        );
     }
 }
