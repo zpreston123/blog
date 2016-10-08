@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('author')->latest()->paginate(10);
+        $posts = Post::with('author')->latest()->simplePaginate(10);
 
         return view('home', compact('posts'));
     }
@@ -142,7 +142,7 @@ class PostController extends Controller
         $posts = Post::where('title', 'LIKE', '%'.$query.'%')
                      ->orWhere('body', 'LIKE', '%'.$query.'%')
                      ->latest()
-                     ->paginate(10);
+                     ->simplePaginate(10);
 
         return view('posts.index', compact('posts'));
     }
