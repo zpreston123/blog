@@ -18,7 +18,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $with = ['comments'];
+    protected $with = ['author', 'comments'];
 
     /**
      * Get the category associated with the post.
@@ -53,7 +53,7 @@ class Post extends Model
     /**
      * Add an author to the post.
      *
-     * @param [type] $author [description]
+     * @param  User $author
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function addAuthor($author)
@@ -64,7 +64,7 @@ class Post extends Model
     /**
      * Add a category to the post.
      *
-     * @param [type] $category [description]
+     * @param  Category $category
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function addCategory($category)
