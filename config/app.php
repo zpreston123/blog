@@ -147,8 +147,6 @@ return [
         Blog\Providers\EventServiceProvider::class,
         Blog\Providers\RouteServiceProvider::class,
 
-        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
     ],
