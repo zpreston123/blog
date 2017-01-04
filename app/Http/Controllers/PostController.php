@@ -4,7 +4,7 @@ namespace Blog\Http\Controllers;
 
 use Blog\Post;
 use Blog\Category;
-use Illuminate\Http\Request;
+use Blog\Comment;
 
 class PostController extends Controller
 {
@@ -27,7 +27,7 @@ class PostController extends Controller
     {
         $posts = Post::latest()->simplePaginate(10);
 
-        return view('home', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -45,23 +45,20 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $this->validate($request, [
+        $this->validate(request(), [
             'title'    => 'required',
             'category' => 'required',
             'body'     => 'required'
         ]);
 
-        $post = new Post($request->all());
-        $post->addCategory($request->input('category'));
+        $post = new Post(request()->all());
+        $post->addCategory(request('category'));
         $post->addAuthor(auth()->user());
         $post->save();
-
-        alert()->success('Post created successfully!');
 
         return redirect('posts');
     }
@@ -93,38 +90,33 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
      * @param  Post $post
      * @return Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Post $post)
     {
-        $this->validate($request, [
+        $this->validate(request(), [
             'title'    => 'required',
             'category' => 'required',
             'body'     => 'required'
         ]);
 
-        $post->fill($request->all());
-        $post->addCategory($request->input('category'));
+        $post->fill(request()->all());
+        $post->addCategory(request('category'));
         $post->save();
 
-        alert()->success('Post updated successfully!');
-
-        return redirect()->home();
+        return redirect('posts');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Post  $post
+     * @param  Post $post
      * @return Response
      */
     public function destroy(Post $post)
     {
         $post->delete();
-
-        alert()->success('Post deleted successfully!');
 
         return back();
     }
@@ -132,16 +124,26 @@ class PostController extends Controller
     /**
      * Search for posts by title or content.
      *
-     * @param  Request $request
      * @return Response
      */
-    public function search(Request $request)
+    public function search()
     {
-        $posts = Post::where('title', 'LIKE', '%'.$request->input('q').'%')
-                     ->orWhere('body', 'LIKE', '%'.$request->input('q').'%')
+        $posts = Post::where('title', 'LIKE', '%'.request('q').'%')
+                     ->orWhere('body', 'LIKE', '%'.request('q').'%')
                      ->latest()
                      ->simplePaginate(10);
 
         return view('posts.index', compact('posts'));
+    }
+
+    /**
+     * Get the comments associated with a post.
+     *
+     * @param  int $id
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function getComments($id)
+    {
+        return Comment::with('author')->where('post_id', $id)->get();
     }
 }

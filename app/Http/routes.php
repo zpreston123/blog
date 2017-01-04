@@ -6,9 +6,6 @@ Route::get('/', 'WelcomeController@index');
 //Authentication routes
 Auth::routes();
 
-//Home route
-Route::get('home', ['as' => 'home', 'uses' => 'PostController@index']);
-
 //Profile routes
 Route::get('profile', 'ProfileController@edit');
 Route::post('profile', 'ProfileController@update');
@@ -17,6 +14,7 @@ Route::post('profile', 'ProfileController@update');
 Route::get('users', 'UserController@index');
 
 //Post routes
+Route::get('posts/{id}/comments', 'PostController@getComments');
 Route::get('posts/search', 'PostController@search');
 Route::resource('posts', 'PostController');
 

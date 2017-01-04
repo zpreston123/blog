@@ -3,7 +3,6 @@
 namespace Blog\Http\Controllers;
 
 use Blog\Post;
-use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
@@ -21,12 +20,11 @@ class CommentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  Post $post
-     * @param  Request $request
      * @return Response
      */
-    public function store(Post $post, Request $request)
+    public function store(Post $post)
     {
-        $post->newComment(auth()->user(), $request->all());
+        $post->newComment(auth()->user(), request()->all());
 
         return back();
     }

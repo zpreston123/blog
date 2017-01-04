@@ -3,7 +3,6 @@
 namespace Blog\Http\Controllers;
 
 use Blog\User;
-use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
@@ -22,19 +21,18 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update()
     {
         $user = auth()->user();
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = (!$request->has('password')) ? $user->password : bcrypt($request->input('password'));
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = (!request()->has('password')) ? $user->password : bcrypt(request('password'));
 
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
+        if (request()->hasFile('avatar')) {
+            $avatar = request()->file('avatar');
             $filename = $user->name . time() . '.' . $avatar->getClientOriginalExtension();
 
             Image::make($avatar)->fit(300, 300)->save(public_path('uploads/avatars/' . $filename));

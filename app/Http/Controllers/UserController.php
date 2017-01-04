@@ -2,13 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use Blog\Http\Requests;
-use Blog\Http\Controllers\Controller;
 use Blog\User;
-use File;
-use Image;
 
 class UserController extends Controller
 {
