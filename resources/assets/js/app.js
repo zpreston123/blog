@@ -1,53 +1,22 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * include Vue and Vue Resource. This gives a great starting point for
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
 require('./bootstrap');
 
-$(function() {
-    'use strict';
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-    $('.commentsLink').click(function(event) {
-        event.preventDefault();
+Vue.component('example', require('./components/Example.vue'));
+Vue.component('comments', require('./components/Comments.vue'));
 
-        if ($(this).parent().parent().next().hasClass('hidden')) {
-            $(this).parent().parent().next().removeClass('hidden').addClass('show');
-        } else {
-            $(this).parent().parent().next().removeClass('show').addClass('hidden');
-        }
-    }); //end click handler
+Vue.http.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
 
-    $('.deleteComment').click(function(event) {
-        event.preventDefault();
-        var form = $(this).closest('form');
-
-        //USE BULMA MODAL!!
-        // swal({
-        //     title: 'Are you sure you want to delete this comment?',
-        //     type: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#DD6B55',
-        //     confirmButtonText: 'Yes',
-        //     closeOnConfirm: false
-        // }, function(isConfirm) {
-        //     if (isConfirm) {
-        //         form.submit();
-        //     }
-        // });
-    });
-
-    $('.deletePost').click(function(event) {
-        event.preventDefault();
-        var form = $(this).closest('form');
-
-        //USE BULMA MODAL!!
-        // swal({
-        //     title: 'Are you sure you want to delete this post?',
-        //     type: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#DD6B55',
-        //     confirmButtonText: 'Yes',
-        //     closeOnConfirm: false
-        // }, function(isConfirm) {
-        //     if (isConfirm) {
-        //         form.submit();
-        //     }
-        // });
-    }); //end submit handler
-}); //end ready function
+const app = new Vue({
+    el: '#app'
+});

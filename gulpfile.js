@@ -13,15 +13,10 @@ require('laravel-elixir-vue-2');
  |
  */
 
-var nodeModules = '../../../node_modules/';
-var bulmaPath = nodeModules + 'bulma/';
-
-elixir(function(mix) {
-    mix.sass('app.sass', 'resources/assets/css')
-        .styles([
-            bulmaPath + 'css/bulma.css',
-            'app.css'
-        ])
+elixir((mix) => {
+    mix.sass('app.sass')
         .webpack('app.js')
-        .version(['css/all.css', 'js/app.js']);
+        .version([
+            'css/app.css', 'js/app.js'
+        ]);
 });
