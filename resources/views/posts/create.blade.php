@@ -3,37 +3,35 @@
 @section('title', 'Create Post')
 
 @section('content')
-    <div class="row">
-        <div class="col m10 offset-m1 s12">
-            <h2 class="center-align">Create Post</h2>
-            <div class="row">
-                {!! Form::open(['route' => 'posts.store', 'class' => 'col s12']) !!}
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {!! Form::text('title', old('title')) !!}
-                            {!! Form::label('title', 'Title') !!}
-                            {!! $errors->first('title', '<small class="red-text">:message</small>') !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {!! Form::select('category', ['' => 'Select an option'] + $categories, old('category')) !!}
-                            {!! Form::label('category', 'Category') !!}
-                            {!! $errors->first('category', '<small class="red-text">:message</small>') !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {!! Form::textarea('body', old('body'), ['class' => 'materialize-textarea']) !!}
-                            {!! Form::label('body', 'Content') !!}
-                            {!! $errors->first('body', '<small class="red-text">:message</small>') !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Publish
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
+    <h1 class="title">Create Post</h2>
+
+    <div class="columns">
+        <div class="column is-half">
+            <div class="box">
+                {!! Form::open(['route' => 'posts.store']) !!}
+                    {!! Form::label('title', 'Title', ['class' => 'label']) !!}
+                    <p class="control">
+                        {!! Form::text('title', old('title'), ['class' => 'input']) !!}
+                        {!! $errors->first('title', '<span class="help is-danger">:message</span>') !!}
+                    </p>
+
+                    {!! Form::label('category', 'Category', ['class' => 'label']) !!}
+                    <p class="control">
+                        <span class="select">
+                        {!! Form::select('category', ['' => 'Select an option'] + $categories, old('category')) !!}
+                        </span>
+                        {!! $errors->first('category', '<span class="help is-danger">:message</span>') !!}
+                    </p>
+
+                    <p class="control">
+                        {!! Form::label('body', 'Content', ['class' => 'label']) !!}
+                        {!! Form::textarea('body', old('body'), ['class' => 'textarea']) !!}
+                        {!! $errors->first('body', '<span class="help is-danger">:message</span>') !!}
+                    </p>
+
+                    <p class="control">
+                        <button class="button is-primary" type="submit">Publish</button>
+                    </p>
                 {!! Form::close() !!}
             </div>
         </div>

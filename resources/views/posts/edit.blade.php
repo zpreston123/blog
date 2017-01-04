@@ -3,39 +3,35 @@
 @section('title', 'Edit Post')
 
 @section('content')
-    <div class="row">
-        <div class="col m10 offset-m1 s12">
-            <h2 class="center-align">Edit Post</h2>
-            <div class="row">
+    <h1 class="title">Edit Post</h1>
+
+    <div class="columns">
+        <div class="column is-half">
+            <div class="box">
                 {!! Form::model($post, ['url' => 'posts/'.$post->id, 'method' => 'PUT']) !!}
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {!! Form::text('title', $post->title) !!}
-                            {!! Form::label('title', 'Title') !!}
-                            {!! $errors->first('title', '<small class="red-text">:message</small>') !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {!! Form::label('category', 'Category') !!}<br/>
-                        </div>
-                        <div class="input-field col s12">
-                            {!! Form::select('category', ['' => 'Select an option'] + $categories, $post->category->id, ['class' => 'browser-default']) !!}
-                            {!! $errors->first('category', '<small class="red-text">:message</small>') !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {!! Form::textarea('body', $post->body, ['class' => 'materialize-textarea']) !!}
-                            {!! Form::label('body', 'Content') !!}
-                            {!! $errors->first('body', '<small class="red-text">:message</small>') !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Update
-                        <i class="material-icons right">send</i>
-                        </button>
-                    </div>
+                    {!! Form::label('title', 'Title', ['class' => 'label']) !!}
+                    <p class="control">
+                        {!! Form::text('title', $post->title, ['class' => 'input']) !!}
+                        {!! $errors->first('title', '<span class="help is-danger">:message</span>') !!}
+                    </p>
+
+                    {!! Form::label('category', 'Category', ['class' => 'label']) !!}
+                    <p class="control">
+                        <span class="select">
+                            {!! Form::select('category', ['' => 'Select an option'] + $categories, $post->category->id) !!}
+                        </span>
+                        {!! $errors->first('category', '<span class="help is-danger">:message</span>') !!}
+                    </p>
+
+                    {!! Form::label('body', 'Content', ['class' => 'label']) !!}
+                    <p class="control">
+                        {!! Form::textarea('body', $post->body, ['class' => 'textarea']) !!}
+                        {!! $errors->first('body', '<span class="help is-danger">:message</span>') !!}
+                    </p>
+
+                    <p class="control">
+                        <button class="button is-primary" type="submit">Update</button>
+                    </p>
                 {!! Form::close() !!}
             </div>
         </div>

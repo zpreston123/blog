@@ -1,27 +1,24 @@
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="{{ url('profile') }}">Profile</a></li>
-  <li>
-    {!! Form::open(['url' => 'logout']) !!}
-      {!! Form::submit('Logout', ['class' => 'logout']) !!}
-    {!! Form::close() !!}
-  </li>
-</ul>
+<nav class="nav has-shadow" id="top">
+  <div class="container">
+    <div class="nav-left">
+      <a href="{{ (auth()->check()) ? "/posts" : "/" }}" class="nav-item">EXPress Blog</a>
+    </div>
 
-<nav class="light-blue lighten-1">
-  <div class="nav-wrapper">
-    <a class="brand-logo" href="{{ (auth()->check()) ? "/posts" : "/" }}">EXPress Blog</a>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
     @if (auth()->check())
-      <ul class="right hide-on-med-and-down">
-        <li><a href="{{ url('posts/create') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> New Post</a></li>
-        <li>
-          <a class="dropdown-button" href="#!" data-activates="dropdown1" style="position:relative; padding-left:50px;">
-            <img src="{{ auth()->user()->avatar }}" style="width:32px; height:32px; position:absolute; top:15px; left:10px; border-radius:50%;">
-            {{ auth()->user()->name }}<i class="material-icons right">arrow_drop_down</i>
-          </a>
-        </li>
-      </ul>
-      @include('layouts.partials.side-nav')
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <div class="nav-right nav-menu">
+        <a href="{{ url('posts/create') }}" class="nav-item {{ Request::is('posts/create') ? 'is-active' : '' }}">New Post</a>
+        <a href="{{ url('logout') }}" class="nav-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          <img src="{{ auth()->user()->avatar }}">{{ auth()->user()->name }}
+        </a>
+        {!! Form::open(['id' => 'logout-form', 'url' => 'logout']) !!}
+        {!! Form::close() !!}
+      </div>
     @endif
   </div>
 </nav>

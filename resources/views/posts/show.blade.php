@@ -3,24 +3,32 @@
 @section('title', $post->title)
 
 @section('content')
-	<article>
-		<header>
-		    <h2>{{ $post->title }}</h2>
-	    </header>
-	    <p>{{ strip_tags($post->body) }}</p>
-	    <footer>
-	    	<p>
-	        	<i class="fa fa-user"></i> Author: {{ $post->author->name }} |
-	        	<i class="fa fa-calendar"></i> Published: {{ $post->created_at->diffForHumans() }}
-	        </p>
-	    </footer>
-	</article>
+	<section class="section is-small" style="padding-top:0;">
+		<div class="container">
+			<h1 class="title">{{ $post->title }}</h1>
+			<p class="subtitle">By: {{ $post->author->name }}</p>
+		</div>
+	</section>
+	<section class="section">
+		<div class="container">
+			<div class="columns is-mobile">
+				<div class="column is-8 is-offset-2">
+					<div class="box content">
+						<p class="has-text-right">published {{ $post->created_at->diffForHumans() }}</p>
+						<p>{{ $post->body }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-	@include('comments.create')
+	<hr>
 
-	@if (count($post->comments) > 0)
-		<div id="comments">
-		    @include('comments.index')
-	    </div>
-    @endif
+	<section class="section">
+		<h3>Comments:</h3>
+		@if (count($post->comments) > 0)
+		    <comments post-id="{{ $post->id }}"></comments>
+		@endif
+		@include('comments.create')
+	</section>
 @stop

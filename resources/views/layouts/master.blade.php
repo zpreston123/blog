@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+    <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+
+    <script>
+        window.Laravel = { 'csrfToken': '{{ csrf_token() }}' };
+    </script>
 </head>
 <body>
-    <header>
-        @include('layouts.partials.nav')
-    </header>
+    @include('layouts.partials.nav')
 
-    <main>
-        <div class="container">
+    <section class="section">
+        <div id="app" class="container content">
             @yield('content')
         </div>
-    </main>
+    </section>
 
-    <footer class="page-footer orange">
-        @include('layouts.partials.footer')
-    </footer>
+    @include('layouts.partials.footer')
 
     <script src="{{ elixir('js/app.js') }}"></script>
 

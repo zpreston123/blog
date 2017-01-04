@@ -1,36 +1,38 @@
 @if ($paginator->hasPages())
-    <ul class="pagination">
+    <nav class="pagination">
         <!-- Previous Page Link -->
         @if ($paginator->onFirstPage())
-            <li class="disabled"><span><i class="material-icons">chevron_left</i></span></li>
+            <a class="button is-disabled"><<</a>
         @else
-            <li class="waves-effect"><a href="{{ $paginator->previousPageUrl() }}" rel="prev"><i class="material-icons">chevron_left</i></a></li>
+            <a class="button"><a href="{{ $paginator->previousPageUrl() }}" rel="prev"><<</a>
         @endif
 
-        <!-- Pagination Elements -->
-        @foreach ($elements as $element)
-            <!-- "Three Dots" Separator -->
-            @if (is_string($element))
-                <li class="disabled"><span>{{ $element }}</span></li>
-            @endif
+        <ul>
+            <!-- Pagination Elements -->
+            @foreach ($elements as $element)
+                <!-- "Three Dots" Separator -->
+                @if (is_string($element))
+                    <li><span>{{ $element }}</span></li>
+                @endif
 
-            <!-- Array Of Links -->
-            @if (is_array($element))
-                @foreach ($element as $page => $url)
-                    @if ($page == $paginator->currentPage())
-                        <li class="active"><a href="#!">{{ $page }}</a></li>
-                    @else
-                        <li class="waves-effect"><a href="{{ $url }}">{{ $page }}</a></li>
-                    @endif
-                @endforeach
-            @endif
-        @endforeach
+                <!-- Array Of Links -->
+                @if (is_array($element))
+                    @foreach ($element as $page => $url)
+                        @if ($page == $paginator->currentPage())
+                            <li><a class="button is-primary" href="#!">{{ $page }}</a></li>
+                        @else
+                            <li><a class="button" href="{{ $url }}">{{ $page }}</a></li>
+                        @endif
+                    @endforeach
+                @endif
+            @endforeach
+        </ul>
 
         <!-- Next Page Link -->
         @if ($paginator->hasMorePages())
-            <li class="waves-effect"><a href="{{ $paginator->nextPageUrl() }}" rel="next"><i class="material-icons">chevron_right</i></a></li>
+            <a class="button" href="{{ $paginator->nextPageUrl() }}" rel="next">>></a>
         @else
-            <li class="disabled"><span><i class="material-icons">chevron_right</i></span></li>
+            <a class="button is-disabled">>></span></a>
         @endif
-    </ul>
+    </nav>
 @endif
