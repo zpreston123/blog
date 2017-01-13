@@ -2,20 +2,22 @@
   <div class="container">
     <div class="nav-left">
       <a href="{{ (auth()->check()) ? "/posts" : "/" }}" class="nav-item">EXPress Blog</a>
+      <a href="{{ url('posts/create') }}" class="nav-item is-tab {{ Request::is('posts/create') ? 'is-active' : '' }}">New Post</a>
     </div>
-
     <span class="nav-toggle">
       <span></span>
       <span></span>
       <span></span>
     </span>
-
     @if (auth()->check())
       <div class="nav-right nav-menu">
-        <a href="{{ url('posts/create') }}" class="nav-item {{ Request::is('posts/create') ? 'is-active' : '' }}">New Post</a>
-        <a href="{{ url('logout') }}" class="nav-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-          <img src="{{ auth()->user()->avatar }}">{{ auth()->user()->name }}
+        <a class="nav-item is-tab">
+          <figure class="image is-16x16" style="margin-right: 8px;">
+            <img src="{{ auth()->user()->avatar }}">
+          </figure>
+          {{ auth()->user()->name }}
         </a>
+        <a href="{{ url('logout') }}" class="nav-item is-tab" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
         {!! Form::open(['id' => 'logout-form', 'url' => 'logout']) !!}
         {!! Form::close() !!}
       </div>
