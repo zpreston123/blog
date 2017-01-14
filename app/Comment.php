@@ -14,6 +14,13 @@ class Comment extends Model
     protected $fillable = ['body'];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['post_id', 'user_id'];
+
+    /**
      * Get the post associated with a comment.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -30,7 +37,8 @@ class Comment extends Model
      */
     public function author()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')
+                    ->select(['id', 'name', 'avatar']);
     }
 
     /**

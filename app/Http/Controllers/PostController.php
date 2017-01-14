@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->simplePaginate(10);
+        $posts = Post::latest()->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
@@ -128,22 +128,12 @@ class PostController extends Controller
      */
     public function search()
     {
-        $posts = Post::where('title', 'LIKE', '%'.request('q').'%')
-                     ->orWhere('body', 'LIKE', '%'.request('q').'%')
-                     ->latest()
-                     ->simplePaginate(10);
+        $posts = Post::with('author')
+                    ->where('title', 'LIKE', '%'.request('q').'%')
+                    ->orWhere('body', 'LIKE', '%'.request('q').'%')
+                    ->latest()
+                    ->simplePaginate(10);
 
         return view('posts.index', compact('posts'));
-    }
-
-    /**
-     * Get the comments associated with a post.
-     *
-     * @param  int $id
-     * @return Illuminate\Database\Eloquent\Collection
-     */
-    public function getComments($id)
-    {
-        return Comment::with('author')->where('post_id', $id)->get();
     }
 }

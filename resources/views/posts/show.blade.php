@@ -26,9 +26,6 @@
 
 	<section class="section">
 		<h3>Comments:</h3>
-		@if (count($post->comments) > 0)
-		    <comments post-id="{{ $post->id }}"></comments>
-		@endif
-		@include('comments.create')
+	    <comments post-id="{{ $post->id }}"></comments>
 	</section>
 @stop

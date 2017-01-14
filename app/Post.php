@@ -79,7 +79,7 @@ class Post extends Model
      * @param  array $attributes
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function newComment($author, $attributes)
+    public function addComment($author, $attributes)
     {
         return $this->comments()->save(
             (new Comment($attributes))->byAuthor($author)
