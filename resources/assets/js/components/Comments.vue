@@ -65,7 +65,6 @@
             deleteComment(id) {
                 if (confirm('Are you sure you want to delete this comment?')) {
                     this.$http.delete('/posts/' + this.postId + '/comments/' + id).then((response) => {
-                        alert('Comment deleted!');
                         this.fetchComments();
                     });
                 }
