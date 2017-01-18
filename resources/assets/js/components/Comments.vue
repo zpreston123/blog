@@ -23,8 +23,8 @@
                 <div class="media-content">
                     <div class="content">
                         <p>
-                            <strong>{{ comment.author.name }}</strong> <small>{{ comment.created_at }}</small>
-                            <br>
+                            <strong>{{ comment.author.name }}</strong>
+                            <small>{{ comment.created_at }}</small><br>
                             {{ comment.body }}
                         </p>
                     </div>
@@ -34,7 +34,7 @@
                 </div>
             </article>
         </div>
-        <p v-else>No comments are available.</p>
+        <p v-else>No comments exist! Be the first one to write a comment.</p>
     </div>
 </template>
 
@@ -54,18 +54,25 @@
             fetchComments() {
                 this.$http.get('/posts/' + this.postId + '/comments').then((response) => {
                     this.comments = response.data;
+                }, (response) => {
+                    alert('Problem fetching comments. Please refresh the page and try again.');
                 });
             },
             addComment() {
                 this.$http.post('/posts/' + this.postId + '/comments', this.comment).then((response) => {
                     this.comment.body = '';
                     this.fetchComments();
+                }, (response) => {
+                    alert('Problem submitting comment. Please try again.');
                 });
             },
             deleteComment(id) {
                 if (confirm('Are you sure you want to delete this comment?')) {
                     this.$http.delete('/posts/' + this.postId + '/comments/' + id).then((response) => {
+                        alert(response.body.message);
                         this.fetchComments();
+                    }, (response) => {
+                        alert('Problem deleting comment. Please try again.');
                     });
                 }
             }
