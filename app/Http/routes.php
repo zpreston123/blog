@@ -7,8 +7,7 @@ Route::get('/', 'WelcomeController@index');
 Auth::routes();
 
 //Profile routes
-Route::get('profile', 'ProfileController@edit');
-Route::post('profile', 'ProfileController@update');
+Route::resource('profile', 'ProfileController');
 
 //Post routes
 Route::resource('posts.comments', 'PostCommentController');
