@@ -17,15 +17,7 @@
                     <div style="display:block; padding-bottom:20px;">
                         <span>{{ $post->author->name }}</li>&nbsp;|&nbsp;Published {{ $post->created_at->diffForHumans() }}</span>
                     </div>
-                    <div style="display:block;">
-                        <a href="{{ url('posts/'.$post->id) }}" class="button is-primary">Read More</a>
-                        @if ($post->author->id === auth()->id())
-                            <a href="{{ url('posts/'.$post->id.'/edit') }}" class="button is-info">Edit</a>
-                            {{ Form::open(['route' => ['posts.destroy', $post->id], 'style' => 'display:inline;', 'method' => 'delete']) }}
-                                <button type="submit" class="button is-danger">Delete</button>
-                            {{ Form::close() }}
-                        @endif
-                    </div>
+                    <a href="{{ url('posts/'.$post->id) }}" class="button is-primary">Read More</a>
                 </div>
             @endforeach
             <div class="center-align">
