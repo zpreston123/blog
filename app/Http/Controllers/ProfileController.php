@@ -3,47 +3,62 @@
 namespace Blog\Http\Controllers;
 
 use Blog\User;
+use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
+    /**
+     * Display the specified resource.
+     *
+     * @param  User $profile
+     * @return Response
+     */
+    public function show(User $profile)
+    {
+        return view('profiles.show', compact('profile'));
+    }
+
 	/**
      * Show the form for editing the specified resource.
      *
-     * @param  User  $id
+     * @param  User $profile
      * @return Response
      */
-    public function edit(User $user)
+    public function edit(User $profile)
     {
-        return view('profiles.edit', ['user' => auth()->user()]);
+        return view('profiles.edit', compact('profile'));
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param  User $profile
      * @return Response
      */
-    public function update()
+    public function update(User $profile)
     {
-        $user = auth()->user();
+        $this->validate(request(), [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255'.Rule::unique('users')->ignore($profile->id),
+            'avatar' => 'image|mimes:jpeg,png'
+        ]);
 
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->password = (!request()->has('password')) ? $user->password : bcrypt(request('password'));
+        $profile->name = request('name');
+        $profile->email = request('email');
+        $profile->password = (!request()->has('password')) ? $profile->password : bcrypt(request('password'));
 
         if (request()->hasFile('avatar')) {
             $avatar = request()->file('avatar');
-            $filename = $user->name . time() . '.' . $avatar->getClientOriginalExtension();
+            $filename = $profile->name . time() . '.' . $avatar->getClientOriginalExtension();
 
             Image::make($avatar)->fit(300, 300)->save(public_path('uploads/avatars/' . $filename));
 
-            $user->avatar = $filename;
+            $profile->avatar = $filename;
         }
 
-        $user->save();
+        $profile->save();
 
-        alert()->success('Your profile was successfully updated!');
-
-        return redirect()->home();
+        return redirect('posts');
     }
 }
