@@ -2,7 +2,9 @@
   <div class="container">
     <div class="nav-left">
       <a href="{{ (auth()->check()) ? "/posts" : "/" }}" class="nav-item">EXPress Blog</a>
-      <a href="{{ url('posts/create') }}" class="nav-item is-tab {{ Request::is('posts/create') ? 'is-active' : '' }}">New Post</a>
+      @if (auth()->check())
+        <a href="{{ url('posts/create') }}" class="nav-item is-tab {{ Request::is('posts/create') ? 'is-active' : '' }}">New Post</a>
+      @endif
     </div>
     <span class="nav-toggle">
       <span></span>
