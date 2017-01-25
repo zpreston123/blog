@@ -4,7 +4,6 @@ namespace Blog\Http\Controllers;
 
 use Blog\Post;
 use Blog\Category;
-use Blog\Comment;
 
 class PostController extends Controller
 {
@@ -101,7 +100,7 @@ class PostController extends Controller
             'body'     => 'required'
         ]);
 
-        $post->fill(request()->all());
+        $post->fill(request()->only('title', 'body'));
         $post->addCategory(request('category'));
         $post->save();
 
@@ -116,6 +115,12 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if (count($post->comments) > 0) {
+            $post->comments->each(function ($comment) {
+                $comment->delete();
+            });
+        }
+
         $post->delete();
 
         return back();
