@@ -2,37 +2,37 @@
     <nav class="pagination">
         <!-- Previous Page Link -->
         @if ($paginator->onFirstPage())
-            <a class="button is-disabled"><<</a>
+            <a class="pagination-previous is-disabled">Previous</a>
         @else
-            <a class="button"><a href="{{ $paginator->previousPageUrl() }}" rel="prev"><<</a>
+            <a class="pagination-previous" href="{{ $paginator->previousPageUrl() }}">Previous</a>
         @endif
 
-        <ul>
+        <!-- Next Page Link -->
+        @if ($paginator->hasMorePages())
+            <a class="pagination-next" href="{{ $paginator->nextPageUrl() }}">Next page</a>
+        @else
+            <a class="pagination-next is-disabled">Next page</a>
+        @endif
+
+        <ul class="pagination-list">
             <!-- Pagination Elements -->
             @foreach ($elements as $element)
                 <!-- "Three Dots" Separator -->
                 @if (is_string($element))
-                    <li><span>{{ $element }}</span></li>
+                    <li><span class="pagination-ellipsis">{{ $element }}</span></li>
                 @endif
 
                 <!-- Array Of Links -->
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
-                            <li><a class="button is-primary" href="#!">{{ $page }}</a></li>
+                            <li><a class="pagination-link is-current" href="#!">{{ $page }}</a></li>
                         @else
-                            <li><a class="button" href="{{ $url }}">{{ $page }}</a></li>
+                            <li><a class="pagination-link" href="{{ $url }}">{{ $page }}</a></li>
                         @endif
                     @endforeach
                 @endif
             @endforeach
         </ul>
-
-        <!-- Next Page Link -->
-        @if ($paginator->hasMorePages())
-            <a class="button" href="{{ $paginator->nextPageUrl() }}" rel="next">>></a>
-        @else
-            <a class="button is-disabled">>></span></a>
-        @endif
     </nav>
 @endif
