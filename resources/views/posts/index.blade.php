@@ -13,16 +13,13 @@
             @foreach ($posts as $post)
                 <div class="box">
                     <h2>{{ $post->title }}</h2>
-                    <p>{{ str_limit($post->body, 200) }}</p>
-                    <div style="display:block; padding-bottom:20px;">
-                        <span>{{ $post->author->name }}</li>&nbsp;|&nbsp;Published {{ $post->created_at->diffForHumans() }}</span>
-                    </div>
+                    <p>{{ str_limit($post->body, 200) }}<br><br>
+                        {{ $post->author->name }}&nbsp;|&nbsp;Published {{ $post->created_at->diffForHumans() }}
+                    </p>
                     <a href="{{ url('posts/'.$post->id) }}" class="button is-primary">Read More</a>
                 </div>
             @endforeach
-            <div class="center-align">
-                {{ $posts->render() }}
-            </div>
+            {{ $posts->links() }}
         @else
             <p>No posts have been made!  Please check back later.</p>
         @endif
