@@ -11,7 +11,7 @@
     </span>
     @if (auth()->check())
       <div class="nav-right nav-menu">
-        <a class="nav-item is-tab">
+        <a class="nav-item is-tab" href="{{ url('profile/'.auth()->id()) }}">
           <figure class="image is-16x16" style="margin-right: 8px;">
             <img src="{{ auth()->user()->avatar }}">
           </figure>
