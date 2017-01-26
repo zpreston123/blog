@@ -58,7 +58,7 @@
 			@endforeach
 		@else
 			<div class="column">
-				<p>You don't no posts created. Please click on New Post to create one.</p>
+				<p>You have no posts created. Please click on New Post to create one.</p>
 			</div>
 		@endif
 	</div>
