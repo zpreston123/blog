@@ -5,7 +5,7 @@ namespace Blog\Http\Controllers;
 use Blog\Post;
 use Blog\Comment;
 
-class PostCommentController extends Controller
+class CommentController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,7 +25,8 @@ class PostCommentController extends Controller
      */
     public function index(Post $post)
     {
-        return Comment::with('author')->where('post_id', $post->id)->latest()->get();
+        return Comment::with('author')->byPost($post)
+                    ->latest()->get();
     }
 
     /**
@@ -36,7 +37,9 @@ class PostCommentController extends Controller
      */
     public function store(Post $post)
     {
-        return $post->addComment(auth()->user(), request()->all());
+        return $post->addComment(
+            auth()->user(), ['body' => request('body')]
+        );
     }
 
     /**
@@ -44,11 +47,15 @@ class PostCommentController extends Controller
      *
      * @param  Post $post
      * @param  Comment $comment
-     * @return int
+     * @return Response
      */
     public function destroy(Post $post, Comment $comment)
     {
         $comment->delete();
-        return response()->json(['status' => 200, 'message' => 'Comment removed successfully!']);
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Comment removed successfully!'
+        ]);
     }
 }

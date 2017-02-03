@@ -47,7 +47,7 @@ class Post extends Model
      */
     public function comments()
     {
-        return $this->hasMany(Comment::class)->latest();
+        return $this->hasMany(Comment::class);
     }
 
     /**
@@ -84,5 +84,20 @@ class Post extends Model
         return $this->comments()->save(
             (new Comment($attributes))->byAuthor($author)
         );
+    }
+
+    /**
+     * Scope a query to search posts by terms the user entered.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  string $terms
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearch($query, $terms)
+    {
+        return $query->with('author')
+                    ->where('title', 'LIKE', '%'.$terms.'%')
+                    ->orWhere('body', 'LIKE', '%'.$terms.'%')
+                    ->latest();
     }
 }

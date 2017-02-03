@@ -43,6 +43,12 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    /**
+     * Get the user's avatar.
+     *
+     * @param  string $value
+     * @return string
+     */
     public function getAvatarAttribute($value)
     {
         return '/uploads/avatars/' . $value;

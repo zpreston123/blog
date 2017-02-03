@@ -133,11 +133,7 @@ class PostController extends Controller
      */
     public function search()
     {
-        $posts = Post::with('author')
-                    ->where('title', 'LIKE', '%'.request('q').'%')
-                    ->orWhere('body', 'LIKE', '%'.request('q').'%')
-                    ->latest()
-                    ->simplePaginate(10);
+        $posts = Post::search(request('q'))->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
