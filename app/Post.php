@@ -18,7 +18,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $with = ['author', 'comments'];
+    protected $with = ['author'];
 
     /**
      * Get the category associated with the post.
@@ -95,8 +95,7 @@ class Post extends Model
      */
     public function scopeSearch($query, $terms)
     {
-        return $query->with('author')
-                    ->where('title', 'LIKE', '%'.$terms.'%')
+        return $query->where('title', 'LIKE', '%'.$terms.'%')
                     ->orWhere('body', 'LIKE', '%'.$terms.'%')
                     ->latest();
     }
