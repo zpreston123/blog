@@ -25,7 +25,6 @@
 	<hr>
 
 	<section class="section">
-		<h3>Comments:</h3>
 	    <comments post-id="{{ $post->id }}"></comments>
 	</section>
 @stop

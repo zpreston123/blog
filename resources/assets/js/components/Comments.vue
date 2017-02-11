@@ -1,17 +1,10 @@
 <template>
     <div>
-        <form @submit.prevent="addComment">
-            <div class="control is-grouped">
-                <p class="control is-expanded">
-                    <input v-model="comment.body" class="input" type="text" placeholder="Add a comment...">
-                </p>
-                <p class="control">
-                    <button type="submit" class="button is-info">Submit</button>
-                </p>
-            </div>
-        </form>
+        <add-comment :post-id="postId" @submitted="addComment"></add-comment>
 
         <hr>
+
+        <h3>Comments:</h3>
 
         <div class="box" v-if="comments.length != 0">
             <article class="media" v-for="comment in comments">
@@ -24,13 +17,13 @@
                     <div class="content">
                         <p>
                             <strong>{{ comment.author.name }}</strong>
-                            <small>{{ moment(comment.created_at).fromNow() }}</small><br>
+                            <small>{{ comment.created_at | ago }}</small><br>
                             {{ comment.body }}
                         </p>
                     </div>
                 </div>
                 <div class="media-right">
-                    <button class="delete" @click="deleteComment(comment.id)"></button>
+                    <button class="delete" @click="deleteComment(comment)"></button>
                 </div>
             </article>
         </div>
@@ -39,21 +32,24 @@
 </template>
 
 <script>
+    import AddComment from './AddComment.vue';
+
     export default {
-        props: ['post-id'],
+        props: ['postId'],
+        components: {
+            AddComment
+        },
         data() {
             return {
-                comment: {
-                    id: '',
-                    body: ''
-                },
                 comments: [],
             };
         },
+        filters: {
+            ago(date) {
+                return moment.utc(date).fromNow();
+            }
+        },
         methods: {
-            moment(...args) {
-                return moment(...args);
-            },
             fetchComments() {
                 axios.get('/posts/' + this.postId + '/comments').then((response) => {
                     this.comments = response.data;
@@ -61,19 +57,15 @@
                     alert('Problem fetching comments. Please refresh the page and try again.');
                 });
             },
-            addComment() {
-                axios.post('/posts/' + this.postId + '/comments', this.comment).then((response) => {
-                    this.comment.body = '';
-                    this.fetchComments();
-                }, (response) => {
-                    alert('Problem submitting comment. Please try again.');
-                });
+            addComment(comment) {
+                this.comments.unshift(comment);
             },
-            deleteComment(id) {
+            deleteComment(comment) {
                 if (confirm('Are you sure you want to delete this comment?')) {
-                    axios.delete('/posts/' + this.postId + '/comments/' + id).then((response) => {
-                        alert(response.data.message);
-                        this.fetchComments();
+                    let index = this.comments.indexOf(comment);
+
+                    axios.delete('/posts/' + this.postId + '/comments/' + comment.id).then((response) => {
+                        this.comments.splice(index, 1);
                     }, (response) => {
                         alert('Problem deleting comment. Please try again.');
                     });
