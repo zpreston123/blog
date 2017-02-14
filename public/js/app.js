@@ -26912,15 +26912,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             if (confirm('Are you sure you want to delete this comment?')) {
-                (function () {
-                    var index = _this2.comments.indexOf(comment);
+                var index = this.comments.indexOf(comment);
 
-                    axios.delete('/posts/' + _this2.postId + '/comments/' + comment.id).then(function (response) {
-                        _this2.comments.splice(index, 1);
-                    }, function (response) {
-                        alert('Problem deleting comment. Please try again.');
-                    });
-                })();
+                axios.delete('/posts/' + this.postId + '/comments/' + comment.id).then(function (response) {
+                    _this2.comments.splice(index, 1);
+                }, function (response) {
+                    alert('Problem deleting comment. Please try again.');
+                });
             }
         }
     },
