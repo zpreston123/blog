@@ -23,6 +23,13 @@
                         {!! $errors->first('category', '<span class="help is-danger">:message</span>') !!}
                     </p>
 
+                    {!! Form::label('tags', 'Tags', ['class' => 'label']) !!}
+                    <p class="control">
+                        <span class="select">
+                            {!! Form::select('tags[]', $tags, old('tags'), ['id' => 'tags', 'multiple']) !!}
+                        </span>
+                    </p>
+
                     {!! Form::label('body', 'Content', ['class' => 'label']) !!}
                     <p class="control">
                         {!! Form::textarea('body', old('body'), ['class' => 'textarea']) !!}

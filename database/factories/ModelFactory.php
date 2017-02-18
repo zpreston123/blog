@@ -42,3 +42,9 @@ $factory->define(Blog\Comment::class, function (Faker\Generator $faker) {
         'post_id' => Blog\Post::all()->random()->id
     ];
 });
+
+$factory->define(Blog\Tag::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->unique()->word
+    ];
+});

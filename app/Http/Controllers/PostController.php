@@ -2,6 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
+use Blog\Tag;
 use Blog\Post;
 use Blog\Category;
 
@@ -37,8 +38,9 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::orderBy('name')->pluck('name', 'id')->all();
+        $tags = Tag::orderBy('name')->pluck('name', 'id')->all();
 
-        return view('posts.create', compact('categories'));
+        return view('posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -58,6 +60,8 @@ class PostController extends Controller
         $post->addCategory(request('category'));
         $post->addAuthor(auth()->user());
         $post->save();
+
+        $post->tags()->attach(request('tags'));
 
         return redirect('posts');
     }
@@ -82,8 +86,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::orderBy('name')->pluck('name', 'id')->all();
+        $tags = Tag::orderBy('name')->pluck('name', 'id')->all();
 
-        return view('posts.edit', compact('post', 'categories'));
+        return view('posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -103,6 +108,8 @@ class PostController extends Controller
         $post->fill(request()->only('title', 'body'));
         $post->addCategory(request('category'));
         $post->save();
+
+        $post->tags()->sync(request('tags') ?? []);
 
         return redirect('posts');
     }

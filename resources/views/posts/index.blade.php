@@ -13,9 +13,19 @@
             @foreach ($posts as $post)
                 <div class="box">
                     <h2>{{ $post->title }}</h2>
-                    <p>{{ str_limit($post->body, 200) }}<br><br>
-                        {{ $post->author->name }}&nbsp;|&nbsp;Published {{ $post->created_at->diffForHumans() }}
-                    </p>
+                    <p>{{ str_limit($post->body, 200) }}</p>
+                    @unless($post->tags->isEmpty())
+                        <ul class="tags" style="list-style-type: none; margin: 0;">
+                            @foreach ($post->tags as $tag)
+                               <li style="display: inline-block;">
+                                    <span class="tag is-info is-medium">
+                                        {{ $tag->name }}
+                                    </span>
+                                </li>
+                            @endforeach
+                        </ul><br>
+                    @endunless
+                    <p>{{ $post->author->name }}&nbsp;|&nbsp;Published {{ $post->created_at->diffForHumans() }}</p>
                     <a href="{{ url('posts/'.$post->id) }}" class="button is-primary">Read More</a>
                 </div>
             @endforeach

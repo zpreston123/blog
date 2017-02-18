@@ -51,6 +51,16 @@ class Post extends Model
     }
 
     /**
+     * Get all tags associatd with a post.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    /**
      * Add an author to the post.
      *
      * @param  User $author
