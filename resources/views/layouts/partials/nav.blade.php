@@ -4,6 +4,7 @@
       <a href="{{ (auth()->check()) ? "/posts" : "/" }}" class="nav-item">EXPress Blog</a>
       @if (auth()->check())
         <a href="{{ url('posts/create') }}" class="nav-item is-tab {{ Request::is('posts/create') ? 'is-active' : '' }}">New Post</a>
+        <a class="nav-item is-tab" href="{{ url('my_favorites') }}">My Favorites</a>
       @endif
     </div>
     <span class="nav-toggle">

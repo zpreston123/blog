@@ -109,4 +109,16 @@ class Post extends Model
                     ->orWhere('body', 'LIKE', '%'.$terms.'%')
                     ->latest();
     }
+
+    /**
+     * Determine whether a post has been marked as favorite by a user.
+     *
+     * @return boolean
+     */
+    public function favorited()
+    {
+        return (bool) Favorite::where('user_id', auth()->id())
+                            ->where('post_id', $this->id)
+                            ->first();
+    }
 }
