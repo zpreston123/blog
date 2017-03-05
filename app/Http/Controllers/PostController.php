@@ -5,6 +5,9 @@ namespace Blog\Http\Controllers;
 use Blog\Tag;
 use Blog\Post;
 use Blog\Category;
+use Blog\Notifications\PostCreated;
+use Blog\Notifications\PostDeleted;
+use Blog\Notifications\PostUpdated;
 
 class PostController extends Controller
 {
@@ -63,6 +66,8 @@ class PostController extends Controller
 
         $post->tags()->attach(request('tags'));
 
+        auth()->user()->notify(new PostCreated);
+
         return redirect('posts');
     }
 
@@ -111,6 +116,8 @@ class PostController extends Controller
 
         $post->tags()->sync(request('tags') ?? []);
 
+        auth()->user()->notify(new PostUpdated);
+
         return redirect('posts');
     }
 
@@ -130,6 +137,8 @@ class PostController extends Controller
 
         $post->delete();
 
+        auth()->user()->notify(new PostDeleted);
+
         return back();
     }
 
@@ -143,5 +152,31 @@ class PostController extends Controller
         $posts = Post::search(request('q'))->paginate(10);
 
         return view('posts.index', compact('posts'));
+    }
+
+    /**
+     * Favorite a particular post.
+     *
+     * @param  Post $post
+     * @return Response
+     */
+    public function favoritePost(Post $post)
+    {
+        auth()->user()->favorites()->attach($post->id);
+
+        return back();
+    }
+
+    /**
+     * Unfavorite a particular post.
+     *
+     * @param  Post $post
+     * @return Response
+     */
+    public function unFavoritePost(Post $post)
+    {
+        auth()->user()->favorites()->detach($post->id);
+
+        return back();
     }
 }

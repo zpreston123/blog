@@ -44,6 +44,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all favorite posts associated with a user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany(Post::class, 'favorites', 'user_id', 'post_id')->withTimestamps();
+    }
+
+    /**
      * Get the user's avatar.
      *
      * @param  string $value
