@@ -1,34 +1,33 @@
 @extends('layouts.master')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="page-header">
-                <h3>My Favorites</h3>
-            </div>
-            @forelse ($myFavorites as $myFavorite)
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        {{ $myFavorite->title }}
-                    </div>
+@section('title', 'My Favorites')
 
-                    <div class="panel-body">
-                        {{ $myFavorite->body }}
-                    </div>
-                    @if (Auth::check())
-                        <div class="panel-footer">
-                            <favorite
-                                :post={{ $myFavorite->id }}
-                                :favorited={{ $myFavorite->favorited() ? 'true' : 'false' }}
-                            ></favorite>
-                        </div>
-                    @endif
-                </div>
-            @empty
-                <p>You have no favorite posts.</p>
-            @endforelse
-         </div>
+@section('content')
+    <h1 class="title">My Favorites</h1>
+
+    <hr>
+
+    <div class="row">
+        @forelse ($myFavorites as $myFavorite)
+            <div class="box">
+                <h2>{{ $myFavorite->title }}</h2>
+                <p>{{ $myFavorite->body }}</p>
+                @unless($myFavorite->tags->isEmpty())
+                    <ul class="tags" style="list-style-type: none; margin: 0;">
+                        @foreach ($myFavorite->tags as $tag)
+                           <li style="display: inline-block;">
+                                <span class="tag is-info is-medium">
+                                    {{ $tag->name }}
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul><br>
+                @endunless
+                <p>{{ $myFavorite->author->name }}&nbsp;|&nbsp;Published {{ $myFavorite->created_at->diffForHumans() }}</p>
+                <a href="{{ url('posts/'.$myFavorite->id) }}" class="button is-primary">Read More</a>
+            </div>
+        @empty
+            <p>You have no favorite posts.</p>
+        @endforelse
     </div>
-</div>
-@stop
+@endsection
