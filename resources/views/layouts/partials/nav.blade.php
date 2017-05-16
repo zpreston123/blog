@@ -1,4 +1,4 @@
-<nav class="nav has-shadow" id="top">
+<nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
       <a href="{{ (auth()->check()) ? "/posts" : "/" }}" class="nav-item">EXPress Blog</a>
