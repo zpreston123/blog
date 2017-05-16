@@ -61,7 +61,7 @@ class PostController extends Controller
         $post->addAuthor(auth()->user());
         $post->save();
 
-        $post->tags()->attach(request('tags'));
+        $post->addTags(request('tags'));
 
         return redirect('posts');
     }
@@ -109,7 +109,7 @@ class PostController extends Controller
         $post->addCategory(request('category'));
         $post->save();
 
-        $post->tags()->sync(request('tags') ?? []);
+        $post->syncTags(request('tags'));
 
         return redirect('posts');
     }

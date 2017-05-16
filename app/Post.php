@@ -97,6 +97,28 @@ class Post extends Model
     }
 
     /**
+     * Add tag(s) to a post.
+     *
+     * @param  mixed $tags
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function addTags($tags)
+    {
+        return $this->tags()->attach($tags);
+    }
+
+    /**
+     * Sync the list of tags associated with a post.
+     *
+     * @param  array $tags
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function syncTags($tags)
+    {
+        return $this->tags()->sync($tags ?? []);
+    }
+
+    /**
      * Scope a query to search posts by terms the user entered.
      *
      * @param  \Illuminate\Database\Eloquent\Builder $query
