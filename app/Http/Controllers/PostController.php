@@ -144,4 +144,30 @@ class PostController extends Controller
 
         return view('posts.index', compact('posts'));
     }
+
+    /**
+     * Favorite a particular post.
+     *
+     * @param  Post $post
+     * @return Response
+     */
+    public function favoritePost(Post $post)
+    {
+        auth()->user()->favorites()->attach($post->id);
+
+        return back();
+    }
+
+    /**
+     * Unfavorite a particular post.
+     *
+     * @param  Post $post
+     * @return Response
+     */
+    public function unFavoritePost(Post $post)
+    {
+        auth()->user()->favorites()->detach($post->id);
+
+        return back();
+    }
 }

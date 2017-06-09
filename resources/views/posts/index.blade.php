@@ -26,7 +26,11 @@
                         </ul><br>
                     @endunless
                     <p>{{ $post->author->name }}&nbsp;|&nbsp;Published {{ $post->created_at->diffForHumans() }}</p>
-                    <a href="{{ url('posts/'.$post->id) }}" class="button is-primary">Read More</a>
+                    <a href="{{ url('posts/'.$post->id) }}" class="button is-primary">Read More</a><br><br>
+                    <favorite
+                        :post={{ $post->id }}
+                        :favorited={{ $post->favorited() ? 'true' : 'false' }}
+                    ></favorite>
                 </div>
             @endforeach
             {{ $posts->links() }}

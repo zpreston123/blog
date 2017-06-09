@@ -25,3 +25,7 @@ Route::resource('posts.comments', 'CommentController');
 Route::get('posts/search', 'PostController@search');
 Route::resource('posts', 'PostController');
 
+Route::post('favorite/{post}', 'PostController@favoritePost');
+Route::post('unfavorite/{post}', 'PostController@unFavoritePost');
+
+Route::get('my_favorites', 'UserController@myFavorites');
