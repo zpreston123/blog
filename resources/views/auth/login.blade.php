@@ -2,7 +2,7 @@
     {!! Form::open(['url' => 'login']) !!}
         {!! Form::label('email', 'Email', ['class' => 'label']) !!}
         <p class="control has-icon">
-            {!! Form::text('email', old('email'), ['class' => 'input', 'placeholder' => 'jdoe@example.com']) !!}
+            {!! Form::text('email', old('email'), ['class' => 'input']) !!}
             <span class="icon is-small">
                 <i class="fa fa-envelope"></i>
             </span>
@@ -10,7 +10,7 @@
         </p>
         {!! Form::label('password', 'Password', ['class' => 'label']) !!}
         <p class="control has-icon">
-            {!! Form::password('password', ['class' => 'input', 'placeholder' => '*******']) !!}
+            {!! Form::password('password', ['class' => 'input']) !!}
             <span class="icon is-small">
                 <i class="fa fa-lock"></i>
             </span>
