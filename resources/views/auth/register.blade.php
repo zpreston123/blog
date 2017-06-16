@@ -8,38 +8,40 @@
             <h1 class="title has-text-centered">Register an Account</h1>
 
             <div class="box">
-                {!! Form::open(['url' => 'register']) !!}
-                    {!! Form::label('name', 'Name', ['class' => 'label']) !!}
+                <form action="/register" method="POST">
+                    {{ csrf_field() }}
+
+                    <label for="name" class="label">Name</label>
                     <p class="control">
-                        {!! Form::text('name', old('name'), ['class' => 'input', 'placeholder' => 'John Doe']) !!}
-                        {!! $errors->first('name', '<span class="help is-danger">:message</span>') !!}
+                        <input type="text" name="name" value="{{ old('name') }}" class="input">
+                        <span class="help is-danger">{{ $errors->first('name') }}</span>
                     </p>
 
-                    {!! Form::label('email', 'Email', ['class' => 'label']) !!}
+                    <label for="email" class="label">Email</label>
                     <p class="control">
-                        {!! Form::text('email', old('email'), ['class' => 'input', 'placeholder' => 'jdoe@example.com']) !!}
-                        {!! $errors->first('email', '<span class="help is-danger">:message</span>') !!}
+                        <input type="text" name="email" value="{{ old('email') }}" class="input">
+                        <span class="help is-danger">{{ $errors->first('email') }}</span>
                     </p>
 
                     <hr>
 
-                    {!! Form::label('password', 'Password', ['class' => 'label']) !!}
+                    <label for="password" class="label">Password</label>
                     <p class="control">
-                        {!! Form::password('password', ['class' => 'input', 'placeholder' => '*******']) !!}
-                        {!! $errors->first('password', '<span class="help is-danger">:message</span>') !!}
+                        <input type="password" name="password" class="input">
+                        <span class="help is-danger">{{ $errors->first('password') }}</span>
                     </p>
 
-                    {!! Form::label('password_confirmation', 'Confirm Password', ['class' => 'label']) !!}
+                    <label for="password_confirmation" class="label">Confirm Password</label>
                     <p class="control">
-                        {!! Form::password('password_confirmation', ['class' => 'input', 'placeholder' => '*******']) !!}
-                        {!! $errors->first('password_confirmation', '<span class="help is-danger">:message</span>') !!}
+                        <input type="password" name="password_confirmation" class="input">
+                        <span class="help is-danger">{{ $errors->first('password_confirmation') }}</span>
                     </p>
 
                     <p class="control">
-                        {!! Form::submit('Register', ['class' => 'button is-primary']) !!}
-                        {!! Form::button('Cancel', ['class' => 'button', 'onclick' => 'document.location.href="/"']) !!}
+                        <input type="submit" value="Register" class="button is-primary">
+                        <input type="button" value="Cancel" onclick="document.location.href='/'" class="button is-danger">
                     </p>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>
