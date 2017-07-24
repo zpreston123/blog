@@ -8,39 +8,41 @@
     <div class="columns">
         <div class="column is-half is-offset-one-quarter">
             <div class="box">
-                {!! Form::open(['route' => 'posts.store']) !!}
-                    {!! Form::label('title', 'Title', ['class' => 'label']) !!}
+                <form method="POST" action="{{ route('posts.store') }}">
+                    {{ csrf_field() }}
+
+                    <label for="title" class="label">Title</label>
                     <p class="control">
-                        {!! Form::text('title', old('title'), ['class' => 'input']) !!}
-                        {!! $errors->first('title', '<span class="help is-danger">:message</span>') !!}
+                        <input type="text" name="title" value="{{ old('title') }}" class="input">
+                        <span class="help is-danger">{{ $errors->first('title') }}</span>
                     </p>
 
-                    {!! Form::label('category', 'Category', ['class' => 'label']) !!}
+                    <label for="category" class="label">Category</label>
                     <p class="control">
                         <span class="select">
                             {!! Form::select('category', ['' => 'Select an option'] + $categories, old('category')) !!}
                         </span>
-                        {!! $errors->first('category', '<span class="help is-danger">:message</span>') !!}
+                        <span class="help is-danger">{{ $errors->first('category') }}</span>
                     </p>
 
-                    {!! Form::label('tags', 'Tags', ['class' => 'label']) !!}
+                    <label for="tags" class="label">Tags</label>
                     <p class="control">
-                        <span class="select">
+                        <span class="select is-multiple">
                             {!! Form::select('tags[]', $tags, old('tags'), ['id' => 'tags', 'multiple']) !!}
                         </span>
                     </p>
 
-                    {!! Form::label('body', 'Content', ['class' => 'label']) !!}
+                    <label for="body" class="label">Content</label>
                     <p class="control">
-                        {!! Form::textarea('body', old('body'), ['class' => 'textarea']) !!}
-                        {!! $errors->first('body', '<span class="help is-danger">:message</span>') !!}
+                        <textarea name="body" value="{{ old('body') }}" class="textarea"></textarea>
+                        <span class="help is-danger">{{ $errors->first('body') }}</span>
                     </p>
 
                     <p class="control">
-                        {{ Form::submit('Publish', ['class' => 'button is-primary']) }}
-                        {{ Form::button('Cancel', ['class' => 'button', 'onclick' => 'document.location.href="/posts"']) }}
+                        <input type="submit" value="Publish" class="button is-primary">
+                        <button class="button" onclick="document.location.href='/posts/'">Cancel</button>
                     </p>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>

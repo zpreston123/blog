@@ -28,7 +28,7 @@
                                 <ul class="tags" style="list-style-type: none; margin: 0;">
                                     @foreach ($post->tags as $tag)
                                        <li style="display: inline-block;">
-                                            <span class="tag is-info is-medium">
+                                            <span class="tag is-info">
                                                 {{ $tag->name }}
                                             </span>
                                         </li>

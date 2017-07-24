@@ -25,7 +25,7 @@
 
                     {!! Form::label('tags', 'Tags', ['class' => 'label']) !!}
                     <p class="control">
-                        <span class="select">
+                        <span class="select is-multiple">
                             {!! Form::select('tags[]', $tags, $post->tags->pluck('id')->all(), ['multiple']) !!}
                         </span>
                     </p>
