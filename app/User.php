@@ -56,6 +56,26 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all followees that are following a user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(self::class, 'followers', 'followee_id', 'follower_id');
+    }
+
+    /**
+     * Get all followers associated with a user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function following()
+    {
+        return $this->belongsToMany(self::class, 'followers', 'follower_id', 'followee_id');
+    }
+
+    /**
      * Get the user's avatar.
      *
      * @param  string $value
