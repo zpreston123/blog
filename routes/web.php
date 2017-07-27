@@ -28,4 +28,5 @@ Route::resource('posts', 'PostController');
 Route::post('favorite/{post}', 'PostController@favoritePost');
 Route::post('unfavorite/{post}', 'PostController@unFavoritePost');
 
+Route::get('users/search', 'UserController@search');
 Route::get('my_favorites', 'UserController@myFavorites');

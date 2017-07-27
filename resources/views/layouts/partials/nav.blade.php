@@ -5,6 +5,16 @@
       @if (auth()->check())
         <a href="/posts/create" class="nav-item {{ Request::is('posts/create') ? 'is-active' : '' }}">New Post</a>
         <a href="/my_favorites" class="nav-item {{ Request::is('my_favorites') ? 'is-active' : '' }}">My Favorites</a>
+        <div class="navbar-item">
+          <form method="GET" action="/users/search">
+              <div class="control has-icons-left">
+                <input class="input is-small" type="text" name="q" placeholder="Search users...">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-search"></i>
+                </span>
+              </div>
+          </form>
+        </div>
       @endif
     </div>
     <span class="nav-toggle">
