@@ -25,15 +25,11 @@
                             </h2>
                             <p>{{ str_limit($post->body, 200) }}</p>
                             @unless($post->tags->isEmpty())
-                                <ul class="tags" style="list-style-type: none; margin: 0;">
+                                <div class="tags">
                                     @foreach ($post->tags as $tag)
-                                       <li style="display: inline-block;">
-                                            <span class="tag is-info">
-                                                {{ $tag->name }}
-                                            </span>
-                                        </li>
+                                        <span class="tag">{{ $tag->name }}</span>
                                     @endforeach
-                                </ul><br>
+                                </div>
                             @endunless
                             <p>{{ $post->author->name }}&nbsp;|&nbsp;Published {{ $post->created_at->diffForHumans() }}</p>
                             <favorite
