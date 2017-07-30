@@ -6,9 +6,7 @@
     <div class="row">
         <div class="columns">
             <div class="column is-10 is-offset-1">
-                {!! Form::open(['url' => 'posts/search', 'style' => 'padding-bottom:40px;', 'method' => 'GET']) !!}
-                    {!! Form::text('q', old('q'), ['type' => 'search', 'class' => 'search', 'placeholder' => 'Search...']) !!}
-                {!! Form::close() !!}
+                @include('posts.search')
             </div>
         </div>
     </div>
@@ -19,12 +17,12 @@
                     @foreach ($posts as $post)
                         <div class="box">
                             <h2>
-                                <a class="post-title" href="{{ route('posts.show', $post->id) }}">
+                                <a class="post-title" href="posts/{{ $post->id }}">
                                     {{ $post->title }}
                                 </a>
                             </h2>
                             <p>{{ str_limit($post->body, 200) }}</p>
-                            @unless($post->tags->isEmpty())
+                            @unless ($post->tags->isEmpty())
                                 <div class="tags">
                                     @foreach ($post->tags as $tag)
                                         <span class="tag">{{ $tag->name }}</span>
