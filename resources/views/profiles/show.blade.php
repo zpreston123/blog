@@ -20,7 +20,7 @@
 							Updated: {{ $profile->updated_at->format('m/d/Y h:ma') }}
 						</span><br><br>
 
-						<a href="{{ url('profile/'.$profile->id.'/edit') }}" class="button is-info">Edit Profile</a>
+						<a href="{{ route('profile.edit', $profile->id) }}" class="button is-info">Edit Profile</a>
 					</p>
 				</div>
 			</div>
