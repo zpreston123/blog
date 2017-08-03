@@ -17,6 +17,8 @@
 
     <section class="section">
         <div id="app" class="container content">
+            <flash></flash>
+
             @yield('content')
         </div>
     </section>

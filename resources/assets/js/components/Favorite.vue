@@ -28,12 +28,18 @@
         methods: {
             favorite(post) {
                 axios.post('/favorite/' + post)
-                    .then((response) => this.isFavorited = true)
+                    .then((response) => {
+                        this.isFavorited = true;
+                        flash('success', 'Post marked as favorite!');
+                    })
                     .catch((response) => console.log(response.data));
             },
             unFavorite(post) {
                 axios.post('/unfavorite/' + post)
-                    .then((response) => this.isFavorited = false)
+                    .then((response) => {
+                        this.isFavorited = false;
+                        flash('success', 'Post marked as unfavorite!');
+                    })
                     .catch((response) => console.log(response.data));
             }
         }
