@@ -7,7 +7,7 @@ class WelcomeController extends Controller
 	/**
 	 * Show welcome view.
 	 *
-	 * @return Response
+	 * @return \Illuminate\Http\Response
 	 */
     public function index()
     {
