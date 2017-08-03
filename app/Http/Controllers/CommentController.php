@@ -21,7 +21,7 @@ class CommentController extends Controller
      * Display a listing of the resource.
      *
      * @param  Post $post
-     * @return \Illuminate\Http\Response
+     * @return Comment
      */
     public function index(Post $post)
     {
@@ -47,7 +47,7 @@ class CommentController extends Controller
      *
      * @param  Post $post
      * @param  Comment $comment
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post, Comment $comment)
     {

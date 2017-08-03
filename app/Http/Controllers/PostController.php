@@ -21,7 +21,7 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -33,7 +33,7 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -46,7 +46,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store()
     {
@@ -70,7 +70,7 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
     {
@@ -81,7 +81,7 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
     {
@@ -95,7 +95,7 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Post $post)
     {
@@ -118,7 +118,7 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Post $post)
     {
@@ -136,7 +136,7 @@ class PostController extends Controller
     /**
      * Search for posts by title or content.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function search()
     {
@@ -149,7 +149,7 @@ class PostController extends Controller
      * Favorite a particular post.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function favoritePost(Post $post)
     {
@@ -162,7 +162,7 @@ class PostController extends Controller
      * Unfavorite a particular post.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function unFavoritePost(Post $post)
     {
