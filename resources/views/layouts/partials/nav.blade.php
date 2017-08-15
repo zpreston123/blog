@@ -1,18 +1,18 @@
 <nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
-      <a href="{{ (auth()->check()) ? "/posts" : "/" }}" class="nav-item">EXPress Blog</a>
-      @if (auth()->check())
-        <a href="/posts/create" class="nav-item {{ Request::is('posts/create') ? 'is-active' : '' }}">New Post</a>
-        <a href="/my_favorites" class="nav-item {{ Request::is('my_favorites') ? 'is-active' : '' }}">My Favorites</a>
-      @endif
+      <a href="{{ (auth()->check()) ? '/posts' : '/' }}" class="nav-item">EXPress Blog</a>
+      @auth
+        <a href="/posts/create" class="nav-item">New Post</a>
+        <a href="/my_favorites" class="nav-item">My Favorites</a>
+      @endauth
     </div>
     <span class="nav-toggle">
       <span></span>
       <span></span>
       <span></span>
     </span>
-    @if (auth()->check())
+    @auth
       <div class="nav-right nav-menu">
         <a href="/profile/{{ auth()->id() }}" class="nav-item">
           <figure class="image is-16x16" style="margin-right: 8px;">
@@ -25,6 +25,6 @@
           {{ csrf_field() }}
         </form>
       </div>
-    @endif
+    @endauth
   </div>
 </nav>
