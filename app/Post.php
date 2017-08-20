@@ -139,8 +139,9 @@ class Post extends Model
      */
     public function favorited()
     {
-        return (bool) Favorite::where('user_id', auth()->id())
-                            ->where('post_id', $this->id)
-                            ->first();
+        return (bool) Favorite::where([
+            ['user_id', auth()->id()],
+            ['post_id', $this->id]
+        ])->first();
     }
 }
