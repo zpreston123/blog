@@ -9,6 +9,16 @@ use Intervention\Image\Facades\Image;
 class ProfileController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  User $profile
