@@ -5,6 +5,7 @@ namespace Blog\Http\Controllers;
 use Blog\Tag;
 use Blog\Post;
 use Blog\Category;
+use Blog\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -46,22 +47,17 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  PostRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function store(PostRequest $request)
     {
-        $this->validate(request(), [
-            'title'    => 'required',
-            'category' => 'required',
-            'body'     => 'required'
-        ]);
-
-        $post = new Post(request()->all());
-        $post->addCategory(request('category'));
+        $post = new Post($request->all());
+        $post->addCategory($request->input('category'));
         $post->addAuthor(auth()->user());
         $post->save();
 
-        $post->addTags(request('tags'));
+        $post->addTags($request->input('tags'));
 
         return redirect('posts');
     }
@@ -94,22 +90,17 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param  PostRequest $request
      * @param  Post $post
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        $this->validate(request(), [
-            'title'    => 'required',
-            'category' => 'required',
-            'body'     => 'required'
-        ]);
-
-        $post->fill(request()->only('title', 'body'));
-        $post->addCategory(request('category'));
+        $post->fill($request->only('title', 'body'));
+        $post->addCategory($request->input('category'));
         $post->save();
 
-        $post->syncTags(request('tags'));
+        $post->syncTags($request->input('tags'));
 
         return redirect('posts');
     }
@@ -126,6 +117,10 @@ class PostController extends Controller
             $post->comments->each(function ($comment) {
                 $comment->delete();
             });
+        }
+
+        if ($post->favorited()) {
+            $post->favorites()->detach();
         }
 
         $post->delete();
