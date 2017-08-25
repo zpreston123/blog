@@ -1,7 +1,8 @@
 <template>
 	<article class="message flash" v-bind:class="'is-'+type" v-show="isVisible">
 		<div class="message-body">
-			{{ body }}&nbsp;&nbsp;<button class="delete" @click="isVisible=false"></button>
+			<button class="delete" @click="isVisible=false"></button>
+			{{ body }}
 		</div>
 	</article>
 </template>
