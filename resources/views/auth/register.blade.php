@@ -8,13 +8,11 @@
             <h1 class="title has-text-centered">Register an Account</h1>
 
             <div class="box">
-                <form method="POST" action="/register">
-                    {{ csrf_field() }}
-
+                {{ Form::open(['url' => 'register']) }}
                     <div class="field">
-                        <label class="label">Name</label>
+                        {{ Form::label('name', 'Name', ['class' => 'label']) }}
                         <div class="control has-icons-left">
-                            <input class="input" type="text" name="name" value="{{ old('name') }}">
+                            {{ Form::text('name', old('name'), ['class' => 'input']) }}
                             <span class="icon is-small is-left">
                                 <i class="fa fa-user"></i>
                             </span>
@@ -25,9 +23,9 @@
                     </div>
 
                     <div class="field">
-                        <label class="label">Email</label>
+                        {{ Form::label('email', 'Email', ['class' => 'label']) }}
                         <div class="control has-icons-left">
-                            <input class="input" type="text" name="email" value="{{ old('email') }}">
+                            {{ Form::text('email', old('email'), ['class' => 'input']) }}
                             <span class="icon is-small is-left">
                                 <i class="fa fa-envelope"></i>
                             </span>
@@ -40,9 +38,9 @@
                     <hr>
 
                     <div class="field">
-                        <label class="label">Password</label>
+                        {{ Form::label('password', 'Password', ['class' => 'label']) }}
                         <div class="control has-icons-left">
-                            <input class="input" type="password" name="password">
+                            {{ Form::password('password', ['class' => 'input']) }}
                             <span class="icon is-small is-left">
                                 <i class="fa fa-lock"></i>
                             </span>
@@ -53,10 +51,10 @@
                     </div>
 
                     <div class="field">
-                        <label class="label">Confirm Password</label>
+                        {{ Form::label('password_confirmation', 'Confirm Password', ['class' => 'label']) }}
                         <div class="control has-icons-left">
-                            <input class="input" type="password" name="password_confirmation">
-                             <span class="icon is-small is-left">
+                            {{ Form::password('password_confirmation', ['class' => 'input']) }}
+                            <span class="icon is-small is-left">
                                 <i class="fa fa-check-circle"></i>
                             </span>
                         </div>
@@ -64,13 +62,13 @@
 
                     <div class="field is-grouped">
                         <p class="control">
-                            <button class="button is-primary" type="submit">Register</button>
+                            {{ Form::submit('Register', ['class' => 'button is-primary']) }}
                         </p>
                         <p class="control">
-                            <button class="button is-danger" onclick="document.location.href='/'">Cancel</button>
+                            {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/"']) }}
                         </p>
                     </div>
-                </form>
+                {{ Form::close() }}
             </div>
         </div>
     </div>

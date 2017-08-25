@@ -1,11 +1,9 @@
 <div class="box">
-    <form method="POST" action="/login">
-        {{ csrf_field() }}
-
+    {!! Form::open(['url' => 'login']) !!}
         <div class="field">
-            <label class="label">Email</label>
+            {{ Form::label('email', 'Email', ['class' => 'label']) }}
             <div class="control has-icons-left">
-                <input class="input" type="text" name="email" value="{{ old('email') }}">
+                {{ Form::text('email', old('email'), ['class' => 'input']) }}
                 <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                 </span>
@@ -16,9 +14,9 @@
         </div>
 
         <div class="field">
-            <label class="label">Password</label>
+            {{ Form::label('password', 'Password', ['class' => 'label']) }}
             <div class="control has-icons-left">
-                <input class="input" type="password" name="password">
+                {{ Form::password('password', ['class' => 'input']) }}
                 <span class="icon is-small is-left">
                     <i class="fa fa-lock"></i>
                 </span>
@@ -29,7 +27,7 @@
         </div>
 
         <div class="control">
-            <button class="button is-primary" type="submit">Log in</button>
+            {{ Form::submit('Log in', ['class' => 'button is-primary']) }}
         </div>
-    </form>
+    {!! Form::close() !!}
 </div>
