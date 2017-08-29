@@ -61,6 +61,17 @@ class Post extends Model
     }
 
     /**
+     * A post can be associated with many users as their favorite.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'post_id', 'user_id')
+                    ->withTimestamps();
+    }
+
+    /**
      * Add an author to the post.
      *
      * @param  User $author
