@@ -31,15 +31,16 @@
 		methods: {
 			onSubmit() {
 				if (this.comment.body == '') {
-					alert('Comment cannot be empty! Please try again.');
+					flash('danger', 'Comment cannot be empty! Please try again.');
 					return false;
 				}
 
 				axios.post('/posts/' + this.postId + '/comments', this.comment).then((response) => {
 					this.$emit('submitted', response.data);
 					this.comment.body = '';
+					flash('success', 'Comment added successfully!');
 				}, (response) => {
-					alert('Problem submitting comment. Please try again.');
+					flash('danger', 'Problem submitting comment. Please try again.');
 				});
 			}
 		}

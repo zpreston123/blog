@@ -14,7 +14,7 @@ class Tag extends Model
     protected $fillable = ['name'];
 
 	/**
-	 * Get all posts associated with a tag.
+	 * Get all posts associated with the tag.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */

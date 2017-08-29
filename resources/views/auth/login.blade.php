@@ -1,31 +1,33 @@
 <div class="box">
-    <form method="POST" action="/login">
-        {{ csrf_field() }}
-
-        <label for="email" class="label">Email</label>
-        <p class="control has-icon">
-            <input type="text" name="email" value="{{ old('email') }}" class="input">
-            <span class="icon is-small">
-                <i class="fa fa-envelope"></i>
-            </span>
-            <span class="help is-danger">
+    {!! Form::open(['url' => 'login']) !!}
+        <div class="field">
+            {{ Form::label('email', 'Email', ['class' => 'label']) }}
+            <div class="control has-icons-left">
+                {{ Form::text('email', old('email'), ['class' => 'input']) }}
+                <span class="icon is-small is-left">
+                    <i class="fa fa-envelope"></i>
+                </span>
+            </div>
+            <p class="help is-danger">
                 {{ $errors->first('email') }}
-            </span>
-        </p>
+            </p>
+        </div>
 
-        <label for="password" class="label">Password</label>
-        <p class="control has-icon">
-            <input type="password" name="password" class="input">
-            <span class="icon is-small">
-                <i class="fa fa-lock"></i>
-            </span>
-            <span class="help is-danger">
+        <div class="field">
+            {{ Form::label('password', 'Password', ['class' => 'label']) }}
+            <div class="control has-icons-left">
+                {{ Form::password('password', ['class' => 'input']) }}
+                <span class="icon is-small is-left">
+                    <i class="fa fa-lock"></i>
+                </span>
+            </div>
+            <p class="help is-danger">
                 {{ $errors->first('password') }}
-            </span>
-        </p>
+            </p>
+        </div>
 
-        <p class="control">
-            <input type="submit" value="Log in" class="button is-primary">
-        </p>
-    </form>
+        <div class="control">
+            {{ Form::submit('Log in', ['class' => 'button is-primary']) }}
+        </div>
+    {!! Form::close() !!}
 </div>

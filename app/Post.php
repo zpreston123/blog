@@ -31,7 +31,7 @@ class Post extends Model
     }
 
     /**
-     * Get the author associated with a post.
+     * Get the author associated with the post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -51,7 +51,7 @@ class Post extends Model
     }
 
     /**
-     * Get all tags associatd with a post.
+     * Get all tags associatd with the post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -83,7 +83,7 @@ class Post extends Model
     }
 
     /**
-     * Add a new comment relative to a post.
+     * Add a comment to the post.
      *
      * @param  User $author
      * @param  array $attributes
@@ -97,7 +97,7 @@ class Post extends Model
     }
 
     /**
-     * Add tag(s) to a post.
+     * Add tag(s) to the post.
      *
      * @param  mixed $tags
      * @return \Illuminate\Database\Eloquent\Model
@@ -108,7 +108,7 @@ class Post extends Model
     }
 
     /**
-     * Sync the list of tags associated with a post.
+     * Sync the list of tags associated with the post.
      *
      * @param  array $tags
      * @return \Illuminate\Database\Eloquent\Model
@@ -133,14 +133,15 @@ class Post extends Model
     }
 
     /**
-     * Determine whether a post has been marked as favorite by a user.
+     * Check whether the post is marked as favorite by the user.
      *
      * @return boolean
      */
     public function favorited()
     {
-        return (bool) Favorite::where('user_id', auth()->id())
-                            ->where('post_id', $this->id)
-                            ->first();
+        return (bool) Favorite::where([
+            ['user_id', auth()->id()],
+            ['post_id', $this->id]
+        ])->first();
     }
 }

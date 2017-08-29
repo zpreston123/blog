@@ -44,7 +44,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all favorite posts associated with a user.
+     * Get all favorite posts associated with the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

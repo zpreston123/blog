@@ -5,6 +5,7 @@ namespace Blog\Http\Controllers;
 use Blog\Tag;
 use Blog\Post;
 use Blog\Category;
+use Blog\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -21,7 +22,7 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -33,7 +34,7 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -46,22 +47,17 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return Response
+     * @param  PostRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function store(PostRequest $request)
     {
-        $this->validate(request(), [
-            'title'    => 'required',
-            'category' => 'required',
-            'body'     => 'required'
-        ]);
-
-        $post = new Post(request()->all());
-        $post->addCategory(request('category'));
+        $post = new Post($request->all());
+        $post->addCategory($request->input('category'));
         $post->addAuthor(auth()->user());
         $post->save();
 
-        $post->addTags(request('tags'));
+        $post->addTags($request->input('tags'));
 
         return redirect('posts');
     }
@@ -70,7 +66,7 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
     {
@@ -81,7 +77,7 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
     {
@@ -94,22 +90,17 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param  PostRequest $request
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        $this->validate(request(), [
-            'title'    => 'required',
-            'category' => 'required',
-            'body'     => 'required'
-        ]);
-
-        $post->fill(request()->only('title', 'body'));
-        $post->addCategory(request('category'));
+        $post->fill($request->only('title', 'body'));
+        $post->addCategory($request->input('category'));
         $post->save();
 
-        $post->syncTags(request('tags'));
+        $post->syncTags($request->input('tags'));
 
         return redirect('posts');
     }
@@ -118,7 +109,7 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Post $post)
     {
@@ -126,6 +117,10 @@ class PostController extends Controller
             $post->comments->each(function ($comment) {
                 $comment->delete();
             });
+        }
+
+        if ($post->favorited()) {
+            $post->favorites()->detach();
         }
 
         $post->delete();
@@ -136,7 +131,7 @@ class PostController extends Controller
     /**
      * Search for posts by title or content.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function search()
     {
@@ -149,7 +144,7 @@ class PostController extends Controller
      * Favorite a particular post.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function favoritePost(Post $post)
     {
@@ -162,7 +157,7 @@ class PostController extends Controller
      * Unfavorite a particular post.
      *
      * @param  Post $post
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function unFavoritePost(Post $post)
     {

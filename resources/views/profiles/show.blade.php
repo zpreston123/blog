@@ -21,13 +21,11 @@
 						</span><br><br>
 
 						@if (auth()->user()->name != $profile->name)
-								<form method="POST" action="/follow/{{ $profile->id }}">
-									{{ csrf_field() }}
-
-									<input type="submit" class="button is-success" value="Follow">
-								</form>
+							{!! Form::open(['url' => 'follow/'.$profile->id]) !!}
+								{{ Form::submit('Follow', ['class' => 'button is-success']) }}
+							{!! Form::close() !!}
 						@else
-							<a href="{{ url('profile/'.$profile->id.'/edit') }}" class="button is-info">Edit Profile</a>
+							<a href="{{ route('profile.edit', $profile->id) }}" class="button is-info">Edit Profile</a>
 						@endif
 					</p>
 				</div>
