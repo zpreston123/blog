@@ -10,7 +10,7 @@
     {{ Form::label('category', 'Category', ['class' => 'label']) }}
     <div class="control">
         <span class="select">
-            {{ Form::select('category', ['' => 'Select an opton'] + $categories, null) }}
+            {{ Form::select('category', ['' => 'Select an option'] + $categories, null) }}
         </span>
     </div>
     <p class="help is-danger">{{ $errors->first('category') }}</p>
