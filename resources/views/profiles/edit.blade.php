@@ -8,56 +8,56 @@
     <div class="columns">
         <div class="column is-half is-offset-one-quarter">
             <div class="box">
-                {!! Form::open(['route' => ['profile.update', $profile], 'enctype' => 'multipart/form-data', 'method' => 'PATCH']) !!}
+                {{ Form::model($profile, ['route' => ['profile.update', $profile], 'enctype' => 'multipart/form-data', 'method' => 'PUT']) }}
                     <div class="field">
-                        {!! Form::label('avatar', 'Avatar', ['class' => 'label']) !!}
+                        {{ Form::label('avatar', 'Avatar', ['class' => 'label']) }}
                         <div class="control">
-                            {!! Form::file('avatar') !!}
+                            {{ Form::file('avatar') }}
                         </div>
                         {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
                     <div class="field">
-                        {!! Form::label('name', 'Name', ['class' => 'label']) !!}
+                        {{ Form::label('name', 'Name', ['class' => 'label']) }}
                         <div class="control">
-                            {!! Form::text('name', $profile->name, ['class' => 'input']) !!}
+                            {{ Form::text('name', null, ['class' => 'input']) }}
                         </div>
                         {!! $errors->first('name', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
                     <div class="field">
-                        {!! Form::label('email', 'Email', ['class' => 'label']) !!}
+                        {{ Form::label('email', 'Email', ['class' => 'label']) }}
                         <div class="control">
-                            {!! Form::text('email', $profile->email, ['class' => 'input']) !!}
+                            {{ Form::text('email', null, ['class' => 'input']) }}
                         </div>
                         {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
                     <div class="field">
-                        {!! Form::label('password', 'New Password', ['class' => 'label']) !!}
+                        {{ Form::label('password', 'New Password', ['class' => 'label']) }}
                         <div class="control">
-                            {!! Form::password('password', ['class' => 'input']) !!}
+                            {{ Form::password('password', ['class' => 'input']) }}
                         </div>
                         {!! $errors->first('password', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
                     <div class="field">
-                        {!! Form::label('password_confirm', 'Confirm New Password', ['class' => 'label']) !!}
+                        {{ Form::label('password_confirmation', 'Confirm New Password', ['class' => 'label']) }}
                         <div class="control">
-                            {!! Form::password('password_confirm', ['class' => 'input']) !!}
+                            {{ Form::password('password_confirmation', ['class' => 'input']) }}
                         </div>
                         {!! $errors->first('password_confirm', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
-                     <div class="field is-grouped">
+                    <div class="field is-grouped">
                         <div class="control">
-                            {!! Form::submit('Update', ['class' => 'button is-primary']) !!}
+                            {{ Form::submit('Update', ['class' => 'button is-primary']) }}
                         </div>
                         <div class="control">
                             {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/posts"']) }}
                         </div>
                     </div>
-                {!! Form::close() !!}
+                {{ Form::close() }}
             </div>
         </div>
     </div>

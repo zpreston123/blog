@@ -20,7 +20,9 @@
 							Updated: {{ $profile->updated_at->format('m/d/Y h:ma') }}
 						</span><br><br>
 
-						<a href="{{ route('profile.edit', $profile->id) }}" class="button is-info">Edit Profile</a>
+						<a href="{{ route('profile.edit', $profile) }}" class="button is-info">
+							Edit Profile
+						</a>
 					</p>
 				</div>
 			</div>
@@ -51,10 +53,10 @@
 								</div>
 							</div>
 							<footer class="card-footer">
-								<a class="card-footer-item" href="{{ route('posts.edit', ['post' => $post]) }}">Edit</a>
-								<a class="card-footer-item" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">Delete
-									{{ Form::open(['route' => ['posts.destroy', $post], 'id' => 'delete-form', 'method' => 'delete']) }}
-			                        {{ Form::close() }}
+								<a class="card-footer-item" href="{{ route('posts.edit', $post) }}">Edit</a>
+								<a class="card-footer-item" id="delete-button">Delete
+									{{ Form::open(['route' => ['posts.destroy', $post], 'id' => 'delete-form', 'method' => 'DELETE']) }}
+									{{ Form::close() }}
 								</a>
 							</footer>
 						</div>
@@ -63,4 +65,18 @@
 			</div>
 		@endforeach
 	@endif
-@stop
+@endsection
+
+@section('scripts')
+	<script>
+		$(function () {
+			$('#delete-button').click(function (event) {
+				event.preventDefault();
+				if (confirm('Are you sure you want to delete this post?')) {
+					$('#delete-form').submit();
+				}
+			});
+		});
+	</script>
+@endsection
+
