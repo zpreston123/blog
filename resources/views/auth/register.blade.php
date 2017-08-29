@@ -17,9 +17,7 @@
                                 <i class="fa fa-user"></i>
                             </span>
                         </div>
-                        <p class="help is-danger">
-                            {{ $errors->first('name') }}
-                        </p>
+                        {!! $errors->first('name', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
                     <div class="field">
@@ -30,9 +28,7 @@
                                 <i class="fa fa-envelope"></i>
                             </span>
                         </div>
-                        <p class="help is-danger">
-                            {{ $errors->first('email') }}
-                        </p>
+                        {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
                     <hr>
@@ -45,9 +41,7 @@
                                 <i class="fa fa-lock"></i>
                             </span>
                         </div>
-                        <p class="help is-danger">
-                            {{ $errors->first('password') }}
-                        </p>
+                        {!! $errors->first('password', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
                     <div class="field">

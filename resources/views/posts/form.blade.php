@@ -3,7 +3,7 @@
     <div class="control">
         {{ Form::text('title', null, ['class' => 'input']) }}
     </div>
-    <p class="help is-danger">{{ $errors->first('title') }}</p>
+    {!! $errors->first('title', '<p class="help is-danger">:message</p>') !!}
 </div>
 
 <div class="field">
@@ -13,7 +13,7 @@
             {{ Form::select('category', ['' => 'Select an option'] + $categories, null) }}
         </span>
     </div>
-    <p class="help is-danger">{{ $errors->first('category') }}</p>
+    {!! $errors->first('category', '<p class="help is-danger">:message</p>') !!}
 </div>
 
 <div class="field">
@@ -30,7 +30,7 @@
     <div class="control">
         {{ Form::textarea('body', null, ['class' => 'textarea']) }}
     </div>
-    <p class="help is-danger">{{ $errors->first('body') }}</p>
+    {!! $errors->first('body', '<p class="help is-danger">:message</p>') !!}
 </div>
 
 <div class="field is-grouped">
