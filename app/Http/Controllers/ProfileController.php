@@ -51,6 +51,7 @@ class ProfileController extends Controller
         $this->validate(request(), [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255'.Rule::unique('users')->ignore($profile->id),
+            'password' => 'min:6|confirmed',
             'avatar' => 'image|mimes:jpeg,png'
         ]);
 
