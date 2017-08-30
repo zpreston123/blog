@@ -21,11 +21,18 @@
 						</span><br><br>
 
 						@if (auth()->user()->name != $profile->name)
-							{!! Form::open(['url' => 'follow/'.$profile->id]) !!}
-								{{ Form::submit('Follow', ['class' => 'button is-success']) }}
-							{!! Form::close() !!}
+							@if (auth()->user()->isFollowing($profile))
+								{{ Form::open(['url' => 'unfollow/'.$profile->id, 'method' => 'DELETE']) }}
+									{{ Form::submit('Unfollow', ['class' => 'button is-danger']) }}
+								{{ Form::close() }}
+							@else
+								{{ Form::open(['url' => 'follow/'.$profile->id]) }}
+									{{ Form::submit('Follow', ['class' => 'button is-success']) }}
+								{{ Form::close() }}
+							@endif
 						@else
 							<a href="{{ route('profile.edit', $profile->id) }}" class="button is-info">Edit Profile</a>
+							<a href="/follow" class="button is-success">Following</a>
 						@endif
 					</p>
 				</div>

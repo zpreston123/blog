@@ -14,6 +14,14 @@
         <a class="navbar-item" href="/my_favorites">My Favorites</a>
       </div>
       <div class="navbar-end">
+        {{ Form::open(['url' => 'users/search', 'style' => 'padding-top: 8px;', 'method' => 'GET']) }}
+          <div class="control has-icons-left">
+            {{ Form::search('q', null, ['class' => 'input', 'placeholder' => 'Search users...']) }}
+            <span class="icon is-left">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+        {{ Form::close() }}
         <a class="navbar-item" href="/profile/{{ auth()->id() }}">
           <figure class="image is-16x16" style="margin-right: 8px;">
             <img src="{{ auth()->user()->avatar }}">
