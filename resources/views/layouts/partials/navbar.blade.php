@@ -1,14 +1,14 @@
 <nav class="navbar">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ (auth()->check()) ? '/posts' : '/' }}">EXPress Blog</a>
-    <div class="navbar-burger burger" data-target="navMenubd-example">
+    <div class="navbar-burger" data-target="navMenu">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
   @auth
-    <div id="navMenubd-example" class="navbar-menu">
+    <div class="navbar-menu" id="navMenu">
       <div class="navbar-start">
         <a class="navbar-item" href="/posts/create">New Post</a>
         <a class="navbar-item" href="/my_favorites">My Favorites</a>

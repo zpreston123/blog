@@ -71,10 +71,31 @@
 									</a>
 								</footer>
 							</div>
+							<footer class="card-footer">
+								<a class="card-footer-item" href="{{ route('posts.edit', ['post' => $post]) }}">Edit</a>
+								<a class="card-footer-item" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">Delete
+									{{ Form::open(['route' => ['posts.destroy', $post], 'id' => 'delete-form', 'method' => 'delete']) }}
+			                        {{ Form::close() }}
+								</a>
+							</footer>
 						</div>
 					@endforeach
 				</div>
 			@endforeach
 		@endif
 	@endif
-@stop
+@endsection
+
+@section('scripts')
+	<script>
+		$(function () {
+			$('#delete-button').click(function (event) {
+				event.preventDefault();
+				if (confirm('Are you sure you want to delete this post?')) {
+					$('#delete-form').submit();
+				}
+			});
+		});
+	</script>
+@endsection
+
