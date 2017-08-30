@@ -56,23 +56,34 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all followees that are following a user.
+     * Get all users that is following a user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function followers()
     {
-        return $this->belongsToMany(self::class, 'followers', 'followee_id', 'follower_id');
+        return $this->belongsToMany(self::class, 'followers', 'follow_id', 'user_id');
     }
 
     /**
-     * Get all followers associated with a user.
+     * Get all users that a user is following.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function following()
     {
-        return $this->belongsToMany(self::class, 'followers', 'follower_id', 'followee_id');
+        return $this->belongsToMany(self::class, 'followers', 'user_id', 'follow_id');
+    }
+
+    /**
+     * Check whether user is following another user.
+     *
+     * @param  self $user
+     * @return boolean
+     */
+    public function isFollowing(self $user)
+    {
+        return $this->following()->where('follow_id', $user->id)->first() != null;
     }
 
     /**

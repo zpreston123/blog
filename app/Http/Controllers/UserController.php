@@ -37,18 +37,4 @@ class UserController extends Controller
 
  	    return view('users.index', compact('users'));
  	}
-
- 	public function addFollowee($id)
- 	{
- 	    $followee = User::find($id);
-
- 	    auth()->user()->following()->save($followee);
-
- 	    return back();
- 	}
-
- 	public function removeFollowee()
- 	{
-
- 	}
 }

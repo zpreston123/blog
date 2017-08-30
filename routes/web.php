@@ -31,4 +31,6 @@ Route::post('unfavorite/{post}', 'PostController@unFavoritePost');
 Route::get('users/search', 'UserController@search');
 Route::get('my_favorites', 'UserController@myFavorites');
 
-Route::post('follow/{id}', 'UserController@addFollowee');
+Route::get('follow', 'FollowerController@index');
+Route::post('follow/{id}', 'FollowerController@store');
+Route::delete('unfollow/{id}', 'FollowerController@destroy');
