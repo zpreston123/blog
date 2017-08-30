@@ -3,8 +3,8 @@
 namespace Blog\Http\Controllers\Auth;
 
 use Blog\User;
-use Validator;
 use Blog\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -23,11 +23,11 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/posts';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -58,7 +58,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return \Blog\User
      */
     protected function create(array $data)
     {
