@@ -21,9 +21,13 @@ Auth::routes();
 Route::resource('profile', 'ProfileController');
 
 //Post routes
-Route::resource('posts.comments', 'CommentController');
 Route::get('posts/search', 'PostController@search');
 Route::resource('posts', 'PostController');
+
+//Post comment routes
+Route::get('posts/{post}/comments', 'PostCommentController@index');
+Route::post('posts/{post}/comments', 'PostCommentController@store');
+Route::delete('posts/{post}/comments/{comment}', 'PostCommentController@destroy');
 
 Route::post('favorite/{post}', 'PostController@favoritePost');
 Route::post('unfavorite/{post}', 'PostController@unFavoritePost');

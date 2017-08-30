@@ -5,35 +5,24 @@ namespace Blog\Http\Controllers;
 use Blog\Post;
 use Blog\Comment;
 
-class CommentController extends Controller
+class PostCommentController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @param  Post $post
-     * @return Comment
+     * @return \Illuminate\Http\Response
      */
     public function index(Post $post)
     {
-        return Comment::with('author')->byPost($post)
-                    ->latest()->get();
+        return $post->comments()->with('author')->latest()->get();
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  Post $post
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Http\Response
      */
     public function store(Post $post)
     {
