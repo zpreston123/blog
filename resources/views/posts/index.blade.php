@@ -28,7 +28,9 @@
                                 @endforeach
                             </div>
                         @endunless
-                        <p>{{ $post->author->name }}&nbsp;|&nbsp;Published {{ $post->created_at->diffForHumans() }}</p>
+                        <p>
+                            <i class="fa fa-user" aria-hidden="true"></i> {{ $post->author->name }}&nbsp;|&nbsp;
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $post->created_at->diffForHumans() }}</p>
                         <favorite
                             :post={{ $post->id }}
                             :favorited={{ $post->favorited() ? 'true' : 'false' }}
