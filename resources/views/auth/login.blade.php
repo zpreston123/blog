@@ -1,9 +1,8 @@
 <div class="box">
     {!! Form::open(['url' => 'login']) !!}
         <div class="field">
-            {{ Form::label('email', 'Email', ['class' => 'label']) }}
             <div class="control has-icons-left">
-                {{ Form::text('email', old('email'), ['class' => 'input']) }}
+                {{ Form::text('email', old('email'), ['class' => 'input', 'placeholder' => 'Email']) }}
                 <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                 </span>
@@ -12,9 +11,8 @@
         </div>
 
         <div class="field">
-            {{ Form::label('password', 'Password', ['class' => 'label']) }}
             <div class="control has-icons-left">
-                {{ Form::password('password', ['class' => 'input']) }}
+                {{ Form::password('password', ['class' => 'input', 'placeholder' => 'Password']) }}
                 <span class="icon is-small is-left">
                     <i class="fa fa-lock"></i>
                 </span>
@@ -23,7 +21,16 @@
         </div>
 
         <div class="control">
-            {{ Form::submit('Log in', ['class' => 'button is-primary']) }}
+            {{ Form::button('
+                <span class="icon">
+                    <i class="fa fa-sign-in"></i>
+                </span>
+                <span>Log in</span>',
+                [
+                    'type' => 'submit',
+                    'class' => 'button is-info is-fullwidth'
+                ])
+            }}
         </div>
     {!! Form::close() !!}
 </div>
