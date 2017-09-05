@@ -12,7 +12,7 @@
 */
 
 //Welcome route
-Route::get('/', 'WelcomeController@index');
+Route::view('/', 'welcome');
 
 //Authentication routes
 Auth::routes();
