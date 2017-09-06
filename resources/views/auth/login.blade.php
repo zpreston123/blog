@@ -1,5 +1,5 @@
 <div class="box">
-    {!! Form::open(['url' => 'login']) !!}
+    {{ Form::open(['url' => 'login']) }}
         <div class="field">
             <div class="control has-icons-left">
                 {{ Form::text('email', old('email'), ['class' => 'input', 'placeholder' => 'Email']) }}
@@ -32,5 +32,5 @@
                 ])
             }}
         </div>
-    {!! Form::close() !!}
+    {{ Form::close() }}
 </div>
