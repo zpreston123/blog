@@ -54,7 +54,7 @@
                 axios.get('/posts/' + this.postId + '/comments').then((response) => {
                     this.comments = response.data;
                 }, (response) => {
-                    flash('danger', 'Problem fetching comments. Please refresh the page and try again.');
+                    flash('Problem fetching comments. Please refresh the page and try again.', 'danger');
                 });
             },
             addComment(comment) {
@@ -66,9 +66,9 @@
 
                     axios.delete('/posts/' + this.postId + '/comments/' + comment.id).then((response) => {
                         this.comments.splice(index, 1);
-                        flash('success', 'Comment deleted successfully!');
+                        flash('Comment deleted successfully!');
                     }, (response) => {
-                        flash('danger', 'Problem deleting comment. Please try again.');
+                        flash('Problem deleting comment. Please try again.', 'danger');
                     });
                 }
             }

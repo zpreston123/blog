@@ -1,6 +1,6 @@
 <template>
     <span>
-        <a href="#" title="Mark as Unfavorite" v-if="isFavorited" @click.prevent="unFavorite(post)">
+        <a href="#" title="Mark as Unfavorite" v-if="isFavorited" @click.prevent="unfavorite(post)">
             <i class="fa fa-heart"></i>
         </a>
         <a href="#" title="Mark as Favorite" v-else @click.prevent="favorite(post)">
@@ -27,20 +27,14 @@
         },
         methods: {
             favorite(post) {
-                axios.post('/favorite/' + post)
-                    .then((response) => {
-                        this.isFavorited = true;
-                        flash('success', 'Post marked as favorite!');
-                    })
-                    .catch((response) => console.log(response.data));
+                axios.post('/favorite/' + post);
+                this.isFavorited = true;
+                flash('Favorited!');
             },
-            unFavorite(post) {
-                axios.post('/unfavorite/' + post)
-                    .then((response) => {
-                        this.isFavorited = false;
-                        flash('success', 'Post marked as unfavorite!');
-                    })
-                    .catch((response) => console.log(response.data));
+            unfavorite(post) {
+                axios.post('/unfavorite/' + post);
+                this.isFavorited = false;
+                flash('Favorite Removed.');
             }
         }
     }

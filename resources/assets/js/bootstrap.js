@@ -37,8 +37,8 @@ if (token) {
 
 window.moment = require('moment');
 
-window.flash = function (type='success', message) {
-	window.events.$emit('flash', { type, message });
+window.flash = function (message, type='success') {
+	window.events.$emit('flash', { message, type });
 };
 
 /**

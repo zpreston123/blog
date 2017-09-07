@@ -16525,11 +16525,10 @@ if (token) {
 
 window.moment = __webpack_require__(0);
 
-window.flash = function () {
-  var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'success';
-  var message = arguments[1];
+window.flash = function (message) {
+  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';
 
-  window.events.$emit('flash', { type: type, message: message });
+  window.events.$emit('flash', { message: message, type: type });
 };
 
 /**
@@ -55912,7 +55911,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/posts/' + this.postId + '/comments').then(function (response) {
                 _this.comments = response.data;
             }, function (response) {
-                flash('danger', 'Problem fetching comments. Please refresh the page and try again.');
+                flash('Problem fetching comments. Please refresh the page and try again.', 'danger');
             });
         },
         addComment: function addComment(comment) {
@@ -55926,9 +55925,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 axios.delete('/posts/' + this.postId + '/comments/' + comment.id).then(function (response) {
                     _this2.comments.splice(index, 1);
-                    flash('success', 'Comment deleted successfully!');
+                    flash('Comment deleted successfully!');
                 }, function (response) {
-                    flash('danger', 'Problem deleting comment. Please try again.');
+                    flash('Problem deleting comment. Please try again.', 'danger');
                 });
             }
         }
@@ -56020,16 +56019,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var _this = this;
 
 			if (this.comment.body == '') {
-				flash('danger', 'Comment cannot be empty! Please try again.');
+				flash('Comment cannot be empty! Please try again.', 'warning');
 				return false;
 			}
 
 			axios.post('/posts/' + this.postId + '/comments', this.comment).then(function (response) {
 				_this.$emit('submitted', response.data);
 				_this.comment.body = '';
-				flash('success', 'Comment added successfully!');
+				flash('Comment added successfully!');
 			}, function (response) {
-				flash('danger', 'Problem submitting comment. Please try again.');
+				flash('Problem submitting comment. Please try again.', 'danger');
 			});
 		}
 	}
@@ -56222,24 +56221,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         favorite: function favorite(post) {
-            var _this = this;
-
-            axios.post('/favorite/' + post).then(function (response) {
-                _this.isFavorited = true;
-                flash('success', 'Post marked as favorite!');
-            }).catch(function (response) {
-                return console.log(response.data);
-            });
+            axios.post('/favorite/' + post);
+            this.isFavorited = true;
+            flash('Favorited!');
         },
-        unFavorite: function unFavorite(post) {
-            var _this2 = this;
-
-            axios.post('/unfavorite/' + post).then(function (response) {
-                _this2.isFavorited = false;
-                flash('success', 'Post marked as unfavorite!');
-            }).catch(function (response) {
-                return console.log(response.data);
-            });
+        unfavorite: function unfavorite(post) {
+            axios.post('/unfavorite/' + post);
+            this.isFavorited = false;
+            flash('Favorite Removed.');
         }
     }
 });
@@ -56257,7 +56246,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.unFavorite(_vm.post)
+        _vm.unfavorite(_vm.post)
       }
     }
   }, [_c('i', {
