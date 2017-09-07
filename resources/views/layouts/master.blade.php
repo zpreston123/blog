@@ -4,23 +4,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
 
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-    @include('layouts.partials.navbar')
+    <div id="app">
+        @include('layouts.partials.navbar')
 
-    <section class="section">
-        <div id="app" class="container content">
-            <flash></flash>
+        <section class="section">
+            <div class="container content">
+                @yield('content')
 
-            @yield('content')
-        </div>
-    </section>
+                <flash></flash>
+            </div>
+        </section>
 
-    @include('layouts.partials.footer')
+        @include('layouts.partials.footer')
+    </div>
 
     <script src="/js/app.js"></script>
     @yield('scripts')
