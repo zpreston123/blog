@@ -31,7 +31,7 @@
 								{{ Form::close() }}
 							@endif
 						@else
-							<a href="{{ route('profile.edit', $profile->id) }}" class="button is-info">Edit Profile</a>
+							<a href="{{ route('profiles.edit', $profile->id) }}" class="button is-info">Edit Profile</a>
 							<a href="/follow" class="button is-success">Following</a>
 						@endif
 					</p>

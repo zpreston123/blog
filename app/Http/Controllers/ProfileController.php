@@ -4,11 +4,10 @@ namespace Blog\Http\Controllers;
 
 use Blog\User;
 use Illuminate\Validation\Rule;
-use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
-    /**
+	/**
      * Create a new controller instance.
      *
      * @return void
@@ -29,7 +28,7 @@ class ProfileController extends Controller
         return view('profiles.show', compact('profile'));
     }
 
-	/**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  User $profile
@@ -51,23 +50,12 @@ class ProfileController extends Controller
         $this->validate(request(), [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255'.Rule::unique('users')->ignore($profile->id),
-            'password' => 'min:6|confirmed',
-            'avatar' => 'image|mimes:jpeg,png'
+            'password' => 'min:6|confirmed'
         ]);
 
         $profile->name = request('name');
         $profile->email = request('email');
         $profile->password = (!request()->has('password')) ? $profile->password : bcrypt(request('password'));
-
-        if (request()->hasFile('avatar')) {
-            $avatar = request()->file('avatar');
-            $filename = $profile->name . time() . '.' . $avatar->getClientOriginalExtension();
-
-            Image::make($avatar)->fit(300, 300)->save(public_path('uploads/avatars/' . $filename));
-
-            $profile->avatar = $filename;
-        }
-
         $profile->save();
 
         return redirect('posts');

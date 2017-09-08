@@ -11,29 +11,28 @@
 |
 */
 
-//Welcome route
 Route::view('/', 'welcome');
 
-//Authentication routes
 Auth::routes();
 
-//Profile routes
-Route::resource('profile', 'ProfileController');
+Route::put('profiles/{profile}/avatar', 'ProfileAvatarController@update')->name('profiles.update-avatar');
 
-//Post routes
+Route::get('profiles/{profile}', 'ProfileController@show');
+Route::get('profiles/{profile}/edit', 'ProfileController@edit')->name('profiles.edit');
+Route::patch('profiles/{profile}', 'ProfileController@update')->name('profiles.update');
+
+Route::get('users/search', 'UserController@search');
+Route::get('my_favorites', 'UserController@myFavorites');
+
 Route::get('posts/search', 'PostController@search');
 Route::resource('posts', 'PostController');
 
-//Post comment routes
 Route::get('posts/{post}/comments', 'PostCommentController@index');
 Route::post('posts/{post}/comments', 'PostCommentController@store');
 Route::delete('posts/{post}/comments/{comment}', 'PostCommentController@destroy');
 
 Route::post('favorite/{post}', 'PostController@favoritePost');
 Route::post('unfavorite/{post}', 'PostController@unFavoritePost');
-
-Route::get('users/search', 'UserController@search');
-Route::get('my_favorites', 'UserController@myFavorites');
 
 Route::get('follow', 'FollowerController@index');
 Route::post('follow/{id}', 'FollowerController@store');

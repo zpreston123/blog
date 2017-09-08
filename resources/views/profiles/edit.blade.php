@@ -8,15 +8,22 @@
     <div class="columns">
         <div class="column is-half is-offset-one-quarter">
             <div class="box">
-                {{ Form::model($profile, ['route' => ['profile.update', $profile], 'enctype' => 'multipart/form-data', 'method' => 'PUT']) }}
-                    <div class="field">
+                <!-- Edit Avatar Form -->
+                {{ Form::model($profile, ['route' => ['profiles.update-avatar', $profile], 'enctype' => 'multipart/form-data', 'method' => 'PUT']) }}
+                    <div class="field is-grouped">
                         {{ Form::label('avatar', 'Avatar', ['class' => 'label']) }}
                         <div class="control">
                             {{ Form::file('avatar') }}
                         </div>
                         {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
+                        <div class="control">
+                            {{ Form::submit('Update', ['class' => 'button is-info is-small']) }}
+                        </div>
                     </div>
+                {{ Form::close() }}
 
+                <!-- Edit Profile Form -->
+                {{ Form::model($profile, ['route' => ['profiles.update', $profile], 'method' => 'PATCH']) }}
                     <div class="field">
                         {{ Form::label('name', 'Name', ['class' => 'label']) }}
                         <div class="control">

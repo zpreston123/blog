@@ -22,7 +22,7 @@
             </span>
           </div>
         {{ Form::close() }}
-        <a class="navbar-item" href="/profile/{{ auth()->id() }}">
+        <a class="navbar-item" href="/profiles/{{ auth()->id() }}">
           <figure class="image is-16x16" style="margin-right: 8px;">
             <img src="{{ auth()->user()->avatar }}">
           </figure>
