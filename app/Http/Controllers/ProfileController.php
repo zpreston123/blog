@@ -20,43 +20,43 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  User $profile
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $profile)
+    public function show(User $user)
     {
-        return view('profiles.show', compact('profile'));
+        return view('profiles.show', ['profileUser' => $user]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  User $profile
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $profile)
+    public function edit(User $user)
     {
-        return view('profiles.edit', compact('profile'));
+        return view('profiles.edit', ['profileUser' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  User $profile
+     * @param  User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(User $profile)
+    public function update(User $user)
     {
         $this->validate(request(), [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255'.Rule::unique('users')->ignore($profile->id),
+            'email' => 'required|email|max:255'.Rule::unique('users')->ignore($user->id),
             'password' => 'min:6|confirmed'
         ]);
 
-        $profile->name = request('name');
-        $profile->email = request('email');
-        $profile->password = (!request()->has('password')) ? $profile->password : bcrypt(request('password'));
-        $profile->save();
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = (!request()->has('password')) ? $user->password : bcrypt(request('password'));
+        $user->save();
 
         return redirect('posts');
     }

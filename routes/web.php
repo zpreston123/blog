@@ -15,11 +15,11 @@ Route::view('/', 'welcome');
 
 Auth::routes();
 
-Route::put('profiles/{profile}/avatar', 'ProfileAvatarController@update')->name('profiles.update-avatar');
+Route::put('profiles/{user}/avatar', 'ProfileAvatarController@update')->name('profiles.update-avatar');
 
-Route::get('profiles/{profile}', 'ProfileController@show');
-Route::get('profiles/{profile}/edit', 'ProfileController@edit')->name('profiles.edit');
-Route::patch('profiles/{profile}', 'ProfileController@update')->name('profiles.update');
+Route::get('profiles/{user}', 'ProfileController@show')->name('profiles.show');
+Route::get('profiles/{user}/edit', 'ProfileController@edit')->name('profiles.edit');
+Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.update');
 
 Route::get('users/search', 'UserController@search');
 Route::get('my_favorites', 'UserController@myFavorites');

@@ -7,7 +7,7 @@
 		<ul>
 			<li><img src="{{ $user->avatar }}"></li>
 			<li>Name:
-				<a href="/profile/{{ $user->id }}">
+				<a href="/profiles/{{ $user->id }}">
 					{{ $user->name }}
 				</a>
 			</li>

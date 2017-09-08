@@ -9,7 +9,7 @@
         <div class="column is-half is-offset-one-quarter">
             <div class="box">
                 <!-- Edit Avatar Form -->
-                {{ Form::model($profile, ['route' => ['profiles.update-avatar', $profile], 'enctype' => 'multipart/form-data', 'method' => 'PUT']) }}
+                {{ Form::model($profileUser, ['route' => ['profiles.update-avatar', $profileUser], 'enctype' => 'multipart/form-data', 'method' => 'PUT']) }}
                     <div class="field is-grouped">
                         {{ Form::label('avatar', 'Avatar', ['class' => 'label']) }}
                         <div class="control">
@@ -23,7 +23,7 @@
                 {{ Form::close() }}
 
                 <!-- Edit Profile Form -->
-                {{ Form::model($profile, ['route' => ['profiles.update', $profile], 'method' => 'PATCH']) }}
+                {{ Form::model($profileUser, ['route' => ['profiles.update', $profileUser], 'method' => 'PATCH']) }}
                     <div class="field">
                         {{ Form::label('name', 'Name', ['class' => 'label']) }}
                         <div class="control">
