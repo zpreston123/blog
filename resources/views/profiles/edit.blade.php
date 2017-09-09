@@ -17,7 +17,7 @@
                         </div>
                         {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
                         <div class="control">
-                            {{ Form::submit('Update', ['class' => 'button is-info is-small']) }}
+                            {{ Form::submit('Save Image', ['class' => 'button is-info is-small']) }}
                         </div>
                     </div>
                 {{ Form::close() }}

@@ -3,22 +3,28 @@
 namespace Blog\Http\Controllers;
 
 use Blog\User;
-use Image;
+use Intervention\Image\Facades\Image;
 
 class ProfileAvatarController extends Controller
 {
-    public function update(User $profile)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(User $user)
     {
     	request()->validate([
             'avatar' => 'required|image|mimes:jpeg,png'
     	]);
 
         $avatar = request()->file('avatar');
-        $filename = $profile->name . time() . '.' . $avatar->getClientOriginalExtension();
+        $filename = $user->name . time() . '.' . $avatar->getClientOriginalExtension();
 
-        Image::make($avatar)->fit(300, 300)->save(public_path('uploads/avatars/' . $filename));
+        Image::make($avatar)->resize(300, 300)->save(public_path('uploads/avatars/' . $filename));
 
-        $profile->update(['avatar' => $filename]);
+        $user->update(['avatar' => $filename]);
 
         return redirect('posts');
     }
