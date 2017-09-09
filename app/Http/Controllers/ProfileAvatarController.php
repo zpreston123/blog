@@ -22,7 +22,7 @@ class ProfileAvatarController extends Controller
         $avatar = request()->file('avatar');
         $filename = $user->name . time() . '.' . $avatar->getClientOriginalExtension();
 
-        Image::make($avatar)->resize(300, 300)->save(public_path('uploads/avatars/' . $filename));
+        Image::make($avatar)->resize(300, 300)->save(public_path('images/avatars/' . $filename));
 
         $user->update(['avatar' => $filename]);
 

@@ -87,13 +87,13 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the user's avatar.
+     * Get the user's avatar image.
      *
      * @param  string $value
      * @return string
      */
     public function getAvatarAttribute($value)
     {
-        return '/uploads/avatars/' . $value;
+        return '/images/avatars/' . $value;
     }
 }
