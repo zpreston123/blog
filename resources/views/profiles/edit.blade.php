@@ -11,16 +11,28 @@
                 <!-- Edit Avatar Form -->
                 {{ Form::model($profileUser, ['route' => ['profiles.update-avatar', $profileUser], 'enctype' => 'multipart/form-data', 'method' => 'PUT']) }}
                     <div class="field is-grouped">
-                        {{ Form::label('avatar', 'Avatar', ['class' => 'label']) }}
-                        <div class="control">
-                            {{ Form::file('avatar') }}
+                        <div class="file is-small has-name">
+                            <label class="file-label">
+                                {{ Form::file('avatar', ['class' => 'file-input', 'id' => 'avatar']) }}
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fa fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Upload avatar...
+                                    </span>
+                                </span>
+                                <span id="file-name" class="file-name">
+                                    Screen Shot 2017-07-29 at 15.54.25.png
+                                </span>
+                            </label>
                         </div>
-                        {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
                         <div class="control">
-                            {{ Form::submit('Save Image', ['class' => 'button is-info is-small']) }}
+                            {{ Form::submit('Save', ['class' => 'button is-info is-small']) }}
                         </div>
                     </div>
-                {{ Form::close() }}
+                    {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
+                {{ Form::close() }}<br>
 
                 <!-- Edit Profile Form -->
                 {{ Form::model($profileUser, ['route' => ['profiles.update', $profileUser], 'method' => 'PATCH']) }}
@@ -68,4 +80,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        var file = document.getElementById("avatar");
+        file.onchange = function () {
+            if(file.files.length > 0)
+            {
+                document.getElementById('file-name').innerHTML = file.files[0].name;
+            }
+        };
+    </script>
 @endsection
