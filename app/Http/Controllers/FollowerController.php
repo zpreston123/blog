@@ -24,7 +24,7 @@ class FollowerController extends Controller
      */
     public function store($id)
     {
-        auth()->user()->following()->attach($id);
+        auth()->user()->follow($id);
 
         return back();
     }
@@ -37,7 +37,7 @@ class FollowerController extends Controller
      */
     public function destroy($id)
     {
-        auth()->user()->following()->detach($id);
+        auth()->user()->unfollow($id);
 
         return back();
     }

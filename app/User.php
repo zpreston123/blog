@@ -96,4 +96,25 @@ class User extends Authenticatable
     {
         return '/images/avatars/' . $value;
     }
+
+    /**
+     * Follow a user.
+     *
+     * @param  int $id
+     * @return void
+     */
+    public function follow($id)
+    {
+        $this->following()->attach($id);
+    }
+
+    /**
+     * Unfollow a user.
+     *
+     * @return int
+     */
+    public function unfollow($id)
+    {
+        return $this->following()->detach($id);
+    }
 }
