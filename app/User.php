@@ -64,13 +64,13 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all users that is following a user.
+     * Get all users that are following a user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function followers()
     {
-        return $this->belongsToMany(self::class, 'followers', 'follow_id', 'user_id');
+        return $this->belongsToMany(self::class, 'followers', 'follow_id', 'user_id')->withTimestamps();
     }
 
     /**
@@ -80,7 +80,7 @@ class User extends Authenticatable
      */
     public function following()
     {
-        return $this->belongsToMany(self::class, 'followers', 'user_id', 'follow_id');
+        return $this->belongsToMany(self::class, 'followers', 'user_id', 'follow_id')->withTimestamps();
     }
 
     /**

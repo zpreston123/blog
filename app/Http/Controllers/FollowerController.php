@@ -19,26 +19,30 @@ class FollowerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store()
     {
-        auth()->user()->follow($id);
+        $follower = User::findOrFail(request('follower_id'));
 
-        return back();
+        Follower::create([
+            'user_id' => auth()->id(),
+            'follower_id' => $follower
+        ]);
+
+        return $follower;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  Follower $follower
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Follower $follower)
     {
-        auth()->user()->unfollow($id);
+        $follower->delete();
 
-        return back();
+        return response('', 204);
     }
 }

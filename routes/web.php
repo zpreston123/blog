@@ -15,13 +15,13 @@ Route::view('/', 'welcome');
 
 Auth::routes();
 
-Route::put('profiles/{user}/avatar', 'ProfileAvatarController@update')->name('profiles.update-avatar');
+Route::get('profiles/search', 'ProfileController@search');
 
 Route::get('profiles/{user}', 'ProfileController@show')->name('profiles.show');
 Route::get('profiles/{user}/edit', 'ProfileController@edit')->name('profiles.edit');
 Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.update');
 
-Route::get('users/search', 'UserController@search');
+Route::put('profiles/{user}/avatar', 'ProfileAvatarController@update')->name('profiles.update-avatar');
 
 Route::get('posts/search', 'PostController@search');
 Route::resource('posts', 'PostController');
@@ -34,6 +34,6 @@ Route::get('favorites', 'FavoriteController@index');
 Route::post('favorites', 'FavoriteController@store');
 Route::delete('favorites/{favorite}', 'FavoriteController@destroy');
 
-Route::get('follow', 'FollowerController@index');
-Route::post('follow/{id}', 'FollowerController@store');
-Route::delete('unfollow/{id}', 'FollowerController@destroy');
+Route::get('followers', 'FollowerController@index');
+Route::post('followers', 'FollowerController@store');
+Route::delete('followers/{follower}', 'FollowerController@destroy');
