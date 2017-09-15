@@ -31,10 +31,10 @@
                         <p>
                             <i class="fa fa-user" aria-hidden="true"></i> {{ $post->author->name }}&nbsp;|&nbsp;
                             <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $post->created_at->diffForHumans() }}</p>
-                        <favorite
-                            :post={{ $post->id }}
-                            :favorited={{ $post->favorited() ? 'true' : 'false' }}
-                        ></favorite>
+                        <favorite-button
+                            :data-favorite="{{ json_encode(auth()->user()->favoritedTo($post)) }}"
+                            :post="{{ $post }}"
+                        ></favorite-button>
                     </div>
                 @empty
                     <p>No posts have been made!  Please check back later.</p>

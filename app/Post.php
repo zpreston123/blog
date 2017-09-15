@@ -65,10 +65,9 @@ class Post extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function favorites()
+    public function users()
     {
-        return $this->belongsToMany(User::class, 'favorites', 'post_id', 'user_id')
-                    ->withTimestamps();
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 
     /**
@@ -150,7 +149,7 @@ class Post extends Model
      */
     public function favorited()
     {
-        return (bool) Favorite::where([
+        return Favorite::where([
             ['user_id', auth()->id()],
             ['post_id', $this->id]
         ])->first();

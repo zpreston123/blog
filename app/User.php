@@ -48,11 +48,19 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
+    public function favoritedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'favorites')->withTimestamps();
+    }
+
+    /**
+     * A user can have many favorite posts.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function favorites()
     {
-        return $this->belongsToMany(Post::class, 'favorites', 'user_id', 'post_id')
-                    ->latest()
-                    ->withTimestamps();
+        return $this->hasMany(Favorite::class);
     }
 
     /**
@@ -87,6 +95,15 @@ class User extends Authenticatable
     }
 
     /**
+     * Check whether the user favorited a post.
+     *
+     * @param  Post $post
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function favoritedTo($post)
+    {
+        return $this->favorites()->where('post_id', $post->id)->first();
+    }
      * Get the user's avatar image.
      *
      * @param  string $value

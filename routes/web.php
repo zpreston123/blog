@@ -22,7 +22,6 @@ Route::get('profiles/{user}/edit', 'ProfileController@edit')->name('profiles.edi
 Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.update');
 
 Route::get('users/search', 'UserController@search');
-Route::get('my_favorites', 'UserController@myFavorites');
 
 Route::get('posts/search', 'PostController@search');
 Route::resource('posts', 'PostController');
@@ -31,8 +30,9 @@ Route::get('posts/{post}/comments', 'PostCommentController@index');
 Route::post('posts/{post}/comments', 'PostCommentController@store');
 Route::delete('posts/{post}/comments/{comment}', 'PostCommentController@destroy');
 
-Route::post('favorite/{post}', 'PostController@favoritePost');
-Route::post('unfavorite/{post}', 'PostController@unFavoritePost');
+Route::get('favorites', 'FavoriteController@index');
+Route::post('favorites', 'FavoriteController@store');
+Route::delete('favorites/{favorite}', 'FavoriteController@destroy');
 
 Route::get('follow', 'FollowerController@index');
 Route::post('follow/{id}', 'FollowerController@store');
