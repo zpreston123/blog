@@ -16476,7 +16476,7 @@ window.events = new Vue();
 
 Vue.component('flash', __webpack_require__(153));
 Vue.component('comments', __webpack_require__(161));
-Vue.component('favorite', __webpack_require__(167));
+Vue.component('favorite-button', __webpack_require__(167));
 
 var app = new Vue({
   el: '#app'
@@ -55744,6 +55744,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -55786,7 +55798,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "message flash",
     class: 'is-' + _vm.type
   }, [_c('div', {
-    staticClass: "message-body"
+    staticClass: "message-body is-clearfix"
+  }, [_c('div', {
+    staticClass: "is-pulled-left"
+  }, [_c('span', {
+    class: 'icon has-text-' + _vm.type
+  }, [_c('i', {
+    staticClass: "fa fa-lg",
+    class: {
+      'fa-check-circle': (_vm.type == 'success'),
+      'fa-info-circle': (_vm.type == 'info'),
+      'fa-exclamation-circle': (_vm.type == 'warning'),
+      'fa-times-circle': (_vm.type == 'danger')
+    }
+  })]), _vm._v("\n\t\t\t" + _vm._s(_vm.body) + "\n\t\t")]), _vm._v(" "), _c('div', {
+    staticClass: "is-pulled-right",
+    staticStyle: {
+      "padding-left": "20px"
+    }
   }, [_c('button', {
     staticClass: "delete",
     on: {
@@ -55794,7 +55823,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.isVisible = false
       }
     }
-  }), _vm._v("\n\t\t" + _vm._s(_vm.body) + "\n\t")])])
+  })])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -56162,9 +56191,9 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/zachpreston/Code/blog/resources/assets/js/components/Favorite.vue"
+Component.options.__file = "/Users/zachpreston/Code/blog/resources/assets/js/components/FavoriteButton.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Favorite.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] FavoriteButton.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -56173,9 +56202,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-cb4238dc", Component.options)
+    hotAPI.createRecord("data-v-2459da64", Component.options)
   } else {
-    hotAPI.reload("data-v-cb4238dc", Component.options)
+    hotAPI.reload("data-v-2459da64", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -56204,31 +56233,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['post', 'favorited'],
+    props: ['dataFavorite', 'post'],
     data: function data() {
         return {
-            isFavorited: ''
+            favoritedPost: this.dataFavorite
         };
-    },
-    mounted: function mounted() {
-        this.isFavorited = this.isFavorite ? true : false;
     },
 
     computed: {
-        isFavorite: function isFavorite() {
-            return this.favorited;
+        favorited: function favorited() {
+            return this.favoritedPost !== null;
         }
     },
     methods: {
-        favorite: function favorite(post) {
-            axios.post('/favorite/' + post);
-            this.isFavorited = true;
-            flash('Favorited!');
+        favorite: function favorite() {
+            var _this = this;
+
+            axios.post('/favorites', { post_id: this.post.id }).then(function (response) {
+                _this.favoritedPost = response.data;
+                flash('Post favorited!');
+            }, function (response) {
+                flash('Problem favoriting post. Please try again.', 'danger');
+            });
         },
-        unfavorite: function unfavorite(post) {
-            axios.post('/unfavorite/' + post);
-            this.isFavorited = false;
-            flash('Favorite Removed.');
+        unfavorite: function unfavorite() {
+            var _this2 = this;
+
+            axios.delete('/favorites/' + this.favoritedPost.id).then(function (response) {
+                _this2.favoritedPost = null;
+                flash('Post unfavorited.');
+            }, function (response) {
+                flash('Problem unfavoriting post. Please try again.', 'danger');
+            });
         }
     }
 });
@@ -56238,7 +56274,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [(_vm.isFavorited) ? _c('a', {
+  return _c('span', [(_vm.favorited) ? _c('a', {
     attrs: {
       "href": "#",
       "title": "Mark as Unfavorite"
@@ -56246,7 +56282,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.unfavorite(_vm.post)
+        _vm.unfavorite($event)
       }
     }
   }, [_c('i', {
@@ -56259,7 +56295,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.favorite(_vm.post)
+        _vm.favorite($event)
       }
     }
   }, [_c('i', {
@@ -56270,7 +56306,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-cb4238dc", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-2459da64", module.exports)
   }
 }
 
