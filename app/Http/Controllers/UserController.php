@@ -16,16 +16,17 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Search profiles matching the criteria.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
     {
+        $users = User::where('name', 'LIKE', '%'.request('q').'%')
+                    ->orderBy('name')
+                    ->get();
 
+        return view('users.index', compact('users'));
     }
-
- 	public function search()
- 	{
- 	    $users = User::where('name', 'LIKE', '%'.request('q').'%')
- 	    			->orderBy('name')
- 	    			->get();
-
- 	    return view('users.index', compact('users'));
- 	}
 }
