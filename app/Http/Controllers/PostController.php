@@ -59,6 +59,8 @@ class PostController extends Controller
 
         $post->addTags($request->input('tags'));
 
+        flash()->success('Post saved successfully!')->important();
+
         return redirect('posts');
     }
 
@@ -102,6 +104,8 @@ class PostController extends Controller
 
         $post->syncTags($request->input('tags'));
 
+        flash()->success('Post updated successfully!');
+
         return redirect('posts');
     }
 
@@ -125,6 +129,8 @@ class PostController extends Controller
 
         $post->delete();
 
+        flash()->success('Post deleted successfully!');
+
         return back();
     }
 
@@ -138,31 +144,5 @@ class PostController extends Controller
         $posts = Post::search(request('q'))->paginate(10);
 
         return view('posts.index', compact('posts'));
-    }
-
-    /**
-     * Favorite a particular post.
-     *
-     * @param  Post $post
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function favoritePost(Post $post)
-    {
-        auth()->user()->favorites()->attach($post->id);
-
-        return back();
-    }
-
-    /**
-     * Unfavorite a particular post.
-     *
-     * @param  Post $post
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function unFavoritePost(Post $post)
-    {
-        auth()->user()->favorites()->detach($post->id);
-
-        return back();
     }
 }

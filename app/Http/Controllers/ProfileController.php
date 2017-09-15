@@ -47,16 +47,15 @@ class ProfileController extends Controller
      */
     public function update(User $user)
     {
-        $this->validate(request(), [
+        request()->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255'.Rule::unique('users')->ignore($user->id),
             'password' => 'min:6|confirmed'
         ]);
 
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->password = (!request()->has('password')) ? $user->password : bcrypt(request('password'));
-        $user->save();
+        $user->update(request()->only('name', 'email', 'password'));
+
+        flash()->success('Profile updated successfully!');
 
         return redirect('posts');
     }
