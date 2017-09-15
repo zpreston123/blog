@@ -104,6 +104,19 @@ class User extends Authenticatable
     {
         return $this->favorites()->where('post_id', $post->id)->first();
     }
+
+    /**
+     * Set the user's password.
+     *
+     * @param  string $password
+     * @return void
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    /**
      * Get the user's avatar image.
      *
      * @param  string $value
