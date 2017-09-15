@@ -42,9 +42,6 @@ class PostCommentController extends Controller
     {
         $comment->delete();
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Comment removed successfully!'
-        ]);
+        return response('', 204);
     }
 }
