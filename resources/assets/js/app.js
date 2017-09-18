@@ -20,6 +20,7 @@ window.events = new Vue();
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('comments', require('./components/Comments.vue'));
 Vue.component('favorite-button', require('./components/FavoriteButton.vue'));
+Vue.component('follow-button', require('./components/FollowButton.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -14,9 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::if('following', function ($user) {
-            return auth()->user()->isFollowing($user);
-        });
+        //
     }
 
     /**

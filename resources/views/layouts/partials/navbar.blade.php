@@ -14,7 +14,7 @@
         <a class="navbar-item" href="/my_favorites">My Favorites</a>
       </div>
       <div class="navbar-end">
-        {{ Form::open(['url' => 'users/search', 'style' => 'padding-top: 8px;', 'method' => 'GET']) }}
+        {{ Form::open(['route' => ['profiles.index'], 'style' => 'padding-top: 8px;', 'method' => 'GET']) }}
           <div class="control has-icons-left">
             {{ Form::search('q', null, ['class' => 'input', 'placeholder' => 'Search users...']) }}
             <span class="icon is-left">

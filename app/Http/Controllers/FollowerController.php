@@ -2,6 +2,9 @@
 
 namespace Blog\Http\Controllers;
 
+use Blog\User;
+use Blog\Follower;
+
 class FollowerController extends Controller
 {
     /**
@@ -19,18 +22,16 @@ class FollowerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function store()
     {
-        $follower = User::findOrFail(request('follower_id'));
+        $user = User::findOrFail(request('user_id'));
 
-        Follower::create([
-            'user_id' => auth()->id(),
-            'follower_id' => $follower
+        return Follower::create([
+            'user' => auth()->user(),
+            'follow' => $user
         ]);
-
-        return $follower;
     }
 
     /**

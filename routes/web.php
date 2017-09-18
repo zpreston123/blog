@@ -15,8 +15,7 @@ Route::view('/', 'welcome');
 
 Auth::routes();
 
-Route::get('profiles/search', 'ProfileController@search');
-
+Route::get('profiles', 'ProfileController@index')->name('profiles.index');
 Route::get('profiles/{user}', 'ProfileController@show')->name('profiles.show');
 Route::get('profiles/{user}/edit', 'ProfileController@edit')->name('profiles.edit');
 Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.update');
@@ -34,6 +33,6 @@ Route::get('favorites', 'FavoriteController@index');
 Route::post('favorites', 'FavoriteController@store');
 Route::delete('favorites/{favorite}', 'FavoriteController@destroy');
 
-Route::get('followers', 'FollowerController@index');
-Route::post('followers', 'FollowerController@store');
-Route::delete('followers/{follower}', 'FollowerController@destroy');
+Route::get('followers', 'FollowerController@index')->name('followers.index');
+Route::post('followers', 'FollowerController@store')->name('followers.store');
+Route::delete('followers/{follower}', 'FollowerController@destroy')->name('followers.destroy');

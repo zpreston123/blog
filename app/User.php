@@ -87,11 +87,11 @@ class User extends Authenticatable
      * Check whether user is following another user.
      *
      * @param  self $user
-     * @return boolean
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function isFollowing(self $user)
     {
-        return $this->following()->where('follow_id', $user->id)->first() != null;
+        return $this->following()->where('follow_id', $user->id)->first();
     }
 
     /**

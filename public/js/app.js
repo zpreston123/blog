@@ -16448,7 +16448,7 @@ return zhTw;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(127);
-module.exports = __webpack_require__(170);
+module.exports = __webpack_require__(173);
 
 
 /***/ }),
@@ -16477,6 +16477,7 @@ window.events = new Vue();
 Vue.component('flash', __webpack_require__(153));
 Vue.component('comments', __webpack_require__(161));
 Vue.component('favorite-button', __webpack_require__(167));
+Vue.component('follow-button', __webpack_require__(170));
 
 var app = new Vue({
   el: '#app'
@@ -56312,6 +56313,124 @@ if (false) {
 
 /***/ }),
 /* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(171),
+  /* template */
+  __webpack_require__(172),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/zachpreston/Code/blog/resources/assets/js/components/FollowButton.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] FollowButton.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c4f4d48e", Component.options)
+  } else {
+    hotAPI.reload("data-v-c4f4d48e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 171 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['dataFollower', 'user'],
+    data: function data() {
+        return {
+            followedUser: this.dataFollower
+        };
+    },
+
+    computed: {
+        followed: function followed() {
+            return this.followedUser !== null;
+        }
+    },
+    methods: {
+        follow: function follow() {
+            var _this = this;
+
+            axios.post('/followers', { user_id: this.user.id }).then(function (response) {
+                _this.followedUser = response.data;
+            }, function (response) {
+                flash('Problem following user. Please try again.', 'danger');
+            });
+        },
+        unfollow: function unfollow() {
+            var _this2 = this;
+
+            axios.delete('/followers/' + this.followedUser.id).then(function (response) {
+                _this2.followedUser = null;
+            }, function (response) {
+                flash('Problem unfollowing post. Please try again.', 'danger');
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.followed) ? _c('button', {
+    staticClass: "button is-danger",
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.unfollow($event)
+      }
+    }
+  }, [_vm._v("Unfollow")]) : _c('button', {
+    staticClass: "button is-success",
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.follow($event)
+      }
+    }
+  }, [_vm._v("Follow")])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-c4f4d48e", module.exports)
+  }
+}
+
+/***/ }),
+/* 173 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

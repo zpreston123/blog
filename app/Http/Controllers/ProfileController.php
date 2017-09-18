@@ -18,6 +18,20 @@ class ProfileController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $users = User::where('name', 'LIKE', '%'.request('q').'%')
+                    ->orderBy('name')
+                    ->get();
+
+        return view('profiles.index', compact('users'));
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  User $user

@@ -21,18 +21,13 @@
 						</span><br><br>
 
 						@if (auth()->id() !== $profileUser->id)
-							@following($profileUser)
-								{{ Form::open(['url' => 'unfollow/'.$profileUser->id, 'method' => 'DELETE']) }}
-									{{ Form::submit('Unfollow', ['class' => 'button is-danger']) }}
-								{{ Form::close() }}
-							@else
-								{{ Form::open(['url' => 'follow/'.$profileUser->id]) }}
-									{{ Form::submit('Follow', ['class' => 'button is-success']) }}
-								{{ Form::close() }}
-							@endfollowing
+							<follow-button
+								:data-follower="{{ json_encode(auth()->user()->isFollowing($profileUser)) }}"
+								:user="{{ $profileUser }}">
+							</follow-button>
 						@else
 							<a href="{{ route('profiles.edit', $profileUser->id) }}" class="button is-info">Edit Profile</a>
-							<a href="/follow" class="button is-success">Following</a>
+							<a href="/followers" class="button is-success">Following</a>
 						@endif
 					</p>
 				</div>
