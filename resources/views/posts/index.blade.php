@@ -16,7 +16,7 @@
                 @forelse ($posts as $post)
                     <div class="box">
                         <h2>
-                            <a class="post-title" href="posts/{{ $post->id }}">
+                            <a class="post-title" href="/posts/{{ $post->id }}">
                                 {{ $post->title }}
                             </a>
                         </h2>
