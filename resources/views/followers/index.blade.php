@@ -18,7 +18,7 @@
 				<div class="media-content">
 					<div class="content">
 						<p>
-							<a href="/profile/{{ $follower->id }}">
+							<a href="/profiles/{{ $follower->id }}">
 								<strong>{{ $follower->name }}</strong>
 							</a><br>
 							<small>{{ $follower->email }}</small>
