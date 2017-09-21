@@ -23,7 +23,7 @@ $factory->define(Blog\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'gender' => $gender,
         'avatar' => 'default-'.$gender.'.jpg',
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: $password = 'secret',
         'remember_token' => str_random(10),
     ];
 });
