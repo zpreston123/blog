@@ -11,7 +11,7 @@
 						<img src="{{ $profileUser->avatar }}">
 					</div>
 				</div>
-				<div class="column is-4 name">
+				<div class="column is-4">
 					<p>
 						<span class="title is-bold">{{ $profileUser->name }}</span><br>
 						<span class="subtitle">
@@ -32,6 +32,35 @@
 					</p>
 				</div>
 			</div>
+
+			<hr>
+
+			<nav class="level">
+				<div class="level-item has-text-centered">
+					<div>
+						<p class="heading">Posts</p>
+						<p class="title">{{ $profileUser->posts_count }}</p>
+					</div>
+				</div>
+				<div class="level-item has-text-centered">
+					<div>
+						<p class="heading">Following</p>
+						<p class="title">{{ $profileUser->following_count }}</p>
+					</div>
+				</div>
+				<div class="level-item has-text-centered">
+					<div>
+						<p class="heading">Followers</p>
+						<p class="title">{{ $profileUser->followers_count }}</p>
+					</div>
+				</div>
+				<div class="level-item has-text-centered">
+					<div>
+						<p class="heading">Favorites</p>
+						<p class="title">{{ $profileUser->favorites_count }}</p>
+					</div>
+				</div>
+			</nav>
 		</div>
 	</div>
 

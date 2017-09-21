@@ -39,7 +39,9 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        return view('profiles.show', ['profileUser' => $user]);
+        $profileUser = User::withCount('posts', 'favorites', 'followers', 'following')->findOrFail($user->id);
+
+        return view('profiles.show', compact('profileUser'));
     }
 
     /**
