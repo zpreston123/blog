@@ -8,6 +8,16 @@ use Intervention\Image\Facades\Image;
 class ProfileAvatarController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  User $user
