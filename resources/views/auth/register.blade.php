@@ -31,6 +31,14 @@
                         {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
+                    <div class="field">
+                        {{ Form::label('gender', 'Gender', ['class' => 'label']) }}
+                        <div class="select">
+                            {{ Form::select('gender', ['' => 'Select an option', 'male' => 'Male', 'female' => 'Female']) }}
+                        </div>
+                        {!! $errors->first('gender', '<p class="help is-danger">:message</p>') !!}
+                    </div>
+
                     <hr>
 
                     <div class="field">
