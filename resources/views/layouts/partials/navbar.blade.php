@@ -11,7 +11,7 @@
     <div class="navbar-menu" id="navMenu">
       <div class="navbar-start">
         <a class="navbar-item" href="/posts/create">New Post</a>
-        <a class="navbar-item" href="/my_favorites">My Favorites</a>
+        <a class="navbar-item" href="/favorites">My Favorites</a>
       </div>
       <div class="navbar-end">
         {{ Form::open(['route' => ['profiles.index'], 'style' => 'padding-top: 8px;', 'method' => 'GET']) }}

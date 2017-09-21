@@ -44,16 +44,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all favorite posts associated with the user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function favoritedPosts()
-    {
-        return $this->belongsToMany(Post::class, 'favorites')->withTimestamps();
-    }
-
-    /**
      * A user can have many favorite posts.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -84,17 +74,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Check whether user is following another user.
-     *
-     * @param  self $user
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function isFollowing(self $user)
-    {
-        return $this->following()->where('follow_id', $user->id)->first();
-    }
-
-    /**
      * Check whether the user favorited a post.
      *
      * @param  Post $post
@@ -103,6 +82,17 @@ class User extends Authenticatable
     public function favoritedTo($post)
     {
         return $this->favorites()->where('post_id', $post->id)->first();
+    }
+
+    /**
+     * Check whether user is following another user.
+     *
+     * @param  self $user
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function isFollowing(self $user)
+    {
+        return $this->following()->where('follow_id', $user->id)->first();
     }
 
     /**
@@ -125,26 +115,5 @@ class User extends Authenticatable
     public function getAvatarAttribute($value)
     {
         return '/images/avatars/' . $value;
-    }
-
-    /**
-     * Follow a user.
-     *
-     * @param  int $id
-     * @return void
-     */
-    public function follow($id)
-    {
-        $this->following()->attach($id);
-    }
-
-    /**
-     * Unfollow a user.
-     *
-     * @return int
-     */
-    public function unfollow($id)
-    {
-        return $this->following()->detach($id);
     }
 }

@@ -24,7 +24,10 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        $favorites = auth()->user()->favorites;
+        $favorites = Favorite::with('post')
+                            ->where('user_id', auth()->id())
+                            ->latest()
+                            ->get();
 
         return view('favorites.index', compact('favorites'));
     }
@@ -38,12 +41,10 @@ class FavoriteController extends Controller
     {
         $post = Post::findOrFail(request('post_id'));
 
-        $favorite = Favorite::create([
+        return Favorite::create([
             'user' => auth()->user(),
             'post' => $post
         ]);
-
-        return $favorite;
     }
 
     /**
