@@ -30,7 +30,7 @@
                     .then((response) => {
                         this.followedUser = null;
                     }, (response) => {
-                        flash('Problem unfollowing post. Please try again.', 'danger');
+                        flash('Problem unfollowing user. Please try again.', 'danger');
                     });
             }
         }
