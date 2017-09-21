@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar is-danger">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ (auth()->check()) ? '/posts' : '/' }}">EXPress Blog</a>
     <div class="navbar-burger" data-target="navMenu">

@@ -13895,14 +13895,6 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
-.navbar {
-  background-color: #ff5257;
-}
-
-.navbar-item {
-  color: #fff;
-}
-
 .logo {
   -webkit-transform: scale(-1, 1);
   transform: scale(-1, 1);
