@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="content has-text-centered">
 			<p>
-				<strong>EXpress Blog</strong> by Zach Preston.
+				<strong>Blog Xpress</strong> by Zach Preston.
 			</p>
 		</div>
 	</div>
