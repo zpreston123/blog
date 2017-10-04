@@ -33,6 +33,6 @@ Route::get('favorites', 'FavoriteController@index');
 Route::post('favorites', 'FavoriteController@store');
 Route::delete('favorites/{favorite}', 'FavoriteController@destroy');
 
-Route::get('followers', 'FollowerController@index')->name('followers.index');
-Route::post('followers', 'FollowerController@store')->name('followers.store');
-Route::delete('followers/{follower}', 'FollowerController@destroy')->name('followers.destroy');
+Route::get('followers', 'FollowerController@index');
+Route::post('followers', 'FollowerController@store');
+Route::delete('followers/{follower}', 'FollowerController@destroy');
