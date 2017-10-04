@@ -16483,6 +16483,15 @@ var app = new Vue({
   el: '#app'
 });
 
+var toggleBurger = function toggleBurger() {
+  var burgerIcon = document.getElementById('burger');
+  var dropMenu = document.getElementById('navMenu');
+  burgerIcon.classList.toggle('is-active');
+  dropMenu.classList.toggle('is-active');
+};
+
+window.toggleBurger = toggleBurger;
+
 /***/ }),
 /* 128 */
 /***/ (function(module, exports, __webpack_require__) {

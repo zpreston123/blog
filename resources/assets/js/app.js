@@ -23,5 +23,14 @@ Vue.component('favorite-button', require('./components/FavoriteButton.vue'));
 Vue.component('follow-button', require('./components/FollowButton.vue'));
 
 const app = new Vue({
-    el: '#app'
+	el: '#app'
 });
+
+const toggleBurger = () => {
+	let burgerIcon = document.getElementById('burger');
+	let dropMenu = document.getElementById('navMenu');
+	burgerIcon.classList.toggle('is-active');
+	dropMenu.classList.toggle('is-active');
+};
+
+window.toggleBurger = toggleBurger;
