@@ -35,13 +35,14 @@
 					return false;
 				}
 
-				axios.post('/posts/' + this.postId + '/comments', this.comment).then((response) => {
-					this.$emit('submitted', response.data);
-					this.comment.body = '';
-					flash('Comment added successfully!');
-				}, (response) => {
-					flash('Problem submitting comment. Please try again.', 'danger');
-				});
+				axios.post('/posts/' + this.postId + '/comments', this.comment)
+					.then(response => {
+						this.$emit('submitted', response.data);
+						this.comment.body = '';
+						flash('Comment added successfully!');
+					}, response => {
+						flash('Problem submitting comment. Please try again.', 'danger');
+					});
 			}
 		}
 	}

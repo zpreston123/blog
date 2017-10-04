@@ -25,19 +25,19 @@
         methods: {
             favorite() {
                 axios.post('/favorites', {post_id: this.post.id})
-                    .then((response) => {
+                    .then(response => {
                         this.favoritedPost = response.data
                         flash('Post favorited!');
-                    }, (response) => {
+                    }, response => {
                         flash('Problem favoriting post. Please try again.', 'danger');
                     });
             },
             unfavorite() {
                 axios.delete(`/favorites/${this.favoritedPost.id}`)
-                    .then((response) => {
+                    .then(response => {
                         this.favoritedPost = null;
                         flash('Post unfavorited.');
-                    }, (response) => {
+                    }, response => {
                         flash('Problem unfavoriting post. Please try again.', 'danger');
                     });
             }

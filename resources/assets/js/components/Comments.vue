@@ -51,11 +51,12 @@
         },
         methods: {
             fetchComments() {
-                axios.get('/posts/' + this.postId + '/comments').then((response) => {
-                    this.comments = response.data;
-                }, (response) => {
-                    flash('Problem fetching comments. Please refresh the page and try again.', 'danger');
-                });
+                axios.get('/posts/' + this.postId + '/comments')
+                    .then(response => {
+                        this.comments = response.data;
+                    }, response => {
+                        flash('Problem fetching comments. Please refresh the page and try again.', 'danger');
+                    });
             },
             addComment(comment) {
                 this.comments.unshift(comment);
@@ -64,12 +65,13 @@
                 if (confirm('Are you sure you want to delete this comment?')) {
                     let index = this.comments.indexOf(comment);
 
-                    axios.delete('/posts/' + this.postId + '/comments/' + comment.id).then((response) => {
-                        this.comments.splice(index, 1);
-                        flash('Comment deleted successfully!');
-                    }, (response) => {
-                        flash('Problem deleting comment. Please try again.', 'danger');
-                    });
+                    axios.delete('/posts/' + this.postId + '/comments/' + comment.id)
+                        .then(response => {
+                            this.comments.splice(index, 1);
+                            flash('Comment deleted successfully!');
+                        }, response => {
+                            flash('Problem deleting comment. Please try again.', 'danger');
+                        });
                 }
             }
         },

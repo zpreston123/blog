@@ -19,17 +19,19 @@
         methods: {
             follow() {
                 axios.post('/followers', {user_id: this.user.id})
-                    .then((response) => {
+                    .then(response => {
                         this.followedUser = response.data;
-                    }, (response) => {
+                        flash('You are now following this user.');
+                    }, response => {
                         flash('Problem following user. Please try again.', 'danger');
                     });
             },
             unfollow() {
                 axios.delete(`/followers/${this.followedUser.id}`)
-                    .then((response) => {
+                    .then(response => {
                         this.followedUser = null;
-                    }, (response) => {
+                        flash('You have unfollowed this user.');
+                    }, response => {
                         flash('Problem unfollowing user. Please try again.', 'danger');
                     });
             }

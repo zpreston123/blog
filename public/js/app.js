@@ -56596,6 +56596,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/followers', { user_id: this.user.id }).then(function (response) {
                 _this.followedUser = response.data;
+                flash('You are now following this user.');
             }, function (response) {
                 flash('Problem following user. Please try again.', 'danger');
             });
@@ -56605,6 +56606,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.delete('/followers/' + this.followedUser.id).then(function (response) {
                 _this2.followedUser = null;
+                flash('You have unfollowed this user.');
             }, function (response) {
                 flash('Problem unfollowing user. Please try again.', 'danger');
             });
