@@ -3,6 +3,15 @@
 @section('title', 'Users')
 
 @section('content')
+	{{ Form::open(['route' => ['profiles.index'], 'method' => 'GET']) }}
+		<div class="control has-icons-left">
+			{{ Form::search('q', null,['class' => 'input is-medium', 'placeholder' => 'Search...']) }}
+			<span class="icon is-left">
+				<i class="fa fa-search"></i>
+			</span>
+		</div>
+	{{ Form::close() }}
+
 	<h1 class="title">All Results ({{ $users->count() }})</h1>
                 <hr>
 
