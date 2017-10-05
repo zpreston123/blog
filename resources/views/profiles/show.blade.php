@@ -26,7 +26,6 @@
 								:user="{{ $profileUser }}">
 							</follow-button>
 						@else
-							<a href="/profiles/{{ $profileUser->id }}/edit" class="button is-info">Edit Profile</a>
 							<a href="/followers" class="button is-success">Following</a>
 						@endif
 					</p>
