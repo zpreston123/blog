@@ -8,7 +8,7 @@
 
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="/css/app.css">
+    @style('/css/app.css')
 </head>
 <body>
     <div id="app">
@@ -20,14 +20,14 @@
 
                 @yield('content')
 
-                <flash></flash>
+                <flash-message></flash-message>
             </div>
         </section>
 
         @include('layouts.partials.footer')
     </div>
 
-    <script src="/js/app.js"></script>
+    @script('/js/app.js')
     @yield('scripts')
 </body>
 </html>

@@ -67,7 +67,7 @@
 @endsection
 
 @section('scripts')
-	<script>
+	@script
 		$(function () {
 			$('#delete-button').click(function (event) {
 				event.preventDefault();
@@ -76,6 +76,6 @@
 				}
 			});
 		});
-	</script>
+	@endscript
 @endsection
 
