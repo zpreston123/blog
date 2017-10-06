@@ -17,9 +17,9 @@ window.events = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('comments', require('./components/Comments.vue'));
 Vue.component('favorite-button', require('./components/FavoriteButton.vue'));
+Vue.component('flash-message', require('./components/FlashMessage.vue'));
 Vue.component('follow-button', require('./components/FollowButton.vue'));
 
 const app = new Vue({
