@@ -12,7 +12,7 @@
             <p>
                 <a class="button is-medium is-info" href="/register">
                     <span class="icon">
-                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        @fa('user-plus')
                     </span>
                     <span>Sign up</span>
                 </a>

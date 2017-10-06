@@ -14,7 +14,7 @@
                         <div class="control has-icons-left">
                             {{ Form::text('name', old('name'), ['class' => 'input']) }}
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user"></i>
+                                @fa('user')
                             </span>
                         </div>
                         {!! $errors->first('name', '<p class="help is-danger">:message</p>') !!}
@@ -25,7 +25,7 @@
                         <div class="control has-icons-left">
                             {{ Form::text('email', old('email'), ['class' => 'input']) }}
                             <span class="icon is-small is-left">
-                                <i class="fa fa-envelope"></i>
+                                @fa('envelope')
                             </span>
                         </div>
                         {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
@@ -46,7 +46,7 @@
                         <div class="control has-icons-left">
                             {{ Form::password('password', ['class' => 'input']) }}
                             <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
+                                @fa('lock')
                             </span>
                         </div>
                         {!! $errors->first('password', '<p class="help is-danger">:message</p>') !!}
@@ -57,7 +57,7 @@
                         <div class="control has-icons-left">
                             {{ Form::password('password_confirmation', ['class' => 'input']) }}
                             <span class="icon is-small is-left">
-                                <i class="fa fa-check-circle"></i>
+                                @fa('check-circle')
                             </span>
                         </div>
                     </div>

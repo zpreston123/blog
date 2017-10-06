@@ -21,7 +21,7 @@
 				<div class="navbar-item has-dropdown is-hoverable" id="markAsRead" onclick="markNotificationAsRead('{{ count(auth()->user()->unreadNotifications) }}')">
 					<a class="navbar-link">
 						<span class="badge is-badge-info is-badge-small" data-badge="{{ count(auth()->user()->unreadNotifications) }}">
-							<i class="fa fa-globe fa-lg" aria-hidden="true"></i>
+							@fa('globe fa-lg')
 						</span>&nbsp;&nbsp;
 					</a>
 					<div class="navbar-dropdown is-right">
@@ -40,7 +40,7 @@
 				</a>
 				<div class="navbar-item has-dropdown is-hoverable">
 					<a class="navbar-link" href="#">
-						<i class="fa fa-user" aria-hidden="true"></i>
+						@fa('user')
 					</a>
 					<div class="navbar-dropdown is-right">
 						<a class="navbar-item" href="/profiles/{{ auth()->id() }}/edit">Edit Profile</a>
