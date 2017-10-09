@@ -1,14 +1,16 @@
 <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
 		<a class="navbar-item" href="{{ (auth()->check()) ? '/posts' : '/' }}">Blog Xpress</a>
-		<div
-			id="burger"
-			class="navbar-burger burger"
-			onclick="toggleBurger()">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
+		@auth
+			<div
+				id="burger"
+				class="navbar-burger burger"
+				onclick="toggleBurger()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		@endauth
 	</div>
 	@auth
 		<div id="navMenu" class="navbar-menu">
