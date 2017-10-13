@@ -2,10 +2,7 @@
 	<div class="navbar-brand">
 		<a class="navbar-item" href="{{ (auth()->check()) ? '/posts' : '/' }}">Blog Xpress</a>
 		@auth
-			<div
-				id="burger"
-				class="navbar-burger burger"
-				onclick="toggleBurger()">
+			<div class="navbar-burger burger" data-target="navMenu">
 				<span></span>
 				<span></span>
 				<span></span>
@@ -13,7 +10,7 @@
 		@endauth
 	</div>
 	@auth
-		<div id="navMenu" class="navbar-menu">
+		<div class="navbar-menu" id="navMenu">
 			<div class="navbar-start">
 				<a class="navbar-item" href="/posts/create">New Post</a>
 				<a class="navbar-item" href="/favorites">My Favorites</a>

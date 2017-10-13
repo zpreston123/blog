@@ -26,11 +26,12 @@ const app = new Vue({
 	el: '#app'
 });
 
-const toggleBurger = () => {
-	let burgerIcon = document.getElementById('burger');
-	let dropMenu = document.getElementById('navMenu');
-	burgerIcon.classList.toggle('is-active');
-	dropMenu.classList.toggle('is-active');
-};
+const navbarBurger = document.querySelector('.navbar-burger');
 
-window.toggleBurger = toggleBurger;
+navbarBurger.addEventListener('click', () => {
+	const target = this.dataset.target;
+	const $target = document.getElementById(target);
+
+	this.classList.toggle('is-active');
+	$target.classList.toggle('is-active');
+});
