@@ -21,6 +21,13 @@ class Post extends Model
     protected $with = ['author'];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['is_favorited', 'favorites_count'];
+
+    /**
      * Get the category associated with the post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -61,13 +68,13 @@ class Post extends Model
     }
 
     /**
-     * A post can be associated with many users as their favorite.
+     * A post can have many favorites.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function users()
+    public function favorites()
     {
-        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
+        return $this->hasMany(Favorite::class);
     }
 
     /**
@@ -143,15 +150,22 @@ class Post extends Model
     }
 
     /**
-     * Check whether the post is marked as favorite by the user.
+     * Get the post's favorited status.
      *
      * @return boolean
      */
-    public function favorited()
+    public function getIsFavoritedAttribute()
     {
-        return Favorite::where([
-            ['user_id', auth()->id()],
-            ['post_id', $this->id]
-        ])->first();
+        return !!$this->favorites->where('user_id', auth()->id())->count();
+    }
+
+    /**
+     * Get the post's number of favorites.
+     *
+     * @return int
+     */
+    public function getFavoritesCountAttribute()
+    {
+        return $this->favorites->count();
     }
 }

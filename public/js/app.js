@@ -16837,7 +16837,6 @@ module.exports = __webpack_require__(176);
 /* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _this = this;
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -16863,17 +16862,28 @@ Vue.component('flash-message', __webpack_require__(165));
 Vue.component('follow-button', __webpack_require__(173));
 
 var app = new Vue({
-  el: '#app'
+	el: '#app'
 });
 
-var navbarBurger = document.querySelector('.navbar-burger');
+document.addEventListener('DOMContentLoaded', function () {
+	// Get all "navbar-burger" elements
+	var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-navbarBurger.addEventListener('click', function () {
-  var target = _this.dataset.target;
-  var $target = document.getElementById(target);
+	// Check if there are any navbar burgers
+	if ($navbarBurgers.length > 0) {
+		// Add a click event on each of them
+		$navbarBurgers.forEach(function ($el) {
+			$el.addEventListener('click', function () {
+				// Get the target from the "data-target" attribute
+				var target = $el.dataset.target;
+				var $target = document.getElementById(target);
 
-  _this.classList.toggle('is-active');
-  $target.classList.toggle('is-active');
+				// Toggle the class on both the "navbar-burger" and the "navbar-menu"
+				$el.classList.toggle('is-active');
+				$target.classList.toggle('is-active');
+			});
+		});
+	}
 });
 
 /***/ }),
@@ -56287,21 +56297,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['dataFavorite', 'post'],
     data: function data() {
         return {
-            favoritedPost: this.dataFavorite
+            favoritedPost: this.dataFavorite,
+            isFavorited: this.post.is_favorited,
+            count: this.post.favorites_count
         };
     },
 
-    computed: {
-        favorited: function favorited() {
-            return this.favoritedPost !== null;
-        }
-    },
     methods: {
         favorite: function favorite() {
             var _this = this;
 
             axios.post('/favorites', { post_id: this.post.id }).then(function (response) {
                 _this.favoritedPost = response.data;
+                _this.isFavorited = true;
+                _this.count++;
                 flash('Post favorited!');
             }, function (response) {
                 flash('Problem favoriting post. Please try again.', 'danger');
@@ -56312,6 +56321,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.delete('/favorites/' + this.favoritedPost.id).then(function (response) {
                 _this2.favoritedPost = null;
+                _this2.isFavorited = false;
+                _this2.count--;
                 flash('Post unfavorited.');
             }, function (response) {
                 flash('Problem unfavoriting post. Please try again.', 'danger');
@@ -56328,35 +56339,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("span", [
-    _vm.favorited
-      ? _c(
-          "a",
-          {
-            attrs: { href: "#", title: "Mark as Unfavorite" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.unfavorite($event)
-              }
+  return _vm.isFavorited
+    ? _c(
+        "a",
+        {
+          staticClass: "button is-link",
+          attrs: { title: "Unfavorite Post" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.unfavorite($event)
             }
-          },
-          [_c("i", { staticClass: "fa fa-heart" })]
-        )
-      : _c(
-          "a",
-          {
-            attrs: { href: "#", title: "Mark as Favorite" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.favorite($event)
-              }
+          }
+        },
+        [
+          _c("i", { staticClass: "fa fa-heart" }),
+          _vm._v("\n     "),
+          _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
+        ]
+      )
+    : _c(
+        "a",
+        {
+          staticClass: "button is-link is-outlined",
+          attrs: { title: "Favorite Post" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.favorite($event)
             }
-          },
-          [_c("i", { staticClass: "fa fa-heart-o" })]
-        )
-  ])
+          }
+        },
+        [
+          _c("i", { staticClass: "fa fa-heart-o" }),
+          _vm._v("\n     "),
+          _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
+        ]
+      )
 }
 var staticRenderFns = []
 render._withStripped = true

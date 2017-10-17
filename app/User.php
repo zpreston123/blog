@@ -44,7 +44,7 @@ class User extends Authenticatable
     }
 
     /**
-     * A user can have many favorite posts.
+     * A user can have many favorites.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

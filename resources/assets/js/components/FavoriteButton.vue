@@ -1,12 +1,12 @@
 <template>
-    <span>
-        <a href="#" title="Mark as Unfavorite" v-if="favorited" @click.prevent="unfavorite">
+        <a class="button is-link" title="Unfavorite Post" v-if="isFavorited" @click.prevent="unfavorite">
             <i class="fa fa-heart"></i>
+            &nbsp;<span v-text="count"></span>
         </a>
-        <a href="#" title="Mark as Favorite" v-else @click.prevent="favorite">
+        <a class="button is-link is-outlined" title="Favorite Post" v-else @click.prevent="favorite">
             <i class="fa fa-heart-o"></i>
+            &nbsp;<span v-text="count"></span>
         </a>
-    </span>
 </template>
 
 <script>
@@ -15,30 +15,31 @@
         data() {
             return {
                 favoritedPost: this.dataFavorite,
+                isFavorited: this.post.is_favorited,
+                count: this.post.favorites_count
             }
-        },
-        computed: {
-            favorited() {
-                return this.favoritedPost !== null;
-            },
         },
         methods: {
             favorite() {
                 axios.post('/favorites', {post_id: this.post.id})
                     .then(response => {
                         this.favoritedPost = response.data
-                        flash('Post favorited!');
+                        this.isFavorited = true
+                        this.count++
+                        flash('Post favorited!')
                     }, response => {
-                        flash('Problem favoriting post. Please try again.', 'danger');
+                        flash('Problem favoriting post. Please try again.', 'danger')
                     });
             },
             unfavorite() {
                 axios.delete(`/favorites/${this.favoritedPost.id}`)
                     .then(response => {
-                        this.favoritedPost = null;
-                        flash('Post unfavorited.');
+                        this.favoritedPost = null
+                        this.isFavorited = false
+                        this.count--
+                        flash('Post unfavorited.')
                     }, response => {
-                        flash('Problem unfavoriting post. Please try again.', 'danger');
+                        flash('Problem unfavoriting post. Please try again.', 'danger')
                     });
             }
         }

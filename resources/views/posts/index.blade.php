@@ -35,8 +35,8 @@
                             {{ $post->created_at->diffForHumans() }}</p>
                         <favorite-button
                             :data-favorite="{{ json_encode(auth()->user()->favoritedTo($post)) }}"
-                            :post="{{ $post }}"
-                        ></favorite-button>
+                            :post="{{ $post }}">
+                        </favorite-button>
                     </div>
                 @empty
                     <p>No posts have been made!  Please check back later.</p>
