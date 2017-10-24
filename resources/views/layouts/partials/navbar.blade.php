@@ -17,7 +17,7 @@
 			</div>
 			<div class="navbar-end">
 				<a class="navbar-item" href="/profiles">Find Users</a>
-				<div class="navbar-item has-dropdown is-hoverable" id="markAsRead" onclick="markNotificationAsRead('{{ count(auth()->user()->unreadNotifications) }}')">
+				{{-- <div class="navbar-item has-dropdown is-hoverable" id="markAsRead" onclick="markNotificationAsRead('{{ count(auth()->user()->unreadNotifications) }}')">
 					<a class="navbar-link">
 						<span class="badge is-badge-info is-badge-small" data-badge="{{ count(auth()->user()->unreadNotifications) }}">
 							@fa('globe fa-lg')
@@ -30,7 +30,7 @@
 							<a href="#" class="navbar-item">No unread notifications.</a>
 						@endforelse
 					</div>
-				</div>
+				</div> --}}
 				<a class="navbar-item" href="/profiles/{{ auth()->id() }}">
 					<figure class="image is-16x16" style="margin-right: 8px;">
 						<img src="{{ auth()->user()->avatar }}">

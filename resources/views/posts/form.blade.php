@@ -35,7 +35,9 @@
 
 <div class="field is-grouped">
     <div class="control">
-        {{ Form::submit($submitButtonText, ['class' => 'button is-primary']) }}
+        <submit-button class="is-primary">
+            {{ $submitButtonText }}
+        </submit-button>
     </div>
     <div class="control">
         {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/posts"']) }}

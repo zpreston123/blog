@@ -64,7 +64,7 @@
 
                     <div class="field is-grouped">
                         <p class="control">
-                            {{ Form::submit('Register', ['class' => 'button is-primary']) }}
+                            <submit-button class="is-primary">Register</submit-button>
                         </p>
                         <p class="control">
                             {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/"']) }}

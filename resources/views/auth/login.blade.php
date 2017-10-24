@@ -21,16 +21,10 @@
         </div>
 
         <div class="control">
-            {{ Form::button('
-                <span class="icon">
-                    @fa('sign-in')
-                </span>
-                <span>Log in</span>',
-                [
-                    'type' => 'submit',
-                    'class' => 'button is-info is-fullwidth'
-                ])
-            }}
+            <submit-button class="is-info is-fullwidth">
+                <span class="icon">@fa('sign-in')</span>
+                <span>Log in</span>
+            </submit-button>
         </div>
     {{ Form::close() }}
 </div>

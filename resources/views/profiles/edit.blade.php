@@ -28,7 +28,7 @@
                             </label>
                         </div>
                         <div class="control">
-                            {{ Form::submit('Save', ['class' => 'button is-info is-small']) }}
+                            <submit-button class="is-info is-small">Save</submit-button>
                         </div>
                     </div>
                     {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
@@ -70,7 +70,7 @@
 
                     <div class="field is-grouped">
                         <div class="control">
-                            {{ Form::submit('Update', ['class' => 'button is-primary']) }}
+                            <submit-button class="is-primary">Update</submit-button>
                         </div>
                         <div class="control">
                             {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/posts"']) }}
