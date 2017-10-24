@@ -21,6 +21,7 @@ Vue.component('comments', require('./components/Comments.vue'));
 Vue.component('favorite-button', require('./components/FavoriteButton.vue'));
 Vue.component('flash-message', require('./components/FlashMessage.vue'));
 Vue.component('follow-button', require('./components/FollowButton.vue'));
+Vue.component('submit-button', require('./components/SubmitButton.vue'));
 
 const app = new Vue({
 	el: '#app'
