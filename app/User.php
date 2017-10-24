@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all users that are following a user.
+     * Get all users that are following the current user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -64,7 +64,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all users that a user is following.
+     * Get all users that the current user is following.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -92,7 +92,7 @@ class User extends Authenticatable
      */
     public function isFollowing(self $user)
     {
-        return $this->following()->where('follow_id', $user->id)->first();
+        return $this->with('followers')->findOrFail($user->id);
     }
 
     /**
