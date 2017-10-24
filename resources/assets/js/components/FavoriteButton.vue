@@ -1,9 +1,9 @@
 <template>
-        <a class="button is-link" title="Unfavorite Post" v-if="isFavorited" @click.prevent="unfavorite">
+        <a class="button is-link tooltip" data-tooltip="Unfavorite Post" v-if="isFavorited" @click.prevent="unfavorite">
             <i class="fa fa-heart"></i>
             &nbsp;<span v-text="count"></span>
         </a>
-        <a class="button is-link is-outlined" title="Favorite Post" v-else @click.prevent="favorite">
+        <a class="button is-link is-outlined tooltip" data-tooltip="Favorite Post" v-else @click.prevent="favorite">
             <i class="fa fa-heart-o"></i>
             &nbsp;<span v-text="count"></span>
         </a>

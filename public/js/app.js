@@ -56983,8 +56983,8 @@ var render = function() {
     ? _c(
         "a",
         {
-          staticClass: "button is-link",
-          attrs: { title: "Unfavorite Post" },
+          staticClass: "button is-link tooltip",
+          attrs: { "data-tooltip": "Unfavorite Post" },
           on: {
             click: function($event) {
               $event.preventDefault()
@@ -57001,8 +57001,8 @@ var render = function() {
     : _c(
         "a",
         {
-          staticClass: "button is-link is-outlined",
-          attrs: { title: "Favorite Post" },
+          staticClass: "button is-link is-outlined tooltip",
+          attrs: { "data-tooltip": "Favorite Post" },
           on: {
             click: function($event) {
               $event.preventDefault()
