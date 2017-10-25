@@ -127,8 +127,10 @@ class PostController extends Controller
             });
         }
 
-        if ($post->favorited()) {
-            $post->favorites()->detach();
+        if ($post->is_favorited) {
+            $post->favorites->each(function ($favorite) {
+                $favorite->delete();
+            });
         }
 
         $post->delete();
