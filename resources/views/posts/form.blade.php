@@ -33,13 +33,9 @@
     {!! $errors->first('body', '<p class="help is-danger">:message</p>') !!}
 </div>
 
-<div class="field is-grouped">
-    <div class="control">
-        <submit-button class="is-primary">
-            {{ $submitButtonText }}
-        </submit-button>
-    </div>
-    <div class="control">
-        {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/posts"']) }}
-    </div>
+<div class="buttons">
+    <submit-button class="is-primary">
+        {{ $submitButtonText }}
+    </submit-button>
+    {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/posts"']) }}
 </div>

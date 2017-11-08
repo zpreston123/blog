@@ -62,13 +62,9 @@
                         </div>
                     </div>
 
-                    <div class="field is-grouped">
-                        <p class="control">
-                            <submit-button class="is-primary">Register</submit-button>
-                        </p>
-                        <p class="control">
-                            {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/"']) }}
-                        </p>
+                    <div class="buttons">
+                        <submit-button class="is-primary">Register</submit-button>
+                        {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/"']) }}
                     </div>
                 {{ Form::close() }}
             </div>
