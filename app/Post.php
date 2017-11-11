@@ -152,9 +152,9 @@ class Post extends Model
     /**
      * Get the post's favorited status.
      *
-     * @return boolean
+     * @return bool
      */
-    public function getIsFavoritedAttribute()
+    public function getIsFavoritedAttribute(): bool
     {
         return !!$this->favorites->where('user_id', auth()->id())->count();
     }
@@ -164,7 +164,7 @@ class Post extends Model
      *
      * @return int
      */
-    public function getFavoritesCountAttribute()
+    public function getFavoritesCountAttribute(): int
     {
         return $this->favorites->count();
     }
