@@ -2,8 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
-use Blog\Post;
-use Blog\Favorite;
+use Blog\{Favorite, Post};
 
 class FavoriteController extends Controller
 {

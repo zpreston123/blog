@@ -2,8 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
-use Blog\Post;
-use Blog\Comment;
+use Blog\{Comment, Post};
 
 class PostCommentController extends Controller
 {

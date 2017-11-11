@@ -2,9 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
-use Blog\Tag;
-use Blog\Post;
-use Blog\Category;
+use Blog\{Category, Post, Tag};
 use Blog\Http\Requests\PostRequest;
 
 class PostController extends Controller

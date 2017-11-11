@@ -2,8 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
-use Blog\User;
-use Blog\Follower;
+use Blog\{Follower, User};
 
 class FollowerController extends Controller
 {
