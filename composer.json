@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "appstract/laravel-blade-directives": "^0.4.5",
         "fideloper/proxy": "~3.3",
         "intervention/image": "^2.3",
         "laracasts/flash": "^3.0",
