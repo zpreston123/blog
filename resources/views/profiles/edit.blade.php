@@ -83,7 +83,7 @@
 @endsection
 
 @section('scripts')
-    @script
+    <script>
         var file = document.getElementById("avatar");
         file.onchange = function () {
             if(file.files.length > 0)
@@ -91,5 +91,5 @@
                 document.getElementById('file-name').innerHTML = file.files[0].name;
             }
         };
-    @endscript
+    </script>
 @endsection
