@@ -16,7 +16,7 @@
                                 {{ Form::file('avatar', ['class' => 'file-input', 'id' => 'avatar']) }}
                                 <span class="file-cta">
                                     <span class="file-icon">
-                                        @fa('upload')
+                                        <i class="fa fa-upload"></i>
                                     </span>
                                     <span class="file-label">
                                         Upload avatar...

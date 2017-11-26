@@ -29,10 +29,11 @@
                             </div>
                         @endunless
                         <p>
-                            @fa('{{ $post->author->gender }}')
+                            <i class="fa fa-{{ $post->author->gender }}"></i>
                             {{ $post->author->name }}&nbsp;|&nbsp;
-                            @fa('clock-o')
-                            {{ $post->created_at->diffForHumans() }}</p>
+                            <i class="fa fa-clock-o"></i>
+                            {{ $post->created_at->diffForHumans() }}
+                        </p>
                         <favorite-button
                             :data-favorite="{{ json_encode(auth()->user()->favoritedTo($post)) }}"
                             :post="{{ $post }}">

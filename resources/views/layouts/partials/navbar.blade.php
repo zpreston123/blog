@@ -20,7 +20,7 @@
 				{{-- <div class="navbar-item has-dropdown is-hoverable" id="markAsRead" onclick="markNotificationAsRead('{{ count(auth()->user()->unreadNotifications) }}')">
 					<a class="navbar-link">
 						<span class="badge is-badge-info is-badge-small" data-badge="{{ count(auth()->user()->unreadNotifications) }}">
-							@fa('globe fa-lg')
+							<i class="fa fa-globe fa-lg"></i>
 						</span>&nbsp;&nbsp;
 					</a>
 					<div class="navbar-dropdown is-right">
@@ -39,7 +39,7 @@
 				</a>
 				<div class="navbar-item has-dropdown is-hoverable">
 					<a class="navbar-link" href="#">
-						@fa('user')
+						<i class="fa fa-user"></i>
 					</a>
 					<div class="navbar-dropdown is-right">
 						<a class="navbar-item" href="/profiles/{{ auth()->id() }}/edit">Edit Profile</a>

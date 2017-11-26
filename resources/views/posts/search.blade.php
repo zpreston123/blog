@@ -2,7 +2,7 @@
 	<div class="control has-icons-left">
 		{{ Form::search('q', null,['class' => 'input is-medium', 'placeholder' => 'Search...']) }}
 	    <span class="icon is-left">
-	        @fa('search')
+			<i class="fa fa-search"></i>
 	    </span>
 	</div>
 {{ Form::close() }}

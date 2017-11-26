@@ -12,7 +12,7 @@
             <p>
                 <a class="button is-medium is-info" href="/register">
                     <span class="icon">
-                        @fa('user-plus')
+                        <i class="fa fa-user-plus"></i>
                     </span>
                     <span>Sign up</span>
                 </a>

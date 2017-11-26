@@ -8,7 +8,7 @@
 
     <title>@yield('title')</title>
 
-    @style('/css/app.css')
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
     <div id="app">
@@ -27,7 +27,7 @@
         @include('layouts.partials.footer')
     </div>
 
-    @script('/js/app.js')
+    <script src="/js/app.js"></script>
     @yield('scripts')
 </body>
 </html>
