@@ -51,16 +51,4 @@ class Comment extends Model
     {
         return $this->author()->associate($author);
     }
-
-    /**
-     * Scope a query to find comment(s) by post.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  Post $post
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeByPost($query, $post)
-    {
-        return $query->where('post_id', $post->id);
-    }
 }
