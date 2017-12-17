@@ -12,7 +12,7 @@
                 Please log in or click below to register an account:
             </p>
             <p>
-                <a class="button is-medium is-info" href="/register">
+                <a class="button is-medium is-info" href="{{ route('register') }}">
                     <span class="icon">
                         <i class="fa fa-user-plus"></i>
                     </span>

@@ -13,7 +13,8 @@
 	{{ Form::close() }}
 
 	<h1 class="title">All Results ({{ $users->count() }})</h1>
-                <hr>
+
+    <hr>
 
 	<div class="box">
 	@foreach ($users as $user)
@@ -26,7 +27,7 @@
 			<div class="media-content">
 				<div class="content">
 					<p>
-						<a href="profiles/{{ $user->id }}">
+						<a href="{{ route('profiles.show', $user->id) }}">
 							<strong>{{ $user->name }}</strong>
 						</a>
 					</p>

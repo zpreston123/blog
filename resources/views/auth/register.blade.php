@@ -8,7 +8,7 @@
             <h1 class="title has-text-centered">Register an Account</h1>
 
             <div class="box">
-                {{ Form::open(['url' => 'register']) }}
+                {{ Form::open(['route' => 'register']) }}
                     <div class="field">
                         {{ Form::label('name', 'Name', ['class' => 'label']) }}
                         <div class="control has-icons-left">

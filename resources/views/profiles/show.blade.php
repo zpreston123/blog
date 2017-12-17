@@ -26,7 +26,7 @@
 								:user="{{ $profileUser }}">
 							</follow-button>
 						@else
-							<a href="/followers" class="button is-success">Following</a>
+							<a href="{{ route('followers.index') }}" class="button is-success">Following</a>
 						@endif
 					</p>
 				</div>

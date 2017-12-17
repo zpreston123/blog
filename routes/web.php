@@ -11,7 +11,7 @@
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('welcome');
 
 Auth::routes();
 
@@ -22,17 +22,17 @@ Route::patch('profiles/{user}', 'ProfileController@update')->name('profiles.upda
 
 Route::put('profiles/{user}/avatar', 'ProfileAvatarController@update')->name('profiles.update-avatar');
 
-Route::get('posts/search', 'PostController@search');
+Route::get('posts/search', 'PostController@search')->name('posts.search');
 Route::resource('posts', 'PostController');
 
-Route::get('posts/{post}/comments', 'PostCommentController@index');
-Route::post('posts/{post}/comments', 'PostCommentController@store');
-Route::delete('posts/{post}/comments/{comment}', 'PostCommentController@destroy');
+Route::get('posts/{post}/comments', 'PostCommentController@index')->name('post-comments.index');
+Route::post('posts/{post}/comments', 'PostCommentController@store')->name('post-comments.store');
+Route::delete('posts/{post}/comments/{comment}', 'PostCommentController@destroy')->name('post-comments.destroy');
 
-Route::get('favorites', 'FavoriteController@index');
-Route::post('favorites', 'FavoriteController@store');
-Route::delete('favorites/{favorite}', 'FavoriteController@destroy');
+Route::get('favorites', 'FavoriteController@index')->name('favorites.index');
+Route::post('favorites', 'FavoriteController@store')->name('favorites.store');
+Route::delete('favorites/{favorite}', 'FavoriteController@destroy')->name('favorites.destroy');
 
-Route::get('followers', 'FollowerController@index');
-Route::post('followers', 'FollowerController@store');
-Route::delete('followers/{follower}', 'FollowerController@destroy');
+Route::get('followers', 'FollowerController@index')->name('followers.index');
+Route::post('followers', 'FollowerController@store')->name('followers.store');
+Route::delete('followers/{follower}', 'FollowerController@destroy')->name('followers.destroy');
