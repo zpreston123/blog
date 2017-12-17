@@ -19,9 +19,7 @@
 <div class="field">
     {{ Form::label('tags','Tags', ['class' => 'label']) }}
     <div class="control">
-        <span class="select is-multiple">
-            {{ Form::select('tags[]', $tags, null, ['multiple']) }}
-        </span>
+        {{ Form::input('tags', 'tags[]', implode(',', $tags), ['class' => 'input']) }}
     </div>
 </div>
 

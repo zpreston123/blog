@@ -14848,6 +14848,21 @@ label.panel-block:hover {
   color: #fff;
 }
 
+.tagsinput {
+  height: auto !important;
+}
+
+.tagsinput .control {
+  margin-bottom: .1em !important;
+  margin-top: .1em !important;
+}
+
+.tagsinput input {
+  border: none;
+  margin-bottom: .1em !important;
+  margin-top: .1em !important;
+}
+
 .logo {
   -webkit-transform: scale(-1, 1);
   transform: scale(-1, 1);
