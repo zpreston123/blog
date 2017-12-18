@@ -50,4 +50,16 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+
+    /**
+     * Allow Whoops to open file in Sublime as the debug editor.
+     *
+     * @return \Whoops\Handler\Handler
+     */
+    public function whoopsHandler()
+    {
+        $handler = parent::whoopsHandler();
+        $handler->setEditor('sublime');
+        return $handler;
+    }
 }
