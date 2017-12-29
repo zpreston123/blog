@@ -8,34 +8,9 @@
     <div class="columns">
         <div class="column is-half is-offset-one-quarter">
             <div class="box">
-                <!-- Edit Avatar Form -->
-                {{ Form::model($profileUser, ['route' => ['profiles.update-avatar', $profileUser], 'enctype' => 'multipart/form-data', 'method' => 'PUT']) }}
-                    <div class="field is-grouped">
-                        <div class="file is-small has-name">
-                            <label class="file-label">
-                                {{ Form::file('avatar', ['class' => 'file-input', 'id' => 'avatar']) }}
-                                <span class="file-cta">
-                                    <span class="file-icon">
-                                        <i class="fa fa-upload"></i>
-                                    </span>
-                                    <span class="file-label">
-                                        Upload avatar...
-                                    </span>
-                                </span>
-                                <span id="file-name" class="file-name">
-                                    Screen Shot 2017-07-29 at 15.54.25.png
-                                </span>
-                            </label>
-                        </div>
-                        <div class="control">
-                            <submit-button class="is-info is-small">Save</submit-button>
-                        </div>
-                    </div>
-                    {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
-                {{ Form::close() }}<br>
+                @include('profiles.avatar', compact('profile'))<br>
 
-                <!-- Edit Profile Form -->
-                {{ Form::model($profileUser, ['route' => ['profiles.update', $profileUser], 'method' => 'PATCH']) }}
+                {{ Form::model($profile, ['route' => ['profiles.update', $profile], 'method' => 'PATCH']) }}
                     <div class="field">
                         {{ Form::label('name', 'Name', ['class' => 'label']) }}
                         <div class="control">
