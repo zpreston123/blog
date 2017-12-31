@@ -1,7 +1,7 @@
 <hr>
 <h3>My Posts:</h3>
-@if (count($profileUser->posts) > 0)
-	@foreach($profileUser->posts->sortByDesc('updated_at')->chunk(3) as $posts)
+@if (count($profile->posts) > 0)
+	@foreach($profile->posts->sortByDesc('updated_at')->chunk(3) as $posts)
 		<div class="columns">
 			@foreach($posts as $post)
 				<div class="column is-4">

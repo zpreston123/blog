@@ -24,52 +24,52 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $users = User::where('name', 'LIKE', '%'.request('q').'%')
+        $profiles = User::where('name', 'LIKE', '%'.request('q').'%')
                     ->orderBy('name')
                     ->get();
 
-        return view('profiles.index', compact('users'));
+        return view('profiles.index', compact('profiles'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  User $user
+     * @param  User $profile
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $profile)
     {
-        $profileUser = User::withCount('posts', 'favorites', 'followers', 'following')->findOrFail($user->id);
+        $profile = $profile->withCount('posts', 'favorites', 'followers', 'following')->findOrFail($profile->id);
 
-        return view('profiles.show', compact('profileUser'));
+        return view('profiles.show', compact('profile'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  User $user
+     * @param  User $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $profile)
     {
-        return view('profiles.edit', ['profileUser' => $user]);
+        return view('profiles.edit', compact('profile'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  User $user
+     * @param  User $profile
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(User $user)
+    public function update(User $profile)
     {
         request()->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255'.Rule::unique('users')->ignore($user->id),
+            'email' => 'required|email|max:255'.Rule::unique('users')->ignore($profile->id),
             'password' => 'min:6|confirmed'
         ]);
 
-        $user->update(request()->only('name', 'email', 'password'));
+        $profile->update(request()->only('name', 'email', 'password'));
 
         flash()->success('Profile updated successfully!');
 

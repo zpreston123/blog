@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Users')
+@section('title', 'Profiles')
 
 @section('content')
 	{{ Form::open(['route' => ['profiles.index'], 'method' => 'GET']) }}
@@ -12,23 +12,23 @@
 		</div>
 	{{ Form::close() }}
 
-	<h1 class="title">All Results ({{ $users->count() }})</h1>
+	<h1 class="title">All Results ({{ $profiles->count() }})</h1>
 
     <hr>
 
 	<div class="box">
-	@foreach ($users as $user)
+	@foreach ($profiles as $profile)
 		<article class="media">
 			<div class="media-left">
 				<figure class="image is-64x64">
-					<img src="{{ $user->avatar }}">
+					<img src="{{ $profile->avatar }}">
 				</figure>
 			</div>
 			<div class="media-content">
 				<div class="content">
 					<p>
-						<a href="{{ route('profiles.show', $user->id) }}">
-							<strong>{{ $user->name }}</strong>
+						<a href="{{ route('profiles.show', $profile->id) }}">
+							<strong>{{ $profile->name }}</strong>
 						</a>
 					</p>
 				</div>

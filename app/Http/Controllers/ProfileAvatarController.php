@@ -20,21 +20,21 @@ class ProfileAvatarController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  User $user
+     * @param  User $profile
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(User $user)
+    public function update(User $profile)
     {
     	request()->validate([
             'avatar' => 'required|image|mimes:jpeg,png'
     	]);
 
         $avatar = request()->file('avatar');
-        $filename = $user->name . time() . '.' . $avatar->getClientOriginalExtension();
+        $filename = $profile->name . time() . '.' . $avatar->getClientOriginalExtension();
 
         Image::make($avatar)->resize(300, 300)->save(public_path('images/avatars/' . $filename));
 
-        $user->update(['avatar' => $filename]);
+        $profile->update(['avatar' => $filename]);
 
         return redirect('posts');
     }
