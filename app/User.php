@@ -114,6 +114,6 @@ class User extends Authenticatable
      */
     public function getAvatarAttribute($value): string
     {
-        return '/images/avatars/' . $value;
+        return asset('/images/avatars/' . $value);
     }
 }
