@@ -14863,6 +14863,11 @@ label.panel-block:hover {
   margin-top: .1em !important;
 }
 
+.tagsinput .tag.is-active {
+  background-color: #00d1b2;
+  color: #fff;
+}
+
 .logo {
   -webkit-transform: scale(-1, 1);
   transform: scale(-1, 1);
