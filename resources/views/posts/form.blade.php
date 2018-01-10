@@ -19,7 +19,7 @@
 <div class="field">
     {{ Form::label('tags','Tags', ['class' => 'label']) }}
     <div class="control">
-        {{ Form::input('tags', 'tags[]', implode(',', $tags), ['class' => 'input']) }}
+        {{ Form::input('tags', 'tags[]', implode(',', $tags), ['class' => 'input', 'type' => 'tags']) }}
     </div>
 </div>
 
