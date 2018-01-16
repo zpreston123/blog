@@ -58359,7 +58359,39 @@ if (false) {
 /* 182 */
 /***/ (function(module, exports) {
 
-var KEY_BACKSPACE = 8,
+if (typeof Object.assign != 'function') {
+  // Must be writable: true, enumerable: false, configurable: true
+  Object.defineProperty(Object, "assign", {
+    value: function assign(target, varArgs) { // .length of function is 2
+      'use strict';
+      if (target == null) { // TypeError if undefined or null
+        throw new TypeError('Cannot convert undefined or null to object');
+      }
+
+      var to = Object(target);
+
+      for (var index = 1; index < arguments.length; index++) {
+        var nextSource = arguments[index];
+
+        if (nextSource != null) { // Skip over if undefined or null
+          for (var nextKey in nextSource) {
+            // Avoid bugs when hasOwnProperty is shadowed
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
+    },
+    writable: true,
+    configurable: true
+  });
+}
+
+const MOUSE_EVENTS = ['click', 'touchstart'];
+
+const KEY_BACKSPACE = 8,
   KEY_TAB = 9,
   KEY_ENTER = 13,
   KEY_LEFT = 37,
@@ -58401,6 +58433,7 @@ class Tagify {
       // Create an invisible input element so user will be able to enter value
       this.input = document.createElement('input');
       this.input.setAttribute('type', inputType);
+      this.input.setAttribute('placeholder', 'Add a Tag');
       this.container.appendChild(this.input);
 
       let sib = this.element.nextSibling;
@@ -58572,7 +58605,8 @@ class Tagify {
         let newTagDeleteButton = document.createElement('a');
         newTagDeleteButton.className = 'tag';
         newTagDeleteButton.classList.add('is-delete');
-        newTagDeleteButton.addEventListener('click', (e) => {
+        MOUSE_EVENTS.forEach((event) => {
+          newTagDeleteButton.addEventListener(event, (e) => {
           let selectedTag,
             activeTag = e.target.parentNode,
             last = (Array.prototype.slice.call(this.container.querySelectorAll('.tag'))).pop(),
@@ -58596,6 +58630,7 @@ class Tagify {
     				return;
           }
         });
+      });
         newTag.appendChild(newTagDeleteButton);
       }
       newTagWrapper.appendChild(newTag);
@@ -58673,12 +58708,12 @@ class Tagify {
   }
 }
 
-let tagInputs = document.querySelectorAll('input[type="tags"]');
-if (tagInputs) {
-  tagInputs.forEach(element => {
-    new Tagify(element);
-  })
-}
+document.addEventListener( 'DOMContentLoaded', function () {
+  let tagInputs = document.querySelectorAll('input[type="tags"]');
+  [].forEach.call(tagInputs, function(tagInput) {
+      new Tagify(tagInput);
+  });
+});
 
 
 /***/ }),
