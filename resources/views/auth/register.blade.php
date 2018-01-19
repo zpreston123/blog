@@ -32,10 +32,14 @@
                     </div>
 
                     <div class="field">
-                        {{ Form::label('gender', 'Gender', ['class' => 'label']) }}
-                        <div class="select">
-                            {{ Form::select('gender', ['' => 'Select an option', 'male' => 'Male', 'female' => 'Female']) }}
-                        </div>
+                        {{ Form::label(null, 'Gender', ['class' => 'label']) }}
+
+                        {{ Form::radio('gender', 'male', false, ['class' => 'is-checkradio', 'id' => 'male']) }}
+                        {{ Form::label('male', 'Male') }}
+
+                        {{ Form::radio('gender', 'female', false, ['class' => 'is-checkradio', 'id' => 'female']) }}
+                        {{ Form::label('female', 'Female') }}
+
                         {!! $errors->first('gender', '<p class="help is-danger">:message</p>') !!}
                     </div>
 
