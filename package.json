@@ -12,6 +12,7 @@
     "devDependencies": {
         "axios": "^0.17.1",
         "bulma": "^0.6.2",
+        "bulma-checkradio": "^0.1.4",
         "bulma-tagsinput": "^0.1.9",
         "bulma-tooltip": "^0.1.1",
         "cross-env": "^5.1",
