@@ -17,7 +17,6 @@ class CreateFollowersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('follow_id')->index();
-            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('follow_id')->references('id')->on('users');

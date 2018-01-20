@@ -17,7 +17,6 @@ class CreateFavoritesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('post_id')->index();
-            $table->timestamps();
             $table->unique(['user_id', 'post_id']);
         });
     }
