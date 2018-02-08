@@ -14567,20 +14567,24 @@ label.panel-block:hover {
 }
 
 .tooltip:hover::before,
-.tooltip:hover::after {
+.tooltip:hover::after,
+.tooltip.is-tooltip-active::before,
+.tooltip.is-tooltip-active::after {
   z-index: 99999;
   position: absolute;
   display: inline-block;
   pointer-events: none;
 }
 
-.tooltip:hover:before {
+.tooltip:hover:before,
+.tooltip.is-tooltip-active:before {
   content: "";
   border-style: solid;
   border-width: .5rem;
 }
 
-.tooltip:hover::after {
+.tooltip:hover::after,
+.tooltip.is-tooltip-active::after {
   opacity: 0;
   content: attr(data-tooltip);
   overflow: hidden;
@@ -14597,7 +14601,8 @@ label.panel-block:hover {
 }
 
 .tooltip:focus::before,
-.tooltip:hover::before {
+.tooltip:hover::before,
+.tooltip.is-tooltip-active::before {
   top: 0;
   bottom: auto;
   left: 50%;
@@ -14608,7 +14613,8 @@ label.panel-block:hover {
 }
 
 .tooltip:focus::after,
-.tooltip:hover::after {
+.tooltip:hover::after,
+.tooltip.is-tooltip-active::after {
   top: auto;
   bottom: 100%;
   left: 50%;
@@ -14627,7 +14633,8 @@ label.panel-block:hover {
 }
 
 .tooltip.is-tooltip-right:focus::before,
-.tooltip.is-tooltip-right:hover::before {
+.tooltip.is-tooltip-right:hover::before,
+.tooltip.is-tooltip-right.is-tooltip-active::before {
   top: 50%;
   left: 100%;
   right: auto;
@@ -14635,7 +14642,8 @@ label.panel-block:hover {
 }
 
 .tooltip.is-tooltip-right:focus::after,
-.tooltip.is-tooltip-right:hover::after {
+.tooltip.is-tooltip-right:hover::after,
+.tooltip.is-tooltip-right.is-tooltip-active::after {
   -webkit-transform: translate(0.5rem, 50%);
           transform: translate(0.5rem, 50%);
 }
@@ -14650,7 +14658,8 @@ label.panel-block:hover {
 }
 
 .tooltip.is-tooltip-bottom:focus::before,
-.tooltip.is-tooltip-bottom:hover::before {
+.tooltip.is-tooltip-bottom:hover::before,
+.tooltip.is-tooltip-bottom.is-tooltip-active::before {
   top: 100%;
   bottom: auto;
   left: 50%;
@@ -14659,7 +14668,8 @@ label.panel-block:hover {
 }
 
 .tooltip.is-tooltip-bottom:focus::after,
-.tooltip.is-tooltip-bottom:hover::after {
+.tooltip.is-tooltip-bottom:hover::after,
+.tooltip.is-tooltip-bottom.is-tooltip-active::after {
   -webkit-transform: translate(-50%, 0.5rem);
           transform: translate(-50%, 0.5rem);
 }
@@ -14674,7 +14684,8 @@ label.panel-block:hover {
 }
 
 .tooltip.is-tooltip-left:focus::before,
-.tooltip.is-tooltip-left:hover::before {
+.tooltip.is-tooltip-left:hover::before,
+.tooltip.is-tooltip-left.is-tooltip-active::before {
   top: 50%;
   left: auto;
   right: calc(100% - .5rem);
@@ -14682,7 +14693,8 @@ label.panel-block:hover {
 }
 
 .tooltip.is-tooltip-left:focus::after,
-.tooltip.is-tooltip-left:hover::after {
+.tooltip.is-tooltip-left:hover::after,
+.tooltip.is-tooltip-left.is-tooltip-active::after {
   -webkit-transform: translate(-0.5rem, 50%);
           transform: translate(-0.5rem, 50%);
 }
@@ -15019,7 +15031,7 @@ label.panel-block:hover {
 
 .is-checkradio[type="radio"]:checked + label::after,
 .is-checkradio[type="checkbox"]:checked + label::after {
-  display: initial;
+  display: inline-block;
 }
 
 .is-checkradio[type="radio"][disabled],
@@ -15565,7 +15577,7 @@ label.panel-block:hover {
 }
 
 .is-checkradio[type="checkbox"]:indeterminate + label::after {
-  display: initial;
+  display: inline-block;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
   border-bottom: none;
