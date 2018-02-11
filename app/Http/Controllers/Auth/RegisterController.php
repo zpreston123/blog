@@ -4,6 +4,7 @@ namespace Blog\Http\Controllers\Auth;
 
 use Blog\User;
 use Blog\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -68,7 +69,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'gender' => $data['gender'],
             'avatar' => 'default-'.$data['gender'].'.jpg',
-            'password' => $data['password'],
+            'password' => Hash::make($data['password']),
         ]);
     }
 }
