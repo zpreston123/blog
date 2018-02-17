@@ -1,1 +1,1 @@
-composer install && npm install && npm run dev
+composer update && npm update && npm run dev
