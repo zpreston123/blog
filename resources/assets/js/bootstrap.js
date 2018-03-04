@@ -42,7 +42,7 @@ window.flash = function (message, type='success') {
 	window.events.$emit('flash', { message, type });
 };
 
-require('bulma-tagsinput/tagsinput');
+require('bulma-tagsinput');
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

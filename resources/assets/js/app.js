@@ -48,5 +48,3 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 });
-
-require('bulma-tagsinput/tagsinput');
