@@ -30,9 +30,9 @@
                             </div>
                         @endunless
                         <p>
-                            <i class="fa fa-{{ $favorite->post->author->gender }}"></i>
+                            <i class="fas fa-{{ $favorite->post->author->gender }}"></i>
                             {{ $favorite->post->author->name }}&nbsp;|&nbsp;
-                            <i class="fa fa-clock-o"></i>
+                            <i class="far fa-clock"></i>
                             Published {{ $favorite->created_at->diffForHumans() }}
                         </p>
                     </div>

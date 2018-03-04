@@ -3,7 +3,7 @@
 		<div class="message-body is-clearfix">
 			<div class="is-pulled-left">
 				<span v-bind:class="'icon has-text-'+type">
-					<i class="fa fa-lg" v-bind:class="{
+					<i class="fas fa-lg" v-bind:class="{
 						'fa-check-circle': (type == 'success'),
 						'fa-info-circle': (type == 'info'),
 						'fa-exclamation-circle': (type == 'warning'),

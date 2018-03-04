@@ -14,7 +14,7 @@
             <p>
                 <a class="button is-medium is-info" href="{{ route('register') }}">
                     <span class="icon">
-                        <i class="fa fa-user-plus"></i>
+                        <i class="fas fa-user-plus"></i>
                     </span>
                     <span>Sign up</span>
                 </a>

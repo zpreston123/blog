@@ -49315,7 +49315,7 @@ var render = function() {
         _c("div", { staticClass: "is-pulled-left" }, [
           _c("span", { class: "icon has-text-" + _vm.type }, [
             _c("i", {
-              staticClass: "fa fa-lg",
+              staticClass: "fas fa-lg",
               class: {
                 "fa-check-circle": _vm.type == "success",
                 "fa-info-circle": _vm.type == "info",
@@ -49479,26 +49479,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.isFavorited
+  return !_vm.isFavorited
     ? _c(
-        "a",
-        {
-          staticClass: "button is-link tooltip",
-          attrs: { "data-tooltip": "Unfavorite Post" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              _vm.unfavorite($event)
-            }
-          }
-        },
-        [
-          _c("i", { staticClass: "fa fa-heart" }),
-          _vm._v("\n     "),
-          _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
-        ]
-      )
-    : _c(
         "a",
         {
           staticClass: "button is-link is-outlined tooltip",
@@ -49511,7 +49493,25 @@ var render = function() {
           }
         },
         [
-          _c("i", { staticClass: "fa fa-heart-o" }),
+          _c("i", { staticClass: "far fa-heart" }),
+          _vm._v("\n     "),
+          _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
+        ]
+      )
+    : _c(
+        "a",
+        {
+          staticClass: "button is-link tooltip",
+          attrs: { "data-tooltip": "Unfavorite Post" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.unfavorite($event)
+            }
+          }
+        },
+        [
+          _c("i", { staticClass: "fas fa-heart" }),
           _vm._v("\n     "),
           _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
         ]

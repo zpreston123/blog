@@ -14,7 +14,7 @@
                         <div class="control has-icons-left">
                             {{ Form::text('name', old('name'), ['class' => 'input']) }}
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user"></i>
+                                <i class="fas fa-user"></i>
                             </span>
                         </div>
                         {!! $errors->first('name', '<p class="help is-danger">:message</p>') !!}
@@ -25,7 +25,7 @@
                         <div class="control has-icons-left">
                             {{ Form::text('email', old('email'), ['class' => 'input']) }}
                             <span class="icon is-small is-left">
-                                <i class="fa fa-envelope"></i>
+                                <i class="fas fa-envelope"></i>
                             </span>
                         </div>
                         {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
@@ -50,7 +50,7 @@
                         <div class="control has-icons-left">
                             {{ Form::password('password', ['class' => 'input']) }}
                             <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
+                                <i class="fas fa-lock"></i>
                             </span>
                         </div>
                         {!! $errors->first('password', '<p class="help is-danger">:message</p>') !!}
@@ -61,7 +61,7 @@
                         <div class="control has-icons-left">
                             {{ Form::password('password_confirmation', ['class' => 'input']) }}
                             <span class="icon is-small is-left">
-                                <i class="fa fa-check-circle"></i>
+                                <i class="fas fa-check-circle"></i>
                             </span>
                         </div>
                     </div>

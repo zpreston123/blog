@@ -39,7 +39,7 @@
 				</a>
 				<div class="navbar-item has-dropdown is-hoverable">
 					<a class="navbar-link" href="#">
-						<i class="fa fa-user"></i>
+						<i class="fas fa-user"></i>
 					</a>
 					<div class="navbar-dropdown is-right">
 						<a class="navbar-item" href="{{ route('profiles.edit', auth()->id()) }}">Edit Profile</a>
