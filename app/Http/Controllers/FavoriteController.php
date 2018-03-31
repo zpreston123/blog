@@ -23,10 +23,9 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        $favorites = Favorite::with('post')
-                            ->where('user_id', auth()->id())
-                            ->latest()
-                            ->get();
+        $favorites = Favorite::with(['post' => function ($query) {
+            $query->latest();
+        }])->where('user_id', auth()->id())->get();
 
         return view('favorites.index', compact('favorites'));
     }
