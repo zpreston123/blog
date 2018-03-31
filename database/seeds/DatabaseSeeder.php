@@ -1,10 +1,6 @@
 <?php
 
-use Blog\Tag;
-use Blog\Post;
-use Blog\User;
-use Blog\Comment;
-use Blog\Category;
+use Blog\{Category, Comment, Post, Tag, User};
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
