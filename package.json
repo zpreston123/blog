@@ -11,16 +11,16 @@
     },
     "devDependencies": {
         "axios": "^0.18",
-        "bulma": "^0.6.2",
+        "bulma": "^0.7.0",
         "bulma-checkradio": "^1.0.1",
         "bulma-tooltip": "^1.0.4",
         "cross-env": "^5.1.4",
         "jquery": "^3.3.1",
         "laravel-mix": "^2.1.11",
         "lodash": "^4.17.5",
-        "moment": "^2.22.0",
+        "moment": "^2.22.1",
         "moment-timezone": "^0.5.14",
-        "popper.js": "^1.14.1",
+        "popper.js": "^1.14.3",
         "vue": "^2.5.16"
     }
 }
