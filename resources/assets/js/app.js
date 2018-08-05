@@ -48,3 +48,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 });
+
+require('./bulma-extensions');
