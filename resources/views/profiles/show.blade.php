@@ -22,7 +22,7 @@
 
 						@if (auth()->id() !== $profile->id)
 							<follow-button
-								:data-follower="{{ json_encode(auth()->user()->isFollowing($profile)) }}"
+								:data-follower='@json(auth()->user()->isFollowing($profile))'
 								:user="{{ $profile }}">
 							</follow-button>
 						@else
