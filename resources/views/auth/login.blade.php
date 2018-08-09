@@ -1,4 +1,13 @@
+
 <div class="box">
+    @if (session('confirmation'))
+        <article class="message is-info">
+            <div class="message-body">
+                {{ session('confirmation') }}
+            </div>
+        </article>
+    @endif
+
     {{ Form::open(['route' => 'login']) }}
         <div class="field">
             <div class="control has-icons-left">

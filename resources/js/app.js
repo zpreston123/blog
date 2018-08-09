@@ -18,15 +18,21 @@ window.events = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('comments', require('./components/Comments.vue'));
-Vue.component('favorite-button', require('./components/FavoriteButton.vue'));
-Vue.component('flash-message', require('./components/FlashMessage.vue'));
-Vue.component('follow-button', require('./components/FollowButton.vue'));
-Vue.component('submit-button', require('./components/SubmitButton.vue'));
+import CommentList from './components/CommentList.vue';
+import FavoriteButton from './components/FavoriteButton.vue';
+import FlashMessage from './components/FlashMessage.vue';
+import FollowButton from './components/FollowButton.vue';
+import SubmitButton from './components/SubmitButton.vue';
 
 const app = new Vue({
-	el: '#app'
-});
+	components: {
+		CommentList,
+		FavoriteButton,
+		FlashMessage,
+		FollowButton,
+		SubmitButton
+	}
+}).$mount('#app');
 
 document.addEventListener('DOMContentLoaded', () => {
 	// Get all "navbar-burger" elements
