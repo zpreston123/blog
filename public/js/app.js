@@ -1691,7 +1691,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/Comments.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/CommentList.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54921,39 +54921,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.followed
-      ? _c(
-          "button",
-          { staticClass: "button is-danger", on: { click: _vm.unfollow } },
-          [_vm._v("Unfollow")]
-        )
-      : _c(
-          "button",
-          { staticClass: "button is-success", on: { click: _vm.follow } },
-          [_vm._v("Follow")]
-        )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-44db830c", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-48d028b6\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/CommentList.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
   return _c(
     "button",
     {
@@ -55220,7 +55187,7 @@ if (false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4aa6d95f\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/Comments.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b2309ffc\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/CommentList.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55298,7 +55265,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4aa6d95f", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-b2309ffc", module.exports)
   }
 }
 
@@ -66619,19 +66586,19 @@ module.exports = function(module) {
 /***/ }),
 
 /***/ "./resources/js/app.js":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CommentList_vue__ = __webpack_require__("./resources/assets/js/components/CommentList.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CommentList_vue__ = __webpack_require__("./resources/js/components/CommentList.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CommentList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_CommentList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FavoriteButton_vue__ = __webpack_require__("./resources/assets/js/components/FavoriteButton.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FavoriteButton_vue__ = __webpack_require__("./resources/js/components/FavoriteButton.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FavoriteButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_FavoriteButton_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_FlashMessage_vue__ = __webpack_require__("./resources/assets/js/components/FlashMessage.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_FlashMessage_vue__ = __webpack_require__("./resources/js/components/FlashMessage.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_FlashMessage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_FlashMessage_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_FollowButton_vue__ = __webpack_require__("./resources/assets/js/components/FollowButton.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_FollowButton_vue__ = __webpack_require__("./resources/js/components/FollowButton.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_FollowButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_FollowButton_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_SubmitButton_vue__ = __webpack_require__("./resources/assets/js/components/SubmitButton.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_SubmitButton_vue__ = __webpack_require__("./resources/js/components/SubmitButton.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_SubmitButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_SubmitButton_vue__);
 
 /**
@@ -66652,11 +66619,6 @@ window.events = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('comments', __webpack_require__("./resources/js/components/Comments.vue"));
-Vue.component('favorite-button', __webpack_require__("./resources/js/components/FavoriteButton.vue"));
-Vue.component('flash-message', __webpack_require__("./resources/js/components/FlashMessage.vue"));
-Vue.component('follow-button', __webpack_require__("./resources/js/components/FollowButton.vue"));
-Vue.component('submit-button', __webpack_require__("./resources/js/components/SubmitButton.vue"));
 
 
 
@@ -66839,15 +66801,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/js/components/Comments.vue":
+/***/ "./resources/js/components/CommentList.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/Comments.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/CommentList.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4aa6d95f\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/Comments.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b2309ffc\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/CommentList.vue")
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66864,7 +66826,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/components/Comments.vue"
+Component.options.__file = "resources/js/components/CommentList.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -66873,9 +66835,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4aa6d95f", Component.options)
+    hotAPI.createRecord("data-v-b2309ffc", Component.options)
   } else {
-    hotAPI.reload("data-v-4aa6d95f", Component.options)
+    hotAPI.reload("data-v-b2309ffc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
