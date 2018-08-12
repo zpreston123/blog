@@ -13,6 +13,6 @@
 	</section>
 
 	<section class="section">
-	    <comments post-id="{{ $post->id }}"></comments>
+	    <comment-list post-id="{{ $post->id }}"></comment-list>
 	</section>
 @stop
