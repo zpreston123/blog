@@ -3,10 +3,11 @@
 namespace Blog\Http\Controllers\Auth;
 
 use Blog\User;
-use Blog\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Blog\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+// use Illuminate\Foundation\Auth\RegistersUsers;
+use BeyondCode\EmailConfirmation\Traits\RegistersUsers;
 
 class RegisterController extends Controller
 {
