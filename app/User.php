@@ -2,12 +2,14 @@
 
 namespace Blog;
 
-use Illuminate\Notifications\Notifiable;
+use Cog\Contracts\Love\Liker\Models\Liker as LikerContract;
+use Cog\Laravel\Love\Liker\Models\Traits\Liker;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements LikerContract
 {
-    use Notifiable;
+    use Notifiable, Liker;
 
     /**
      * The attributes that are mass assignable.
