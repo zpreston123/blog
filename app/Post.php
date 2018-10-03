@@ -2,10 +2,14 @@
 
 namespace Blog;
 
+use Cog\Contracts\Love\Likeable\Models\Likeable as LikeableContract;
+use Cog\Laravel\Love\Likeable\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Post extends Model implements LikeableContract
 {
+    use Likeable;
+
     /**
      * The attributes that are mass assignable.
      *

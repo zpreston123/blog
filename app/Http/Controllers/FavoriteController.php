@@ -2,7 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
-use Blog\{Favorite, Post};
+use Blog\Post;
 
 class FavoriteController extends Controller
 {
@@ -23,9 +23,7 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        $favorites = Favorite::with(['post' => function ($query) {
-            $query->latest();
-        }])->where('user_id', auth()->id())->get();
+        $favorites = Post::whereLikedBy(auth()->id())->with('likesCounter')->latest()->get();
 
         return view('favorites.index', compact('favorites'));
     }
@@ -39,21 +37,20 @@ class FavoriteController extends Controller
     {
         $post = Post::findOrFail(request('post_id'));
 
-        return Favorite::create([
-            'user' => auth()->user(),
-            'post' => $post
-        ]);
+        auth()->user()->like($post);
+
+        return $post->likesCount;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Favorite $favorite
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Favorite $favorite)
+    public function destroy(Post $post)
     {
-        $favorite->delete();
+        auth()->user()->unlike($post);
 
         return response('', 204);
     }
