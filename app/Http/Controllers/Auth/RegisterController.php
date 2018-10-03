@@ -6,8 +6,7 @@ use Blog\User;
 use Illuminate\Support\Facades\Hash;
 use Blog\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-// use Illuminate\Foundation\Auth\RegistersUsers;
-use BeyondCode\EmailConfirmation\Traits\RegistersUsers;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {

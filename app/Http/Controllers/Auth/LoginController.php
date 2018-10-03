@@ -3,8 +3,7 @@
 namespace Blog\Http\Controllers\Auth;
 
 use Blog\Http\Controllers\Controller;
-// use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use BeyondCode\EmailConfirmation\Traits\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {

@@ -1,4 +1,4 @@
-<div id="flash-overlay-modal" class="modal fade {{ $modalClass or '' }}">
+<div id="flash-overlay-modal" class="modal fade {{ $modalClass ?? '' }}">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">

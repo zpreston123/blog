@@ -17,31 +17,31 @@
                 favoritedPost: this.dataFavorite,
                 isFavorited: this.post.is_favorited,
                 count: this.post.favorites_count
-            }
+            };
         },
         methods: {
             favorite() {
                 axios.post('/favorites', {post_id: this.post.id})
                     .then(response => {
-                        this.favoritedPost = response.data
-                        this.isFavorited = true
-                        this.count++
-                        flash('Post favorited!')
+                        this.favoritedPost = response.data;
+                        this.isFavorited = true;
+                        this.count++;
+                        flash('Post favorited!');
                     }, response => {
-                        flash('Problem favoriting post. Please try again.', 'danger')
+                        flash('Problem favoriting post. Please try again.', 'danger');
                     });
             },
             unfavorite() {
                 axios.delete(`/favorites/${this.favoritedPost.id}`)
                     .then(response => {
-                        this.favoritedPost = null
-                        this.isFavorited = false
-                        this.count--
-                        flash('Post unfavorited.')
+                        this.favoritedPost = null;
+                        this.isFavorited = false;
+                        this.count--;
+                        flash('Post unfavorited.');
                     }, response => {
-                        flash('Problem unfavoriting post. Please try again.', 'danger')
+                        flash('Problem unfavoriting post. Please try again.', 'danger');
                     });
             }
         }
-    }
+    };
 </script>

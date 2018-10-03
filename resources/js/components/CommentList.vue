@@ -78,5 +78,5 @@
         mounted() {
             this.fetchComments();
         }
-    }
+    };
 </script>
