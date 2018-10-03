@@ -42,7 +42,7 @@
 				this.isVisible = true;
 			}
 		}
-	}
+	};
 </script>
 
 <style>

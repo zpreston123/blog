@@ -14,12 +14,12 @@
     data() {
       return {
         submitted: false
-      }
+      };
     },
     methods: {
       toggleSubmit() {
-        this.submitted = true
+        this.submitted = true;
       }
     }
-  }
+  };
 </script>

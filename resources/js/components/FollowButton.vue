@@ -11,32 +11,32 @@
         data() {
             return {
                 followedUser: this.dataFollower
-            }
+            };
         },
         computed: {
             followed() {
-                return this.followedUser !== null
+                return this.followedUser !== null;
             },
         },
         methods: {
             follow() {
                 axios.post('/followers', {user_id: this.user.id})
                     .then(response => {
-                        this.followedUser = response.data
-                        flash('You are now following this user.')
+                        this.followedUser = response.data;
+                        flash('You are now following this user.');
                     }, response => {
-                        flash('Problem following user. Please try again.', 'danger')
+                        flash('Problem following user. Please try again.', 'danger');
                     });
             },
             unfollow() {
                 axios.delete(`/followers/${this.followedUser.id}`)
                     .then(response => {
-                        this.followedUser = null
-                        flash('You have unfollowed this user.')
+                        this.followedUser = null;
+                        flash('You have unfollowed this user.');
                     }, response => {
-                        flash('Problem unfollowing user. Please try again.', 'danger')
+                        flash('Problem unfollowing user. Please try again.', 'danger');
                     });
             }
         }
-    }
+    };
 </script>
