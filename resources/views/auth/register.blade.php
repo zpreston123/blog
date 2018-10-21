@@ -12,7 +12,7 @@
                     <div class="field">
                         {{ Form::label('name', 'Name', ['class' => 'label']) }}
                         <div class="control has-icons-left">
-                            {{ Form::text('name', old('name'), ['class' => 'input']) }}
+                            {{ Form::text('name', old('name'), ['class' => 'input' . ($errors->has('name') ? ' is-danger' : '')]) }}
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -23,7 +23,7 @@
                     <div class="field">
                         {{ Form::label('email', 'Email', ['class' => 'label']) }}
                         <div class="control has-icons-left">
-                            {{ Form::text('email', old('email'), ['class' => 'input']) }}
+                            {{ Form::text('email', old('email'), ['class' => 'input' . ($errors->has('email') ? ' is-danger' : '')]) }}
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -48,7 +48,7 @@
                     <div class="field">
                         {{ Form::label('password', 'Password', ['class' => 'label']) }}
                         <div class="control has-icons-left">
-                            {{ Form::password('password', ['class' => 'input']) }}
+                            {{ Form::password('password', ['class' => 'input' . ($errors->has('password') ? ' is-danger' : '')]) }}
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -59,7 +59,7 @@
                     <div class="field">
                         {{ Form::label('password_confirmation', 'Confirm Password', ['class' => 'label']) }}
                         <div class="control has-icons-left">
-                            {{ Form::password('password_confirmation', ['class' => 'input']) }}
+                            {{ Form::password('password_confirmation', ['class' => 'input' . ($errors->has('password_confirmation') ? ' is-danger' : '')]) }}
                             <span class="icon is-small is-left">
                                 <i class="fas fa-check-circle"></i>
                             </span>
