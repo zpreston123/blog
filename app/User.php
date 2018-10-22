@@ -7,9 +7,8 @@ use Cog\Laravel\Love\Liker\Models\Traits\Liker;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements LikerContract
+class User extends Authenticatable implements LikerContract, MustVerifyEmail
 {
     use Notifiable, Liker;
 
@@ -48,16 +47,6 @@ class User extends Authenticatable implements LikerContract
     }
 
     /**
-     * A user can have many favorites.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function favorites()
-    {
-        return $this->hasMany(Favorite::class);
-    }
-
-    /**
      * Get all users that are following the current user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -78,17 +67,6 @@ class User extends Authenticatable implements LikerContract
     }
 
     /**
-     * Check whether the user favorited a post.
-     *
-     * @param  Post $post
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function favoritedTo($post)
-    {
-        return $this->favorites()->where('post_id', $post->id)->first();
-    }
-
-    /**
      * Check whether user is following another user.
      *
      * @param  self $user
@@ -97,17 +75,6 @@ class User extends Authenticatable implements LikerContract
     public function isFollowing(self $user)
     {
         return $this->with('followers')->findOrFail($user->id);
-    }
-
-    /**
-     * Set the user's password.
-     *
-     * @param  string $password
-     * @return void
-     */
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
     }
 
     /**
