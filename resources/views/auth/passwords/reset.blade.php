@@ -1,24 +1,15 @@
 @extends('layouts.master')
 
-@section('title', 'Sign Up')
+@section('title', 'Reset Password')
 
 @section('content')
     <div class="columns">
         <div class="column is-half is-offset-one-quarter">
-            <h1 class="title has-text-centered">Register an Account</h1>
+            <h1 class="title has-text-centered">Reset Password</h1>
 
             <div class="box">
-                {{ Form::open(['route' => 'register']) }}
-                    <div class="field">
-                        {{ Form::label('name', 'Name', ['class' => 'label']) }}
-                        <div class="control has-icons-left">
-                            {{ Form::text('name', old('name'), ['class' => 'input' . ($errors->has('name') ? ' is-danger' : '')]) }}
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </div>
-                        {!! $errors->first('name', '<p class="help is-danger">:message</p>') !!}
-                    </div>
+                {{ Form::open(['route' => 'password.update']) }}
+                    {{ Form::hidden('token', $token) }}
 
                     <div class="field">
                         {{ Form::label('email', 'Email', ['class' => 'label']) }}
@@ -30,20 +21,6 @@
                         </div>
                         {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
                     </div>
-
-                    <div class="field">
-                        {{ Form::label(null, 'Gender', ['class' => 'label']) }}
-
-                        {{ Form::radio('gender', 'male', false, ['class' => 'is-checkradio', 'id' => 'male']) }}
-                        {{ Form::label('male', 'Male') }}
-
-                        {{ Form::radio('gender', 'female', false, ['class' => 'is-checkradio', 'id' => 'female']) }}
-                        {{ Form::label('female', 'Female') }}
-
-                        {!! $errors->first('gender', '<p class="help is-danger">:message</p>') !!}
-                    </div>
-
-                    <hr>
 
                     <div class="field">
                         {{ Form::label('password', 'Password', ['class' => 'label']) }}
@@ -67,7 +44,7 @@
                     </div>
 
                     <div class="buttons">
-                        <submit-button class="is-primary">Register</submit-button>
+                        <submit-button class="is-primary">Reset Password</submit-button>
                         {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/"']) }}
                     </div>
                 {{ Form::close() }}
