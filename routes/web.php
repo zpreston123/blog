@@ -12,7 +12,7 @@
 */
 
 Route::view('/', 'welcome')->name('welcome');
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::put('profiles/{profile}/avatar', 'ProfileAvatarController@update')->name('profiles.update-avatar');
 Route::resource('profiles', 'ProfileController')->only('index', 'show', 'edit', 'update');
 Route::get('posts/search', 'PostController@search')->name('posts.search');
