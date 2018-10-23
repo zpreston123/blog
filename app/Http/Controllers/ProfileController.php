@@ -63,13 +63,13 @@ class ProfileController extends Controller
      */
     public function update(User $profile)
     {
-        request()->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255'.Rule::unique('users')->ignore($profile->id),
-            'password' => 'min:6|confirmed'
+        $attributes = request()->validate([
+            'name' => ['required', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($profile->id)],
+            'password' => ['min:6', 'confirmed']
         ]);
 
-        $profile->update(request()->only('name', 'email', 'password'));
+        $profile->update($attributes);
 
         flash()->success('Profile updated successfully!');
 
