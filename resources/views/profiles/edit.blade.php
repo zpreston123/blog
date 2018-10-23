@@ -14,7 +14,7 @@
                     <div class="field">
                         {{ Form::label('name', 'Name', ['class' => 'label']) }}
                         <div class="control">
-                            {{ Form::text('name', null, ['class' => 'input']) }}
+                            {{ Form::text('name', null, ['class' => 'input' . ($errors->has('email') ? ' is-danger': '')]) }}
                         </div>
                         {!! $errors->first('name', '<p class="help is-danger">:message</p>') !!}
                     </div>
@@ -22,7 +22,7 @@
                     <div class="field">
                         {{ Form::label('email', 'Email', ['class' => 'label']) }}
                         <div class="control">
-                            {{ Form::text('email', null, ['class' => 'input']) }}
+                            {{ Form::text('email', null, ['class' => 'input' . ($errors->has('email') ? ' is-danger': '')]) }}
                         </div>
                         {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
                     </div>
@@ -30,7 +30,7 @@
                     <div class="field">
                         {{ Form::label('password', 'New Password', ['class' => 'label']) }}
                         <div class="control">
-                            {{ Form::password('password', ['class' => 'input']) }}
+                            {{ Form::password('password', ['class' => 'input' . ($errors->has('password') ? ' is-danger': '')]) }}
                         </div>
                         {!! $errors->first('password', '<p class="help is-danger">:message</p>') !!}
                     </div>
@@ -38,7 +38,7 @@
                     <div class="field">
                         {{ Form::label('password_confirmation', 'Confirm New Password', ['class' => 'label']) }}
                         <div class="control">
-                            {{ Form::password('password_confirmation', ['class' => 'input']) }}
+                            {{ Form::password('password_confirmation', ['class' => 'input' . ($errors->has('password_confirmation') ? ' is-danger': '')]) }}
                         </div>
                         {!! $errors->first('password_confirm', '<p class="help is-danger">:message</p>') !!}
                     </div>
