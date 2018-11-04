@@ -11,6 +11,19 @@ window.Vue = require('vue');
 
 window.events = new Vue();
 
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+
+const files = require.context('./', true, /\.vue$/i);
+
+files.keys().map(key => {
+    return Vue.component(_.last(key.split('/')).split('.')[0], files(key));
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,21 +31,9 @@ window.events = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import CommentList from './components/CommentList.vue';
-import FavoriteButton from './components/FavoriteButton.vue';
-import FlashMessage from './components/FlashMessage.vue';
-import FollowButton from './components/FollowButton.vue';
-import SubmitButton from './components/SubmitButton.vue';
-
 const app = new Vue({
-	components: {
-		CommentList,
-		FavoriteButton,
-		FlashMessage,
-		FollowButton,
-		SubmitButton
-	}
-}).$mount('#app');
+    el: '#app'
+});
 
 document.addEventListener('DOMContentLoaded', () => {
 	// Get all "navbar-burger" elements
