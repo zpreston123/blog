@@ -27,6 +27,15 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     protected $hidden = ['password', 'remember_token'];
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'email_verified_at',
+    ];
+
+    /**
      * A user can have many posts.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
