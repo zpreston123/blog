@@ -27,12 +27,12 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * The attributes that should be mutated to dates.
+     * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $dates = [
-        'email_verified_at',
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     /**
