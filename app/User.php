@@ -27,6 +27,15 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     protected $hidden = ['password', 'remember_token'];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
      * A user can have many posts.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

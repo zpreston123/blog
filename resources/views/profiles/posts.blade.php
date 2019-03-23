@@ -22,7 +22,8 @@
 						</div>
 						<footer class="card-footer">
 							<a class="card-footer-item" href="/posts/{{ $post->id }}/edit">Edit</a>
-							<a class="card-footer-item" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">Delete
+							<a class="card-footer-item" id="delete-button">
+								Delete
 								{{ Form::open(['route' => ['posts.destroy', $post], 'id' => 'delete-form', 'method' => 'delete']) }}
 		                        {{ Form::close() }}
 							</a>
@@ -32,4 +33,6 @@
 			@endforeach
 		</div>
 	@endforeach
+@else
+	<p>You have no posts created.</p>
 @endif
