@@ -13,7 +13,6 @@
 		<div class="navbar-menu" id="navMenu">
 			<div class="navbar-start">
 				<a class="navbar-item" href="{{ route('posts.create') }}">New Post</a>
-				<a class="navbar-item" href="{{ route('favorites.index') }}">My Favorites</a>
 			</div>
 			<div class="navbar-end">
 				<a class="navbar-item" href="{{ route('profiles.index') }}">Find Users</a>
