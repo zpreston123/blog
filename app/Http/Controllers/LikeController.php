@@ -4,7 +4,7 @@ namespace Blog\Http\Controllers;
 
 use Blog\Post;
 
-class FavoriteController extends Controller
+class LikeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,18 +14,6 @@ class FavoriteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $favorites = Post::whereLikedBy(auth()->id())->with('likesCounter')->latest()->get();
-
-        return view('favorites.index', compact('favorites'));
     }
 
     /**

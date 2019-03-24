@@ -18,5 +18,5 @@ Route::resource('profiles', 'ProfileController')->only('index', 'show', 'edit', 
 Route::get('posts/search', 'PostController@search')->name('posts.search');
 Route::resource('posts', 'PostController');
 Route::resource('posts.comments', 'PostCommentController')->only('index', 'store', 'destroy');
-Route::resource('favorites', 'FavoriteController')->only('index', 'store', 'destroy');
+Route::resource('likes', 'LikeController')->only('index', 'store', 'destroy');
 Route::resource('followers', 'FollowerController')->only('index', 'store', 'destroy');

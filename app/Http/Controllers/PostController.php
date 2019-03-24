@@ -125,9 +125,9 @@ class PostController extends Controller
             });
         }
 
-        if ($post->is_favorited) {
-            $post->favorites->each(function ($favorite) {
-                $favorite->delete();
+        if ($post->liked) {
+            $post->likes->each(function ($like) {
+                $like->delete();
             });
         }
 
