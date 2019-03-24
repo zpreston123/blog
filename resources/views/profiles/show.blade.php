@@ -16,8 +16,8 @@
 						<span class="title is-bold">{{ $profile->name }}</span><br>
 						<span class="subtitle">
 							{{ $profile->email }}<br><br>
-							Created: {{ $profile->created_at->format('m/d/Y h:ma') }}<br>
-							Updated: {{ $profile->updated_at->format('m/d/Y h:ma') }}
+							Created: {{ $profile->created_at->format('m/d/Y') }}<br>
+							Updated: {{ $profile->updated_at->format('m/d/Y') }}
 						</span><br><br>
 
 						@if (auth()->id() !== $profile->id)
