@@ -30,12 +30,16 @@
         </div>
 
         <div class="control">
-            <submit-button class="is-info is-rounded is-fullwidth">
+            {{ Form::button('
                 <span class="icon">
                     <i class="fas fa-sign-in-alt"></i>
                 </span>
-                <span>Log in</span>
-            </submit-button>
+                <span>Log in</span>',
+                [
+                    'type' => 'submit',
+                    'class' => 'button is-info is-fullwidth'
+                ])
+            }}
         </div>
 
         <div class="control has-text-centered">
