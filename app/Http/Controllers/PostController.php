@@ -149,4 +149,29 @@ class PostController extends Controller
 
         return view('posts.index', compact('posts'));
     }
+
+    /**
+     * Like a post.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function like(Post $post)
+    {
+        $post->likeBy();
+
+        return $post;
+    }
+
+    /**
+     * Unlike a post.
+     *
+     * @param  Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function unlike(Post $post)
+    {
+        $post->unlikeBy();
+
+        return $post;
+    }
 }
