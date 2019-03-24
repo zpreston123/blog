@@ -34,10 +34,7 @@
                             <i class="far fa-clock"></i>
                             {{ $post->created_at->diffForHumans() }}
                         </p>
-                        <favorite-button
-                            :data-favorite='@json(auth()->user()->favoritedTo($post))'
-                            :post="{{ $post }}">
-                        </favorite-button>
+                        <like-button :post="{{ $post }}"></like-button>
                     </div>
                 @empty
                     <p>No posts have been made!  Please check back later.</p>
