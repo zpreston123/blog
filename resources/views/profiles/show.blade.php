@@ -53,12 +53,6 @@
 						<p class="title">{{ $profile->followers_count }}</p>
 					</div>
 				</div>
-				<div class="level-item has-text-centered">
-					<div>
-						<p class="heading">Favorites</p>
-						<p class="title">{{ $profile->favorites_count }}</p>
-					</div>
-				</div>
 			</nav>
 		</div>
 	</div>
