@@ -13,7 +13,7 @@
             </label>
         </div>
         <div class="control">
-            <submit-button class="is-info is-small">Save</submit-button>
+            {{ Form::submit('Save', ['button is-info is-small']) }}
         </div>
     </div>
     {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
