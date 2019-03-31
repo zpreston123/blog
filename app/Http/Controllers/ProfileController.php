@@ -39,7 +39,7 @@ class ProfileController extends Controller
      */
     public function show(User $profile)
     {
-        $profile = $profile->withCount('posts', 'followers', 'following')->findOrFail($profile->id);
+        $profile = $profile->withCount('posts', 'followers', 'followings')->findOrFail($profile->id);
 
         return view('profiles.show', compact('profile'));
     }
@@ -74,5 +74,31 @@ class ProfileController extends Controller
         flash()->success('Profile updated successfully!');
 
         return redirect('posts');
+    }
+
+    /**
+     * Follow a user.
+     *
+     * @param  User $profile
+     * @return User
+     */
+    public function follow(User $profile)
+    {
+        auth()->user()->follow($profile);
+
+        return $profile;
+    }
+
+    /**
+     * Unfollow a user.
+     *
+     * @param  User $profile
+     * @return User
+     */
+    public function unfollow(User $profile)
+    {
+        auth()->user()->unfollow($profile);
+
+        return $profile;
     }
 }

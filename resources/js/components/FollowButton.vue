@@ -1,37 +1,32 @@
 <template>
     <div>
-        <button class="button is-danger" v-if="followed" @click="unfollow">Unfollow</button>
+        <button class="button is-danger" v-if="isFollowed" @click="unfollow">Unfollow</button>
         <button class="button is-success" v-else @click="follow">Follow</button>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['dataFollower', 'user'],
+        props: ['profile'],
         data() {
             return {
-                followedUser: this.dataFollower
+                isFollowed: this.profile.followedByAuthUser
             };
-        },
-        computed: {
-            followed() {
-                return this.followedUser !== null;
-            },
         },
         methods: {
             follow() {
-                axios.post('/followers', {user_id: this.user.id})
+                axios.get(`/profiles/${this.profile.id}/follow`)
                     .then(response => {
-                        this.followedUser = response.data;
+                        this.isFollowed = response.data.followedByAuthUser;
                         flash('You are now following this user.');
                     }, response => {
                         flash('Problem following user. Please try again.', 'danger');
                     });
             },
             unfollow() {
-                axios.delete(`/followers/${this.followedUser.id}`)
+                axios.get(`/profiles/${this.profile.id}/unfollow`)
                     .then(response => {
-                        this.followedUser = null;
+                        this.isFollowed = response.data.followedByAuthUser;
                         flash('You have unfollowed this user.');
                     }, response => {
                         flash('Problem unfollowing user. Please try again.', 'danger');

@@ -21,12 +21,7 @@
 						</span><br><br>
 
 						@if (auth()->id() !== $profile->id)
-							<follow-button
-								:data-follower='@json(auth()->user()->isFollowing($profile))'
-								:user="{{ $profile }}">
-							</follow-button>
-						@else
-							<a href="{{ route('followers.index') }}" class="button is-success">Following</a>
+							<follow-button :profile="{{ $profile }}"></follow-button>
 						@endif
 					</p>
 				</div>
@@ -44,13 +39,13 @@
 				<div class="level-item has-text-centered">
 					<div>
 						<p class="heading">Following</p>
-						<p class="title">{{ $profile->following_count }}</p>
+						<p class="title">{{ $profile->followings()->count() }}</p>
 					</div>
 				</div>
 				<div class="level-item has-text-centered">
 					<div>
 						<p class="heading">Followers</p>
-						<p class="title">{{ $profile->followers_count }}</p>
+						<p class="title">{{ $profile->followers()->count() }}</p>
 					</div>
 				</div>
 			</nav>
