@@ -75,4 +75,30 @@ class ProfileController extends Controller
 
         return redirect('posts');
     }
+
+    /**
+     * Follow a user.
+     *
+     * @param  User $profile
+     * @return User
+     */
+    public function follow(User $profile)
+    {
+        auth()->user()->follow($profile);
+
+        return $profile;
+    }
+
+    /**
+     * Unfollow a user.
+     *
+     * @param  User $profile
+     * @return User
+     */
+    public function unfollow(User $profile)
+    {
+        auth()->user()->unfollow($profile);
+
+        return $profile;
+    }
 }
