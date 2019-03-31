@@ -1982,25 +1982,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['dataFollower', 'user'],
+  props: ['profile'],
   data: function data() {
     return {
-      followedUser: this.dataFollower
+      isFollowed: this.profile.followedByAuthUser
     };
-  },
-  computed: {
-    followed: function followed() {
-      return this.followedUser !== null;
-    }
   },
   methods: {
     follow: function follow() {
       var _this = this;
 
-      axios.post('/followers', {
-        user_id: this.user.id
-      }).then(function (response) {
-        _this.followedUser = response.data;
+      axios.get("/profiles/".concat(this.profile.id, "/follow")).then(function (response) {
+        _this.isFollowed = response.data.followedByAuthUser;
         flash('You are now following this user.');
       }, function (response) {
         flash('Problem following user. Please try again.', 'danger');
@@ -2009,8 +2002,8 @@ __webpack_require__.r(__webpack_exports__);
     unfollow: function unfollow() {
       var _this2 = this;
 
-      axios.delete("/followers/".concat(this.followedUser.id)).then(function (response) {
-        _this2.followedUser = null;
+      axios.get("/profiles/".concat(this.profile.id, "/unfollow")).then(function (response) {
+        _this2.isFollowed = response.data.followedByAuthUser;
         flash('You have unfollowed this user.');
       }, function (response) {
         flash('Problem unfollowing user. Please try again.', 'danger');
@@ -51171,7 +51164,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.followed
+    _vm.isFollowed
       ? _c(
           "button",
           { staticClass: "button is-danger", on: { click: _vm.unfollow } },
