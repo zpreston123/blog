@@ -25,10 +25,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::whereIn('user_id', function ($query) {
-            $query->select('follow_id')
-                ->from('followers')
+            $query->select('followable_id')
+                ->from('followables')
                 ->where('user_id', auth()->id());
-        })->orWhere('user_id', auth()->id())->paginate(10);
+        })->orWhere('user_id', auth()->id())->latest()->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
