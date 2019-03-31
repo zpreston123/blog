@@ -8,12 +8,12 @@
                     <span class="file-label">Upload avatar...</span>
                 </span>
                 <span id="file-name" class="file-name">
-                    {{ str_replace("/images/avatars/", "", $profile->avatar) }}
+                    {{ Str::replaceFirst("/images/avatars/", "", $profile->avatar) }}
                 </span>
             </label>
         </div>
         <div class="control">
-            {{ Form::submit('Save', ['button is-info is-small']) }}
+            {{ Form::submit('Save', ['class' => 'button is-info is-small']) }}
         </div>
     </div>
     {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}

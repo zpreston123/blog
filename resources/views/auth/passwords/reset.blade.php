@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="buttons">
-                        <submit-button class="is-primary">Reset Password</submit-button>
+                        {{ Form::submit('Reset Password', ['class' => 'button is-primary']) }}
                         {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/"']) }}
                     </div>
                 {{ Form::close() }}

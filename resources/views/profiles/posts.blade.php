@@ -14,7 +14,7 @@
 						<div class="card-content">
 							<div class="content">
 							    <p>
-							    	{{ str_limit($post->body, 80) }}<br>
+							    	{{ Str::limit($post->body, 80) }}<br>
 									<small>Created: {{ $post->created_at->diffForHumans() }}</small> |
 									<small>Updated: {{ $post->updated_at->diffForHumans() }}</small>
 								</p>

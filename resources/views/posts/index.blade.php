@@ -20,7 +20,7 @@
                                 {{ $post->title }}
                             </a>
                         </h2>
-                        <p>{{ str_limit($post->body, 200) }}</p>
+                        <p>{{ Str::limit($post->body, 200) }}</p>
                         @unless ($post->tags->isEmpty())
                             <div class="tags">
                                 @foreach ($post->tags as $tag)
