@@ -39,7 +39,7 @@ class ProfileController extends Controller
      */
     public function show(User $profile)
     {
-        $profile = $profile->withCount('posts', 'followers', 'following')->findOrFail($profile->id);
+        $profile = $profile->withCount('posts', 'followers', 'followings')->findOrFail($profile->id);
 
         return view('profiles.show', compact('profile'));
     }
