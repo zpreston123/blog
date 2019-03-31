@@ -38,6 +38,13 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['followedByAuthUser'];
+
+    /**
      * A user can have many posts.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -58,37 +65,6 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     }
 
     /**
-     * Get all users that are following the current user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function followers()
-    {
-        return $this->belongsToMany(self::class, 'followers', 'follow_id', 'user_id');
-    }
-
-    /**
-     * Get all users that the current user is following.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function following()
-    {
-        return $this->belongsToMany(self::class, 'followers', 'user_id', 'follow_id');
-    }
-
-    /**
-     * Check whether user is following another user.
-     *
-     * @param  self $user
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function isFollowing(self $user)
-    {
-        return $this->with('followers')->findOrFail($user->id);
-    }
-
-    /**
      * Get the user's avatar image.
      *
      * @param  string $value
@@ -97,5 +73,15 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     public function getAvatarAttribute($value): string
     {
         return asset('/images/avatars/' . $value);
+    }
+
+    /**
+     * Check whether the user is followed by the authenticated user.
+     *
+     * @return bool
+     */
+    public function getFollowedByAuthUserAttribute(): bool
+    {
+        return $this->isFollowedBy(auth()->user());
     }
 }
