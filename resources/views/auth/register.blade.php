@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="buttons">
-                        <submit-button class="is-primary">Register</submit-button>
+                        {{ Form::submit('Register', ['class' => 'button is-primary']) }}
                         {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/"']) }}
                     </div>
                 {{ Form::close() }}

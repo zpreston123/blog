@@ -7,10 +7,12 @@ use Cog\Laravel\Love\Liker\Models\Traits\Liker;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 
 class User extends Authenticatable implements LikerContract, MustVerifyEmail
 {
-    use Notifiable, Liker;
+    use Notifiable, Liker, CanFollow, CanBeFollowed;
 
     /**
      * The attributes that are mass assignable.
@@ -27,13 +29,20 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * The attributes that should be mutated to dates.
+     * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $dates = [
-        'email_verified_at',
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['followedByAuthUser'];
 
     /**
      * A user can have many posts.
@@ -56,37 +65,6 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     }
 
     /**
-     * Get all users that are following the current user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function followers()
-    {
-        return $this->belongsToMany(self::class, 'followers', 'follow_id', 'user_id');
-    }
-
-    /**
-     * Get all users that the current user is following.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function following()
-    {
-        return $this->belongsToMany(self::class, 'followers', 'user_id', 'follow_id');
-    }
-
-    /**
-     * Check whether user is following another user.
-     *
-     * @param  self $user
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function isFollowing(self $user)
-    {
-        return $this->with('followers')->findOrFail($user->id);
-    }
-
-    /**
      * Get the user's avatar image.
      *
      * @param  string $value
@@ -95,5 +73,15 @@ class User extends Authenticatable implements LikerContract, MustVerifyEmail
     public function getAvatarAttribute($value): string
     {
         return asset('/images/avatars/' . $value);
+    }
+
+    /**
+     * Check whether the user is followed by the authenticated user.
+     *
+     * @return bool
+     */
+    public function getFollowedByAuthUserAttribute(): bool
+    {
+        return $this->isFollowedBy(auth()->user());
     }
 }

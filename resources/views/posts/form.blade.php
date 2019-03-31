@@ -10,7 +10,7 @@
     {{ Form::label('category', 'Category', ['class' => 'label']) }}
     <div class="control">
         <div class="select {{ $errors->has('category') ? 'is-danger' : '' }}">
-            {{ Form::select('category', ['' => 'Select an option'] + $categories, null) }}
+            {{ Form::select('category', ['' => 'Select an option'] + $categories, isset($post->category->id) ? $post->category->id : null) }}
         </div>
     </div>
     {!! $errors->first('category', '<p class="help is-danger">:message</p>') !!}
@@ -34,8 +34,6 @@
 </div>
 
 <div class="buttons">
-    <submit-button class="is-primary">
-        {{ $submitButtonText }}
-    </submit-button>
+    {{ Form::submit($submitButtonText, ['class' => 'button is-primary']) }}
     {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/posts"']) }}
 </div>

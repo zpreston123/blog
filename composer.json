@@ -13,10 +13,10 @@
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.3",
         "laracasts/flash": "^3.0",
-        "laravel-frontend-presets/bulma": "^1.7",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "5.7.*"
+        "laravelcollective/html": "5.7.*",
+        "overtrue/laravel-follow": "^1.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -25,10 +25,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::whereIn('user_id', function ($query) {
-            $query->select('follow_id')
-                ->from('followers')
+            $query->select('followable_id')
+                ->from('followables')
                 ->where('user_id', auth()->id());
-        })->orWhere('user_id', auth()->id())->paginate(10);
+        })->orWhere('user_id', auth()->id())->latest()->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
@@ -125,9 +125,9 @@ class PostController extends Controller
             });
         }
 
-        if ($post->is_favorited) {
-            $post->favorites->each(function ($favorite) {
-                $favorite->delete();
+        if ($post->liked) {
+            $post->likes->each(function ($like) {
+                $like->delete();
             });
         }
 
@@ -148,5 +148,30 @@ class PostController extends Controller
         $posts = Post::search(request('q'))->paginate(10);
 
         return view('posts.index', compact('posts'));
+    }
+
+    /**
+     * Like a post.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function like(Post $post)
+    {
+        $post->likeBy();
+
+        return $post;
+    }
+
+    /**
+     * Unlike a post.
+     *
+     * @param  Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function unlike(Post $post)
+    {
+        $post->unlikeBy();
+
+        return $post;
     }
 }

@@ -29,7 +29,7 @@ class Post extends Model implements LikeableContract
      *
      * @var array
      */
-    protected $appends = ['is_favorited', 'favorites_count'];
+    protected $appends = ['liked', 'likesCount'];
 
     /**
      * Get the category associated with the post.
@@ -69,16 +69,6 @@ class Post extends Model implements LikeableContract
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
-    }
-
-    /**
-     * A post can have many favorites.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function favorites()
-    {
-        return $this->hasMany(Favorite::class);
     }
 
     /**
@@ -151,25 +141,5 @@ class Post extends Model implements LikeableContract
         return $query->where('title', 'LIKE', '%'.$terms.'%')
                     ->orWhere('body', 'LIKE', '%'.$terms.'%')
                     ->latest();
-    }
-
-    /**
-     * Get the post's favorited status.
-     *
-     * @return bool
-     */
-    public function getIsFavoritedAttribute(): bool
-    {
-        return !!$this->favorites->where('user_id', auth()->id())->count();
-    }
-
-    /**
-     * Get the post's number of favorites.
-     *
-     * @return int
-     */
-    public function getFavoritesCountAttribute(): int
-    {
-        return $this->favorites->count();
     }
 }

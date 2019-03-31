@@ -16,17 +16,12 @@
 						<span class="title is-bold">{{ $profile->name }}</span><br>
 						<span class="subtitle">
 							{{ $profile->email }}<br><br>
-							Created: {{ $profile->created_at->format('m/d/Y h:ma') }}<br>
-							Updated: {{ $profile->updated_at->format('m/d/Y h:ma') }}
+							Created: {{ $profile->created_at->format('m/d/Y') }}<br>
+							Updated: {{ $profile->updated_at->format('m/d/Y') }}
 						</span><br><br>
 
 						@if (auth()->id() !== $profile->id)
-							<follow-button
-								:data-follower='@json(auth()->user()->isFollowing($profile))'
-								:user="{{ $profile }}">
-							</follow-button>
-						@else
-							<a href="{{ route('followers.index') }}" class="button is-success">Following</a>
+							<follow-button :profile="{{ $profile }}"></follow-button>
 						@endif
 					</p>
 				</div>
@@ -44,19 +39,13 @@
 				<div class="level-item has-text-centered">
 					<div>
 						<p class="heading">Following</p>
-						<p class="title">{{ $profile->following_count }}</p>
+						<p class="title">{{ $profile->followings()->count() }}</p>
 					</div>
 				</div>
 				<div class="level-item has-text-centered">
 					<div>
 						<p class="heading">Followers</p>
-						<p class="title">{{ $profile->followers_count }}</p>
-					</div>
-				</div>
-				<div class="level-item has-text-centered">
-					<div>
-						<p class="heading">Favorites</p>
-						<p class="title">{{ $profile->favorites_count }}</p>
+						<p class="title">{{ $profile->followers()->count() }}</p>
 					</div>
 				</div>
 			</nav>
