@@ -15,9 +15,7 @@
 					<p>
 						<span class="title is-bold">{{ $profile->name }}</span><br>
 						<span class="subtitle">
-							{{ $profile->email }}<br><br>
-							Created: {{ $profile->created_at->format('m/d/Y') }}<br>
-							Updated: {{ $profile->updated_at->format('m/d/Y') }}
+							{{ $profile->email }}
 						</span><br><br>
 
 						@if (auth()->id() !== $profile->id)
@@ -38,14 +36,14 @@
 				</div>
 				<div class="level-item has-text-centered">
 					<div>
-						<p class="heading">Following</p>
-						<p class="title">{{ $profile->followings()->count() }}</p>
+						<p class="heading">Followers</p>
+						<p class="title">{{ $profile->followers()->count() }}</p>
 					</div>
 				</div>
 				<div class="level-item has-text-centered">
 					<div>
-						<p class="heading">Followers</p>
-						<p class="title">{{ $profile->followers()->count() }}</p>
+						<p class="heading">Following</p>
+						<p class="title">{{ $profile->followings()->count() }}</p>
 					</div>
 				</div>
 			</nav>
