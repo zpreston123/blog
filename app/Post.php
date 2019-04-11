@@ -97,13 +97,13 @@ class Post extends Model implements LikeableContract
      * Add a comment to the post.
      *
      * @param  User $author
-     * @param  array $attributes
+     * @param  string $body
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function addComment($author, $attributes)
+    public function addComment($author, $body)
     {
         return $this->comments()->save(
-            (new Comment($attributes))->byAuthor($author)
+            (new Comment(['body' => $body]))->byAuthor($author)
         );
     }
 

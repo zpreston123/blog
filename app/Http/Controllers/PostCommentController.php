@@ -25,9 +25,7 @@ class PostCommentController extends Controller
      */
     public function store(Post $post)
     {
-        return $post->addComment(
-            auth()->user(), ['body' => request('body')]
-        );
+        return $post->addComment(auth()->user(), request('body'));
     }
 
     /**
