@@ -31,7 +31,11 @@ const app = new Vue({
     el: '#app',
 });
 
+import bulmaTagsinput from 'bulma-extensions/bulma-tagsinput/dist/js/bulma-tagsinput.min.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+	bulmaTagsinput.attach();
+
 	// Get all "navbar-burger" elements
 	const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
