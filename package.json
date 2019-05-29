@@ -11,8 +11,8 @@
     },
     "devDependencies": {
         "axios": "^0.18",
-        "bulma": "^0.7.4",
-        "bulma-extensions": "^6.2.5",
+        "bulma": "^0.7.5",
+        "bulma-extensions": "^6.2.7",
         "cross-env": "^5.2",
         "jquery": "^3.4",
         "laravel-mix": "^4.0.15",
@@ -21,7 +21,7 @@
         "moment-timezone": "^0.5.25",
         "popper.js": "^1.15",
         "resolve-url-loader": "^3.1.0",
-        "sass": "^1.19.0",
+        "sass": "^1.20.1",
         "sass-loader": "^7.1.0",
         "vue": "^2.6.10",
         "vue-template-compiler": "^2.6.10"
