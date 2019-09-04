@@ -17,7 +17,10 @@
 
                 Before proceeding, please check your email for a verification link.<br>
                 If you did not receive the email,
-                <a href="{{ route('verification.resend') }}">click here to request another</a>.
+                <form class="is-inline" method="POST" action="{{ route('verification.resend') }}">
+                    @csrf
+                    <button type="submit" class="button is-link">click here to request another</button>.
+                </form>
             </div>
         </div>
     </div>
