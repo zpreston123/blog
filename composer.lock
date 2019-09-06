@@ -4,88 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d702950fce4328d2c91158788674bd40",
+    "content-hash": "afa32d2a9e2d1ec910fd83b4044a984d",
     "packages": [
-        {
-            "name": "cybercog/laravel-love",
-            "version": "5.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cybercog/laravel-love.git",
-                "reference": "0599a45e0b2c734c6b9ed8f6b285b918d8799696"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cybercog/laravel-love/zipball/0599a45e0b2c734c6b9ed8f6b285b918d8799696",
-                "reference": "0599a45e0b2c734c6b9ed8f6b285b918d8799696",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0",
-                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0",
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.10",
-                "mockery/mockery": "^1.0",
-                "orchestra/database": "~3.5.0|~3.6.0|~3.7.0|~3.8.0|^4.0",
-                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0|~3.8.0|^4.0",
-                "phpunit/phpunit": "^6.0|^7.0|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Cog\\Laravel\\Love\\Providers\\LoveServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cog\\Contracts\\Love\\": "contracts/",
-                    "Cog\\Laravel\\Love\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anton Komarev",
-                    "email": "a.komarev@cybercog.su",
-                    "homepage": "http://ell.folio.su",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Make Laravel Eloquent models Likeable & Dislikeable in a minutes!",
-            "homepage": "https://github.com/cybercog/laravel-love",
-            "keywords": [
-                "Rate",
-                "Rating",
-                "Unlike",
-                "adore",
-                "cog",
-                "cybercog",
-                "dislike",
-                "eloquent",
-                "emotion",
-                "favorite",
-                "favourite",
-                "hate",
-                "kudos",
-                "laravel",
-                "likable",
-                "like",
-                "likeable",
-                "love",
-                "reaction",
-                "star",
-                "trait",
-                "undislike"
-            ],
-            "time": "2019-09-03T16:50:18+00:00"
-        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -889,68 +809,6 @@
             "time": "2019-09-03T13:09:57+00:00"
         },
         {
-            "name": "laravel/telescope",
-            "version": "v2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/telescope.git",
-                "reference": "d9c5c53d3a0c60dcd4ef3777884d0cf368eb3e6f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/d9c5c53d3a0c60dcd4ef3777884d0cf368eb3e6f",
-                "reference": "d9c5c53d3a0c60dcd4ef3777884d0cf368eb3e6f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "laravel/framework": "~5.8.0|^6.0|^7.0",
-                "moontoast/math": "^1.1",
-                "php": "^7.1.3",
-                "symfony/var-dumper": "^4.1"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.8|^4.0|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Telescope\\TelescopeServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Telescope\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                },
-                {
-                    "name": "Mohamed Said",
-                    "email": "mohamed@laravel.com"
-                }
-            ],
-            "description": "An elegant debug assistant for the Laravel framework.",
-            "keywords": [
-                "debugging",
-                "laravel",
-                "monitoring"
-            ],
-            "time": "2019-08-30T11:58:27+00:00"
-        },
-        {
             "name": "laravel/tinker",
             "version": "v1.0.10",
             "source": {
@@ -1015,16 +873,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v6.0",
+            "version": "v6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "6d5c71602191be5f3479fbd9acbc593d9f6b0c81"
+                "reference": "4aecb0bb71013d1218c70ee02b011944840dcb60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/6d5c71602191be5f3479fbd9acbc593d9f6b0c81",
-                "reference": "6d5c71602191be5f3479fbd9acbc593d9f6b0c81",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/4aecb0bb71013d1218c70ee02b011944840dcb60",
+                "reference": "4aecb0bb71013d1218c70ee02b011944840dcb60",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +937,7 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "https://laravelcollective.com",
-            "time": "2019-08-27T20:36:57+00:00"
+            "time": "2019-09-05T12:33:18+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1245,55 +1103,6 @@
                 "psr-3"
             ],
             "time": "2019-08-30T09:56:44+00:00"
-        },
-        {
-            "name": "moontoast/math",
-            "version": "1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ramsey/moontoast-math.git",
-                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/moontoast-math/zipball/c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
-                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bcmath": "*",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "jakub-onderka/php-parallel-lint": "^0.9.0",
-                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
-                "satooshi/php-coveralls": "^0.6.1",
-                "squizlabs/php_codesniffer": "^2.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Moontoast\\Math\\": "src/Moontoast/Math/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
-                }
-            ],
-            "description": "A mathematics library, providing functionality for large numbers",
-            "homepage": "https://github.com/ramsey/moontoast-math",
-            "keywords": [
-                "bcmath",
-                "math"
-            ],
-            "time": "2017-02-16T16:54:46+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1476,24 +1285,24 @@
         },
         {
             "name": "overtrue/laravel-follow",
-            "version": "1.1.13",
+            "version": "1.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-follow.git",
-                "reference": "97b40d83478a4515f7cf40ce88ec5908cb0b1d69"
+                "reference": "9bf2c02222e1705872a017470efd4ec42f654c5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-follow/zipball/97b40d83478a4515f7cf40ce88ec5908cb0b1d69",
-                "reference": "97b40d83478a4515f7cf40ce88ec5908cb0b1d69",
+                "url": "https://api.github.com/repos/overtrue/laravel-follow/zipball/9bf2c02222e1705872a017470efd4ec42f654c5a",
+                "reference": "9bf2c02222e1705872a017470efd4ec42f654c5a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
             },
             "require-dev": {
-                "laravel/laravel": "~5.5",
-                "mockery/mockery": "1.2.2",
+                "laravel/laravel": "~5.5||~6.0",
+                "mockery/mockery": "1.2.3",
                 "phpunit/phpunit": "~7.5"
             },
             "type": "library",
@@ -1520,7 +1329,7 @@
                 }
             ],
             "description": "Laravel 5 User Based System",
-            "time": "2019-05-26T11:14:24+00:00"
+            "time": "2019-09-04T13:18:22+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3597,16 +3406,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.4.5",
+            "version": "1.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "c210671197f6f8761c6ed0a765941940c474484c"
+                "reference": "5082ea8e531894dca7ffcee25206d93cd25aca42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/c210671197f6f8761c6ed0a765941940c474484c",
-                "reference": "c210671197f6f8761c6ed0a765941940c474484c",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/5082ea8e531894dca7ffcee25206d93cd25aca42",
+                "reference": "5082ea8e531894dca7ffcee25206d93cd25aca42",
                 "shasum": ""
             },
             "require": {
@@ -3614,7 +3423,7 @@
                 "ext-mbstring": "*",
                 "facade/flare-client-php": "^1.0",
                 "facade/ignition-contracts": "^1.0",
-                "filp/whoops": "^2.1.4",
+                "filp/whoops": "^2.4",
                 "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0",
                 "monolog/monolog": "^1.12|^2.0",
                 "php": "^7.1",
@@ -3661,7 +3470,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-09-03T21:12:03+00:00"
+            "time": "2019-09-04T19:13:40+00:00"
         },
         {
             "name": "facade/ignition-contracts",
