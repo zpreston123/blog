@@ -173,7 +173,6 @@ return [
         Blog\Providers\AuthServiceProvider::class,
         // Blog\Providers\BroadcastServiceProvider::class,
         Blog\Providers\EventServiceProvider::class,
-        Blog\Providers\TelescopeServiceProvider::class,
         Blog\Providers\RouteServiceProvider::class,
 
     ],
