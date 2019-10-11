@@ -2,13 +2,12 @@
 
 namespace Blog;
 
-use Cog\Contracts\Love\Likeable\Models\Likeable as LikeableContract;
-use Cog\Laravel\Love\Likeable\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Model;
+use Overtrue\LaravelLike\Traits\CanBeLiked;
 
-class Post extends Model implements LikeableContract
+class Post extends Model
 {
-    use Likeable;
+    use CanBeLiked;
 
     /**
      * The attributes that are mass assignable.
@@ -29,10 +28,10 @@ class Post extends Model implements LikeableContract
      *
      * @var array
      */
-    protected $appends = ['liked', 'likesCount'];
+    protected $appends = ['is_liked', 'likes_count'];
 
     /**
-     * Get the category associated with the post.
+     * Get the category associated with a post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -42,7 +41,7 @@ class Post extends Model implements LikeableContract
     }
 
     /**
-     * Get the author associated with the post.
+     * Get the author associated with a post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -119,7 +118,7 @@ class Post extends Model implements LikeableContract
     }
 
     /**
-     * Sync the list of tags associated with the post.
+     * Sync the list of tags associated with a post.
      *
      * @param  array $tags
      * @return \Illuminate\Database\Eloquent\Model
@@ -141,5 +140,25 @@ class Post extends Model implements LikeableContract
         return $query->where('title', 'LIKE', '%'.$terms.'%')
                     ->orWhere('body', 'LIKE', '%'.$terms.'%')
                     ->latest();
+    }
+
+    /**
+     * Check whether the post is liked by the authenticated user.
+     *
+     * @return bool
+     */
+    public function getIsLikedAttribute(): bool
+    {
+        return $this->isLikedBy(auth()->user());
+    }
+
+    /**
+     * Get the number of likes on a post.
+     *
+     * @return int
+     */
+    public function getLikesCountAttribute(): int
+    {
+        return $this->likes()->count();
     }
 }

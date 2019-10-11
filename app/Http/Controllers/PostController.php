@@ -24,11 +24,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::whereIn('user_id', function ($query) {
-            $query->select('followable_id')
-                ->from('followables')
-                ->where('user_id', auth()->id());
-        })->orWhere('user_id', auth()->id())->latest()->paginate(10);
+        $posts = Post::withCount('likes')
+            ->whereIn('user_id', function ($query) {
+                $query->select('followable_id')
+                    ->from('followables')
+                    ->where('user_id', auth()->id());
+            })->orWhere('user_id', auth()->id())
+            ->latest()
+            ->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
@@ -157,7 +160,7 @@ class PostController extends Controller
      */
     public function like(Post $post)
     {
-        $post->likeBy();
+        auth()->user()->like($post);
 
         return $post;
     }
@@ -170,7 +173,7 @@ class PostController extends Controller
      */
     public function unlike(Post $post)
     {
-        $post->unlikeBy();
+        auth()->user()->unlike($post);
 
         return $post;
     }

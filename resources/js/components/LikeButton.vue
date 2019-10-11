@@ -14,16 +14,16 @@
         props: ['post'],
         data() {
             return {
-                isLiked: this.post.liked,
-                count: this.post.likesCount
+                isLiked: this.post.is_liked,
+                count: this.post.likes_count
             };
         },
         methods: {
             like() {
                 axios.get(`/posts/${this.post.id}/like`)
                     .then(response => {
-                        this.isLiked = response.data.liked;
-                        this.count = response.data.likesCount;
+                        this.isLiked = response.data.is_liked;
+                        this.count = response.data.likes_count;
                         flash('Post liked!');
                     }, response => {
                         flash('Problem liking post. Please try again.', 'danger');
@@ -32,12 +32,17 @@
             unlike() {
                 axios.get(`/posts/${this.post.id}/unlike`)
                     .then(response => {
-                        this.isLiked = response.data.liked;
-                        this.count = response.data.likesCount;
+                        this.isLiked = response.data.is_liked;
+                        this.count = response.data.likes_count;
                         flash('Post unliked.');
                     }, response => {
                         flash('Problem unliking post. Please try again.', 'danger');
                     });
+            }
+        },
+        computed: {
+            isLiked() {
+                return this.post.is_liked;
             }
         }
     };

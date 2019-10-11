@@ -2135,8 +2135,8 @@ __webpack_require__.r(__webpack_exports__);
   props: ['post'],
   data: function data() {
     return {
-      isLiked: this.post.liked,
-      count: this.post.likesCount
+      isLiked: this.post.is_liked,
+      count: this.post.likes_count
     };
   },
   methods: {
@@ -2144,8 +2144,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/posts/".concat(this.post.id, "/like")).then(function (response) {
-        _this.isLiked = response.data.liked;
-        _this.count = response.data.likesCount;
+        _this.isLiked = response.data.is_liked;
+        _this.count = response.data.likes_count;
         flash('Post liked!');
       }, function (response) {
         flash('Problem liking post. Please try again.', 'danger');
@@ -2155,12 +2155,17 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/posts/".concat(this.post.id, "/unlike")).then(function (response) {
-        _this2.isLiked = response.data.liked;
-        _this2.count = response.data.likesCount;
+        _this2.isLiked = response.data.is_liked;
+        _this2.count = response.data.likes_count;
         flash('Post unliked.');
       }, function (response) {
         flash('Problem unliking post. Please try again.', 'danger');
       });
+    }
+  },
+  computed: {
+    isLiked: function isLiked() {
+      return this.post.is_liked;
     }
   }
 });
