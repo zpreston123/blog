@@ -21,8 +21,8 @@ class CreateLaravelFollowTables extends Migration
     {
         Schema::create(config('follow.followable_table', 'followables'), function (Blueprint $table) {
             $userForeignKey = config('follow.users_table_foreign_key', 'user_id');
-            $table->unsignedInteger($userForeignKey);
-            $table->unsignedInteger('followable_id');
+            $table->unsignedBigInteger($userForeignKey);
+            $table->unsignedBigInteger('followable_id');
             $table->string('followable_type')->index();
             $table->string('relation')->default('follow')->comment('follow/like/subscribe/favorite/upvote/downvote');
             $table->softDeletes();
