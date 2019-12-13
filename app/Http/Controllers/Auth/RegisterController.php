@@ -3,6 +3,7 @@
 namespace Blog\Http\Controllers\Auth;
 
 use Blog\Http\Controllers\Controller;
+use Blog\Providers\RouteServiceProvider;
 use Blog\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/posts';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

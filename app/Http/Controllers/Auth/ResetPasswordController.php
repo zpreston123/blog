@@ -3,6 +3,7 @@
 namespace Blog\Http\Controllers\Auth;
 
 use Blog\Http\Controllers\Controller;
+use Blog\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -25,5 +26,5 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/posts';
+    protected $redirectTo = RouteServiceProvider::HOME;
 }
