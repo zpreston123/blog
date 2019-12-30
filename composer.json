@@ -17,7 +17,8 @@
         "laravelcollective/html": "^6.0",
         "mckenziearts/laravel-notify": "^1.0",
         "overtrue/laravel-follow": "^1.1",
-        "overtrue/laravel-like": "^1.0"
+        "overtrue/laravel-like": "^1.0",
+        "spatie/laravel-view-models": "^1.2"
     },
     "require-dev": {
         "facade/ignition": "^1.11",
