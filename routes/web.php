@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,7 @@
 */
 
 Route::view('/', 'welcome')->name('welcome');
-Auth::routes(['verify' => true]);
+Auth::routes();
 Route::get('profiles/{profile}/follow', 'ProfileController@follow');
 Route::get('profiles/{profile}/unfollow', 'ProfileController@unfollow');
 Route::put('profiles/{profile}/avatar', 'ProfileAvatarController@update')->name('profiles.update-avatar');
