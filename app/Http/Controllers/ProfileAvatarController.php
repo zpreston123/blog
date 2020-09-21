@@ -1,8 +1,8 @@
 <?php
 
-namespace Blog\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Blog\User;
+use App\Models\User;
 use Intervention\Image\Facades\Image;
 
 class ProfileAvatarController extends Controller

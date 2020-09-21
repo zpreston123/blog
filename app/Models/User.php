@@ -1,31 +1,35 @@
 <?php
 
-namespace Blog;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Overtrue\LaravelFollow\Traits\CanFollow;
-use Overtrue\LaravelFollow\Traits\CanBeFollowed;
-use Overtrue\LaravelLike\Traits\CanLike;
+use Overtrue\LaravelFollow\Followable;
+use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable
 {
-    use Notifiable, CanFollow, CanBeFollowed, CanLike;
+    use HasFactory, Notifiable, Followable, Liker;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'avatar', 'password'];
+    protected $fillable = [
+        'name', 'email', 'avatar', 'password',
+    ];
 
     /**
-     * The attributes excluded from the model's JSON form.
+     * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 
     /**
      * The attributes that should be cast to native types.

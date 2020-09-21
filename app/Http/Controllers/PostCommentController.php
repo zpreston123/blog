@@ -1,8 +1,8 @@
 <?php
 
-namespace Blog\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Blog\{Comment, Post};
+use App\Models\{Comment, Post};
 
 class PostCommentController extends Controller
 {
