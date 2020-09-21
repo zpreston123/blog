@@ -1,8 +1,8 @@
 <?php
 
-namespace Blog\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Blog\User;
+use App\Models\User;
 use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller

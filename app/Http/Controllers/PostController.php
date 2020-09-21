@@ -1,9 +1,9 @@
 <?php
 
-namespace Blog\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Blog\{Category, Post, Tag};
-use Blog\Http\Requests\PostRequest;
+use App\Http\Requests\PostRequest;
+use App\Models\{Category, Post, Tag};
 
 class PostController extends Controller
 {
@@ -26,9 +26,9 @@ class PostController extends Controller
     {
         $posts = Post::withCount('likes')
             ->whereIn('user_id', function ($query) {
-                $query->select('followable_id')
-                    ->from('followables')
-                    ->where('user_id', auth()->id());
+                $query->select('following_id')
+                    ->from('user_follower')
+                    ->where('follower_id', auth()->id());
             })->orWhere('user_id', auth()->id())
             ->latest()
             ->paginate(10);
