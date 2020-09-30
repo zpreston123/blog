@@ -42012,7 +42012,7 @@ var render = function() {
           }
         },
         [
-          _c("i", { staticClass: "far fa-heart" }),
+          _c("i", { staticClass: "far fa-thumbs-up" }),
           _vm._v("\n     "),
           _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
         ]
@@ -42030,7 +42030,7 @@ var render = function() {
           }
         },
         [
-          _c("i", { staticClass: "fas fa-heart" }),
+          _c("i", { staticClass: "fas fa-thumbs-up" }),
           _vm._v("\n     "),
           _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
         ]

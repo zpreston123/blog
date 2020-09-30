@@ -1,10 +1,10 @@
 <template>
     <a class="button is-link is-outlined tooltip" data-tooltip="Like Post" v-if="!isLiked" @click.prevent="like">
-        <i class="far fa-heart"></i>
+        <i class="far fa-thumbs-up"></i>
         &nbsp;<span v-text="count"></span>
     </a>
     <a class="button is-link tooltip" data-tooltip="Unlike Post" v-else @click.prevent="unlike">
-        <i class="fas fa-heart"></i>
+        <i class="fas fa-thumbs-up"></i>
         &nbsp;<span v-text="count"></span>
     </a>
 </template>
