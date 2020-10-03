@@ -24,7 +24,7 @@
                         @unless ($post->tags->isEmpty())
                             <div class="tags">
                                 @foreach ($post->tags as $tag)
-                                    <span class="tag is-rounded">{{ $tag->name }}</span>
+                                    <span class="tag is-info">{{ $tag->name }}</span>
                                 @endforeach
                             </div>
                         @endunless
