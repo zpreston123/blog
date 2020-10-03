@@ -3,7 +3,7 @@
 @section('title', $post->title)
 
 @section('content')
-	<section class="section" style="padding-top:0;">
+	<section class="section pt-0">
 		<h1 class="title">{{ $post->title }}</h1>
 		<h5 class="subtitle">By: {{ $post->author->name }}</h5>
 		<div class="box">
