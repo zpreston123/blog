@@ -2100,9 +2100,11 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    flash: function flash(data) {
-      this.type = data.type;
-      this.body = data.message;
+    flash: function flash(_ref) {
+      var type = _ref.type,
+          message = _ref.message;
+      this.type = type;
+      this.body = message;
       this.isVisible = true;
     }
   }
@@ -2191,9 +2193,12 @@ __webpack_require__.r(__webpack_exports__);
     like: function like() {
       var _this = this;
 
-      axios.get("/posts/".concat(this.post.id, "/like")).then(function (response) {
-        _this.isLiked = response.data.is_liked;
-        _this.count = response.data.likes_count;
+      axios.get("/posts/".concat(this.post.id, "/like")).then(function (_ref) {
+        var _ref$data = _ref.data,
+            is_liked = _ref$data.is_liked,
+            likes_count = _ref$data.likes_count;
+        _this.isLiked = is_liked;
+        _this.count = likes_count;
         flash('Post liked!');
       }, function (response) {
         flash('Problem liking post. Please try again.', 'danger');
@@ -2202,9 +2207,12 @@ __webpack_require__.r(__webpack_exports__);
     unlike: function unlike() {
       var _this2 = this;
 
-      axios.get("/posts/".concat(this.post.id, "/unlike")).then(function (response) {
-        _this2.isLiked = response.data.is_liked;
-        _this2.count = response.data.likes_count;
+      axios.get("/posts/".concat(this.post.id, "/unlike")).then(function (_ref2) {
+        var _ref2$data = _ref2.data,
+            is_liked = _ref2$data.is_liked,
+            likes_count = _ref2$data.likes_count;
+        _this2.isLiked = is_liked;
+        _this2.count = likes_count;
         flash('Post unliked.');
       }, function (response) {
         flash('Problem unliking post. Please try again.', 'danger');

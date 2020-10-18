@@ -21,9 +21,9 @@
         methods: {
             like() {
                 axios.get(`/posts/${this.post.id}/like`)
-                    .then(response => {
-                        this.isLiked = response.data.is_liked;
-                        this.count = response.data.likes_count;
+                    .then(({ data: { is_liked, likes_count }}) => {
+                        this.isLiked = is_liked;
+                        this.count = likes_count;
                         flash('Post liked!');
                     }, response => {
                         flash('Problem liking post. Please try again.', 'danger');
@@ -31,9 +31,9 @@
             },
             unlike() {
                 axios.get(`/posts/${this.post.id}/unlike`)
-                    .then(response => {
-                        this.isLiked = response.data.is_liked;
-                        this.count = response.data.likes_count;
+                    .then(({ data: { is_liked, likes_count }}) => {
+                        this.isLiked = is_liked;
+                        this.count = likes_count;
                         flash('Post unliked.');
                     }, response => {
                         flash('Problem unliking post. Please try again.', 'danger');

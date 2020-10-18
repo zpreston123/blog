@@ -36,9 +36,9 @@
 		},
 
 		methods: {
-			flash(data) {
-				this.type = data.type;
-				this.body = data.message;
+			flash({ type, message }) {
+				this.type = type;
+				this.body = message;
 				this.isVisible = true;
 			}
 		}
