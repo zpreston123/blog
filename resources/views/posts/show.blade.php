@@ -13,6 +13,6 @@
 	</section>
 
 	<section class="section">
-	    <comment-list post-id="{{ $post->id }}"></comment-list>
+	    <comment-list post-id="{{ $post->id }}" auth-user-id="{{ auth()->id() }}"></comment-list>
 	</section>
 @stop

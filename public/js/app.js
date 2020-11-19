@@ -2026,7 +2026,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['postId'],
+  props: ['postId', 'authUserId'],
   components: {
     AddComment: _AddComment_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -42220,7 +42220,7 @@ var render = function() {
       _vm._v(" "),
       _c("h3", [_vm._v("Comments:")]),
       _vm._v(" "),
-      _vm.comments.length != 0
+      _vm.comments.length !== 0
         ? _c(
             "div",
             { staticClass: "box" },
@@ -42255,16 +42255,18 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "media-right" }, [
-                  _c("button", {
-                    staticClass: "delete",
-                    on: {
-                      click: function($event) {
-                        return _vm.deleteComment(comment)
-                      }
-                    }
-                  })
-                ])
+                comment.author.id == _vm.authUserId
+                  ? _c("div", { staticClass: "media-right" }, [
+                      _c("button", {
+                        staticClass: "delete",
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteComment(comment)
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e()
               ])
             }),
             0

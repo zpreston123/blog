@@ -6,7 +6,7 @@
 
         <h3>Comments:</h3>
 
-        <div class="box" v-if="comments.length != 0">
+        <div class="box" v-if="comments.length !== 0">
             <article class="media" v-for="comment in comments">
                 <figure class="media-left">
                     <p class="image is-64x64">
@@ -22,7 +22,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="media-right">
+                <div class="media-right" v-if="comment.author.id == authUserId">
                     <button class="delete" @click="deleteComment(comment)"></button>
                 </div>
             </article>
@@ -35,7 +35,7 @@
     import AddComment from './AddComment.vue';
 
     export default {
-        props: ['postId'],
+        props: ['postId', 'authUserId'],
         components: {
             AddComment
         },
