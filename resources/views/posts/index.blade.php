@@ -39,7 +39,8 @@
                 @empty
                     <p>No posts have been made!  Please check back later.</p>
                 @endforelse
-                {{ $posts->links() }}
+
+                {{ $posts->links('vendor.pagination.bulma') }}
             </div>
         </div>
     </div>

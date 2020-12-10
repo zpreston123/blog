@@ -14329,3 +14329,7 @@ a.has-text-danger-dark:focus {
   color: #f14668;
 }
 
+.pagination > .pagination-list {
+  list-style-type: none;
+}
+
