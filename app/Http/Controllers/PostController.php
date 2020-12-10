@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
-use App\Models\{Category, Post, Tag};
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -43,10 +43,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name')->pluck('name', 'id')->all();
-        $tags = Tag::orderBy('name')->pluck('name', 'id')->all();
-
-        return view('posts.create', compact('categories', 'tags'));
+        return view('posts.create');
     }
 
     /**
@@ -88,10 +85,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = Category::orderBy('name')->pluck('name', 'id')->all();
-        $tags = Tag::orderBy('name')->pluck('name', 'id')->all();
-
-        return view('posts.edit', compact('post', 'categories', 'tags'));
+        return view('posts.edit', compact('post'));
     }
 
     /**

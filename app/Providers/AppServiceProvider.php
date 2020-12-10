@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Http\View\Composers\{CategoryComposer, TagComposer};
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(['posts.create', 'posts.edit'], CategoryComposer::class);
+        view()->composer(['posts.create', 'posts.edit'], TagComposer::class);
     }
 }
