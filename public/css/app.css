@@ -5126,19 +5126,19 @@ fieldset[disabled] .select select:hover {
 }
 
 .breadcrumb.has-arrow-separator li + li::before {
-  content: "\2192";
+  content: "→";
 }
 
 .breadcrumb.has-bullet-separator li + li::before {
-  content: "\2022";
+  content: "•";
 }
 
 .breadcrumb.has-dot-separator li + li::before {
-  content: "\B7";
+  content: "·";
 }
 
 .breadcrumb.has-succeeds-separator li + li::before {
-  content: "\227B";
+  content: "≻";
 }
 
 .card {
@@ -14332,4 +14332,5 @@ a.has-text-danger-dark:focus {
 .pagination > .pagination-list {
   list-style-type: none;
 }
+
 

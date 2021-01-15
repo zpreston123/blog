@@ -39,11 +39,6 @@
                         flash('Problem unliking post. Please try again.', 'danger');
                     });
             }
-        },
-        computed: {
-            isLiked() {
-                return this.post.is_liked;
-            }
         }
     };
 </script>
