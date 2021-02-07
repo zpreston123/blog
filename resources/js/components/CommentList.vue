@@ -51,7 +51,7 @@
         },
         methods: {
             fetchComments() {
-                axios.get('/posts/' + this.postId + '/comments')
+                axios.get(`/posts/${this.postId}/comments`)
                     .then(response => {
                         this.comments = response.data;
                     }, response => {
@@ -65,7 +65,7 @@
                 if (confirm('Are you sure you want to delete this comment?')) {
                     let index = this.comments.indexOf(comment);
 
-                    axios.delete('/posts/' + this.postId + '/comments/' + comment.id)
+                    axios.delete(`/posts/${this.postId}/comments/${comment.id}`)
                         .then(response => {
                             this.comments.splice(index, 1);
                             flash('Comment deleted successfully!');

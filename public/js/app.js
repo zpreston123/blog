@@ -1883,7 +1883,7 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       }
 
-      axios.post('/posts/' + this.postId + '/comments', this.comment).then(function (response) {
+      axios.post("/posts/".concat(this.postId, "/comments"), this.comment).then(function (response) {
         _this.$emit('submitted', response.data);
 
         _this.comment.body = '';
@@ -1962,7 +1962,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchComments: function fetchComments() {
       var _this = this;
 
-      axios.get('/posts/' + this.postId + '/comments').then(function (response) {
+      axios.get("/posts/".concat(this.postId, "/comments")).then(function (response) {
         _this.comments = response.data;
       }, function (response) {
         flash('Problem fetching comments. Please refresh the page and try again.', 'danger');
@@ -1976,7 +1976,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (confirm('Are you sure you want to delete this comment?')) {
         var index = this.comments.indexOf(comment);
-        axios["delete"]('/posts/' + this.postId + '/comments/' + comment.id).then(function (response) {
+        axios["delete"]("/posts/".concat(this.postId, "/comments/").concat(comment.id)).then(function (response) {
           _this2.comments.splice(index, 1);
 
           flash('Comment deleted successfully!');
