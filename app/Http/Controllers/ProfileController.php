@@ -26,7 +26,7 @@ class ProfileController extends Controller
     {
         $profiles = User::where('name', 'LIKE', '%'.request('q').'%')
                     ->orderBy('name')
-                    ->get();
+                    ->paginate(10);
 
         return view('profiles.index', compact('profiles'));
     }
