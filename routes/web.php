@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\PostCommentController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProfileAvatarController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\{PostCommentController, PostController, ProfileAvatarController, ProfileController};
 use Illuminate\Support\Facades\Route;
 
 /*
