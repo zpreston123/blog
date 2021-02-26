@@ -30,7 +30,7 @@
 		},
 		methods: {
 			onSubmit() {
-				if (this.comment.body == '') {
+				if (this.comment.body === '') {
 					flash('Comment cannot be empty! Please try again.', 'warning');
 					return false;
 				}
