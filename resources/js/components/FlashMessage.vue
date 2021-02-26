@@ -4,10 +4,10 @@
 			<div class="is-pulled-left">
 				<span v-bind:class="'icon has-text-'+type">
 					<i class="fas fa-lg" v-bind:class="{
-						'fa-check-circle': (type == 'success'),
-						'fa-info-circle': (type == 'info'),
-						'fa-exclamation-circle': (type == 'warning'),
-						'fa-times-circle': (type == 'danger')
+						'fa-check-circle': (type === 'success'),
+						'fa-info-circle': (type === 'info'),
+						'fa-exclamation-circle': (type === 'warning'),
+						'fa-times-circle': (type === 'danger')
 					}"></i>
 				</span>
 				{{ body }}
