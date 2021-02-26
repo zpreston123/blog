@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::withCount('likes')
+        $posts = Post::withCount('likers')
             ->whereIn('user_id', function ($query) {
                 $query->select('following_id')
                     ->from('user_follower')

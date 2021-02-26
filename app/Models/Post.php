@@ -160,6 +160,6 @@ class Post extends Model
      */
     public function getLikesCountAttribute(): int
     {
-        return $this->likes()->count();
+        return $this->likers()->count();
     }
 }
