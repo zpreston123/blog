@@ -12,11 +12,21 @@
             @endforeach
         </div>
     @endunless
-    <p>
-        <i class="fas fa-{{ $post->author->gender }}"></i>
-        {{ $post->author->name }}&nbsp;|&nbsp;
-        <i class="far fa-clock"></i>
-        {{ $post->created_at->diffForHumans() }}
-    </p>
-    <like-button :post="{{ $post }}"></like-button>
+    <div class="block">
+        <span class="icon-text">
+            <span class="icon">
+                <i class="fas fa-{{ $post->author->gender }}"></i>
+            </span>
+            <span>{{ $post->author->name }}</span>&nbsp;
+        </span>&nbsp;|
+        <span class="icon-text">
+            <span class="icon">
+                <i class="far fa-clock"></i>
+            </span>
+            <span>{{ $post->created_at->diffForHumans() }}</span>
+        </span>
+    </div>
+    <div class="block">
+        <like-button :post="{{ $post }}"></like-button>
+    </div>
 </div>
