@@ -13,7 +13,7 @@
         "axios": "^0.21.1",
         "bulma": "^0.9.3",
         "bulma-extensions": "^6.2.7",
-        "laravel-mix": "^6.0.24",
+        "laravel-mix": "^6.0.25",
         "lodash": "^4.17.21",
         "moment": "^2.29.1",
         "moment-timezone": "^0.5.33",
