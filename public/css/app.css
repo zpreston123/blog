@@ -10451,7 +10451,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   top: 50%;
   bottom: auto;
   left: auto;
-  right: calc(100% - .5rem);
+  right: calc(100% - 0.5rem);
   border-color: transparent transparent transparent rgba(74, 74, 74, 0.9);
 }
 .tooltip.is-tooltip-left:focus::before, .tooltip.is-tooltip-left:hover::before, .tooltip.is-tooltip-left.is-tooltip-active::before {
@@ -11241,7 +11241,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-mobile:focus::before, .is-tooltip-left-mobile:hover::before, .is-tooltip-left-mobile.is-tooltip-active::before {
@@ -11260,7 +11260,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-tablet:focus::before, .is-tooltip-left-tablet:hover::before, .is-tooltip-left-tablet.is-tooltip-active::before {
@@ -11279,7 +11279,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-tablet-only:focus::before, .is-tooltip-left-tablet-only:hover::before, .is-tooltip-left-tablet-only.is-tooltip-active::before {
@@ -11298,7 +11298,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-touch:focus::before, .is-tooltip-left-touch:hover::before, .is-tooltip-left-touch.is-tooltip-active::before {
@@ -11317,7 +11317,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-desktop:focus::before, .is-tooltip-left-desktop:hover::before, .is-tooltip-left-desktop.is-tooltip-active::before {
@@ -11336,7 +11336,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-desktop-only:focus::before, .is-tooltip-left-desktop-only:hover::before, .is-tooltip-left-desktop-only.is-tooltip-active::before {
@@ -11355,7 +11355,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-until-widescreen:focus::before, .is-tooltip-left-until-widescreen:hover::before, .is-tooltip-left-until-widescreen.is-tooltip-active::before {
@@ -11374,7 +11374,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-widescreen:focus::before, .is-tooltip-left-widescreen:hover::before, .is-tooltip-left-widescreen.is-tooltip-active::before {
@@ -11393,7 +11393,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-widescreen-only:focus::before, .is-tooltip-left-widescreen-only:hover::before, .is-tooltip-left-widescreen-only.is-tooltip-active::before {
@@ -11412,7 +11412,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-until-fullhd:focus::before, .is-tooltip-left-until-fullhd:hover::before, .is-tooltip-left-until-fullhd.is-tooltip-active::before {
@@ -11431,7 +11431,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     top: 50% !important;
     bottom: auto !important;
     left: auto !important;
-    right: calc(100% - .5rem) !important;
+    right: calc(100% - 0.5rem) !important;
     border-color: transparent transparent transparent rgba(74, 74, 74, 0.9) !important;
   }
   .is-tooltip-left-fullhd:focus::before, .is-tooltip-left-fullhd:hover::before, .is-tooltip-left-fullhd.is-tooltip-active::before {
