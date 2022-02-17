@@ -37,7 +37,7 @@
 
 				axios.post(`/posts/${this.postId}/comments`, this.comment)
 					.then(response => {
-						this.$emit('submitted', response.data);
+						this.emitter.emit('submitted', response.data);
 						this.comment.body = '';
 						flash('Comment added successfully!');
 					}, response => {

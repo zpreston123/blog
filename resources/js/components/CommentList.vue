@@ -1,6 +1,6 @@
 <template>
     <div>
-        <add-comment :post-id="postId" @submitted="addComment"></add-comment>
+        <add-comment :post-id="postId"></add-comment>
 
         <hr>
 
@@ -17,7 +17,7 @@
                     <div class="content">
                         <p>
                             <strong>{{ comment.author.name }}</strong>
-                            <small>{{ comment.created_at | ago }}</small><br>
+                            <small>{{ ago(comment.created_at) }}</small><br>
                             {{ comment.body }}
                         </p>
                     </div>
@@ -44,12 +44,10 @@
                 comments: []
             };
         },
-        filters: {
+        methods: {
             ago(date) {
                 return moment.utc(date).fromNow();
-            }
-        },
-        methods: {
+            },
             fetchComments() {
                 axios.get(`/posts/${this.postId}/comments`)
                     .then(response => {
@@ -77,6 +75,10 @@
         },
         mounted() {
             this.fetchComments();
+
+            this.emitter.on('submitted', comment => {
+                this.addComment(comment);
+            });
         }
     };
 </script>

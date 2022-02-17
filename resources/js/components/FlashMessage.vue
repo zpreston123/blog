@@ -30,7 +30,7 @@
 		},
 
 		created() {
-			window.events.$on(
+			this.emitter.on(
                 'flash', data => this.flash(data)
             );
 		},

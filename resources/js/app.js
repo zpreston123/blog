@@ -6,9 +6,24 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue').default;
+import { createApp } from 'vue';
+import mitt from 'mitt';
 
-window.events = new Vue();
+const emitter = mitt();
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+const app = createApp({});
+
+app.config.globalProperties.emitter = emitter;
+
+window.flash = function (message, type='success') {
+    app.config.globalProperties.emitter.emit('flash', { message, type });
+};
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,17 +34,9 @@ window.events = new Vue();
  */
 
 const files = require.context('./', true, /\.vue$/i);
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+files.keys().map(key => app.component(key.split('/').pop().split('.')[0], files(key).default));
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
-});
+app.mount('#app');
 
 import bulmaTagsinput from 'bulma-extensions/bulma-tagsinput/dist/js/bulma-tagsinput.min.js';
 
