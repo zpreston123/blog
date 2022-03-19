@@ -76,9 +76,7 @@
         mounted() {
             this.fetchComments();
 
-            this.emitter.on('submitted', comment => {
-                this.addComment(comment);
-            });
+            this.emitter.on('submitted', comment => this.addComment(comment));
         }
     };
 </script>

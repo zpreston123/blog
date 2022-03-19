@@ -28,13 +28,9 @@
 				isVisible: false
 			};
 		},
-
 		created() {
-			this.emitter.on(
-                'flash', data => this.flash(data)
-            );
+			this.emitter.on('flash', data => this.flash(data));
 		},
-
 		methods: {
 			flash({ type, message }) {
 				this.type = type;
