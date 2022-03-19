@@ -55,13 +55,12 @@
 
 @section('scripts')
 	<script>
-		if (document.getElementById('delete-button')) {
-			document.getElementById('delete-button').addEventListener('click', event => {
-				event.preventDefault();
-				if (confirm('Are you sure you want to delete this post?')) {
-					document.getElementById('delete-form').submit();
-				}
-			});
-		}
+		var deleteButton = document.getElementById('delete-button');
+		deleteButton.addEventListener('click', event => {
+			event.preventDefault();
+			if (confirm('Are you sure you want to delete this post?')) {
+				document.getElementById('delete-form').submit();
+			}
+		});
 	</script>
 @endsection
