@@ -60,11 +60,10 @@
 @section('scripts')
     <script>
         var file = document.getElementById("avatar");
-        file.onchange = function () {
-            if(file.files.length > 0)
-            {
+        file.addEventListener('change', event => {
+            if (file.files.length > 0) {
                 document.getElementById('file-name').innerHTML = file.files[0].name;
             }
-        };
+        });
     </script>
 @endsection
