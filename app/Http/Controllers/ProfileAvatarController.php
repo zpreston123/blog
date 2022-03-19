@@ -36,6 +36,6 @@ class ProfileAvatarController extends Controller
 
         $profile->update(['avatar' => $filename]);
 
-        return redirect('posts');
+        return to_route('posts.index');
     }
 }

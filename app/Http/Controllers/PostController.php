@@ -63,7 +63,7 @@ class PostController extends Controller
 
         flash()->success('Post saved successfully!')->important();
 
-        return redirect('posts');
+        return to_route('posts.index');
     }
 
     /**
@@ -105,7 +105,7 @@ class PostController extends Controller
 
         flash()->success('Post updated successfully!');
 
-        return redirect('posts');
+        return to_route('posts.index');
     }
 
     /**

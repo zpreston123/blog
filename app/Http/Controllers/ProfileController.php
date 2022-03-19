@@ -73,7 +73,7 @@ class ProfileController extends Controller
 
         flash()->success('Profile updated successfully!');
 
-        return redirect('posts');
+        return to_route('posts.index');
     }
 
     /**
