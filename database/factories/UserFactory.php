@@ -17,11 +17,11 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $gender = $this->faker->randomElement(['male', 'female']);
+        $gender = fake()->randomElement(['male', 'female']);
 
         return [
-            'name' => $this->faker->name($gender),
-            'email' => $this->faker->unique()->safeEmail(),
+            'name' => fake()->name($gender),
+            'email' => fake()->safeEmail(),
             'email_verified_at' => now(),
             'gender' => $gender,
             'avatar' => 'default-'.$gender.'.jpg',
