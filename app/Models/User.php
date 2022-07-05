@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -76,12 +77,13 @@ class User extends Authenticatable
     /**
      * Get the user's avatar image.
      *
-     * @param  string $value
-     * @return string
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
-    public function getAvatarAttribute($value): string
+    public function avatar(): Attribute
     {
-        return asset('/images/avatars/' . $value);
+        return new Attribute(
+            get: fn ($value) => asset('/images/avatars/' . $value)
+        );
     }
 
     /**
