@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Overtrue\LaravelLike\Traits\Likeable;
@@ -146,20 +147,24 @@ class Post extends Model
     /**
      * Check whether the post is liked by the authenticated user.
      *
-     * @return bool
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
-    public function getIsLikedAttribute(): bool
+    public function isLiked(): Attribute
     {
-        return $this->isLikedBy(auth()->user());
+        return new Attribute(
+            get: fn () => $this->isLikedBy(auth()->user())
+        );
     }
 
     /**
      * Get the number of likes on a post.
      *
-     * @return int
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
-    public function getLikesCountAttribute(): int
+    public function likesCount(): Attribute
     {
-        return $this->likers()->count();
+        return new Attribute(
+            get: fn () => $this->likers()->count()
+        );
     }
 }
