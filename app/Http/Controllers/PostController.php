@@ -24,12 +24,13 @@ class PostController extends Controller
      */
     public function index()
     {
+        $followingIds = auth()->user()
+            ->followings()
+            ->pluck('followable_id')
+            ->push(auth()->id());
+
         $posts = Post::withCount('likers')
-            ->whereIn('user_id', function ($query) {
-                $query->select('following_id')
-                    ->from('user_follower')
-                    ->where('follower_id', auth()->id());
-            })->orWhere('user_id', auth()->id())
+            ->whereIn('user_id', $followingIds)
             ->latest()
             ->paginate(10);
 
