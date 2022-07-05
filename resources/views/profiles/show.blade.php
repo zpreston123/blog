@@ -37,13 +37,13 @@
 				<div class="level-item has-text-centered">
 					<div>
 						<p class="heading">Followers</p>
-						<p class="title">{{ $profile->followers()->count() }}</p>
+						<p class="title">{{ $profile->followers_count }}</p>
 					</div>
 				</div>
 				<div class="level-item has-text-centered">
 					<div>
 						<p class="heading">Following</p>
-						<p class="title">{{ $profile->followings()->count() }}</p>
+						<p class="title">{{ $profile->followings_count }}</p>
 					</div>
 				</div>
 			</nav>
