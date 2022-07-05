@@ -33,6 +33,7 @@ class LoginViewTest extends TestCase
 
         $response->assertStatus(200);
     }
+
     public function test_unauth_user_cannot_access_posts_page()
     {
         $response = $this->get('/posts');
