@@ -40,12 +40,3 @@
 		}
 	};
 </script>
-
-<style>
-	.flash {
-		position: fixed;
-		z-index: 10;
-		bottom: 10px;
-		right: 10px;
-	}
-</style>

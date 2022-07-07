@@ -4,12 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-
+import './bootstrap';
 import { createApp } from 'vue';
+import bulmaTagsinput from 'bulma-extensions/bulma-tagsinput/dist/js/bulma-tagsinput.min.js';
 import mitt from 'mitt';
-
-const emitter = mitt();
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,6 +16,7 @@ const emitter = mitt();
  */
 
 const app = createApp({});
+const emitter = mitt();
 
 app.config.globalProperties.emitter = emitter;
 
@@ -33,12 +32,17 @@ window.flash = function (message, type='success') {
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-const files = require.context('./', true, /\.vue$/i);
-files.keys().map(key => app.component(key.split('/').pop().split('.')[0], files(key).default));
+Object.entries(import.meta.globEager('./**/*.vue')).forEach(([path, definition]) => {
+    app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
+});
+
+/**
+ * Finally, we will attach the application instance to a HTML element with
+ * an "id" attribute of "app". This element is included with the "auth"
+ * scaffolding. Otherwise, you will need to add an element yourself.
+ */
 
 app.mount('#app');
-
-import bulmaTagsinput from 'bulma-extensions/bulma-tagsinput/dist/js/bulma-tagsinput.min.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	bulmaTagsinput.attach();

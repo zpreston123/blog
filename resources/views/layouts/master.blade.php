@@ -8,7 +8,7 @@
 
         <title>@yield('title')</title>
 
-        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+        @vite(['resources/sass/app.sass', 'resources/js/app.js'])
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     </head>
     <body>
@@ -26,7 +26,6 @@
             @include('layouts.partials.footer')
         </div>
 
-        <script src="{{ mix('/js/app.js') }}"></script>
         @yield('scripts')
     </body>
 </html>
