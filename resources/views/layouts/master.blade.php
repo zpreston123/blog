@@ -9,7 +9,6 @@
         <title>@yield('title')</title>
 
         @vite(['resources/sass/app.sass', 'resources/js/app.js'])
-        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     </head>
     <body>
         <div id="app">
