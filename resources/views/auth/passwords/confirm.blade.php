@@ -5,7 +5,9 @@
 @section('content')
     <div class="columns">
         <div class="column is-half is-offset-one-quarter">
-            <h1 class="title has-text-centered">Confirm Password</h1>
+            <h1 class="title has-text-centered">
+                Confirm Password
+            </h1>
 
             <div class="box">
                 <p>

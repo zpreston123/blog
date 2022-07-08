@@ -1,6 +1,8 @@
 <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
-		<a class="navbar-item" href="{{ (auth()->check()) ? route('posts.index') : route('welcome') }}">Blog Xpress</a>
+		<a class="navbar-item" href="{{ (auth()->check()) ? route('posts.index') : route('welcome') }}">
+			Blog Xpress
+		</a>
 		@auth
 			<div class="navbar-burger burger" data-target="navMenu">
 				<span></span>
@@ -12,10 +14,14 @@
 	@auth
 		<div class="navbar-menu" id="navMenu">
 			<div class="navbar-start">
-				<a class="navbar-item" href="{{ route('posts.create') }}">New Post</a>
+				<a class="navbar-item" href="{{ route('posts.create') }}">
+					New Post
+				</a>
 			</div>
 			<div class="navbar-end">
-				<a class="navbar-item" href="{{ route('profiles.index') }}">Find Users</a>
+				<a class="navbar-item" href="{{ route('profiles.index') }}">
+					Find Users
+				</a>
 				{{-- <div class="navbar-item has-dropdown is-hoverable" id="markAsRead" onclick="markNotificationAsRead('{{ count(auth()->user()->unreadNotifications) }}')">
 					<a class="navbar-link">
 						<span class="badge is-badge-info is-badge-small" data-badge="{{ count(auth()->user()->unreadNotifications) }}">
@@ -41,7 +47,9 @@
 						<i class="fas fa-user"></i>
 					</a>
 					<div class="navbar-dropdown is-right">
-						<a class="navbar-item" href="{{ route('profiles.edit', auth()->id()) }}">Edit Profile</a>
+						<a class="navbar-item" href="{{ route('profiles.edit', auth()->id()) }}">
+							Edit Profile
+						</a>
 						<a class="navbar-item" href="{{ route('logout') }}"
 							onclick="
 								event.preventDefault();

@@ -8,7 +8,9 @@
         <div class="content">
             <p>
                 <a href="{{ route('profiles.show', $profile->id) }}">
-                    <strong>{{ $profile->name }}</strong>
+                    <strong>
+                        {{ $profile->name }}
+                    </strong>
                 </a>
             </p>
         </div>

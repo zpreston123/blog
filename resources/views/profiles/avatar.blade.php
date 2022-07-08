@@ -4,8 +4,12 @@
             <label class="file-label">
                 {{ Form::file('avatar', ['class' => 'file-input', 'id' => 'avatar']) }}
                 <span class="file-cta">
-                    <span class="file-icon"><i class="fas fa-upload"></i></span>
-                    <span class="file-label">Upload avatar...</span>
+                    <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                        Upload avatar...
+                    </span>
                 </span>
                 <span id="file-name" class="file-name">
                     {{ Str::replaceFirst("/images/avatars/", "", $profile->avatar) }}

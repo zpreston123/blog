@@ -5,7 +5,9 @@
 @section('content')
     <div class="columns">
         <div class="column is-three-quarters">
-            <h1 class="title welcome-title">Welcome to Blog Xpress!</h1>
+            <h1 class="title welcome-title">
+                Welcome to Blog Xpress!
+            </h1>
             <img class="logo" src="/images/train-express.png">
             <h2 class="subtitle">
                 Express yourself any time and share your thoughts or experiences with your followers!
@@ -18,7 +20,9 @@
                     <span class="icon">
                         <i class="fas fa-user-plus"></i>
                     </span>
-                    <span>Sign up</span>
+                    <span>
+                        Sign up
+                    </span>
                 </a>
             </p>
         </div>

@@ -12,7 +12,9 @@
 		</div>
 	{{ Form::close() }}
 
-	<h1 class="title">All Results ({{ $profiles->count() }})</h1>
+	<h1 class="title">
+		All Results ({{ $profiles->count() }})
+	</h1>
 
     <hr>
 

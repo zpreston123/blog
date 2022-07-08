@@ -4,7 +4,9 @@
             {{ $post->title }}
         </a>
     </h2>
-    <p>{{ Str::limit($post->body, 200) }}</p>
+    <p>
+        {{ Str::limit($post->body, 200) }}
+    </p>
     @unless ($post->tags->isEmpty())
         <div class="tags">
             @foreach ($post->tags as $tag)
@@ -17,13 +19,17 @@
             <span class="icon">
                 <i class="fas fa-{{ $post->author->gender }}"></i>
             </span>
-            <span>{{ $post->author->name }}</span>&nbsp;
+            <span>
+                {{ $post->author->name }}
+            </span>&nbsp;
         </span>&nbsp;|
         <span class="icon-text">
             <span class="icon">
                 <i class="far fa-clock"></i>
             </span>
-            <span>{{ $post->created_at->diffForHumans() }}</span>
+            <span>
+                {{ $post->created_at->diffForHumans() }}
+            </span>
         </span>
     </div>
     <div class="block">

@@ -13,7 +13,9 @@
 				</div>
 				<div class="column is-4">
 					<p>
-						<span class="title is-bold">{{ $profile->name }}</span><br>
+						<span class="title is-bold">
+							{{ $profile->name }}
+						</span><br>
 						<span class="subtitle">
 							{{ $profile->email }}
 						</span><br><br>
@@ -30,20 +32,32 @@
 			<nav class="level">
 				<div class="level-item has-text-centered">
 					<div>
-						<p class="heading">Posts</p>
-						<p class="title">{{ $profile->posts_count }}</p>
+						<p class="heading">
+							Posts
+						</p>
+						<p class="title">
+							{{ $profile->posts_count }}
+						</p>
 					</div>
 				</div>
 				<div class="level-item has-text-centered">
 					<div>
-						<p class="heading">Followers</p>
-						<p class="title">{{ $profile->followers_count }}</p>
+						<p class="heading">
+							Followers
+						</p>
+						<p class="title">
+							{{ $profile->followers_count }}
+						</p>
 					</div>
 				</div>
 				<div class="level-item has-text-centered">
 					<div>
-						<p class="heading">Following</p>
-						<p class="title">{{ $profile->followings_count }}</p>
+						<p class="heading">
+							Following
+						</p>
+						<p class="title">
+							{{ $profile->followings_count }}
+						</p>
 					</div>
 				</div>
 			</nav>
