@@ -7,10 +7,12 @@
 			<form @submit.prevent="onSubmit">
 				<div class="control is-grouped">
 					<p class="control is-expanded">
-						<input v-model="comment.body" class="input" type="text">
+				        <textarea v-model="comment.body" class="textarea" placeholder="Enter comment..."></textarea>
 					</p>
 					<p class="control">
-						<button type="submit" class="button is-info">Submit</button>
+						<button type="submit" class="button is-info">
+							Submit
+						</button>
 					</p>
 				</div>
 			</form>
