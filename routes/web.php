@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\{PostCommentController, PostController, ProfileAvatarController, ProfileController};
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\{Auth, Route};
 
 /*
 |--------------------------------------------------------------------------
