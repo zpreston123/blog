@@ -16,8 +16,7 @@
                 <div class="media-content">
                     <div class="content">
                         <p>
-                            <strong>{{ comment.author.name }}</strong>
-                            <small>{{ ago(comment.created_at) }}</small><br>
+                            <strong>{{ comment.author.name }}</strong>&nbsp;<small>{{ ago(comment.created_at) }}</small><br>
                             {{ comment.body }}
                         </p>
                     </div>
