@@ -6,7 +6,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
-import bulmaTagsinput from 'bulma-extensions/bulma-tagsinput/dist/js/bulma-tagsinput.min.js';
+import BulmaTagsInput from '@creativebulma/bulma-tagsinput';
 import mitt from 'mitt';
 
 /**
@@ -45,7 +45,7 @@ Object.entries(import.meta.globEager('./**/*.vue')).forEach(([path, definition])
 app.mount('#app');
 
 document.addEventListener('DOMContentLoaded', () => {
-	bulmaTagsinput.attach();
+    BulmaTagsInput.attach();
 
 	// Get all "navbar-burger" elements
 	const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

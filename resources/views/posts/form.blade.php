@@ -19,9 +19,7 @@
 <div class="field">
     {{ Form::label('tags', 'Tags', ['class' => 'label']) }}
     <div class="control">
-        <div class="select is-multiple">
-            {{ Form::select('tags[]', $tags, null, ['multiple']) }}
-        </div>
+        {{ Form::select('tags[]', $tags, null, ['data-type' => 'tags', 'data-placeholder' => 'Choose Tags', 'multiple']) }}
     </div>
 </div>
 
