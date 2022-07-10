@@ -19,7 +19,7 @@
     <hr>
 
 	<div class="box">
-		@each('profiles.profile', $profiles, 'profile', 'no-profile')
+		@each('profiles.profile', $profiles, 'profile', 'profiles.no-profile')
 
 		{{ $profiles->links('vendor.pagination.bulma') }}
 	</div>
