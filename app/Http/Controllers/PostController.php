@@ -26,11 +26,11 @@ class PostController extends Controller
     {
         $followingIds = auth()->user()
             ->followings()
-            ->pluck('followable_id')
-            ->push(auth()->id());
+            ->pluck('followable_id');
 
         $posts = Post::withCount('likers')
             ->whereIn('user_id', $followingIds)
+            ->orWhere('user_id', auth()->id())
             ->latest()
             ->paginate(10);
 
