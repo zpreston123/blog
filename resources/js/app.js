@@ -5,7 +5,7 @@
  */
 
 import './bootstrap';
-import { createApp } from 'vue';
+import { createApp } from "vue/dist/vue.esm-bundler";
 import BulmaTagsInput from '@creativebulma/bulma-tagsinput';
 import mitt from 'mitt';
 

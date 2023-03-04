@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class WelcomeViewTest extends TestCase
 {
-    public function test_welcome_view_is_rendered()
+    public function test_welcome_view_is_rendered(): void
     {
         $response = $this->get('/');
 

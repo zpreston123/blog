@@ -9,7 +9,7 @@ class RegistrationViewTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_user_can_register_using_registration_form()
+    public function test_user_can_register_using_registration_form(): void
     {
         $response = $this->post('/register', [
             'name' => 'Test User',
