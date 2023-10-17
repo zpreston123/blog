@@ -5,7 +5,7 @@
 @section('content')
     <div class="columns">
         <div class="column is-three-quarters">
-            <h1 class="title welcome-title">
+            <h1 class="title is-1 welcome-title">
                 Welcome to Blog Xpress!
             </h1>
             <img class="logo" src="/images/train-express.png">
