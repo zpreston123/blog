@@ -55,12 +55,15 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = new Post($request->all());
-        $post->addCategory($request->input('category'));
+        $post = new Post([
+            'title' => str($request->title)->squish(),
+            'body' => str($request->body)->squish()
+        ]);
+        $post->addCategory($request->category);
         $post->addAuthor(auth()->user());
         $post->save();
 
-        $post->addTags($request->input('tags'));
+        $post->addTags($request->tags);
 
         flash()->success('Post saved successfully!')->important();
 
@@ -98,11 +101,12 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        $post->fill($request->only('title', 'body'));
-        $post->addCategory($request->input('category'));
+        $post->title = str($request->title)->squish();
+        $post->body = str($request->body)->squish();
+        $post->addCategory($request->category);
         $post->save();
 
-        $post->syncTags($request->input('tags'));
+        $post->syncTags($request->tags);
 
         flash()->success('Post updated successfully!');
 
