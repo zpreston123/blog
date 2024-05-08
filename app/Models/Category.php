@@ -9,18 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = ['name'];
 
-    /**
-     * A category can have many posts.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function posts()
     {
         return $this->hasMany(Post::class);
