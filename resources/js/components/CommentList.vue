@@ -21,7 +21,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="media-right" v-if="comment.author.id == authUserId">
+                <div class="media-right" v-if="comment.author.id === authUserId">
                     <button class="delete" @click="deleteComment(comment)"></button>
                 </div>
             </article>
