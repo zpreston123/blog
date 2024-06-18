@@ -15,21 +15,25 @@
                     We won't ask for your password again for a few hours.
                 </p>
 
-                {{ Form::open(['route' => 'password.confirm']) }}
+                <form action="{{ route('password.confirm') }}" method="POST">
+                    @csrf
+
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
-                            {{ Form::label('password', 'Password', ['class' => 'label']) }}
+                            <label for="password" class="label">Password</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
                                 <div class="control has-icons-left">
-                                    {{ Form::password('password', ['class' => 'input' . ($errors->has('password') ? ' is-danger' : ''), 'autocomplete' => 'current-password']) }}
+                                    <input type="password" class="input @error('password') is-danger @enderror" autocomplete="current-password">
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </div>
                             </div>
-                            {!! $errors->first('password', '<p class="help is-danger">:message</p>') !!}
+                            @error('password')
+                                <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -38,7 +42,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    {{ Form::submit('Confirm Password', ['class' => 'button is-primary']) }}
+                                    <input type="submit" class="button is-primary" value="Confirm Password">
 
                                     @if (Route::has('password.request'))
                                         <a class="button is-text" href="{{ route('password.request') }}">
@@ -49,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                {{ Form::close() }}
+                </form>
             </div>
         </div>
     </div>
