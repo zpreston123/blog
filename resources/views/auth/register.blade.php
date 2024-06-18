@@ -9,71 +9,82 @@
                 Register an Account
             </h1>
 
-            <div class="box">
-                {{ Form::open(['route' => 'register']) }}
-                    <div class="field">
-                        {{ Form::label('name', 'Name', ['class' => 'label']) }}
-                        <div class="control has-icons-left">
-                            {{ Form::text('name', old('name'), ['class' => 'input' . ($errors->has('name') ? ' is-danger' : '')]) }}
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </div>
-                        {!! $errors->first('name', '<p class="help is-danger">:message</p>') !!}
+            <form class="box" action="{{ route('register') }}" method="POST">
+                @csrf
+
+                <div class="field">
+                    <label for="name" class="label">Name</label>
+                    <div class="control has-icons-left">
+                        <input type="text" id="name" name="name" class="input @error('name') is-danger @enderror" value="{{ old('name') }}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
                     </div>
+                    @error('name')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                    <div class="field">
-                        {{ Form::label('email', 'Email', ['class' => 'label']) }}
-                        <div class="control has-icons-left">
-                            {{ Form::text('email', old('email'), ['class' => 'input' . ($errors->has('email') ? ' is-danger' : '')]) }}
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                        </div>
-                        {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
+                <div class="field">
+                    <label for="email" class="label">Email</label>
+                    <div class="control has-icons-left">
+                        <input type="email" id="email" name="email" class="input @error('email') is-danger @enderror" value="{{ old('email') }}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
                     </div>
+                    @error('email')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                    <div class="field">
-                        {{ Form::label(null, 'Gender', ['class' => 'label']) }}
-
-                        {{ Form::radio('gender', 'male', false, ['class' => 'is-checkradio', 'id' => 'male']) }}
-                        {{ Form::label('male', 'Male') }}
-
-                        {{ Form::radio('gender', 'female', false, ['class' => 'is-checkradio', 'id' => 'female']) }}
-                        {{ Form::label('female', 'Female') }}
-
-                        {!! $errors->first('gender', '<p class="help is-danger">:message</p>') !!}
+                <div class="field">
+                    <label class="label">Gender</label>
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="gender" value="male" class="is-checkradio" {{ old('gender') == 'male' ? 'checked' : '' }}>
+                            Male
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="gender" value="female" class="is-checkradio" {{ old('gender') == 'female' ? 'checked' : '' }}>
+                            Female
+                        </label>
                     </div>
+                    @error('gender')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                    <hr>
+                <hr>
 
-                    <div class="field">
-                        {{ Form::label('password', 'Password', ['class' => 'label']) }}
-                        <div class="control has-icons-left">
-                            {{ Form::password('password', ['class' => 'input' . ($errors->has('password') ? ' is-danger' : '')]) }}
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </div>
-                        {!! $errors->first('password', '<p class="help is-danger">:message</p>') !!}
+                <div class="field">
+                    <label for="password" class="label">Password</label>
+                    <div class="control has-icons-left">
+                        <input type="password" id="password" name="password" class="input @error('password') is-danger @enderror">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
                     </div>
+                    @error('password')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                    <div class="field">
-                        {{ Form::label('password_confirmation', 'Confirm Password', ['class' => 'label']) }}
-                        <div class="control has-icons-left">
-                            {{ Form::password('password_confirmation', ['class' => 'input' . ($errors->has('password_confirmation') ? ' is-danger' : '')]) }}
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-check-circle"></i>
-                            </span>
-                        </div>
+                <div class="field">
+                    <label for="password_confirmation" class="label">Confirm Password</label>
+                    <div class="control has-icons-left">
+                        <input type="password" id="password_confirmation" name="password_confirmation" class="input @error('password_confirmation') is-danger @enderror">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-check-circle"></i>
+                        </span>
                     </div>
+                </div>
 
-                    <div class="buttons">
-                        {{ Form::submit('Register', ['class' => 'button is-primary']) }}
-                        {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/"']) }}
-                    </div>
-                {{ Form::close() }}
-            </div>
+                <div class="buttons">
+                    <input type="submit" class="button is-primary" value="Register">
+                    <a href="{{ route('welcome') }}" class="button is-danger">Cancel</a>
+                </div>
+            </form>
         </div>
     </div>
 @endsection
