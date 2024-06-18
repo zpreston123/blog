@@ -57,8 +57,9 @@
 							">
 							Log out
 						</a>
-						{{ Form::open(['route' => 'logout', 'id' => 'logout-form']) }}
-						{{ Form::close() }}
+						<form action="{{ route('logout') }}" id="logout-form" method="POST">
+							@csrf
+						</form>
 					</div>
 				</div>
 			</div>
