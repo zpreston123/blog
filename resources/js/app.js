@@ -1,5 +1,5 @@
 import './bootstrap';
-import { createApp } from "vue/dist/vue.esm-bundler";
+import { createApp } from 'vue/dist/vue.esm-bundler';
 import BulmaTagsInput from '@creativebulma/bulma-tagsinput';
 import mitt from 'mitt';
 
@@ -20,7 +20,7 @@ window.flash = function (message, type='success') {
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Object.entries(import.meta.globEager('./**/*.vue')).forEach(([path, definition]) => {
+Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
 });
 
