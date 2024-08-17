@@ -9,6 +9,6 @@ class CategoryComposer
 {
     public function compose(View $view)
     {
-        $view->with('categories', Category::orderBy('name')->pluck('name', 'id')->all());
+        $view->with('categories', Category::orderBy('name')->get());
     }
 }

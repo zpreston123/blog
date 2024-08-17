@@ -9,6 +9,6 @@ class TagComposer
 {
     public function compose(View $view)
     {
-        $view->with('tags', Tag::orderBy('name')->pluck('name', 'id')->all());
+        $view->with('tags', Tag::orderBy('name')->get());
     }
 }
