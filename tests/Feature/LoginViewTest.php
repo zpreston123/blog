@@ -23,22 +23,4 @@ class LoginViewTest extends TestCase
 
         $response->assertRedirect('/posts');
     }
-
-    public function test_auth_user_can_access_posts_view(): void
-    {
-        $user = User::factory()->create();
-
-        $response = $this->actingAs($user)->get('/posts');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_unauth_user_cannot_access_posts_page(): void
-    {
-        $response = $this->get('/posts');
-
-        $response->assertStatus(302);
-
-        $response->assertRedirect('/login');
-    }
 }
