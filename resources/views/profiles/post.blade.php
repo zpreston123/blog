@@ -24,8 +24,10 @@
             </a>
             <a class="card-footer-item" id="delete-button">
                 Delete
-                {{ Form::open(['route' => ['posts.destroy', $post], 'id' => 'delete-form', 'method' => 'delete']) }}
-                {{ Form::close() }}
+                <form action="{{ route('posts.destroy', $post) }}" id="delete-form" method="POST">
+                    @csrf
+                    @method('DELETE')
+                </form>
             </a>
         </footer>
     </div>
