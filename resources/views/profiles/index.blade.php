@@ -3,14 +3,14 @@
 @section('title', 'Profiles')
 
 @section('content')
-	{{ Form::open(['route' => ['profiles.index'], 'method' => 'GET']) }}
+	<form action="{{ route('profiles.index') }}" method="GET">
 		<div class="control has-icons-left">
-			{{ Form::search('q', null, ['class' => 'input is-medium', 'placeholder' => 'Search...']) }}
+			<input name="q" class="input is-medium" placeholder="Search...">
 			<span class="icon is-left">
 				<i class="fas fa-search"></i>
 			</span>
 		</div>
-	{{ Form::close() }}
+	</form>
 
 	<h1 class="title">
 		All Results ({{ $profiles->count() }})
