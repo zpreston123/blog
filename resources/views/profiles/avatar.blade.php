@@ -1,8 +1,11 @@
-{{ Form::model($profile, ['route' => ['profiles.update-avatar', $profile], 'enctype' => 'multipart/form-data', 'method' => 'PUT']) }}
+<form action="{{ route('profiles.update-avatar', $profile) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+
     <div class="field is-grouped">
         <div class="file is-small has-name">
             <label class="file-label">
-                {{ Form::file('avatar', ['class' => 'file-input', 'id' => 'avatar']) }}
+                <input type="file" id="avatar" name="avatar" class="file-input">
                 <span class="file-cta">
                     <span class="file-icon">
                         <i class="fas fa-upload"></i>
@@ -17,8 +20,10 @@
             </label>
         </div>
         <div class="control">
-            {{ Form::submit('Save', ['class' => 'button is-info is-small']) }}
+            <input type="submit" class="button is-info is-small" value="Save">
         </div>
     </div>
-    {!! $errors->first('avatar', '<p class="help is-danger">:message</p>') !!}
-{{ Form::close() }}
+    @error('avatar')
+        <p class="help is-danger">{{ $message }}</p>
+    @enderror
+</form>
