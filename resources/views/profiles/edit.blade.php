@@ -12,48 +12,55 @@
             <div class="box">
                 @include('profiles.avatar', compact('profile'))<br>
 
-                {{ Form::model($profile, ['route' => ['profiles.update', $profile], 'method' => 'PATCH']) }}
+                <form action="{{ route('profiles.update', $profile) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+
                     <div class="field">
-                        {{ Form::label('name', 'Name', ['class' => 'label']) }}
+                        <label for="name" class="label">Name</label>
                         <div class="control">
-                            {{ Form::text('name', null, ['class' => 'input' . ($errors->has('email') ? ' is-danger': '')]) }}
+                            <input type="text" id="name" name="name" class="input @error('name') is-danger @enderror" value="{{ old('name', $profile->name) }}">
                         </div>
-                        {!! $errors->first('name', '<p class="help is-danger">:message</p>') !!}
+                        @error('name')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="field">
-                        {{ Form::label('email', 'Email', ['class' => 'label']) }}
+                        <label for="email" class="label">Email</label>
                         <div class="control">
-                            {{ Form::text('email', null, ['class' => 'input' . ($errors->has('email') ? ' is-danger': '')]) }}
+                            <input type="text" id="email" name="email" class="input @error('email') is-danger @enderror" value="{{ old('email', $profile->email) }}">
                         </div>
-                        {!! $errors->first('email', '<p class="help is-danger">:message</p>') !!}
+                        @error('email')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="field">
-                        {{ Form::label('password', 'New Password', ['class' => 'label']) }}
+                        <label for="password" class="label">New Password</label>
                         <div class="control">
-                            {{ Form::password('password', ['class' => 'input' . ($errors->has('password') ? ' is-danger': '')]) }}
+                            <input type="password" id="password" name="password" class="input @error('password') is-danger @enderror">
                         </div>
-                        {!! $errors->first('password', '<p class="help is-danger">:message</p>') !!}
+                        @error('password')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="field">
-                        {{ Form::label('password_confirmation', 'Confirm New Password', ['class' => 'label']) }}
+                        <label for="password_confirmation" class="label">Confirm New Password</label>
                         <div class="control">
-                            {{ Form::password('password_confirmation', ['class' => 'input' . ($errors->has('password_confirmation') ? ' is-danger': '')]) }}
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="input @error('password_confirmation') is-danger @enderror">
                         </div>
-                        {!! $errors->first('password_confirm', '<p class="help is-danger">:message</p>') !!}
+                        @error('password_confirmation')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <div class="field is-grouped">
-                        <div class="control">
-                            {{ Form::submit('Update', ['class' => 'button is-primary']) }}
-                        </div>
-                        <div class="control">
-                            {{ Form::button('Cancel', ['class' => 'button is-danger', 'onclick' => 'document.location.href="/posts"']) }}
-                        </div>
+                    <div class="buttons">
+                        <input type="submit" class="button is-primary" value="Update">
+                        <a href="{{ route('posts.index') }}" class="button is-danger">Cancel</a>
                     </div>
-                {{ Form::close() }}
+                </form>
             </div>
         </div>
     </div>
