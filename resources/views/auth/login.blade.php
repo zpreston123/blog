@@ -42,8 +42,4 @@
             <span>Log in</span>
         </button>
     </div>
-
-    <div class="control has-text-centered">
-        <a href="{{ route('password.request') }}" class="button is-small is-text">Forgot Your Password</a>
-    </div>
 </form>
