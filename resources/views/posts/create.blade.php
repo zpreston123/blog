@@ -10,9 +10,10 @@
     <div class="columns">
         <div class="column is-half is-offset-one-quarter">
             <div class="box">
-                {{ Form::open(['route' => 'posts.store']) }}
+                <form action="{{ route('posts.store') }}" method="POST">
+                    @csrf
                     @include('posts.form', ['submitButtonText' => 'Publish'])
-                {{ Form::close() }}
+                </form>
             </div>
         </div>
     </div>
