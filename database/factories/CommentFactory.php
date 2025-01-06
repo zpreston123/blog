@@ -11,10 +11,10 @@ class CommentFactory extends Factory
 
     public function definition()
     {
-		return [
-			'body' => $this->faker->sentence,
-			'user_id' => User::all()->random()->id,
-			'post_id' => Post::all()->random()->id
-		];
+        return [
+            'body' => $this->faker->sentence,
+            'user_id' => User::all()->random()->id,
+            'post_id' => Post::all()->random()->id
+        ];
     }
 }

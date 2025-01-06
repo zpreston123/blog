@@ -19,7 +19,7 @@ class PostIndexViewTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_unauth_user_cannot_access_posts_page(): void
+    public function test_unauth_user_cannot_access_posts_view(): void
     {
         $response = $this->get('/posts');
 

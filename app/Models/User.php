@@ -13,7 +13,7 @@ use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Followable, Follower, Liker;
+    use HasFactory, Notifiable, Followable, Follower, Liker;
 
     protected $fillable = [
         'name',
@@ -28,12 +28,15 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
-
     protected $appends = ['followedByAuthUser'];
+
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
 
     public function posts()
     {
