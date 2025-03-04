@@ -7,7 +7,7 @@ use Illuminate\View\View;
 
 class TagComposer
 {
-    public function compose(View $view)
+    public function compose(View $view): void
     {
         $view->with('tags', Tag::orderBy('name')->get());
     }
