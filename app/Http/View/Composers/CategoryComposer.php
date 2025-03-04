@@ -7,7 +7,7 @@ use Illuminate\View\View;
 
 class CategoryComposer
 {
-    public function compose(View $view)
+    public function compose(View $view): void
     {
         $view->with('categories', Category::orderBy('name')->get());
     }
