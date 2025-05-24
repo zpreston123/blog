@@ -14,7 +14,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $profiles = User::where('name', 'LIKE', '%'.request('q').'%')
+        $profiles = User::whereLike('name', '%'.request('q').'%')
                     ->orderBy('name')
                     ->paginate(10);
 
