@@ -38,11 +38,11 @@ class PostController extends Controller
             'title' => str($request->title)->squish(),
             'body' => str($request->body)->squish()
         ]);
-        $post->addCategory($request->category);
-        $post->addAuthor(auth()->user());
+        $post->category()->associate($request->category);
+        $post->author()->associate(auth()->user());
         $post->save();
 
-        $post->addTags($request->tags);
+        $post->tags()->attach($request->tags);
 
         flash()->success('Post saved successfully!')->important();
 
@@ -63,10 +63,10 @@ class PostController extends Controller
     {
         $post->title = str($request->title)->squish();
         $post->body = str($request->body)->squish();
-        $post->addCategory($request->category);
+        $post->category()->associate($request->category);
         $post->save();
 
-        $post->syncTags($request->tags);
+        $post->tags()->sync($request->tags ?? []);
 
         flash()->success('Post updated successfully!');
 
