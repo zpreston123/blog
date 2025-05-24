@@ -37,33 +37,6 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function addAuthor($author)
-    {
-        return $this->author()->associate($author);
-    }
-
-    public function addCategory($category)
-    {
-        return $this->category()->associate($category);
-    }
-
-    public function addComment($author, $body)
-    {
-        return $this->comments()->save(
-            (new Comment(['body' => $body]))->byAuthor($author)
-        );
-    }
-
-    public function addTags($tags)
-    {
-        return $this->tags()->attach($tags);
-    }
-
-    public function syncTags($tags)
-    {
-        return $this->tags()->sync($tags ?? []);
-    }
-
     public function scopeSearch($query, $terms)
     {
         return $query->where('title', 'LIKE', '%'.$terms.'%')
