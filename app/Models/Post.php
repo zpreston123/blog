@@ -39,8 +39,8 @@ class Post extends Model
 
     public function scopeSearch($query, $terms)
     {
-        return $query->where('title', 'LIKE', '%'.$terms.'%')
-                    ->orWhere('body', 'LIKE', '%'.$terms.'%')
+        return $query->whereLike('title', '%'.$terms.'%')
+                    ->orWhereLike('body', '%'.$terms.'%')
                     ->latest();
     }
 
