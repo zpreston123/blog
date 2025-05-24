@@ -13,9 +13,10 @@ class PostCommentController extends Controller
 
     public function store(Post $post)
     {
-        return $post->addComment(
-            auth()->user(),
-            str(request('body'))->squish()
+        $body = str(request('body'))->squish();
+
+        return $post->comments()->save(
+            (new Comment(['body' => $body]))->byAuthor(auth()->user())
         );
     }
 
